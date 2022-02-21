@@ -1,6 +1,3 @@
-//Font import
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&display=swap');
-
 //Variables
 $first-grey: #5e5f5e;
 $second-grey: #8c8c8c;
@@ -10,7 +7,9 @@ $green: #2ecc71;
 $yellow: #ffb547;
 $white: #ffffff;
 $ivory: #f6fbef;
-$font-family: 'Open Sans', sans-serif;
+
+//Font import
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&display=swap");
 
 //Imports
-@import './components/App/App';
+@import "./components/App/App";
