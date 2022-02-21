@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-labelledby="title"
+aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Purchase Order</title>
+  <desc>A color styled icon from Orion Icon Library.</desc>
+  <path data-name="layer1"
+  d="M16 8v40h14v4a10 10 0 0 0 20 0V8a6 6 0 0 1 5.9-6H22a6 6 0 0 0-6 6zm40-6zm0 0z"
+  fill="#e0eafc"></path>
+  <path data-name="layer1" d="M40 62a10 10 0 0 1-10-10v-4H2v4a10 10 0 0 0 10 10h28M50 8a6 6 0 0 1 6-6 6 6 0 0 1 6 6v4H50z"
+  fill="#e0eafc"></path>
+  <path data-name="opacity" d="M40 62a10 10 0 0 1-10-10v-4H2v4a10 10 0 0 0 10 10h28M50 8a6 6 0 0 1 6-6 6 6 0 0 1 6 6v4H50z"
+  fill="#000064" opacity=".15"></path>
+  <path data-name="stroke" d="M16 48V8a6 6 0 0 1 6-6h34" fill="none"
+  stroke="#2e4369" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+  <path data-name="stroke" d="M50 12h12V8a6 6 0 0 0-6-6 6 6 0 0 0-6 6v44a10 10 0 0 1-10 10 10 10 0 0 1-10-10v-4H2v4a10 10 0 0 0 10 10h28M24 12h16M24 28h16m-16-8h12M24 36h12"
+  fill="none" stroke="#2e4369" stroke-linecap="round" stroke-linejoin="round"
+  stroke-width="2"></path>
+</svg>

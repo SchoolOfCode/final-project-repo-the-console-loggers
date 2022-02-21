@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-labelledby="title"
+aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Fridge</title>
+  <desc>A color styled icon from Orion Icon Library.</desc>
+  <path data-name="layer1"
+  d="M12 26v32a4 4 0 0 0 4 4h32a4 4 0 0 0 4-4V26" fill="#c2d6e6"></path>
+  <path data-name="opacity" d="M16 60V28h36v-2H12v32a4 4 0 0 0 4 4h.6a4 4 0 0 1-.6-2z"
+  fill="#101129" opacity=".25"></path>
+  <path data-name="layer1" d="M48 2H16a4 4 0 0 0-4 4v20h40V6a4 4 0 0 0-4-4z"
+  fill="#c2d6e6"></path>
+  <path data-name="opacity" d="M19.8 2H16a4 4 0 0 0-4 4v20h3.8V6a4 4 0 0 1 4-4z"
+  fill="#101129" opacity=".25"></path>
+  <path data-name="stroke" d="M12 26v32a4 4 0 0 0 4 4h32a4 4 0 0 0 4-4V26M48 2H16a4 4 0 0 0-4 4v20h40V6a4 4 0 0 0-4-4zm-28 8v8m0 16v10"
+  fill="none" stroke="#2f446a" stroke-linecap="round" stroke-linejoin="round"
+  stroke-width="2"></path>
+</svg>

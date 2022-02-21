@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-labelledby="title"
+aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Dinner</title>
+  <desc>A color styled icon from Orion Icon Library.</desc>
+  <path data-name="layer3"
+  d="M61.7 34.2V48a2 2 0 0 1-2 2 2 2 0 0 1-2-2V34.1" fill="#f05a41"></path>
+  <path data-name="layer2" d="M61.7 34.2V12a6.3 6.3 0 0 0-6.3 6.3V31a3.2 3.2 0 0 0 3.2 3.2zm-50.5-9.5L10.5 12H2.9l-.6 12.7a3.5 3.5 0 0 0 2.4 3.5V48a2 2 0 1 0 4 0V28.1a3.5 3.5 0 0 0 2.5-3.4z"
+  fill="#bacae8"></path>
+  <circle data-name="layer1" cx="32.7" cy="33" r="19" fill="#dde5f4"></circle>
+  <path data-name="opacity" d="M21.7 33a11 11 0 0 1 1.9-6.2 11 11 0 1 0 15.1 15.4 11 11 0 0 1-17-9.2z"
+  fill="#fff" opacity=".5"></path>
+  <path data-name="opacity" d="M32.7 22a11 11 0 0 0-9.1 4.9 11 11 0 0 1 15.3 15.2A11 11 0 0 0 32.7 22z"
+  fill="#101129" opacity=".25"></path>
+  <circle data-name="stroke" cx="32.7" cy="33" r="19" fill="none"
+  stroke="#2f446a" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle>
+  <circle data-name="stroke" cx="32.7" cy="33" r="11" fill="none"
+  stroke="#2f446a" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle>
+  <path data-name="stroke" d="M61.7 34.2V48a2 2 0 0 1-2 2 2 2 0 0 1-2-2V34.1M6.7 12v9.5"
+  fill="none" stroke="#2f446a" stroke-linecap="round" stroke-linejoin="round"
+  stroke-width="2"></path>
+  <path data-name="stroke" d="M61.7 34.2V12a6.3 6.3 0 0 0-6.3 6.3V31a3.2 3.2 0 0 0 3.2 3.2zm-50.5-9.5L10.5 12H2.9l-.6 12.7a3.5 3.5 0 0 0 2.4 3.5V48a2 2 0 1 0 4 0V28.1a3.5 3.5 0 0 0 2.5-3.4z"
+  fill="none" stroke="#2f446a" stroke-linecap="round" stroke-linejoin="round"
+  stroke-width="2"></path>
+</svg>
