@@ -1,24 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './components/App/App';
-import './styles/main.scss';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./components/App/App";
+import "./styles/main.scss";
+import { BrowserRouter } from "react-router-dom";
 
 import { Auth0Provider } from "@auth0/auth0-react";
 
-import reportWebVitals from './reportWebVitals';
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+import reportWebVitals from "./reportWebVitals";
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 
 ReactDOM.render(
   <React.StrictMode>
-     <Auth0Provider
-     domain={process.env.REACT_APP_DOMAIN}
-     clientId={process.env.REACT_APP_CLIENT_ID}
-     redirectUri={window.location.origin}
-  >
-    <App />
-  </Auth0Provider>
+    <Auth0Provider
+      domain={process.env.REACT_APP_DOMAIN}
+      clientId={process.env.REACT_APP_CLIENT_ID}
+      redirectUri={window.location.origin}
+    >
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Auth0Provider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change
