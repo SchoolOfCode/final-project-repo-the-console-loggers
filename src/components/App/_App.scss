@@ -4,12 +4,12 @@
 body {
   margin: 0;
   font-family: variables.$main-font;
+  color: variables.$first-grey;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 .app {
-  background-color: variables.$ivory;
   text-align: center;
   max-width: 30rem;
   display: flex;

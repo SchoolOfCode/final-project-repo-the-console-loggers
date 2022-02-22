@@ -1,10 +1,10 @@
-import React from 'react';
-import './_App.scss';
+//Component
+import Login from '../../Pages/Login/Login';
 
 function App() {
   return (
     <div className="app">
-      <h1>This is the name</h1>
+      <Login />
     </div>
   );
 }
