@@ -1,5 +1,8 @@
-//Group partials
+//Components
 @use '../components/App/App';
+@use '../components/Header/Header';
+
+//Pages
 @use '../Pages/Home/Home';
 @use '../Pages/Login/Login';
 

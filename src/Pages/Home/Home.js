@@ -1,24 +1,16 @@
 import { useAuth0 } from '@auth0/auth0-react';
+import Header from '../../components/Header/Header';
+import Login from '../Login/Login';
 
 function Home() {
-  const { user, isAuthenticated, isLoading, loginWithRedirect } = useAuth0();
-  return (
+  const { user, isAuthenticated, isLoading } = useAuth0();
+  if (isLoading) {
+    return <h1>Loading</h1>;
+  }
+  return isAuthenticated ? (
     <>
-      <header className="header">
-        <div className="avatar">
-          {/* <img src={user.picture} alt="Avatar" /> */}
-        </div>
-        <div className="welcome-msg">
-          <p className="welcome-name">
-            {/* Welcome <span>{user.name}</span> */}
-          </p>
-          <p className="catch-phrase">What ingredients shall we use today?</p>
-        </div>
-      </header>
+      <Header user={user} />
       <main className="main-home">
-        <button className="login-button" onClick={() => loginWithRedirect()}>
-          Login
-        </button>
         <h3>Welcome Name</h3>
         <p>What ingredients shall we use today?</p>
       </main>
@@ -26,6 +18,10 @@ function Home() {
         Home - Ingredients- Shopping list - Settings
       </nav>
     </>
+  ) : (
+    <div className="app">
+      <Login />
+    </div>
   );
 }
 
