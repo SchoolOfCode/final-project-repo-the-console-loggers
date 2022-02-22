@@ -8,7 +8,7 @@ function Login() {
       ></img>
       <h1 className="name">App name</h1>
       <h2 className="tag-line">
-        “A recipe is a story that ends with a good meal..”
+        A recipe is a story that ends with a good meal..
       </h2>
       <button className="login-button">Log in</button>
       <div className="signUp">

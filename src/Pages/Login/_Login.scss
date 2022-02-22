@@ -18,6 +18,7 @@
     font-size: 1.875rem;
     font-weight: 700;
     color: variables.$black;
+    margin: 1rem 0 2rem 0;
   }
 }
 
@@ -29,5 +30,21 @@
   font-size: 1.875rem;
   font-weight: 700;
   border-radius: 12px;
+  cursor: pointer;
   color: variables.$white;
+  &:hover {
+    background-color: variables.$green-hover;
+  }
+  &:active {
+    transform: scale(0.9);
+  }
+}
+
+.signUp {
+  font-size: 1.2rem;
+  margin: 1rem 0;
+
+  span {
+    color: variables.$green;
+  }
 }
