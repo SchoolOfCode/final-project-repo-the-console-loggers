@@ -1,5 +1,5 @@
-import { useAuth0 } from '@auth0/auth0-react';
-import Login from '../Login/Login';
+import { useAuth0 } from "@auth0/auth0-react";
+import Login from "../Login/Login";
 
 function Home() {
   const { isAuthenticated, isLoading } = useAuth0();
@@ -10,6 +10,7 @@ function Home() {
     <>
       <main className="main-home">
         <div className="addNewIngredient">Add new Item</div>
+        <h1>hello</h1>
       </main>
     </>
   ) : (

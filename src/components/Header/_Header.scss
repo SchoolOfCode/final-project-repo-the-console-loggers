@@ -1,10 +1,12 @@
-@use '../../styles/variables.scss';
+@use "../../styles/variables.scss";
 
 .header {
-  min-height: 10vh;
+  height: 10vh;
   background-color: variables.$white;
   display: flex;
   align-items: center;
+  position: sticky;
+  top: 0;
 
   .avatar {
     padding: 1rem;

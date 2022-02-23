@@ -1,19 +1,23 @@
 @use "../../styles/variables.scss";
 
 .icon {
-  width: 4rem;
+  height: 44px;
+  padding: 0;
 }
 
 .nav-wrapper {
   bottom: 0;
   position: sticky;
+  display: flex;
+  background-color: white;
+  object-fit: contain;
 }
 
 ul {
   display: flex;
-  justify-content: space-between;
-  padding: 1rem 0 0 0;
+  justify-content: space-around;
   align-items: baseline;
+  padding: 0;
 }
 
 li {

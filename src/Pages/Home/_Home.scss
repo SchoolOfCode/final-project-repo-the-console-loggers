@@ -1,4 +1,4 @@
-@use '../../styles/variables.scss';
+@use "../../styles/variables.scss";
 
 .main-home {
   min-height: 80vh;
@@ -19,4 +19,6 @@
   font-size: 25px;
   font-weight: 700;
   min-height: 59px;
+  position: sticky;
+  top: 10vh;
 }
