@@ -15,9 +15,9 @@ function Login() {
         className="logo"
         alt="Logo"
       ></img>
-      <h1 className="name">App name</h1>
+      <h1 className="name">Fridgeful</h1>
       <h2 className="tag-line">
-        A recipe is a story that ends with a good meal..
+      Buy wisely, cook Fridgefully, eat it all.
       </h2>
       <button className="login-button" onClick={() => loginWithRedirect()}>
         Log In
