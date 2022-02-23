@@ -1,11 +1,6 @@
 @use '../../styles/variables.scss';
 @import '../../styles/mixins.scss';
 
-.main-home {
+.main-settings {
   @include main-container;
-}
-
-.nav-menu {
-  min-height: 10vh;
-  background-color: variables.$white;
 }

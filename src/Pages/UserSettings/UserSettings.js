@@ -1,9 +1,9 @@
-import React from 'react'
-
 function UserSettings() {
   return (
-    <h1>Settings</h1>
-  )
+    <main className="main-settings">
+      <h1>Settings</h1>
+    </main>
+  );
 }
 
-export default UserSettings
+export default UserSettings;
