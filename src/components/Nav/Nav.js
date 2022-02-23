@@ -11,7 +11,7 @@ function Nav() {
               src={process.env.PUBLIC_URL + '/assets/icons/fridge.svg'}
               alt="Home"
             />
-            Home
+            <p>Home</p>
           </Link>
         </li>
         <li>
@@ -21,7 +21,7 @@ function Nav() {
               src={process.env.PUBLIC_URL + '/assets/icons/recipes.svg'}
               alt="Recipe List"
             />
-            Recipes
+            <p> Recipes</p>
           </Link>
         </li>
         <li>
@@ -41,7 +41,7 @@ function Nav() {
               src={process.env.PUBLIC_URL + '/assets/icons/settings.svg'}
               alt="Settings"
             />
-            Settings
+            <p> Settings</p>
           </Link>
         </li>
       </ul>
