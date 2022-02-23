@@ -1,1 +1,6 @@
-@use "../../styles/variables.scss";
+@use '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.main-recipelist {
+  @include main-container;
+}

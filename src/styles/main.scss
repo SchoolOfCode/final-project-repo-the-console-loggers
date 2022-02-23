@@ -2,10 +2,14 @@
 @use '../App/App';
 @use '../components/Header/Header';
 @use '../components/Nav/Nav';
+@use '../components/GreenBanner/GreenBanner';
 
 //Pages
 @use '../Pages/Home/Home';
 @use '../Pages/Login/Login';
+@use '../Pages/RecipeList/RecipeList';
+@use '../Pages/ShoppingList/ShoppingList';
+@use '../Pages/UserSettings/UserSettings';
 
 //Font import
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');

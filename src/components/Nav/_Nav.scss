@@ -1,4 +1,4 @@
-@use "../../styles/variables.scss";
+@use '../../styles/variables.scss';
 
 .icon {
   height: 44px;
@@ -11,6 +11,12 @@
   display: flex;
   background-color: white;
   object-fit: contain;
+
+  a {
+    text-decoration: none;
+    color: variables.$first-grey;
+    font-weight: 600;
+  }
 }
 
 ul {

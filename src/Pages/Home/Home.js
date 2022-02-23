@@ -1,5 +1,6 @@
-import { useAuth0 } from "@auth0/auth0-react";
-import Login from "../Login/Login";
+import { useAuth0 } from '@auth0/auth0-react';
+import GreenBanner from '../../components/GreenBanner/GreenBanner';
+import Login from '../Login/Login';
 
 function Home() {
   const { isAuthenticated, isLoading } = useAuth0();
@@ -7,12 +8,10 @@ function Home() {
     return <h1>Loading</h1>;
   }
   return isAuthenticated ? (
-    <>
-      <main className="main-home">
-        <div className="addNewIngredient">Add new Item</div>
-        <h1>hello</h1>
-      </main>
-    </>
+    <main className="main-home">
+      <GreenBanner text="+ ADD NEW ITEM" />
+      <h1>hello</h1>
+    </main>
   ) : (
     <div className="app">
       <Login />

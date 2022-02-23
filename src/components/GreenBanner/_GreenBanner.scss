@@ -1,0 +1,14 @@
+@use '../../styles/variables.scss';
+
+.addNewIngredient {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: variables.$green;
+  color: white;
+  font-size: 25px;
+  font-weight: 700;
+  min-height: 59px;
+  position: sticky;
+  top: 10vh;
+}
