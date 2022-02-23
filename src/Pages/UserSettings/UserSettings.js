@@ -2,7 +2,7 @@ import React from 'react'
 
 function UserSettings() {
   return (
-    <div>Settings</div>
+    <h1>Settings</h1>
   )
 }
 

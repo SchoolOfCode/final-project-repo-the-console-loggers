@@ -1,12 +1,11 @@
-import React from 'react'
+import React from "react";
 
 function Home() {
   return (
-    <div className='header'>
-      <h3>Welcome Name</h3>
-      <p>What ingredients shall we use today?</p>
+    <div className="header">
+      <h1>Welcome, &#123;User&#125;</h1>
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;

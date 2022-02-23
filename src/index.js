@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./components/App/App";
+import App from "../src/App/App";
 import "./styles/main.scss";
 import { BrowserRouter } from "react-router-dom";
 
@@ -16,9 +16,7 @@ ReactDOM.render(
       clientId={process.env.REACT_APP_CLIENT_ID}
       redirectUri={window.location.origin}
     >
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <App />
     </Auth0Provider>
   </React.StrictMode>,
   document.getElementById("root")

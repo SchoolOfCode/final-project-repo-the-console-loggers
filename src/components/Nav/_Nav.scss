@@ -1,0 +1,30 @@
+@use "../../styles/variables.scss";
+
+.icon {
+  width: 4rem;
+}
+
+.nav-wrapper {
+  bottom: 0;
+  position: sticky;
+}
+
+ul {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0 0 0;
+  align-items: baseline;
+}
+
+li {
+  max-width: 15%;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8rem;
+  text-align: center;
+  text-decoration: none;
+}
+
+// Link {
+//   text-decoration: none;
+// }
