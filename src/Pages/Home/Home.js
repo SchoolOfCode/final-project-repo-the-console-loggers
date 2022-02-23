@@ -11,8 +11,7 @@ function Home() {
     <>
       <Header user={user} />
       <main className="main-home">
-        <h3>Welcome Name</h3>
-        <p>What ingredients shall we use today?</p>
+        <div className="addNewIngredient">Add new Item</div>
       </main>
       <nav className="nav-menu">
         Home - Ingredients- Shopping list - Settings

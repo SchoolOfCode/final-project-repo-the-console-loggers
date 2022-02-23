@@ -9,3 +9,14 @@
   min-height: 10vh;
   background-color: variables.$white;
 }
+
+.addNewIngredient {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: variables.$green;
+  color: white;
+  font-size: 25px;
+  font-weight: 700;
+  min-height: 59px;
+}
