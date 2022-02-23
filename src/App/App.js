@@ -10,13 +10,15 @@ function App() {
   return (
     <BrowserRouter>
       <div>
-        <Header
-          user={user}
-          isAuthenticated={isAuthenticated}
-          isLoading={isLoading}
-        />
+        {isAuthenticated && (
+          <Header
+            user={user}
+            isAuthenticated={isAuthenticated}
+            isLoading={isLoading}
+          />
+        )}
         <Router />
-        <Nav />
+        {isAuthenticated && <Nav />}
       </div>
     </BrowserRouter>
   );
