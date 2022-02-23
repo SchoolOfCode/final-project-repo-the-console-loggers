@@ -1,4 +1,4 @@
-@use "../styles/variables.scss";
+@use '../styles/variables.scss';
 
 //Global styles
 body {
@@ -9,8 +9,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: variables.$ivory;
   max-width: 500px;
-  display: flex;
-  justify-content: center;
   margin: auto;
   height: 100vh;
 }
