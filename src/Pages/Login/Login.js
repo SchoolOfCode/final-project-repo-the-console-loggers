@@ -1,9 +1,14 @@
-import React from 'react';
+import {useEffect} from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
-  const { loginWithRedirect } = useAuth0();
-  return (
+  const navigate = useNavigate();
+  useEffect(() => {
+   isAuthenticated && navigate('/home')
+  },);
+  const { loginWithRedirect, isAuthenticated} = useAuth0();
+  return  (
     <div className="login-wrapper">
       <img
         src={process.env.PUBLIC_URL + '/assets/logo.svg'}
@@ -21,7 +26,7 @@ function Login() {
         Don’t have an account? <span>Sign up</span>
       </div>
     </div>
-  );
+  ) 
 }
 
 export default Login;
