@@ -1,44 +1,54 @@
-// function Nav() {
-//   return (
-//     <div className="nav-wrapper">
+import { Link } from 'react-router-dom';
 
-// <nav>
-//         <ul>
-//           <li>
-//             <Link to="/">Home</Link>
-//           </li>
-//           <li>
-//             <Link to="menu">Menu</Link>
-//           </li>
-//           <li>
-//             <Link to="contact">Contact</Link>
-//           </li>
-//           </ul>
-//           </nav>
+function Nav() {
+  return (
+    <div className="nav-wrapper">
+      <nav>
+        <ul>
+          <li>
+            <Link to="Home">
+              <img
+                className="icon"
+                src={process.env.PUBLIC_URL + '/assets/icons/fridge.svg'}
+                alt="Home"
+              />
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link to="RecipeList">
+              <img
+                className="icon"
+                src={process.env.PUBLIC_URL + '/assets/icons/recipes.svg'}
+                alt="Recipe List"
+              />
+              Recipes
+            </Link>
+          </li>
+          <li>
+            <Link to="ShoppingList">
+              <img
+                className="icon"
+                src={process.env.PUBLIC_URL + '/assets/icons/shopping-list.svg'}
+                alt="Shopping List"
+              />
+              <p>Shopping List</p>
+            </Link>
+          </li>
+          <li>
+            <Link to="UserSettings">
+              <img
+                className="icon"
+                src={process.env.PUBLIC_URL + '/assets/icons/settings.svg'}
+                alt="Settings"
+              />
+              Settings
+            </Link>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  );
+}
 
-//       <div className="nav-home">
-//         <img src="" alt="home">
-//           home
-//         </img>
-//       </div>
-//       <div className="nav-recipes">
-//         <img src="" alt="recipes">
-//           recipes
-//         </img>
-//       </div>
-//       <div className="nav-shopping-list">
-//         <img src="" alt="nav-shopping-list">
-//           shopping list
-//         </img>
-//       </div>
-//       <div className="nav-settings">
-//         <img src="" alt="settings">
-//           settings
-//         </img>
-//       </div>
-
-//     </div>
-//   );
-// }
-
-// export default Nav;
+export default Nav;

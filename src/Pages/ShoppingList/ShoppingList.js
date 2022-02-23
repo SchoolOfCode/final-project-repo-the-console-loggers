@@ -2,7 +2,7 @@ import React from 'react'
 
 function ShoppingList() {
   return (
-    <div>ShoppingList</div>
+    <h1>Shopping List goes here</h1>
   )
 }
 

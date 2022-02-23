@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 function RecipeList() {
   return (
-    <div>RecipeList</div>
-  )
+    <div className="recipe-list">
+      <h1>The recipes go here</h1>
+    </div>
+  );
 }
 
-export default RecipeList
+export default RecipeList;

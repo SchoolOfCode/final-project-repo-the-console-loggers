@@ -9,6 +9,7 @@ function Home() {
   }
   return isAuthenticated ? (
     <>
+      <img src={user.picture} alt="" srcset="" />
       <Header user={user} />
       <main className="main-home">
         <div className="addNewIngredient">Add new Item</div>
