@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-
+import { Link } from 'react-router-dom';
 
 function Nav() {
   return (
@@ -10,7 +9,7 @@ function Nav() {
             <Link to="Home">
               <img
                 className="icon"
-                src={process.env.PUBLIC_URL + "/assets/icons/fridge.svg"}
+                src={process.env.PUBLIC_URL + '/assets/icons/fridge.svg'}
                 alt="Home"
               />
               Home
@@ -20,7 +19,7 @@ function Nav() {
             <Link to="RecipeList">
               <img
                 className="icon"
-                src={process.env.PUBLIC_URL + "/assets/icons/recipes.svg"}
+                src={process.env.PUBLIC_URL + '/assets/icons/recipes.svg'}
                 alt="Recipe List"
               />
               Recipes
@@ -30,7 +29,7 @@ function Nav() {
             <Link to="ShoppingList">
               <img
                 className="icon"
-                src={process.env.PUBLIC_URL + "/assets/icons/shopping-list.svg"}
+                src={process.env.PUBLIC_URL + '/assets/icons/shopping-list.svg'}
                 alt="Shopping List"
               />
               <p>Shopping List</p>
@@ -40,7 +39,7 @@ function Nav() {
             <Link to="UserSettings">
               <img
                 className="icon"
-                src={process.env.PUBLIC_URL + "/assets/icons/settings.svg"}
+                src={process.env.PUBLIC_URL + '/assets/icons/settings.svg'}
                 alt="Settings"
               />
               Settings

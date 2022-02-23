@@ -1,9 +1,26 @@
-import React from "react";
+import { useAuth0 } from '@auth0/auth0-react';
+import Header from '../../components/Header/Header';
+import Login from '../Login/Login';
 
 function Home() {
-  return (
-    <div className="header">
-      <h1>Welcome, &#123;User&#125;</h1>
+  const { user, isAuthenticated, isLoading } = useAuth0();
+  if (isLoading) {
+    return <h1>Loading</h1>;
+  }
+  return isAuthenticated ? (
+    <>
+      <img src={user.picture} alt="" srcset="" />
+      <Header user={user} />
+      <main className="main-home">
+        <div className="addNewIngredient">Add new Item</div>
+      </main>
+      <nav className="nav-menu">
+        Home - Ingredients- Shopping list - Settings
+      </nav>
+    </>
+  ) : (
+    <div className="app">
+      <Login />
     </div>
   );
 }

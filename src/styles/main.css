@@ -1,23 +1,18 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
-body {
-  margin: 0;
-  font-family: "Open Sans", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+/* Error: There is no module with the namespace "variables".
+ *   ,
+ * 3 |   background-color: variables.$white;
+ *   |                     ^^^^^^^^^^^^^^^^
+ *   '
+ *   src\components\Header\_Header.scss 3:21  @use
+ *   src\styles\main.scss 3:1                 root stylesheet */
 
-.app {
-  text-align: center;
-  max-width: 30rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: auto;
-  height: 100vh;
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: 'Error: There is no module with the namespace "variables".\a   \2577 \a 3 \2502    background-color: variables.$white;\d\a   \2502                      ^^^^^^^^^^^^^^^^\a   \2575 \a   src\\components\\Header\\_Header.scss 3:21  @use\a   src\\styles\\main.scss 3:1                 root stylesheet';
 }
-
-.login-wrapper {
-  background-color: #f6fbef;
-}
-
-/*# sourceMappingURL=main.css.map */
