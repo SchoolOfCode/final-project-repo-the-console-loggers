@@ -5,6 +5,9 @@
 @use '../components/GreenBanner/GreenBanner';
 @use '../components/Card/Card';
 
+//UI-Components
+@use '../components/Ui/Checkbox/Checkbox';
+
 //Pages
 @use '../Pages/Home/Home';
 @use '../Pages/Login/Login';

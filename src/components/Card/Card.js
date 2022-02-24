@@ -1,3 +1,5 @@
+import Checkbox from '../Ui/Checkbox/Checkbox';
+
 const Card = ({ name, expdate, quantity }) => {
   //Date variables
   let date = new Date();
@@ -20,6 +22,9 @@ const Card = ({ name, expdate, quantity }) => {
             ></span>
             <p className="expiration-date">{expdate}</p>
           </div>
+        </div>
+        <div className="checkbox-container">
+          <Checkbox />
         </div>
       </div>
     </div>

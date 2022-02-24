@@ -6,9 +6,10 @@
   justify-content: center;
   background-color: variables.$green;
   color: white;
-  font-size: 25px;
+  font-size: 23px;
   font-weight: 700;
   min-height: 59px;
   position: sticky;
   top: 10vh;
+  z-index: 20;
 }

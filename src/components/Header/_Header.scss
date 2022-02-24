@@ -1,4 +1,4 @@
-@use "../../styles/variables.scss";
+@use '../../styles/variables.scss';
 
 .header {
   height: 10vh;
@@ -7,6 +7,7 @@
   align-items: center;
   position: sticky;
   top: 0;
+  z-index: 20;
 
   .avatar {
     padding: 1rem;

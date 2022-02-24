@@ -40,6 +40,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  flex: 1;
 
   .title {
     font-size: 20px;
@@ -67,4 +68,10 @@
 
 .green {
   background-color: variables.$green;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  padding: 0 1.5rem;
 }
