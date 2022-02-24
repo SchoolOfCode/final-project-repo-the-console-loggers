@@ -1,49 +1,59 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 function Nav() {
+  let location = useLocation();
+  const pathWay = [
+    {
+      id: 1,
+      path: '/Home',
+      name: 'Home',
+      activeImg: '/assets/icons/fridge-color.svg',
+      noActiveImg: '/assets/icons/fridge.svg',
+    },
+    {
+      id: 2,
+      path: '/RecipeList',
+      name: 'RecipeList',
+      activeImg: '/assets/icons/recipes-color.svg',
+      noActiveImg: '/assets/icons/recipes.svg',
+    },
+    {
+      id: 3,
+      path: '/ShoppingList',
+      name: 'ShoppingList',
+      activeImg: '/assets/icons/shopping-list-color.svg',
+      noActiveImg: '/assets/icons/shopping-list.svg',
+    },
+    {
+      id: 4,
+      path: '/UserSettings',
+      name: 'UserSettings',
+      activeImg: '/assets/icons/settings-color.svg',
+      noActiveImg: '/assets/icons/settings.svg',
+    },
+  ];
+
   return (
     <div className="nav-wrapper">
       <ul>
-        <li>
-          <Link className="link" to="Home">
-            <img
-              className="icon"
-              src={process.env.PUBLIC_URL + '/assets/icons/fridge.svg'}
-              alt="Home"
-            />
-            <p>Home</p>
-          </Link>
-        </li>
-        <li>
-          <Link className="link" to="RecipeList">
-            <img
-              className="icon"
-              src={process.env.PUBLIC_URL + '/assets/icons/recipes.svg'}
-              alt="Recipe List"
-            />
-            <p> Recipes</p>
-          </Link>
-        </li>
-        <li>
-          <Link className="link" to="ShoppingList">
-            <img
-              className="icon"
-              src={process.env.PUBLIC_URL + '/assets/icons/shopping-list.svg'}
-              alt="Shopping List"
-            />
-            <p>Shopping List</p>
-          </Link>
-        </li>
-        <li>
-          <Link className="link" to="UserSettings">
-            <img
-              className="icon"
-              src={process.env.PUBLIC_URL + '/assets/icons/settings.svg'}
-              alt="Settings"
-            />
-            <p> Settings</p>
-          </Link>
-        </li>
+        {pathWay.map((item) => {
+          return (
+            <li key={item.id}>
+              <Link className="link" to={item.name}>
+                <img
+                  className="icon"
+                  src={
+                    location.pathname === item.path
+                      ? item.activeImg
+                      : item.noActiveImg
+                  }
+                  alt={item.name}
+                />
+                <p>{item.name}</p>
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
