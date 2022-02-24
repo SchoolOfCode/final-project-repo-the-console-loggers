@@ -1,4 +1,5 @@
 import { useAuth0 } from '@auth0/auth0-react';
+import Card from '../../components/Card/Card';
 import GreenBanner from '../../components/GreenBanner/GreenBanner';
 import Login from '../Login/Login';
 
@@ -10,7 +11,7 @@ function Home() {
   return isAuthenticated ? (
     <main className="main-home">
       <GreenBanner text="+ ADD NEW ITEM" />
-      <h1>hello</h1>
+      <Card />
     </main>
   ) : (
     <div className="app">
