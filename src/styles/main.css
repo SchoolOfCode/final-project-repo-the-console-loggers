@@ -157,6 +157,8 @@ li {
 
 .main-home {
   min-height: 80vh;
+  display: flex;
+  flex-direction: column;
   background-color: #f2f2f2;
 }
 
@@ -213,16 +215,22 @@ li {
 
 .main-recipelist {
   min-height: 80vh;
+  display: flex;
+  flex-direction: column;
   background-color: #f2f2f2;
 }
 
 .main-shoppinglist {
   min-height: 80vh;
+  display: flex;
+  flex-direction: column;
   background-color: #f2f2f2;
 }
 
 .main-settings {
   min-height: 80vh;
+  display: flex;
+  flex-direction: column;
   background-color: #f2f2f2;
 }
 

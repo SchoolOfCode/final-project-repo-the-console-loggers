@@ -32,23 +32,65 @@ export const pathWay = [
 export const fridgeIngredients = [
   {
     id: 1,
-    name: "Salmon",
-    expiryDate: "27/2/2022", 
-    quantity: "2 fillets",
-    isChecked: false
+    name: 'Salmon',
+    expiryDate: '27/2/2022',
+    quantity: '2 fillets',
+    isChecked: false,
   },
   {
     id: 2,
-    name: "Eggs",
-    expiryDate: "23/2/2022", 
-    quantity: "6",
-    isChecked: true
+    name: 'Eggs',
+    expiryDate: '23/2/2022',
+    quantity: '6',
+    isChecked: true,
   },
   {
     id: 3,
-    name: "Bananas",
-    expiryDate: "28/2/2022", 
-    quantity: "5",
-    isChecked: false
+    name: 'Bananas',
+    expiryDate: '28/2/2022',
+    quantity: '5',
+    isChecked: false,
   },
-]
+  {
+    id: 1,
+    name: 'Salmon',
+    expiryDate: '27/2/2022',
+    quantity: '2 fillets',
+    isChecked: false,
+  },
+  {
+    id: 2,
+    name: 'Eggs',
+    expiryDate: '23/2/2022',
+    quantity: '6',
+    isChecked: true,
+  },
+  {
+    id: 3,
+    name: 'Bananas',
+    expiryDate: '28/2/2022',
+    quantity: '5',
+    isChecked: false,
+  },
+  {
+    id: 1,
+    name: 'Salmon',
+    expiryDate: '27/2/2022',
+    quantity: '2 fillets',
+    isChecked: false,
+  },
+  {
+    id: 2,
+    name: 'Eggs',
+    expiryDate: '23/2/2022',
+    quantity: '6',
+    isChecked: true,
+  },
+  {
+    id: 3,
+    name: 'Bananas',
+    expiryDate: '28/2/2022',
+    quantity: '5',
+    isChecked: false,
+  },
+];
