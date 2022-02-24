@@ -1,6 +1,7 @@
 import React from 'react';
 
-const Card = () => {
+
+const Card = ({id, name, expdate, quantity}) => {
   return (
     <div className="card-container">
       <div className="card">
@@ -9,9 +10,12 @@ const Card = () => {
           alt="Bananas"
         />
         <div className="texts">
-          <h1 className="title">Salmon</h1>
-          <p className="quantity">2 fillets</p>
-          <p className="expiration-date">2 days to expire</p>
+          <h1 className="title">{name}</h1>
+          <p className="quantity">{quantity}</p>
+          <div className='expiration'>
+          <span className="expiry-dot red"></span>
+          <p className="expiration-date">{expdate}</p>
+          </div>
         </div>
       </div>
     </div>
