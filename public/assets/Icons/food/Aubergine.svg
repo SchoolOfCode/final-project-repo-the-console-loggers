@@ -1,0 +1,22 @@
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-labelledby="title"
+aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Eggplant</title>
+  <desc>A color styled icon from Orion Icon Library.</desc>
+  <path fill="#8f5474"
+  d="M48.027 29.6c-.012 0-.018-.01-.029-.014s-.039-.008-.059-.01c-.945-.277-2.238-.668-3.648-.941C34.873 26.71 27.742 22.614 23.41 12.8c-.021-.045-.043-.082-.064-.127A9.045 9.045 0 0 0 20 8.532V19l-8-4-4.535 8c4.912 13.525 21.292 32.65 35.092 33.932A14.13 14.13 0 0 0 44 57c3.244 0 5.367-.656 6.7-1.705a14 14 0 0 0-2.674-25.7z"
+  data-name="layer2"></path>
+  <path fill="#8aaf3f" d="M20 19V8.532A8.91 8.91 0 0 0 15 7a9 9 0 0 0-9 9 21.226 21.226 0 0 0 1.467 7L12 15z"
+  data-name="layer1"></path>
+  <path opacity=".18" fill="#101129" d="M48 53a14.105 14.105 0 0 1-1.445-.074c-13.8-1.281-30.18-20.406-35.092-33.932q-.36-.99-.635-1.937L7.465 23c4.912 13.525 21.292 32.65 35.092 33.932A14.13 14.13 0 0 0 44 57c3.244 0 5.367-.656 6.7-1.705a14.073 14.073 0 0 0 4.99-4.6c-.321.213-.649.416-.988.6C53.371 52.343 51.248 53 48 53z"
+  data-name="opacity"></path>
+  <path opacity=".18" fill="#101129" d="M10 12a8.947 8.947 0 0 1 .963-4.035A8.99 8.99 0 0 0 6 16a21.226 21.226 0 0 0 1.467 7l3.367-5.939A18.417 18.417 0 0 1 10 12z"
+  data-name="opacity"></path>
+  <ellipse opacity=".25" fill="#fff" transform="rotate(-44.999 47.868 38.822)"
+  ry="5.5" rx="4" cy="38.821" cx="47.867" data-name="opacity"></ellipse>
+  <path stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+  stroke="#2f446a" fill="none" d="M20 19V8.532A8.91 8.91 0 0 0 15 7a9 9 0 0 0-9 9 21.226 21.226 0 0 0 1.467 7L12 15z"
+  data-name="stroke"></path>
+  <path stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+  stroke="#2f446a" fill="none" d="M7.465 23c4.912 13.525 21.292 32.65 35.092 33.932A14.13 14.13 0 0 0 44 57c3.244 0 5.367-.656 6.7-1.705a14 14 0 0 0-2.674-25.7c-.012 0-.018-.01-.029-.014s-.039-.008-.059-.01c-.945-.277-2.238-.668-3.648-.941-9.418-1.922-16.613-6.145-20.945-15.955A9.045 9.045 0 0 0 20 8.532M6.79 12.149C4.6 6.4 7.06 2 12.936 2"
+  data-name="stroke"></path>
+</svg>

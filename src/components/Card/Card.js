@@ -5,11 +5,11 @@ const Card = ({ name, expdate, quantity }) => {
   let expiryDate = expdate;
 
   return (
-    <div className="card-container">
+    <div className="card-wrapper">
       <div className="card">
         <img
-          src={process.env.PUBLIC_URL + '/assets/icons/Tuna.svg'}
-          alt="Bananas"
+          src={`${process.env.PUBLIC_URL}/assets/icons/food/${name}.svg`}
+          alt={name}
         />
         <div className="texts">
           <h1 className="title">{name}</h1>

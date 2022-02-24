@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-labelledby="title"
+aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Chili Pepper</title>
+  <desc>A color styled icon from Orion Icon Library.</desc>
+  <path data-name="layer2"
+  d="M20 12l1.7.2a6 6 0 1 0-10.6 5.3A10 10 0 0 1 20 12z" fill="#8aaf3f"></path>
+  <path data-name="layer1" d="M56 54c-8.4 0-13.5-2.6-18.5-15.6s-6.5-18.2-9.2-22l-.9-1.1h-.1a10 10 0 0 0-5.6-3L20 12a10 10 0 0 0-10 10v.4c0 12 19.9 39.5 45.9 39.6h.2a4 4 0 0 0-.1-8z"
+  fill="#f0494c"></path>
+  <path data-name="opacity" d="M58.1 59H58c-26.1-.1-46-27.6-46-39.6V19a9.9 9.9 0 0 1 .8-3.9 10.1 10.1 0 0 0-1.7 2.4A9.9 9.9 0 0 0 10 22v.4c0 12 19.9 39.5 46 39.6h.2a4 4 0 0 0 3.8-3.5 4 4 0 0 1-1.9.5z"
+  fill="#101129" opacity=".18"></path>
+  <ellipse data-name="opacity" cx="21.7" cy="20.2" rx="3.5" ry="5"
+  transform="rotate(-45 21.761 20.186)" fill="#fff" opacity=".4"></ellipse>
+  <path data-name="stroke" d="M60 58a4 4 0 0 0-4-4c-8.4 0-13.5-2.6-18.5-15.6s-6.5-18.2-9.2-22l-.9-1.1h-.1A10 10 0 0 0 10 22v.4c0 12 19.9 39.5 45.9 39.6h.2a4 4 0 0 0 3.9-4zM11.1 17.5a6 6 0 1 1 10.6-5.3M4 2c3.2 0 8.7 2.2 9.9 6.3"
+  fill="none" stroke="#2f446a" stroke-linecap="round" stroke-linejoin="round"
+  stroke-width="2"></path>
+</svg>
