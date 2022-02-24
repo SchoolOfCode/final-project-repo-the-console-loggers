@@ -33,21 +33,21 @@ export const fridgeIngredients = [
   {
     id: 1,
     name: "Salmon",
-    expiryDate: "26/02/2022", 
+    expiryDate: "27/2/2022", 
     quantity: "2 fillets",
     isChecked: false
   },
   {
     id: 2,
     name: "Eggs",
-    expiryDate: "24/02/2022", 
+    expiryDate: "23/2/2022", 
     quantity: "6",
     isChecked: true
   },
   {
     id: 3,
     name: "Bananas",
-    expiryDate: "28/02/2022", 
+    expiryDate: "28/2/2022", 
     quantity: "5",
     isChecked: false
   },

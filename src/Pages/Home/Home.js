@@ -15,7 +15,8 @@ function Home() {
       {fridgeIngredients.map((item)=> {
          return (
  <Card id={item.id} name={item.name} expdate={item.expiryDate} quantity={item.quantity} />
-         )})}
+         )
+         })}
      
     </main>
   ) : (
