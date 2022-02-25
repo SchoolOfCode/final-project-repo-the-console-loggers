@@ -462,4 +462,11 @@ li {
   background-color: #f2f2f2;
 }
 
+.main-full-recipe {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f2f2f2;
+}
+
 /*# sourceMappingURL=main.css.map */
