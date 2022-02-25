@@ -14,7 +14,7 @@
 }
 
 .button-icon {
-  width: 26px;
+  max-width: 26px;
   padding-right: 0.5rem;
 }
 
@@ -29,6 +29,10 @@
 
 .yellow-button {
   background-color: variables.$yellow;
+}
+
+.green-button{
+  background-color: variables.$green;
 }
 
 .green-text {
