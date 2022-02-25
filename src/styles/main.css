@@ -35,6 +35,7 @@ ul {
   align-items: center;
   position: sticky;
   top: 0;
+  z-index: 20;
 }
 .header .avatar {
   padding: 1rem;
@@ -72,6 +73,7 @@ ul {
   display: flex;
   background-color: white;
   object-fit: contain;
+  z-index: 20;
 }
 .nav-wrapper a {
   text-decoration: none;
@@ -109,31 +111,61 @@ li {
   justify-content: center;
   background-color: #2ecc71;
   color: white;
-  font-size: 25px;
+  font-size: 23px;
   font-weight: 700;
   min-height: 59px;
   position: sticky;
   top: 10vh;
+  z-index: 20;
 }
 
-.card-container {
+.card-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 1rem 0 0.5rem 0;
 }
+.card-wrapper:nth-child(2) {
+  margin-top: 1.5rem;
+}
+.card-wrapper:last-child {
+  margin-bottom: 1.5rem;
+}
 
 .card {
   display: flex;
-  background-color: white;
+  flex-direction: column;
   width: 90%;
-  height: 91px;
+  background-color: white;
+  height: 100%;
   border-radius: 10px;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
 }
-.card img {
+
+.main-card {
+  display: flex;
+}
+.main-card img {
   width: 55px;
   margin: 1rem;
+}
+
+.expanded-card {
+  background-color: white;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  height: 6rem;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.showCard {
+  display: flex;
+}
+
+.hideCard {
+  display: none;
 }
 
 .expiry-dot {
@@ -141,6 +173,26 @@ li {
   width: 17px;
   border-radius: 50%;
   margin-right: 0.5rem;
+}
+
+.texts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+}
+.texts .title {
+  font-size: 20px;
+}
+.texts .quantity {
+  font-size: 16px;
+  color: #8c8c8c;
+  font-weight: 600;
+}
+.texts .expiration-date {
+  font-size: 16px;
+  font-weight: 500;
+  color: #b8b8b8;
 }
 
 .expiration {
@@ -156,23 +208,10 @@ li {
   background-color: #2ecc71;
 }
 
-.texts {
+.checkbox-container {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.texts .title {
-  font-size: 24px;
-}
-.texts .quantity {
-  font-size: 16px;
-  color: #8c8c8c;
-  font-weight: 600;
-}
-.texts .expiration-date {
-  font-size: 16px;
-  font-weight: 500;
-  color: #b8b8b8;
+  align-items: center;
+  padding: 0 1.5rem;
 }
 
 .label-input-checkbox {
@@ -182,6 +221,7 @@ li {
   border-radius: 6px;
   transition: all 0.2s ease;
   -webkit-tap-highlight-color: transparent;
+  z-index: 10;
 }
 
 .label-input-checkbox .check-box {
@@ -197,11 +237,11 @@ li {
 
 .label-input-checkbox span:first-child {
   position: relative;
-  width: 18px;
-  height: 18px;
+  width: 28px;
+  height: 28px;
   border-radius: 4px;
   transform: scale(1);
-  border: 1px solid #cccfdb;
+  border: 3px solid #2ecc71;
   transition: all 0.2s ease;
   box-shadow: 0 1px 1px rgba(0, 16, 75, 0.05);
   -webkit-tap-highlight-color: transparent;
@@ -212,7 +252,7 @@ li {
   top: 3px;
   left: 2px;
   fill: none;
-  stroke: #fff;
+  stroke: #ffffff;
   stroke-width: 3;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -224,12 +264,12 @@ li {
 }
 
 .label-input-checkbox:hover span:first-child {
-  border-color: #ff4163;
+  border-color: #2ecc71;
 }
 
 .input-checkbox:checked + .label-input-checkbox span:first-child {
-  background: #ff4163;
-  border-color: #ff4163;
+  background: #2ecc71;
+  border-color: #2ecc71;
   animation: wave 0.4s ease;
 }
 
@@ -274,17 +314,36 @@ li {
     transform: scale(0.9);
   }
 }
-@media screen and (max-width: 768px) {
-  .label-input-checkbox .check-box-label {
-    display: none;
-  }
-
-  .label-mobile {
-    display: flex;
-    padding-left: 8px;
-    line-height: 18px;
-  }
+.button {
+  border-radius: 0.625rem;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  border-width: 0;
+  padding: 0.8rem 0;
+  min-width: 10rem;
+  justify-content: center;
+  font-weight: 700;
 }
+
+.transparent {
+  background-color: transparent;
+  border: 1px solid #2ecc71;
+}
+
+.red-button {
+  background-color: #ff4747;
+}
+
+.green-text {
+  color: #2ecc71;
+}
+
+.white-text {
+  color: #ffffff;
+}
+
 .main-home {
   min-height: 80vh;
   display: flex;

@@ -9,3 +9,12 @@
   min-height: 10vh;
   background-color: variables.$white;
 }
+
+.buttons-container-home {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: auto;
+  padding: 1rem 0 1.4rem 0;
+}

@@ -1,4 +1,4 @@
-@use "../../styles/variables.scss";
+@use '../../styles/variables.scss';
 
 .card-wrapper {
   display: flex;
@@ -8,10 +8,6 @@
 
   &:nth-child(2) {
     margin-top: 1.5rem;
-  }
-
-  &:last-child {
-    margin-bottom: 1.5rem;
   }
 }
 
