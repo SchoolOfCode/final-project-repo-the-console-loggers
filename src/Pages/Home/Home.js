@@ -1,9 +1,11 @@
-import { useAuth0 } from '@auth0/auth0-react';
-import Card from '../../components/Card/Card';
-import GreenBanner from '../../components/GreenBanner/GreenBanner';
-import Button from '../../components/Ui/Button/Button';
-import Login from '../Login/Login';
-import { fridgeIngredients } from '../../data/navigation';
+import { useAuth0 } from "@auth0/auth0-react";
+import Card from "../../components/Card/Card";
+import GreenBanner from "../../components/GreenBanner/GreenBanner";
+import Button from "../../components/Ui/Button/Button";
+import Login from "../Login/Login";
+import { fridgeIngredients } from "../../data/navigation";
+import { Link } from "react-router-dom";
+import AddIngredient from "../AddIngredient/AddIngredient";
 
 function Home() {
   const { isAuthenticated, isLoading } = useAuth0();
@@ -17,7 +19,9 @@ function Home() {
   }
   return isAuthenticated ? (
     <main className="main-home">
-      <GreenBanner text="+ ADD NEW ITEM" />
+      <Link to="AddIngredient">
+        <GreenBanner text="+ ADD NEW ITEM" />
+      </Link>
 
       {fridgeIngredients.map((item) => {
         return (
@@ -29,7 +33,7 @@ function Home() {
           >
             <span
               className={`expiry-dot ${
-                today >= item.expiryDate ? 'red' : 'green'
+                today >= item.expiryDate ? "red" : "green"
               }`}
             ></span>
           </Card>

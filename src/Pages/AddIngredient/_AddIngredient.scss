@@ -1,0 +1,6 @@
+@use '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.main-add-ingredient {
+  @include main-container;
+}

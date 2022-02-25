@@ -128,9 +128,6 @@ li {
 .card-wrapper:nth-child(2) {
   margin-top: 1.5rem;
 }
-.card-wrapper:last-child {
-  margin-bottom: 1.5rem;
-}
 
 .card {
   display: flex;
@@ -212,6 +209,12 @@ li {
   display: flex;
   align-items: center;
   padding: 0 1.5rem;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
 }
 
 .label-input-checkbox {
@@ -327,6 +330,11 @@ li {
   font-weight: 700;
 }
 
+.button-icon {
+  width: 26px;
+  padding-right: 0.5rem;
+}
+
 .transparent {
   background-color: transparent;
   border: 1px solid #2ecc71;
@@ -344,6 +352,14 @@ li {
   color: #ffffff;
 }
 
+.fullLength-button {
+  width: 100%;
+}
+
+.halfLength-button {
+  width: 47%;
+}
+
 .main-home {
   min-height: 80vh;
   display: flex;
@@ -354,6 +370,15 @@ li {
 .nav-menu {
   min-height: 10vh;
   background-color: #ffffff;
+}
+
+.buttons-container-home {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: auto;
+  padding: 1rem 0 1.4rem 0;
 }
 
 .login-wrapper {
@@ -417,6 +442,13 @@ li {
 }
 
 .main-settings {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f2f2f2;
+}
+
+.main-add-ingredient {
   min-height: 80vh;
   display: flex;
   flex-direction: column;
