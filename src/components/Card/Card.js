@@ -1,5 +1,6 @@
-import Checkbox from '../Ui/Checkbox/Checkbox';
-import { useState } from 'react';
+import Checkbox from "../Ui/Checkbox/Checkbox";
+import { useState } from "react";
+import Button from "../Ui/Button/Button";
 
 const Card = ({ name, expdate, quantity }) => {
   const [expandedCard, setExpandedCard] = useState(false);
@@ -28,7 +29,7 @@ const Card = ({ name, expdate, quantity }) => {
             <div className="expiration">
               <span
                 className={`expiry-dot ${
-                  today >= expiryDate ? 'red' : 'green'
+                  today >= expiryDate ? "red" : "green"
                 }`}
               ></span>
               <p className="expiration-date">{expdate}</p>
@@ -39,11 +40,11 @@ const Card = ({ name, expdate, quantity }) => {
           </div>
         </div>
         <div
-          className={`expanded-card ${expandedCard ? 'showCard' : 'hideCard'}`}
+          className={`expanded-card ${expandedCard ? "showCard" : "hideCard"}`}
         >
           <div className="buttons-container">
-            <button>Cook</button>
-            <button>Delete</button>
+            <Button text="Cook" backgroundColor="transparent" textColor="green" />
+            <Button text="Delete" backgroundColor="red-button" textColor="white" />
           </div>
         </div>
       </div>
