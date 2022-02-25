@@ -1,4 +1,4 @@
-@use "../../../styles/variables.scss";
+@use '../../../styles/variables.scss';
 
 .button {
   border-radius: 0.625rem;
@@ -11,6 +11,11 @@
   min-width: 10rem;
   justify-content: center;
   font-weight: 700;
+}
+
+.button-icon {
+  width: 26px;
+  padding-right: 0.5rem;
 }
 
 .transparent {
@@ -28,4 +33,12 @@
 
 .white-text {
   color: variables.$white;
+}
+
+.fullLength-button {
+  width: 100%;
+}
+
+.halfLength-button {
+  width: 47%;
 }

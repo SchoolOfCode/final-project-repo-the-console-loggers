@@ -1,14 +1,9 @@
-import Checkbox from "../Ui/Checkbox/Checkbox";
-import { useState } from "react";
-import Button from "../Ui/Button/Button";
+import Checkbox from '../Ui/Checkbox/Checkbox';
+import { useState } from 'react';
+import Button from '../Ui/Button/Button';
 
-const Card = ({ name, expdate, quantity }) => {
+const Card = ({ name, expdate, quantity, children }) => {
   const [expandedCard, setExpandedCard] = useState(false);
-
-  //Date variables
-  let date = new Date();
-  let today = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
-  let expiryDate = expdate;
 
   //Open or close the expanded card
   const expandCard = () => {
@@ -27,11 +22,7 @@ const Card = ({ name, expdate, quantity }) => {
             <h1 className="title">{name}</h1>
             <p className="quantity">{quantity}</p>
             <div className="expiration">
-              <span
-                className={`expiry-dot ${
-                  today >= expiryDate ? "red" : "green"
-                }`}
-              ></span>
+              {children}
               <p className="expiration-date">{expdate}</p>
             </div>
           </div>
@@ -40,11 +31,19 @@ const Card = ({ name, expdate, quantity }) => {
           </div>
         </div>
         <div
-          className={`expanded-card ${expandedCard ? "showCard" : "hideCard"}`}
+          className={`expanded-card ${expandedCard ? 'showCard' : 'hideCard'}`}
         >
           <div className="buttons-container">
-            <Button text="Cook" backgroundColor="transparent" textColor="green" />
-            <Button text="Delete" backgroundColor="red-button" textColor="white" />
+            <Button
+              text="Cook"
+              backgroundColor="transparent"
+              textColor="green"
+            />
+            <Button
+              text="Delete"
+              backgroundColor="red-button"
+              textColor="white"
+            />
           </div>
         </div>
       </div>
