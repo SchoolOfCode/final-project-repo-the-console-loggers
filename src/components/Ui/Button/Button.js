@@ -6,10 +6,11 @@ export default function Button({
   textColor,
   width,
   icon,
+  handleClick,
 }) {
-  console.log(icon === undefined);
   return (
     <button
+      onClick={handleClick}
       className={`button ${backgroundColor} ${textColor}-text ${width}-button`}
     >
       {icon === undefined ? null : (

@@ -1,4 +1,26 @@
-.ingredients{
-    display:flex;
+.expanded-card-recipe {
+  background-color: white;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 0 2rem 0;
 
+  .ingredients {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 0.5rem 0 1.5rem 0;
+  }
+}
+
+.showCard {
+  display: flex;
+}
+
+.hideCard {
+  display: none;
 }

@@ -1,7 +1,14 @@
 import { useState } from 'react';
 import Button from '../Ui/Button/Button';
 import { recipes } from '../../data/navigation';
-const Card = ({ name, cookingTime, fridgeIngredients, ingredients, serves, directions}) => {
+const RecipeCard = ({
+  name,
+  cookingTime,
+  fridgeIngredients,
+  ingredients,
+  serves,
+  directions,
+}) => {
   const [expandedCard, setExpandedCard] = useState(false);
 
   //Open or close the expanded card
@@ -24,26 +31,30 @@ const Card = ({ name, cookingTime, fridgeIngredients, ingredients, serves, direc
           </div>
         </div>
         <div
-          className={`expanded-card ${expandedCard ? 'showCard' : 'hideCard'}`}
+          className={`expanded-card-recipe ${
+            expandedCard ? 'showCard' : 'hideCard'
+          }`}
         >
-            <div className="ingredients">{recipes[0].ingredients.map((item) => {
-   return (
-   
-<div className='ingredients-preview'>{item}</div>
-  )
-})}
-            </div>
-            <div className="directions">{directions}
-            </div>
+          <div className="ingredients">
+            {recipes[0].ingredients.map((item) => {
+              return (
+                <div key={item} className="ingredients-preview">
+                  {item}
+                </div>
+              );
+            })}
+          </div>
+
           <div className="buttons-container">
             <Button
-              text="Cook"
+              text="Close"
               backgroundColor="transparent"
               textColor="green"
+              handleClick={() => setExpandedCard()}
             />
             <Button
-              text="Delete"
-              backgroundColor="red-button"
+              text="See recipe"
+              backgroundColor="yellow-button"
               textColor="white"
             />
           </div>
@@ -53,4 +64,4 @@ const Card = ({ name, cookingTime, fridgeIngredients, ingredients, serves, direc
   );
 };
 
-export default Card;
+export default RecipeCard;

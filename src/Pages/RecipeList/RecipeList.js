@@ -1,24 +1,23 @@
 import React from 'react';
 import GreenBanner from '../../components/GreenBanner/GreenBanner';
-import RecipeCard from '../../components/RecipeCard/RecipeCard'
-import { recipes } from '../../data/navigation'
-
+import RecipeCard from '../../components/RecipeCard/RecipeCard';
+import { recipes } from '../../data/navigation';
 
 function RecipeList() {
   return (
     <div className="main-recipelist">
       <GreenBanner text="Looking recipes with: Salmon" />
-      <h1>The recipes go here</h1>
-{recipes.map((item) => {
-  return (
-    <RecipeCard
-    key={item.id}
-    name={item.name}
-    cookingTime={item.cookingTime}
-    fridgeIngredients={item.fridgeIngredients}
-    />
-  )
-})}
+
+      {recipes.map((item) => {
+        return (
+          <RecipeCard
+            key={item.id}
+            name={item.name}
+            cookingTime={item.cookingTime}
+            fridgeIngredients={item.fridgeIngredients}
+          />
+        );
+      })}
     </div>
   );
 }
