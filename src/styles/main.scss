@@ -1,20 +1,20 @@
 //Components
-@use "../App/App";
-@use "../components/Header/Header";
-@use "../components/Nav/Nav";
-@use "../components/GreenBanner/GreenBanner";
-@use "../components/Card/Card";
+@use '../App/App';
+@use '../components/Header/Header';
+@use '../components/Nav/Nav';
+@use '../components/GreenBanner/GreenBanner';
+@use '../components/Card/Card';
 
 //UI-Components
-@use "../components/Ui/Checkbox/Checkbox";
-@use "../components/Ui/Button/Button";
+@use '../components/Ui/Checkbox/Checkbox';
+@use '../components/Ui/Button/Button';
 
 //Pages
-@use "../Pages/Home/Home";
-@use "../Pages/Login/Login";
-@use "../Pages/RecipeList/RecipeList";
-@use "../Pages/ShoppingList/ShoppingList";
-@use "../Pages/UserSettings/UserSettings";
+@use '../Pages/Home/Home';
+@use '../Pages/Login/Login';
+@use '../Pages/RecipeList/RecipeList';
+@use '../Pages/ShoppingList/ShoppingList';
+@use '../Pages/UserSettings/UserSettings';
 
 //Font import
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
