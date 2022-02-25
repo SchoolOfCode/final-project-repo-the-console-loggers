@@ -1,0 +1,6 @@
+@use '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.main-full-recipe {
+	@include main-container;
+}

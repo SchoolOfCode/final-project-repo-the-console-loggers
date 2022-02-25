@@ -1,6 +1,9 @@
 import {useState} from 'react'
+import {Link} from 'react-router-dom' //useLocation
 import {recipes} from '../../data/navigation'
+// import FullRecipe from '../../Pages/FullRecipe/FullRecipe'
 import Button from '../Ui/Button/Button'
+
 const RecipeCard = ({
 	name,
 	cookingTime,
@@ -46,11 +49,13 @@ const RecipeCard = ({
 					</div>
 
 					<div className='buttons-container'>
-						<Button
-							text='Keep reading'
-							backgroundColor='yellow-button'
-							textColor='white'
-						/>
+						<Link className='link' to='/FullRecipe'>
+							<Button
+								text='Keep reading'
+								backgroundColor='yellow-button'
+								textColor='white'
+							/>
+						</Link>
 						<Button
 							text='Close'
 							backgroundColor='transparent'
