@@ -15,7 +15,14 @@ function Home() {
       <GreenBanner text="+ ADD NEW ITEM" />
 
       {fridgeIngredients.map((item) => {
-        return <Card key={item.id} name={item.name} quantity={item.quantity} />;
+        return (
+          <Card
+            id={item.id}
+            key={item.id}
+            name={item.name}
+            quantity={item.quantity}
+          />
+        );
       })}
       <div className="buttons-container-home">
         <Button
