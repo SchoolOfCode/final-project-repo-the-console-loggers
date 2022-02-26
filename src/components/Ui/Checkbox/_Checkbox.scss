@@ -39,8 +39,10 @@
   position: absolute;
   top: 3px;
   left: 2px;
+  width: 22px;
+  height: 20px;
   fill: none;
-  stroke: variables.$white;
+  stroke: #ffffff;
   stroke-width: 3;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -52,7 +54,7 @@
 }
 
 .label-input-checkbox:hover span:first-child {
-  border-color: variables.$green;
+  border-color: variables.$green-hover;
 }
 
 .input-checkbox:checked + .label-input-checkbox span:first-child {
