@@ -4,6 +4,7 @@ import Button from '../Ui/Button/Button';
 
 const Card = ({ id, name, expdate, quantity, children }) => {
   const [expandedCard, setExpandedCard] = useState(false);
+  const [selected, setSelected] = useState(false);
 
   //Open or close the expanded card
   const expandCard = () => {
@@ -12,7 +13,7 @@ const Card = ({ id, name, expdate, quantity, children }) => {
 
   return (
     <div className="card-wrapper">
-      <div className="card">
+      <div className={`card ${selected && 'selected'} `}>
         <div className="main-card">
           <img
             onClick={expandCard}
@@ -28,7 +29,7 @@ const Card = ({ id, name, expdate, quantity, children }) => {
             </div>
           </div>
           <div className="checkbox-container">
-            <Checkbox id={id} />
+            <Checkbox id={id} selected={selected} setSelected={setSelected} />
           </div>
         </div>
         <div

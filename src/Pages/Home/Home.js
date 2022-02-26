@@ -3,7 +3,7 @@ import Card from '../../components/Card/Card';
 import GreenBanner from '../../components/GreenBanner/GreenBanner';
 import Button from '../../components/Ui/Button/Button';
 import Login from '../Login/Login';
-import { fridgeIngredients } from '../../data/navigation';
+import { fridgeIngredients } from '../../data/fridgetIngredients';
 
 function Home() {
   const { isAuthenticated, isLoading } = useAuth0();
