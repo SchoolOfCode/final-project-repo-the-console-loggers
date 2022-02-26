@@ -2,7 +2,7 @@ import Checkbox from '../Ui/Checkbox/Checkbox';
 import { useState } from 'react';
 import Button from '../Ui/Button/Button';
 
-const Card = ({ name, expdate, quantity, children }) => {
+const Card = ({ id, name, expdate, quantity, children }) => {
   const [expandedCard, setExpandedCard] = useState(false);
 
   //Open or close the expanded card
@@ -15,6 +15,7 @@ const Card = ({ name, expdate, quantity, children }) => {
       <div className="card">
         <div className="main-card">
           <img
+            onClick={expandCard}
             src={`${process.env.PUBLIC_URL}/assets/icons/food/${name}.svg`}
             alt={name}
           />
@@ -27,7 +28,7 @@ const Card = ({ name, expdate, quantity, children }) => {
             </div>
           </div>
           <div className="checkbox-container">
-            <Checkbox />
+            <Checkbox id={id} />
           </div>
         </div>
         <div
