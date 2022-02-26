@@ -33,7 +33,9 @@ const Card = ({ id, name, expdate, quantity, children }) => {
           </div>
         </div>
         <div
-          className={`expanded-card ${expandedCard ? 'showCard' : 'hideCard'}`}
+          className={`${selected && 'selected'} expanded-card ${
+            expandedCard ? 'showCard' : 'hideCard'
+          }`}
         >
           <div className="buttons-container">
             <Button
