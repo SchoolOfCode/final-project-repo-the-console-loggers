@@ -360,6 +360,11 @@ li {
   width: 47%;
 }
 
+form {
+  height: 8rem;
+  color: green;
+}
+
 .main-home {
   min-height: 80vh;
   display: flex;

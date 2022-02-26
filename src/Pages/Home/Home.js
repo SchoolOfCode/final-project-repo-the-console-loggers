@@ -5,7 +5,6 @@ import Button from "../../components/Ui/Button/Button";
 import Login from "../Login/Login";
 import { fridgeIngredients } from "../../data/navigation";
 import { Link } from "react-router-dom";
-import AddIngredient from "../AddIngredient/AddIngredient";
 
 function Home() {
   const { isAuthenticated, isLoading } = useAuth0();
@@ -19,10 +18,9 @@ function Home() {
   }
   return isAuthenticated ? (
     <main className="main-home">
-      <Link to="AddIngredient">
+      <Link className="add-ingredient" to="AddIngredient">
         <GreenBanner text="+ ADD NEW ITEM" />
       </Link>
-
       {fridgeIngredients.map((item) => {
         return (
           <Card
