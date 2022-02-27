@@ -3,7 +3,7 @@ import Card from '../../components/Card/Card';
 import GreenBanner from '../../components/GreenBanner/GreenBanner';
 import Button from '../../components/Ui/Button/Button';
 import Login from '../Login/Login';
-import { fridgeIngredients } from '../../data/navigation';
+import { shoppinglistData } from '../../data/shoppinglist';
 
 function Home() {
   const { isAuthenticated, isLoading } = useAuth0();
@@ -14,8 +14,15 @@ function Home() {
     <main className="main-home">
       <GreenBanner text="+ ADD NEW ITEM" />
 
-      {fridgeIngredients.map((item) => {
-        return <Card key={item.id} name={item.name} quantity={item.quantity} />;
+      {shoppinglistData.map((item) => {
+        return (
+          <Card
+            id={item.id}
+            key={item.id}
+            name={item.name}
+            quantity={item.quantity}
+          />
+        );
       })}
       <div className="buttons-container-home">
         <Button

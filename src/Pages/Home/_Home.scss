@@ -1,5 +1,5 @@
-@use '../../styles/variables.scss';
-@import '../../styles/mixins.scss';
+@use "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
 
 .main-home {
   @include main-container;
@@ -17,4 +17,10 @@
   width: 90%;
   margin: auto;
   padding: 1rem 0 1.4rem 0;
+}
+
+.add-ingredient {
+  text-decoration: none;
+  position: sticky;
+  top: 10vh;
 }

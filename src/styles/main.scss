@@ -7,16 +7,20 @@
 @use '../components/RecipeCard/RecipeCard';
 
 //UI-Components
-@use '../components/Ui/Checkbox/Checkbox';
-@use '../components/Ui/Button/Button';
+
+@use "../components/Ui/Checkbox/Checkbox";
+@use "../components/Ui/Button/Button";
+@use "../components/Ui/InputBox/InputBox";
 
 //Pages
-@use '../Pages/Home/Home';
-@use '../Pages/Login/Login';
-@use '../Pages/RecipeList/RecipeList';
-@use '../Pages/ShoppingList/ShoppingList';
-@use '../Pages/UserSettings/UserSettings';
+@use "../Pages/Home/Home";
+@use "../Pages/Login/Login";
+@use "../Pages/RecipeList/RecipeList";
+@use "../Pages/ShoppingList/ShoppingList";
+@use "../Pages/UserSettings/UserSettings";
+@use "../Pages/AddIngredient/AddIngredient";
 @use '../Pages/FullRecipe/FullRecipe';
+
 
 //Font import
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
