@@ -62,7 +62,7 @@ ul {
 }
 
 .icon {
-  height: 33px;
+  height: 40px;
   padding: 0;
 }
 
@@ -157,6 +157,11 @@ li {
   justify-content: center;
 }
 
+.selected {
+  transform: scale(0.97);
+  background-color: #f4fff4;
+}
+
 .showCard {
   display: flex;
 }
@@ -217,6 +222,32 @@ li {
   width: 100%;
 }
 
+.expanded-card-recipe {
+  background-color: white;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 0 2rem 0;
+}
+.expanded-card-recipe .ingredients {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 0.5rem 0 1.5rem 0;
+}
+
+.showCard {
+  display: flex;
+}
+
+.hideCard {
+  display: none;
+}
+
 .label-input-checkbox {
   -webkit-user-select: none;
   user-select: none;
@@ -254,8 +285,6 @@ li {
   position: absolute;
   top: 3px;
   left: 2px;
-  width: 22px;
-  height: 20px;
   fill: none;
   stroke: #ffffff;
   stroke-width: 3;
@@ -346,10 +375,6 @@ li {
   background-color: #ff4747;
 }
 
-.yellow-button {
-  background-color: #ffb547;
-}
-
 .green-text {
   color: #2ecc71;
 }
@@ -364,6 +389,11 @@ li {
 
 .halfLength-button {
   width: 47%;
+}
+
+form {
+  height: 8rem;
+  color: green;
 }
 
 .main-home {
@@ -454,6 +484,12 @@ li {
   background-color: #f2f2f2;
 }
 
+.main-add-ingredient {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f2f2f2;
+}
 
 .main-full-recipe {
   min-height: 80vh;
