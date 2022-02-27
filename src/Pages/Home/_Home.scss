@@ -1,5 +1,5 @@
-@use "../../styles/variables.scss";
-@import "../../styles/mixins.scss";
+@use '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
 
 .main-home {
   @include main-container;
@@ -23,4 +23,5 @@
   text-decoration: none;
   position: sticky;
   top: 10vh;
+  z-index: 20;
 }
