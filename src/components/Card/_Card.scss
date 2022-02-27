@@ -40,6 +40,11 @@
   justify-content: center;
 }
 
+.selected {
+  transform: scale(0.97);
+  background-color: #f4fff4;
+}
+
 .showCard {
   display: flex;
 }
