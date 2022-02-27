@@ -1,26 +1,36 @@
 .expanded-card-recipe {
-  background-color: white;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  height: 100%;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 0 0 2rem 0;
+	background-color: white;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	height: 100%;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 0 2rem 0;
 
-  .ingredients {
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    margin: 0.5rem 0 1.5rem 0;
-  }
+	.ingredients {
+		display: flex;
+		flex-direction: column;
+		width: 90%;
+		margin: 0.5rem 0 1.5rem 0;
+		position: relative;
+		&::before {
+			content: '';
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			left: 0;
+			top: 0;
+			background: linear-gradient(transparent 2.7rem, white);
+		}
+	}
 }
 
 .showCard {
-  display: flex;
+	display: flex;
 }
 
 .hideCard {
-  display: none;
+	display: none;
 }

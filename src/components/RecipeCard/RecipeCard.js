@@ -38,14 +38,13 @@ const RecipeCard = ({
 						expandedCard ? 'showCard' : 'hideCard'
 					}`}>
 					<div className='ingredients'>
-						{recipes[0].ingredients.slice(0, 2).map(item => {
+						{recipes[0].ingredients.slice(0, 3).map(item => {
 							return (
 								<div key={item} className='ingredients-preview'>
 									{item}
 								</div>
 							)
-						})}{' '}
-						...
+						})}
 					</div>
 
 					<div className='buttons-container'>
