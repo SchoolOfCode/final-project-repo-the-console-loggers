@@ -1,10 +1,12 @@
+
 import { useAuth0 } from "@auth0/auth0-react";
 import Card from "../../components/Card/Card";
 import GreenBanner from "../../components/GreenBanner/GreenBanner";
 import Button from "../../components/Ui/Button/Button";
 import Login from "../Login/Login";
-import { fridgeIngredients } from "../../data/navigation";
+import { fridgeIngredients } from '../../data/fridgetIngredients';
 import { Link } from "react-router-dom";
+
 
 function Home() {
   const { isAuthenticated, isLoading } = useAuth0();
@@ -24,6 +26,7 @@ function Home() {
       {fridgeIngredients.map((item) => {
         return (
           <Card
+            id={item.id}
             key={item.id}
             name={item.name}
             expdate={item.expiryDate}

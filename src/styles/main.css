@@ -62,7 +62,7 @@ ul {
 }
 
 .icon {
-  height: 40px;
+  height: 33px;
   padding: 0;
 }
 
@@ -254,6 +254,8 @@ li {
   position: absolute;
   top: 3px;
   left: 2px;
+  width: 22px;
+  height: 20px;
   fill: none;
   stroke: #ffffff;
   stroke-width: 3;
@@ -344,6 +346,10 @@ li {
   background-color: #ff4747;
 }
 
+.yellow-button {
+  background-color: #ffb547;
+}
+
 .green-text {
   color: #2ecc71;
 }
@@ -358,11 +364,6 @@ li {
 
 .halfLength-button {
   width: 47%;
-}
-
-form {
-  height: 8rem;
-  color: green;
 }
 
 .main-home {
@@ -453,7 +454,8 @@ form {
   background-color: #f2f2f2;
 }
 
-.main-add-ingredient {
+
+.main-full-recipe {
   min-height: 80vh;
   display: flex;
   flex-direction: column;
