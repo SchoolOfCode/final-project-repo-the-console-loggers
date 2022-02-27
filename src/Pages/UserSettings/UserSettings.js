@@ -1,6 +1,5 @@
 import Card from '../../components/Card/Card'
-import UserSettingsCard from '../../components/UserSettingsCard/UserSettingsCard';
-import Button from '../../components/Ui/Button/Button';
+import UserSettingsCard from '../../components/UserSettingsCard/UserSettingsCard'
 
 function UserSettings() {
   return (

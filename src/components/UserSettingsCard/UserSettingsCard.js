@@ -1,6 +1,8 @@
 import Button from '../Ui/Button/Button';
+import React from "react";
 
-const UserSettingsCard = ({name, text, prompt, backgroundColor, textColor,icon}) => {
+
+const UserSettingsCard = ({name, text, prompt, backgroundColor, textColor,icon, width}) => {
   
   return (
     <div className="card-wrapper">
@@ -14,7 +16,7 @@ const UserSettingsCard = ({name, text, prompt, backgroundColor, textColor,icon})
             text={text}
       backgroundColor={backgroundColor}
       textColor={textColor}
-      width="fullLength"
+      width={width}
       icon={icon}/>
       </div>
           </div>
