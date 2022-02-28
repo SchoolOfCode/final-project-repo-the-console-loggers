@@ -9,8 +9,7 @@ import { useState } from 'react'
 
 function Home() {
   const { isAuthenticated, isLoading } = useAuth0()
-
-  const [buttonChecked, setButtonChecked] = useState(false)
+  const [buttonChecked, setButtonChecked] = useState([])
 
   //Date variables
   let date = new Date()
@@ -45,7 +44,7 @@ function Home() {
       })}
       <div
         className={`buttons-container-home ${
-          buttonChecked ? 'button-vh-ten' : null
+          buttonChecked.length ? 'button-vh-ten' : null
         }`}
       >
         <Button

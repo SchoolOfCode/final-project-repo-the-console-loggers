@@ -1,6 +1,5 @@
 import Checkbox from '../Ui/Checkbox/Checkbox'
 import { useState } from 'react'
-import Button from '../Ui/Button/Button'
 
 const Card = ({
   id,
