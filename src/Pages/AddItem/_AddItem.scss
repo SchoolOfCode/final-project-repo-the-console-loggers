@@ -1,15 +1,17 @@
-@use '../../styles/variables.scss';
+@use "../../styles/variables.scss";
 @import '../../styles/mixins.scss';
 
 .main-add-ingredient {
   @include main-container;
   align-items: center;
-  // height: 80vh;
+  height: 80vh;
 }
+
 
 .new-item {
   padding: 1rem;
 }
+
 
 .form {
   width: 90%;
@@ -42,16 +44,4 @@
   width: 100%;
   color: variables.$first-grey;
   margin: 0 0 2.8rem 0;
-}
-
-.datepicker-input::-webkit-calendar-picker-indicator {
-  background-color: lime;
-}
-
-.datepicker-toggle {
-  background-color: red;
-}
-
-.datepicker-toggle-button {
-  background-color: yellow;
 }

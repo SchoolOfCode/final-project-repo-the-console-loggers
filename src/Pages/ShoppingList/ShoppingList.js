@@ -4,6 +4,7 @@ import GreenBanner from '../../components/GreenBanner/GreenBanner';
 import Button from '../../components/Ui/Button/Button';
 import Login from '../Login/Login';
 import { shoppinglistData } from '../../data/shoppinglist';
+import { Link } from 'react-router-dom'
 
 function Home() {
   const { isAuthenticated, isLoading } = useAuth0();
@@ -11,9 +12,10 @@ function Home() {
     return <h1>Loading</h1>;
   }
   return isAuthenticated ? (
-    <main className="main-home">
-      <GreenBanner text="+ ADD NEW ITEM" />
-
+    <main className='main-home'>
+      <Link className='add-item' to='AddItem'>
+        <GreenBanner text='+ ADD NEW ITEM' />
+      </Link>
       {shoppinglistData.map((item) => {
         return (
           <Card
@@ -22,23 +24,23 @@ function Home() {
             name={item.name}
             quantity={item.quantity}
           />
-        );
+        )
       })}
-      <div className="buttons-container-home">
+      <div className='buttons-container-home'>
         <Button
-          text="Clear shopping list"
-          backgroundColor="red-button"
-          textColor="white"
-          width="fullLength"
-          icon="bin"
+          text='Clear shopping list'
+          backgroundColor='red-button'
+          textColor='white'
+          width='fullLength'
+          icon='bin'
         />
       </div>
     </main>
   ) : (
-    <div className="app">
+    <div className='app'>
       <Login />
     </div>
-  );
+  )
 }
 
 export default Home;

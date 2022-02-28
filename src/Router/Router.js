@@ -4,6 +4,7 @@ import RecipeList from "../Pages/RecipeList/RecipeList";
 import ShoppingList from "../Pages/ShoppingList/ShoppingList";
 import UserSettings from "../Pages/UserSettings/UserSettings";
 import AddIngredient from "../Pages/AddIngredient/AddIngredient";
+import AddItem from "../Pages/AddItem/AddItem";
 import Login from "../Pages/Login/Login";
 import FullRecipe from "../Pages/FullRecipe/FullRecipe";
 
@@ -17,6 +18,7 @@ function Router() {
       <Route path="UserSettings" element={<UserSettings />} />
       <Route path="FullRecipe" element={<FullRecipe />} />
       <Route path="Home/AddIngredient" element={<AddIngredient />} />
+      <Route path="ShoppingList/AddItem" element={<AddItem />} />
     </Routes>
   );
 }

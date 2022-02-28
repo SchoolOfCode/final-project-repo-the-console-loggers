@@ -62,7 +62,7 @@ ul {
 }
 
 .icon {
-  height: 40px;
+  height: 33px;
   padding: 0;
 }
 
@@ -144,7 +144,6 @@ li {
 }
 .main-card img {
   width: 55px;
-  margin: 1rem;
 }
 
 .expanded-card {
@@ -238,6 +237,16 @@ li {
   flex-direction: column;
   width: 90%;
   margin: 0.5rem 0 1.5rem 0;
+  position: relative;
+}
+.expanded-card-recipe .ingredients::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: linear-gradient(transparent 2.7rem, white);
 }
 
 .showCard {
@@ -248,12 +257,22 @@ li {
   display: none;
 }
 
+.buttons-container a {
+  text-decoration: none;
+}
+
+.settings-card-title {
+  font-size: 20px;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
 .label-input-checkbox {
   -webkit-user-select: none;
   user-select: none;
   cursor: pointer;
   border-radius: 6px;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
   -webkit-tap-highlight-color: transparent;
   z-index: 10;
 }
@@ -285,6 +304,8 @@ li {
   position: absolute;
   top: 3px;
   left: 2px;
+  width: 22px;
+  height: 20px;
   fill: none;
   stroke: #ffffff;
   stroke-width: 3;
@@ -293,7 +314,6 @@ li {
   stroke-dasharray: 16px;
   stroke-dashoffset: 16px;
   transition: all 0.3s ease;
-  transition-delay: 0.1s;
   transform: translate3d(0, 0, 0);
 }
 
@@ -304,7 +324,7 @@ li {
 .input-checkbox:checked + .label-input-checkbox span:first-child {
   background: #2ecc71;
   border-color: #2ecc71;
-  animation: wave 0.4s ease;
+  animation: wave 0.1s ease;
 }
 
 .input-checkbox:checked + .label-input-checkbox span:first-child svg {
@@ -362,7 +382,7 @@ li {
 }
 
 .button-icon {
-  width: 26px;
+  max-width: 26px;
   padding-right: 0.5rem;
 }
 
@@ -373,6 +393,14 @@ li {
 
 .red-button {
   background-color: #ff4747;
+}
+
+.yellow-button {
+  background-color: #ffb547;
+}
+
+.green-button {
+  background-color: #2ecc71;
 }
 
 .green-text {
@@ -387,13 +415,32 @@ li {
   width: 100%;
 }
 
+.mediumLength-button {
+  width: 90%;
+}
+
 .halfLength-button {
   width: 47%;
 }
 
-form {
-  height: 8rem;
-  color: green;
+.label {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding: 0 0 1.8rem;
+}
+
+input {
+  font-size: 1rem;
+  padding: 0.8rem;
+  border-radius: 0.625rem;
+  border-style: none;
+  background-color: #eeecec;
+  color: #5e5f5e;
+}
+
+::placeholder {
+  color: #b8b8b8;
 }
 
 .main-home {
@@ -415,6 +462,13 @@ form {
   width: 90%;
   margin: auto;
   padding: 1rem 0 1.4rem 0;
+}
+
+.add-ingredient {
+  text-decoration: none;
+  position: sticky;
+  top: 10vh;
+  z-index: 20;
 }
 
 .login-wrapper {
@@ -484,11 +538,80 @@ form {
   background-color: #f2f2f2;
 }
 
+.settings-title {
+  display: flex;
+  justify-content: center;
+  padding: 0.8rem 0;
+}
+
+.settings-text {
+  font-size: 15px;
+  margin-left: 20px;
+}
+
 .main-add-ingredient {
   min-height: 80vh;
   display: flex;
   flex-direction: column;
   background-color: #f2f2f2;
+  align-items: center;
+}
+
+.new-item {
+  padding: 1rem;
+}
+
+.form {
+  width: 90%;
+  margin: 1.8rem 0 1.8rem 0;
+}
+
+.add-item-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.food-type {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.drop-down {
+  font-size: 1rem;
+  padding: 0.8rem 0.55rem;
+  border-radius: 0.625rem;
+  border-style: none;
+  background-color: #eeecec;
+  width: 100%;
+  color: #5e5f5e;
+  margin: 0 0 2.8rem 0;
+}
+
+.datepicker-input::-webkit-calendar-picker-indicator {
+  background-color: lime;
+}
+
+.datepicker-toggle {
+  background-color: red;
+}
+
+.datepicker-toggle-button {
+  background-color: yellow;
+}
+
+.main-add-ingredient {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f2f2f2;
+  align-items: center;
 }
 
 .main-full-recipe {
