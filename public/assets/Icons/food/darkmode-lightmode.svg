@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-labelledby="title"
+aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink"
+width="64" height="64">
+  <title>Sun And Moon</title>
+  <desc>A color styled icon from Orion Icon Library.</desc>
+  <path data-name="layer2"
+  d="M33.6 19.1a11.7 11.7 0 0 1-15.3 16.2v-.2a14 14 0 1 0 15.4-16z" fill="#e6f0fa"></path>
+  <path data-name="layer1" d="M23.3 36.4a11.7 11.7 0 0 0 10.3-17.3H32a13.9 13.9 0 0 0-13.8 16v.2a11.7 11.7 0 0 0 5.1 1.1z"
+  fill="#fc0"></path>
+  <path data-name="opacity" d="M35 42a14 14 0 0 1-13.2-18.5 14 14 0 1 0 23.5 14A13.9 13.9 0 0 1 35 42z"
+  fill="#000064" opacity=".15"></path>
+  <circle data-name="stroke" cx="32" cy="33" r="14" fill="none" stroke="#2e4369"
+  stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle>
+  <path data-name="stroke" fill="none" stroke="#2e4369" stroke-linecap="round"
+  stroke-linejoin="round" stroke-width="2" d="M32 3v8M10 33H2m8.8-21.2l5.6 5.6m36.8-5.6l-5.6 5.6M16.4 48.6l-5.6 5.6m22.8-35.1a11.7 11.7 0 0 1-15.3 16.2"></path>
+</svg>
