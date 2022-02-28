@@ -1,5 +1,5 @@
-@use "../../styles/variables.scss";
-@import "../../styles/mixins.scss";
+@use '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
 
 .main-add-ingredient {
   @include main-container;
@@ -42,4 +42,19 @@
   width: 100%;
   color: variables.$first-grey;
   margin: 0 0 2.8rem 0;
+}
+
+.datepicker-input {
+}
+
+.datepicker-input::-webkit-calendar-picker-indicator {
+  background-color: lime;
+}
+
+.datepicker-toggle {
+  background-color: red;
+}
+
+.datepicker-toggle-button {
+  background-color: yellow;
 }

@@ -1,10 +1,21 @@
-import React from "react";
+import React from 'react'
 
-export default function InputBox({ text, placeholder, handleName }) {
+export default function InputBox({
+  text,
+  placeholder,
+  handleName,
+  type,
+  className,
+}) {
   return (
-    <label className="label">
+    <label className='label'>
       {text}
-      <input type="text" placeholder={placeholder} onChange={handleName} />
+      <input
+        type={type}
+        placeholder={placeholder}
+        onChange={handleName}
+        className={className}
+      />
     </label>
-  );
+  )
 }
