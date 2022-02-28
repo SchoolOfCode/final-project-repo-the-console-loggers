@@ -1,7 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import InputBox from '../../components/Ui/InputBox/InputBox'
 import Button from '../../components/Ui/Button/Button'
-import { useState } from 'react'
 import { addFoodType } from '../../data/navigation'
 
 function AddIngredient() {

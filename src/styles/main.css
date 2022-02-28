@@ -529,6 +529,12 @@ input {
   display: flex;
   flex-direction: column;
   background-color: #f2f2f2;
+  margin: auto;
+  padding: 1rem 0 1.4rem 0;
+}
+
+.add-item {
+  text-decoration: none;
 }
 
 .main-settings {
@@ -612,6 +618,44 @@ input {
   flex-direction: column;
   background-color: #f2f2f2;
   align-items: center;
+  height: 80vh;
+}
+
+.new-item {
+  padding: 1rem;
+}
+
+.form {
+  width: 90%;
+  margin: 1.8rem 0 1.8rem 0;
+}
+
+.add-item-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.food-type {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.drop-down {
+  font-size: 1rem;
+  padding: 0.8rem 0.55rem;
+  border-radius: 0.625rem;
+  border-style: none;
+  background-color: #eeecec;
+  width: 100%;
+  color: #5e5f5e;
+  margin: 0 0 2.8rem 0;
 }
 
 .main-full-recipe {

@@ -7,7 +7,7 @@ function AddItem() {
   const [name, setName] = useState('')
   const [quantity, setQuantity] = useState([])
   const [foodType, setFoodType] = useState('')
-  
+
   function handleName(e) {
     setName(e.target.value)
   }
@@ -24,7 +24,7 @@ function AddItem() {
   }
 
   return (
-     <div className='main-add-item'>
+    <div className='main-add-item'>
       <h1 className='new-item'>ADD NEW ITEM</h1>
       <div className='add-item-card'>
         <form className='form' onSubmit={deleteItem}>
@@ -34,7 +34,7 @@ function AddItem() {
             placeholder='E.g. Honey Roasted Ham...'
             type='text'
           />
-          
+
           <InputBox
             handleName={handleQuantity}
             text='Quantity'
@@ -51,11 +51,11 @@ function AddItem() {
 
           <Button
             className='add-button'
-            text='Clear Shopping List'
-            backgroundColor='red'
+            text='Add New Item'
+            backgroundColor='green'
             textColor='white'
             width='fullLength'
-            icon='bin'
+            icon='plus-icon'
           />
         </form>
       </div>
