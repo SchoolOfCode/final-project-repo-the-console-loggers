@@ -9,7 +9,8 @@ const Checkbox = ({
 }) => {
   const [isChecked, setIsChecked] = useState(false)
 
-  const filterTickButtons = buttonChecked.filter((item) => item.id !== id)
+  const filterTickButtons =
+    buttonChecked && buttonChecked.filter((item) => item.id !== id)
 
   const handleOnChange = () => {
     setIsChecked(!isChecked)
