@@ -1,39 +1,48 @@
-import { useState } from 'react';
+import { useState } from 'react'
 
-const Checkbox = ({ id, selected, setSelected }) => {
-  const [isChecked, setIsChecked] = useState(false);
+const Checkbox = ({
+  id,
+  selected,
+  setSelected,
+  buttonChecked,
+  setButtonChecked,
+}) => {
+  const [isChecked, setIsChecked] = useState(false)
 
   const handleOnChange = () => {
-    setIsChecked(!isChecked);
-    setSelected(!selected);
-  };
+    setIsChecked(!isChecked)
+    setSelected(!selected)
+    setButtonChecked(
+      isChecked ? buttonChecked === true : buttonChecked === false
+    )
+  }
 
   return (
     <>
       {/* Checkbox tick svg */}
-      <svg className="inline-svg">
-        <symbol id="check" viewBox="0 0 12 10">
-          <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+      <svg className='inline-svg'>
+        <symbol id='check' viewBox='0 0 12 10'>
+          <polyline points='1.5 6 4.5 9 10.5 1'></polyline>
         </symbol>
       </svg>
       <input
-        className="input-checkbox"
+        className='input-checkbox'
         id={id}
-        type="checkbox"
-        name="tik"
+        type='checkbox'
+        name='tik'
         checked={isChecked}
         onChange={handleOnChange}
       />
 
-      <label className="label-input-checkbox" htmlFor={id}>
-        <span className="check-box">
-          <svg width="12px" height="10px">
-            <use href="#check"></use>
+      <label className='label-input-checkbox' htmlFor={id}>
+        <span className='check-box'>
+          <svg width='12px' height='10px'>
+            <use href='#check'></use>
           </svg>
         </span>
       </label>
     </>
-  );
-};
+  )
+}
 
-export default Checkbox;
+export default Checkbox

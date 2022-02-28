@@ -17,11 +17,14 @@
   width: 90%;
   margin: auto;
   padding: 1rem 0 1.4rem 0;
-  bottom: 10vh;
   position: sticky;
   background-color: wheat;
-  margin-bottom: 10px;
   z-index: 30;
+  
+}
+
+.button-vh-ten{
+  bottom:10vh;
 }
 
 .add-ingredient {
