@@ -3,4 +3,11 @@
 
 .main-shoppinglist {
   @include main-container;
+    margin: auto;
+  padding: 1rem 0 1.4rem 0;
+}
+
+
+.add-item {
+  text-decoration: none;
 }

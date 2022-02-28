@@ -144,7 +144,6 @@ li {
 }
 .main-card img {
   width: 55px;
-  margin: 1rem;
 }
 
 .expanded-card {
@@ -262,6 +261,13 @@ li {
   text-decoration: none;
 }
 
+
+.settings-card-title {
+  font-size: 20px;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
 .label-input-checkbox {
   -webkit-user-select: none;
   user-select: none;
@@ -377,7 +383,7 @@ li {
 }
 
 .button-icon {
-  width: 26px;
+  max-width: 26px;
   padding-right: 0.5rem;
 }
 
@@ -392,6 +398,10 @@ li {
 
 .yellow-button {
   background-color: #ffb547;
+}
+
+.green-button {
+  background-color: #2ecc71;
 }
 
 .green-text {
@@ -466,6 +476,13 @@ input {
   z-index: 20;
 }
 
+.add-ingredient {
+  text-decoration: none;
+  position: sticky;
+  top: 10vh;
+  z-index: 20;
+}
+
 .login-wrapper {
   display: flex;
   flex-direction: column;
@@ -524,6 +541,12 @@ input {
   display: flex;
   flex-direction: column;
   background-color: #f2f2f2;
+  margin: auto;
+  padding: 1rem 0 1.4rem 0;
+}
+
+.add-item {
+  text-decoration: none;
 }
 
 .main-settings {
@@ -531,6 +554,17 @@ input {
   display: flex;
   flex-direction: column;
   background-color: #f2f2f2;
+}
+
+.settings-title {
+  display: flex;
+  justify-content: center;
+  padding: 0.8rem 0;
+}
+
+.settings-text {
+  font-size: 15px;
+  margin-left: 20px;
 }
 
 .main-add-ingredient {
@@ -576,6 +610,54 @@ input {
   width: 100%;
   color: #5e5f5e;
   margin: 0 0 2.8rem 0;
+}
+
+.main-add-item {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f2f2f2;
+  align-items: center;
+  height: 80vh;
+}
+
+.new-item {
+  padding: 1rem;
+}
+
+.form {
+  width: 90%;
+  margin: 1.8rem 0 1.8rem 0;
+  height: 90%;
+}
+
+.add-item-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: center;
+  height: 80%;
+  width: 90%;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.food-type {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.drop-down {
+  font-size: 1rem;
+  padding: 0.8rem 0.55rem;
+  border-radius: 0.625rem;
+  border-style: none;
+  background-color: #eeecec;
+  width: 100%;
+  color: #5e5f5e;
+  margin: 0 0 10.6rem 0;
 }
 
 .main-full-recipe {

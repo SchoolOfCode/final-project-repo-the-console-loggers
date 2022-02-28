@@ -1,10 +1,10 @@
-@use '../../styles/variables.scss';
+@use "../../styles/variables.scss";
 @import '../../styles/mixins.scss';
 
-.main-add-ingredient {
+.main-add-item {
   @include main-container;
   align-items: center;
-  // height: 80vh;
+  height: 80vh;
 }
 
 .new-item {
@@ -14,13 +14,15 @@
 .form {
   width: 90%;
   margin: 1.8rem 0 1.8rem 0;
+  height: 90%;
 }
 
 .add-item-card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: stretch;
   align-items: center;
+  height: 80%;
   width: 90%;
   background-color: white;
   border-radius: 10px;
@@ -41,7 +43,5 @@
   background-color: variables.$fourth-grey;
   width: 100%;
   color: variables.$first-grey;
-  margin: 0 0 2.8rem 0;
-  appearance: none;
+  margin: 0 0 10.6rem 0;
 }
-
