@@ -49,15 +49,15 @@ function Home() {
       >
         <Button
           text='Cook'
-          backgroundColor='transparent'
-          textColor='green'
-          width='halfLength'
+          backgroundColor='yellow-button'
+          textColor='white'
+          width='percent-button-40'
         />
         <Button
           text='Delete'
           backgroundColor='red-button'
           textColor='white'
-          width='halfLength'
+          width='percent-button-40'
         />
       </div>
     </main>

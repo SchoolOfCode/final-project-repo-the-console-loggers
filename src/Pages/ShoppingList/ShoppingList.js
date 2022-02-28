@@ -1,18 +1,20 @@
-import { useAuth0 } from '@auth0/auth0-react';
-import Card from '../../components/Card/Card';
-import GreenBanner from '../../components/GreenBanner/GreenBanner';
-import Button from '../../components/Ui/Button/Button';
-import Login from '../Login/Login';
-import { shoppinglistData } from '../../data/shoppinglist';
+import { useAuth0 } from '@auth0/auth0-react'
+import Card from '../../components/Card/Card'
+import GreenBanner from '../../components/GreenBanner/GreenBanner'
+import Button from '../../components/Ui/Button/Button'
+import Login from '../Login/Login'
+import { shoppinglistData } from '../../data/shoppinglist'
+import { useState } from 'react'
 
 function Home() {
-  const { isAuthenticated, isLoading } = useAuth0();
+  const { isAuthenticated, isLoading } = useAuth0()
+  const [buttonChecked, setButtonChecked] = useState([])
   if (isLoading) {
-    return <h1>Loading</h1>;
+    return <h1>Loading</h1>
   }
   return isAuthenticated ? (
-    <main className="main-home">
-      <GreenBanner text="+ ADD NEW ITEM" />
+    <main className='main-home'>
+      <GreenBanner text='+ ADD NEW ITEM' />
 
       {shoppinglistData.map((item) => {
         return (
@@ -21,24 +23,26 @@ function Home() {
             key={item.id}
             name={item.name}
             quantity={item.quantity}
+            buttonChecked={buttonChecked}
+            setButtonChecked={setButtonChecked}
           />
-        );
+        )
       })}
-      <div className="buttons-container-home">
+      <div className='buttons-container-home'>
         <Button
-          text="Clear shopping list"
-          backgroundColor="red-button"
-          textColor="white"
-          width="fullLength"
-          icon="bin"
+          text='Clear shopping list'
+          backgroundColor='red-button'
+          textColor='white'
+          width='fullLength'
+          icon='bin'
         />
       </div>
     </main>
   ) : (
-    <div className="app">
+    <div className='app'>
       <Login />
     </div>
-  );
+  )
 }
 
-export default Home;
+export default Home

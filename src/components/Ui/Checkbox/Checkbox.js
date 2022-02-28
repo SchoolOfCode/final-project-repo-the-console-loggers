@@ -9,14 +9,14 @@ const Checkbox = ({
 }) => {
   const [isChecked, setIsChecked] = useState(false)
 
-  const filter = buttonChecked.filter((item) => item.id !== id)
-
-  console.log(filter)
+  const filterTickButtons = buttonChecked.filter((item) => item.id !== id)
 
   const handleOnChange = () => {
     setIsChecked(!isChecked)
     setSelected(!selected)
-    setButtonChecked(isChecked ? filter : [...buttonChecked, { id: id }])
+    setButtonChecked(
+      isChecked ? filterTickButtons : [...buttonChecked, { id: id }]
+    )
   }
 
   return (

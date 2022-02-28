@@ -12,19 +12,19 @@
 
 .buttons-container-home {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
-  width: 90%;
+  width: 100%;
   margin: auto;
   padding: 1rem 0 1.4rem 0;
   position: sticky;
-  background-color: wheat;
-  z-index: 30;
-  
+  background-color: variables.$white;
+  border-top: 1px solid rgb(240, 240, 240);
+  z-index: 20;
 }
 
-.button-vh-ten{
-  bottom:10vh;
+.button-vh-ten {
+  bottom: 10vh;
 }
 
 .add-ingredient {
