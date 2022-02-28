@@ -1,4 +1,5 @@
 import Button from '../../components/Ui/Button/Button'
+import Checkbox from '../../components/Ui/Checkbox/Checkbox'
 import { recipes } from '../../data/recipes'
 
 const FullRecipe = ({
@@ -50,12 +51,25 @@ const FullRecipe = ({
         </div>
         <div className='ingredients'>
           <h4>Ingredients: </h4>
+          {recipes[0].ingredients.map((ingredient) => {
+            return (
+              <p key={ingredient.foodId} className='ingredient'>
+                <Checkbox />
+                {ingredient.text}
+              </p>
+            )
+          })}
         </div>
         <div className='directions'>
+          <h4>Directions: </h4>
           {recipes[0].directions.map((step) => {
             return (
               <div key={step}>
-                <p>{step}</p>
+                <p>
+                  <strong>{step.substring(0, 6) + ')'}</strong>
+                  {step.slice(6)}
+                </p>
+                <br />
               </div>
             )
           })}

@@ -96,8 +96,7 @@ export const recipes = [
       },
     ],
     directions: [
-      ' Instructions Checklist',
-      'Step 1 , Preheat oven to 400 degrees F. Toss potatoes, 1 tablespoon oil, 1/4 teaspoon salt and 1/8 teaspoon pepper together in a medium bowl. Spread in an even layer on a large rimmed baking sheet. Roast until starting to soften and brown, about 15 minutes.',
+      'Step 1 Preheat oven to 400 degrees F. Toss potatoes, 1 tablespoon oil, 1/4 teaspoon salt and 1/8 teaspoon pepper together in a medium bowl. Spread in an even layer on a large rimmed baking sheet. Roast until starting to soften and brown, about 15 minutes.',
 
       'Step 2 Meanwhile, toss asparagus with the remaining 1 tablespoon oil, 1/8 teaspoon salt and 1/8 teaspoon pepper in the medium bowl. Combine butter, lemon juice, garlic, 1/4 teaspoon salt and the remaining 1/4 teaspoon pepper in a small bowl.',
 
