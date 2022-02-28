@@ -600,19 +600,7 @@ input {
   margin: 0 0 2.8rem 0;
 }
 
-.datepicker-input::-webkit-calendar-picker-indicator {
-  background-color: lime;
-}
-
-.datepicker-toggle {
-  background-color: red;
-}
-
-.datepicker-toggle-button {
-  background-color: yellow;
-}
-
-.main-add-ingredient {
+.main-add-item {
   min-height: 80vh;
   display: flex;
   flex-direction: column;
@@ -628,13 +616,15 @@ input {
 .form {
   width: 90%;
   margin: 1.8rem 0 1.8rem 0;
+  height: 90%;
 }
 
 .add-item-card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: stretch;
   align-items: center;
+  height: 80%;
   width: 90%;
   background-color: white;
   border-radius: 10px;
@@ -655,7 +645,7 @@ input {
   background-color: #eeecec;
   width: 100%;
   color: #5e5f5e;
-  margin: 0 0 2.8rem 0;
+  margin: 0 0 10.6rem 0;
 }
 
 .main-full-recipe {
