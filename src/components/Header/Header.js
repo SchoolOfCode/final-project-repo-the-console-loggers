@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom'
 import { welcomeMessages } from '../../data/navigation';
 
 const Header = ({ user, isAuthenticated, isLoading }) => {
+
     let location = useLocation()
       return (
         <header className='header'>
@@ -30,4 +31,5 @@ const Header = ({ user, isAuthenticated, isLoading }) => {
       )
 };
 
-export default Header;
+
+export default Header

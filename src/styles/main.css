@@ -261,6 +261,7 @@ li {
   text-decoration: none;
 }
 
+
 .settings-card-title {
   font-size: 20px;
   margin-left: 20px;
@@ -462,6 +463,17 @@ input {
   width: 90%;
   margin: auto;
   padding: 1rem 0 1.4rem 0;
+  bottom: 10vh;
+  position: sticky;
+  margin-bottom: 10px;
+  z-index: 30;
+}
+
+.add-ingredient {
+  text-decoration: none;
+  position: sticky;
+  top: 10vh;
+  z-index: 20;
 }
 
 .add-ingredient {

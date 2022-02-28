@@ -1,3 +1,4 @@
+
 import { Routes, Route } from "react-router-dom";
 import Home from "../Pages/Home/Home";
 import RecipeList from "../Pages/RecipeList/RecipeList";
@@ -7,6 +8,7 @@ import AddIngredient from "../Pages/AddIngredient/AddIngredient";
 import AddItem from "../Pages/AddItem/AddItem";
 import Login from "../Pages/Login/Login";
 import FullRecipe from "../Pages/FullRecipe/FullRecipe";
+
 
 function Router() {
   return (
@@ -20,6 +22,6 @@ function Router() {
       <Route path="Home/AddIngredient" element={<AddIngredient />} />
       <Route path="ShoppingList/AddItem" element={<AddItem />} />
     </Routes>
-  );
+  )
 }
-export default Router;
+export default Router

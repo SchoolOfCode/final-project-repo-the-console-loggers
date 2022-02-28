@@ -5,17 +5,21 @@ import Button from '../../components/Ui/Button/Button';
 import Login from '../Login/Login';
 import { shoppinglistData } from '../../data/shoppinglist';
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
 function Home() {
-  const { isAuthenticated, isLoading } = useAuth0();
+  const { isAuthenticated, isLoading } = useAuth0()
+  const [buttonChecked, setButtonChecked] = useState([])
   if (isLoading) {
-    return <h1>Loading</h1>;
+    return <h1>Loading</h1>
   }
   return isAuthenticated ? (
     <main className='main-home'>
+
       <Link className='add-item' to='AddItem'>
         <GreenBanner text='+ ADD NEW ITEM' />
       </Link>
+
       {shoppinglistData.map((item) => {
         return (
           <Card
@@ -23,6 +27,8 @@ function Home() {
             key={item.id}
             name={item.name}
             quantity={item.quantity}
+            buttonChecked={buttonChecked}
+            setButtonChecked={setButtonChecked}
           />
         )
       })}
@@ -43,4 +49,4 @@ function Home() {
   )
 }
 
-export default Home;
+export default Home

@@ -1,4 +1,4 @@
-@use "../../../styles/variables.scss";
+@use '../../../styles/variables.scss';
 
 .button {
   border-radius: 0.625rem;
@@ -31,8 +31,12 @@
   background-color: variables.$yellow;
 }
 
-.green-button{
+.green-button {
   background-color: variables.$green;
+}
+
+.white-button {
+  background-color: variables.$white;
 }
 
 .green-text {
@@ -53,4 +57,8 @@
 
 .halfLength-button {
   width: 47%;
+}
+
+.percent-button-40 {
+  width: 40%;
 }
