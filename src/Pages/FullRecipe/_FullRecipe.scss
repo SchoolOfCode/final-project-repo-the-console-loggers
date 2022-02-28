@@ -4,3 +4,17 @@
 .main-full-recipe {
 	@include main-container;
 }
+
+.fullRecipe-main-card {
+	display: flex;
+	width:100%;
+
+	img{
+		width: 21rem;
+		border-radius:none;
+	}
+  
+
+  }
+  
+ 
