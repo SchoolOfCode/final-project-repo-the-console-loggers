@@ -16,7 +16,7 @@ function Nav() {
                     <img
                       className='icon'
                       src={
-                        location.pathname === item.path
+                        location.pathname === item.path[0] || location.pathname === item.path[1]
                           ? item.activeImg
                           : item.noActiveImg
                       }
@@ -28,9 +28,7 @@ function Nav() {
               )
             })}
           </ul>
-          
         </div>
-
   )
 }
 

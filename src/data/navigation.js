@@ -1,28 +1,28 @@
 export const pathWay = [
   {
     id: 1,
-    path: "/Home",
+    path: ["/Home", "/Home/AddIngredient"],
     name: "Home",
     activeImg: "/assets/icons/fridge-color.svg",
     noActiveImg: "/assets/icons/fridge.svg",
   },
   {
     id: 2,
-    path: "/RecipeList",
+    path: ["/RecipeList"],
     name: "RecipeList",
     activeImg: "/assets/icons/recipes-color.svg",
     noActiveImg: "/assets/icons/recipes.svg",
   },
   {
     id: 3,
-    path: "/ShoppingList",
+    path: ["/ShoppingList", "/ShoppingList/AddItem"],
     name: "ShoppingList",
     activeImg: "/assets/icons/shopping-list-color.svg",
     noActiveImg: "/assets/icons/shopping-list.svg",
   },
   {
     id: 4,
-    path: "/UserSettings",
+    path: ["/UserSettings"],
     name: "UserSettings",
     activeImg: "/assets/icons/settings-color.svg",
     noActiveImg: "/assets/icons/settings.svg",
