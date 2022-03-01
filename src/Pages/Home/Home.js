@@ -19,7 +19,6 @@ function Home() {
   const curMonth = date.getMonth()+1
   const curDay = date.getDay()-1
   
-
   if (isLoading) {
     return <h1>Loading</h1>
   }
