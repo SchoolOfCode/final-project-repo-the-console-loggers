@@ -13,7 +13,7 @@ function Home() {
 
   //Date variables
   let date = new Date()
-  let today = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+  // let today = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
 
   if (isLoading) {
     return <h1>Loading</h1>
@@ -24,23 +24,34 @@ function Home() {
         <GreenBanner text='+ ADD NEW ITEM' />
       </Link>
       {fridgeIngredients.map((item) => {
-        return (
-          <Card
-            id={item.id}
-            key={item.id}
-            name={item.name}
-            expdate={item.expiryDate}
-            quantity={item.quantity}
-            buttonChecked={buttonChecked}
-            setButtonChecked={setButtonChecked}
-          >
-            <span
-              className={`expiry-dot ${
-                today >= item.expiryDate ? 'red' : 'green'
-              }`}
-            ></span>
-          </Card>
-        )
+        let countDownDate = new Date(item.expiryDate).getTime()
+        let now = date.getTime()
+        let timeleft = countDownDate - now
+        let days = Math.floor(timeleft / (1000 * 60 * 60 * 24))
+        let expDisplay;
+        if (timeleft < 0) {
+          expDisplay = `${item.expiryDate} | Expired`
+        } else {
+          expDisplay = `${item.expiryDate} | ${days} days left`
+        }
+
+          return (
+            <Card
+              id={item.id}
+              key={item.id}
+              name={item.name}
+              expdate={expDisplay}
+              quantity={item.quantity}
+              buttonChecked={buttonChecked}
+              setButtonChecked={setButtonChecked}
+            >
+              <span
+                className={`expiry-dot ${
+                  timeleft > 0 ? 'green' : 'red'
+                }`}
+              ></span>
+            </Card>
+          )
       })}
       <div className={`buttons-container-home ${buttonChecked.length ? `button-vh-ten` : `disable`}`}>
         <Button
