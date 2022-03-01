@@ -10,6 +10,8 @@ import { useState } from 'react'
 function Home() {
   const { isAuthenticated, isLoading } = useAuth0()
   const [buttonChecked, setButtonChecked] = useState([])
+  const [disable, setDisable] = useState(false)
+
 
   //Date variables
   let date = new Date()
@@ -45,12 +47,20 @@ function Home() {
       <div
         className={`buttons-container-home ${
           buttonChecked.length ? 'button-vh-ten' : null
-        }`}
-      >
-        <Button
+        }`}>
+         
+         {/* {buttonChecked.length ?
+       
+       <div
+         className='buttons-container-home button-vh-ten' >
+         : <div disabled> 
+         } */}
+      
+        <Button 
           text={`Cook ${
             buttonChecked.length === 0 ? '' : `(${buttonChecked.length})`
           }`}
+          
           backgroundColor='yellow-button'
           textColor='white'
           width='percent-button-40'
