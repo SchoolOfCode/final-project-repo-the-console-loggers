@@ -6,7 +6,7 @@ import './styles/main.scss';
 import { Auth0Provider } from '@auth0/auth0-react';
 
 import reportWebVitals from './reportWebVitals';
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+import * as serviceWorkerRegistration from './Pwa/serviceWorkerRegistration';
 
 ReactDOM.render(
   <React.StrictMode>
