@@ -36,12 +36,17 @@ function AddIngredient() {
       <h1 className='new-item'>ADD NEW ITEM</h1>
       <div className='add-item-card'>
         <form className='form' onSubmit={handleSubmit}>
+
+        <div className='input-wrapper'>
           <InputBox
             handleName={handleName}
             text='Name'
             placeholder='E.g. Honey Roasted Ham...'
             type='text'
           />
+          </div>
+
+          <div className='input-wrapper'>
           <InputBox
             className='datepicker-input, datepicker-toggle, datepicker-toggle-button'
             handleName={handleExpDate}
@@ -49,13 +54,17 @@ function AddIngredient() {
             placeholder='E.g. 23/04/2022'
             type='date'
           />
+          </div>
+
+          <div className='input-wrapper'>
           <InputBox
             handleName={handleQuantity}
             text='Quantity'
             placeholder='E.g. Kg, Portion...'
             type='text'
           />
-
+          </div>
+          
           <label className='food-type'>Food Type</label>
           <select className='drop-down' handleName={handleFoodType}>
             {addFoodType.map((item) => {

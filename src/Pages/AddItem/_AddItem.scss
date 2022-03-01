@@ -1,4 +1,4 @@
-@use "../../styles/variables.scss";
+@use '../../styles/variables.scss';
 @import '../../styles/mixins.scss';
 
 .main-add-item {
@@ -43,5 +43,5 @@
   background-color: variables.$fourth-grey;
   width: 100%;
   color: variables.$first-grey;
-  margin: 0 0 10.6rem 0;
+  margin: 0 0 1.6rem 0;
 }
