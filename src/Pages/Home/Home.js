@@ -42,11 +42,7 @@ function Home() {
           </Card>
         )
       })}
-      <div
-        className={`buttons-container-home ${
-          buttonChecked.length ? 'button-vh-ten' : null
-        }`}
-      >
+      <div className={`buttons-container-home ${buttonChecked.length ? `button-vh-ten` : `disable`}`}>
         <Button
           text={`Cook ${
             buttonChecked.length === 0 ? '' : `(${buttonChecked.length})`
