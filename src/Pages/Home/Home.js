@@ -30,9 +30,9 @@ function Home() {
         let days = Math.floor(timeleft / (1000 * 60 * 60 * 24))
         let expDisplay;
         if (timeleft < 0) {
-          expDisplay = item.expiryDate;
+          expDisplay = `${item.expiryDate} | Expired`
         } else {
-          expDisplay = `${item.expiryDate} (${days} days left)`
+          expDisplay = `${item.expiryDate} | ${days} days left`
         }
 
           return (
