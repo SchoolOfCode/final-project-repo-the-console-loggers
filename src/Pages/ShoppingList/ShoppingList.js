@@ -1,9 +1,9 @@
-import { useAuth0 } from '@auth0/auth0-react';
-import Card from '../../components/Card/Card';
-import GreenBanner from '../../components/GreenBanner/GreenBanner';
-import Button from '../../components/Ui/Button/Button';
-import Login from '../Login/Login';
-import { shoppinglistData } from '../../data/shoppinglist';
+import { useAuth0 } from '@auth0/auth0-react'
+import Card from '../../components/Card/Card'
+import GreenBanner from '../../components/GreenBanner/GreenBanner'
+import Button from '../../components/Ui/Button/Button'
+import Login from '../Login/Login'
+import { shoppinglistData } from '../../data/shoppinglist'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 
@@ -15,7 +15,6 @@ function Home() {
   }
   return isAuthenticated ? (
     <main className='main-home'>
-
       <Link className='add-item' to='AddItem'>
         <GreenBanner text='+ ADD NEW ITEM' />
       </Link>
@@ -32,7 +31,7 @@ function Home() {
           />
         )
       })}
-      <div className='buttons-container-home'>
+      <div className='buttons-container-shoppinglist'>
         <Button
           text='Clear shopping list'
           backgroundColor='red-button'

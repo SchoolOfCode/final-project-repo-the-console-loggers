@@ -45,6 +45,16 @@
   background-color: #f4fff4;
 }
 
+.cross {
+  transform: scale(0.97);
+  background-color: #d2d2d2;
+
+  h1 {
+    color: #8a8a8a;
+    text-decoration: line-through;
+  }
+}
+
 .showCard {
   display: flex;
 }

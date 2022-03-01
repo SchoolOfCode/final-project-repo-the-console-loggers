@@ -3,11 +3,25 @@
 
 .main-shoppinglist {
   @include main-container;
-    margin: auto;
+  margin: auto;
   padding: 1rem 0 1.4rem 0;
 }
 
+.buttons-container-shoppinglist {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 89%;
+  margin: auto;
+  padding: 1rem 0 1.4rem 0;
+  position: sticky;
+  border-top: 1px solid #f0f0f0;
+  z-index: 20;
+}
 
 .add-item {
   text-decoration: none;
+  position: sticky;
+  top: 10vh;
+  z-index: 20;
 }
