@@ -6,7 +6,6 @@ import { addFoodType } from '../../data/navigation'
 function AddItem() {
   const [name, setName] = useState('')
   const [quantity, setQuantity] = useState([])
-  const [foodType, setFoodType] = useState('')
 
   function handleName(e) {
     setName(e.target.value)
@@ -14,13 +13,10 @@ function AddItem() {
   function handleQuantity(e) {
     setQuantity(e.target.value)
   }
-  function handleFoodType(e) {
-    setFoodType(e.target.value)
-  }
-  
+
   async function deleteItem(e) {
     e.preventDefault()
-    console.log(name, quantity, foodType)
+    console.log(name, quantity)
   }
 
   return (
@@ -43,9 +39,13 @@ function AddItem() {
           />
 
           <label className='food-type'>Food Type</label>
-          <select className='drop-down' handleName={handleFoodType}>
+          <select className='drop-down'>
             {addFoodType.map((item) => {
-              return <option food={item.food}>{item.food}</option>
+              return (
+                <option key={item.food} food={item.food}>
+                  {item.food}
+                </option>
+              )
             })}
           </select>
 
