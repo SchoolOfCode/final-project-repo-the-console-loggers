@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
 const Checkbox = ({
   id,
@@ -7,18 +7,19 @@ const Checkbox = ({
   buttonChecked,
   setButtonChecked,
 }) => {
-  const [isChecked, setIsChecked] = useState(false)
+  const [isChecked, setIsChecked] = useState(false);
 
-  const filterTickButtons =
-    buttonChecked && buttonChecked.filter((item) => item.id !== id)
+  const updateObject = (status) => {
+    return buttonChecked.map((item) =>
+      item.id === id ? { id: id, isChecked: status } : item
+    );
+  };
 
   const handleOnChange = () => {
-    setIsChecked(!isChecked)
-    setSelected(!selected)
-    setButtonChecked(
-      isChecked ? filterTickButtons : [...buttonChecked, { id: id }]
-    )
-  }
+    setIsChecked(!isChecked);
+    setSelected(!selected);
+    setButtonChecked(isChecked ? updateObject(false) : updateObject(true));
+  };
 
   return (
     <>
@@ -45,7 +46,7 @@ const Checkbox = ({
         </span>
       </label>
     </>
-  )
-}
+  );
+};
 
-export default Checkbox
+export default Checkbox;
