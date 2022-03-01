@@ -8,6 +8,7 @@ export default function Button({
   icon,
   handleClick,
 }) {
+ 
   return (
     <button
       onClick={handleClick}

@@ -7,9 +7,20 @@ import { shoppinglistData } from '../../data/shoppinglist';
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 
-function Home() {
+
+
+function ShoppingList() {
   const { isAuthenticated, isLoading } = useAuth0()
   const [buttonChecked, setButtonChecked] = useState([])
+
+  async function handleChange(){
+    // fetch request to clear shopping list
+    // const res = await fetch ("URL" ,{method: "DELETE"}) ; 
+    // const data = await res.json();
+  
+    console.log("Clear shopping list")
+  }
+
   if (isLoading) {
     return <h1>Loading</h1>
   }
@@ -34,6 +45,7 @@ function Home() {
       })}
       <div className='buttons-container-home'>
         <Button
+          handleClick={handleChange}
           text='Clear shopping list'
           backgroundColor='red-button'
           textColor='white'
@@ -49,4 +61,4 @@ function Home() {
   )
 }
 
-export default Home
+export default ShoppingList

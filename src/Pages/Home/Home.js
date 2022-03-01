@@ -47,6 +47,7 @@ function Home() {
           text={`Cook ${
             buttonChecked.length === 0 ? '' : `(${buttonChecked.length})`
           }`}
+          
           backgroundColor='yellow-button'
           textColor='white'
           width='percent-button-40'
