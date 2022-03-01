@@ -1,5 +1,6 @@
 import Checkbox from '../Ui/Checkbox/Checkbox'
 import { useState } from 'react'
+import { useLocation } from 'react-router-dom'
 
 const Card = ({
   id,
@@ -10,6 +11,7 @@ const Card = ({
   buttonChecked,
   setButtonChecked,
 }) => {
+  const location = useLocation()
   const [expandedCard, setExpandedCard] = useState(false)
   const [selected, setSelected] = useState(false)
 
@@ -18,9 +20,17 @@ const Card = ({
     setExpandedCard(!expandedCard)
   }
 
+  console.log(location)
+
   return (
     <div className='card-wrapper'>
-      <div className={`card ${selected && 'selected'} `}>
+      <div
+        className={`card ${
+          selected && location.pathname === '/Home'
+            ? 'selected'
+            : selected && location.pathname === '/ShoppingList' && 'cross'
+        } `}
+      >
         <div className='main-card'>
           <img
             onClick={expandCard}
@@ -46,23 +56,12 @@ const Card = ({
           </div>
         </div>
         <div
-          className={`${selected && 'selected'} expanded-card ${
-            expandedCard ? 'showCard' : 'hideCard'
-          }`}
-        >
-          {/* <div className="buttons-container">
-            <Button
-              text="Cook"
-              backgroundColor="transparent"
-              textColor="green"
-            />
-            <Button
-              text="Delete"
-              backgroundColor="red-button"
-              textColor="white"
-            /> */}
-          {/* </div> */}
-        </div>
+          className={`${
+            selected && location.pathname === '/Home'
+              ? 'selected'
+              : selected && location.pathname === '/ShoppingList' && 'cross'
+          } expanded-card ${expandedCard ? 'showCard' : 'hideCard'}`}
+        ></div>
       </div>
     </div>
   )
