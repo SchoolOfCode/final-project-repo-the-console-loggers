@@ -1,15 +1,26 @@
-import { useAuth0 } from '@auth0/auth0-react';
+//Components
 import Card from '../../components/Card/Card';
 import GreenBanner from '../../components/GreenBanner/GreenBanner';
 import Button from '../../components/Ui/Button/Button';
-import Login from '../Login/Login';
+//Data
 import { shoppinglistData } from '../../data/shoppinglist';
-import { Link } from 'react-router-dom';
+//Pages
+import Login from '../Login/Login';
+//Utils
 import { useState } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
+import { Link } from 'react-router-dom';
 
 function ShoppingList() {
+  //Initial value for checkboxStatus
+  const createCheckList = shoppinglistData.map((ingredient) => ({
+    id: ingredient.id,
+    isChecked: false,
+  }));
+
+  //State that storage if the checkboxes are check or not
+  const [checkboxStatus, setCheckboxStatus] = useState(createCheckList);
   const { isAuthenticated, isLoading } = useAuth0();
-  const [checkboxStatus, setCheckboxStatus] = useState([]);
 
   async function handleChange() {
     // fetch request to clear shopping list

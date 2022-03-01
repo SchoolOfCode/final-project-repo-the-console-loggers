@@ -1,4 +1,4 @@
-//Card
+//Components
 import Card from '../../components/Card/Card';
 import GreenBanner from '../../components/GreenBanner/GreenBanner';
 import Button from '../../components/Ui/Button/Button';
@@ -17,8 +17,10 @@ function Home() {
     id: ingredient.id,
     isChecked: false,
   }));
-  const { isAuthenticated, isLoading } = useAuth0();
+
+  //State that storage if the checkboxes are check or not
   const [checkboxStatus, setCheckboxStatus] = useState(createCheckList);
+  const { isAuthenticated, isLoading } = useAuth0();
 
   //Find out checked items number
   const checkedItemsNumber = () => {
