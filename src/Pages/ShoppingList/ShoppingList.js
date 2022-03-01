@@ -1,28 +1,26 @@
-import { useAuth0 } from '@auth0/auth0-react'
-import Card from '../../components/Card/Card'
-import GreenBanner from '../../components/GreenBanner/GreenBanner'
-import Button from '../../components/Ui/Button/Button'
-import Login from '../Login/Login'
-import { shoppinglistData } from '../../data/shoppinglist'
-import { Link } from 'react-router-dom'
-import { useState } from 'react'
-
-
+import { useAuth0 } from '@auth0/auth0-react';
+import Card from '../../components/Card/Card';
+import GreenBanner from '../../components/GreenBanner/GreenBanner';
+import Button from '../../components/Ui/Button/Button';
+import Login from '../Login/Login';
+import { shoppinglistData } from '../../data/shoppinglist';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 function ShoppingList() {
-  const { isAuthenticated, isLoading } = useAuth0()
-  const [buttonChecked, setButtonChecked] = useState([])
+  const { isAuthenticated, isLoading } = useAuth0();
+  const [checkboxStatus, setCheckboxStatus] = useState([]);
 
-  async function handleChange(){
+  async function handleChange() {
     // fetch request to clear shopping list
-    // const res = await fetch ("URL" ,{method: "DELETE"}) ; 
+    // const res = await fetch ("URL" ,{method: "DELETE"}) ;
     // const data = await res.json();
-  
-    console.log("Clear shopping list")
+
+    console.log('Clear shopping list');
   }
 
   if (isLoading) {
-    return <h1>Loading</h1>
+    return <h1>Loading</h1>;
   }
   return isAuthenticated ? (
     <main className='main-home'>
@@ -37,10 +35,10 @@ function ShoppingList() {
             key={item.id}
             name={item.name}
             quantity={item.quantity}
-            buttonChecked={buttonChecked}
-            setButtonChecked={setButtonChecked}
+            checkboxStatus={checkboxStatus}
+            setCheckboxStatus={setCheckboxStatus}
           />
-        )
+        );
       })}
       <div className='buttons-container-shoppinglist'>
         <Button
@@ -57,7 +55,7 @@ function ShoppingList() {
     <div className='app'>
       <Login />
     </div>
-  )
+  );
 }
 
-export default ShoppingList
+export default ShoppingList;

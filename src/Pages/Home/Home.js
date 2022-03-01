@@ -12,20 +12,21 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { Link } from 'react-router-dom';
 
 function Home() {
-  //Initial value for buttonChecked
+  //Initial value for checkboxStatus
   const createCheckList = fridgeIngredients.map((ingredient) => ({
     id: ingredient.id,
     isChecked: false,
   }));
   const { isAuthenticated, isLoading } = useAuth0();
-  const [buttonChecked, setButtonChecked] = useState(createCheckList);
+  const [checkboxStatus, setCheckboxStatus] = useState(createCheckList);
 
-  //Date variables
+  //Find out checked items number
+  const checkedItemsNumber = () => {
+    const checkedItems = checkboxStatus.filter((item) => item.isChecked);
+    return checkedItems.length;
+  };
 
-  let date = new Date()
-  // let today = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
-
-
+  //Loading screen to be done
   if (isLoading) {
     return <h1>Loading</h1>;
   }
@@ -35,45 +36,41 @@ function Home() {
         <GreenBanner text='+ ADD NEW ITEM' />
       </Link>
       {fridgeIngredients.map((item) => {
-
-        let countDownDate = new Date(item.expiryDate).getTime()
-        let now = date.getTime()
-        let timeleft = countDownDate - now
-        let days = Math.floor(timeleft / (1000 * 60 * 60 * 24))
+        let date = new Date();
+        let countDownDate = new Date(item.expiryDate).getTime();
+        let now = date.getTime();
+        let timeleft = countDownDate - now;
+        let days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
         let expDisplay;
         if (timeleft < 0) {
-          expDisplay = `${item.expiryDate} | Expired`
+          expDisplay = `${item.expiryDate} | Expired`;
         } else {
-          expDisplay = `${item.expiryDate} | ${days} days left`
+          expDisplay = `${item.expiryDate} | ${days} days left`;
         }
 
-          return (
-            <Card
-              id={item.id}
-              key={item.id}
-              name={item.name}
-              expdate={expDisplay}
-              quantity={item.quantity}
-              buttonChecked={buttonChecked}
-              setButtonChecked={setButtonChecked}
-            >
-              <span
-                className={`expiry-dot ${
-                  timeleft > 0 ? 'green' : 'red'
-                }`}
-              ></span>
-            </Card>
-          )
+        return (
+          <Card
+            id={item.id}
+            key={item.id}
+            name={item.name}
+            expdate={expDisplay}
+            quantity={item.quantity}
+            checkboxStatus={checkboxStatus}
+            setCheckboxStatus={setCheckboxStatus}
+          >
+            <span
+              className={`expiry-dot ${timeleft > 0 ? 'green' : 'red'}`}
+            ></span>
+          </Card>
+        );
       })}
       <div
         className={`buttons-container-home ${
-          buttonChecked.length ? `button-vh-ten` : `disable`
+          checkedItemsNumber() ? `button-vh-ten` : `disable`
         }`}
       >
         <Button
-          text={`Cook ${
-            buttonChecked.length === 0 ? '' : `(${buttonChecked.length})`
-          }`}
+          text={`Cook (${checkedItemsNumber()})`}
           backgroundColor='yellow-button'
           textColor='white'
           width='percent-button-40'

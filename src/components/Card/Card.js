@@ -1,6 +1,6 @@
-import Checkbox from '../Ui/Checkbox/Checkbox'
-import { useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import Checkbox from '../Ui/Checkbox/Checkbox';
+import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const Card = ({
   id,
@@ -8,17 +8,17 @@ const Card = ({
   expdate,
   quantity,
   children,
-  buttonChecked,
-  setButtonChecked,
+  checkboxStatus,
+  setCheckboxStatus,
 }) => {
-  const location = useLocation()
-  const [expandedCard, setExpandedCard] = useState(false)
-  const [selected, setSelected] = useState(false)
+  const location = useLocation();
+  const [expandedCard, setExpandedCard] = useState(false);
+  const [selected, setSelected] = useState(false);
 
   //Open or close the expanded card
   const expandCard = () => {
-    setExpandedCard(!expandedCard)
-  }
+    setExpandedCard(!expandedCard);
+  };
 
   return (
     <div className='card-wrapper'>
@@ -48,8 +48,8 @@ const Card = ({
               id={id}
               selected={selected}
               setSelected={setSelected}
-              buttonChecked={buttonChecked}
-              setButtonChecked={setButtonChecked}
+              checkboxStatus={checkboxStatus}
+              setCheckboxStatus={setCheckboxStatus}
             />
           </div>
         </div>
@@ -62,7 +62,7 @@ const Card = ({
         ></div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;

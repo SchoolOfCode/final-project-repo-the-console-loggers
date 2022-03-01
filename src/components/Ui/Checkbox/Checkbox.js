@@ -4,13 +4,13 @@ const Checkbox = ({
   id,
   selected,
   setSelected,
-  buttonChecked,
-  setButtonChecked,
+  checkboxStatus,
+  setCheckboxStatus,
 }) => {
   const [isChecked, setIsChecked] = useState(false);
 
   const updateObject = (status) => {
-    return buttonChecked.map((item) =>
+    return checkboxStatus.map((item) =>
       item.id === id ? { id: id, isChecked: status } : item
     );
   };
@@ -18,7 +18,7 @@ const Checkbox = ({
   const handleOnChange = () => {
     setIsChecked(!isChecked);
     setSelected(!selected);
-    setButtonChecked(isChecked ? updateObject(false) : updateObject(true));
+    setCheckboxStatus(isChecked ? updateObject(false) : updateObject(true));
   };
 
   return (
