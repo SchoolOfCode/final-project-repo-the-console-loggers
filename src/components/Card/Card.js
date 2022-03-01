@@ -20,8 +20,6 @@ const Card = ({
     setExpandedCard(!expandedCard)
   }
 
-  console.log(location)
-
   return (
     <div className='card-wrapper'>
       <div

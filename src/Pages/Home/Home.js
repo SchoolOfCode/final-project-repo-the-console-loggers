@@ -1,22 +1,33 @@
-import { useAuth0 } from '@auth0/auth0-react'
-import { Link } from 'react-router-dom'
-import Card from '../../components/Card/Card'
-import GreenBanner from '../../components/GreenBanner/GreenBanner'
-import Button from '../../components/Ui/Button/Button'
-import { fridgeIngredients } from '../../data/fridgetIngredients'
-import Login from '../Login/Login'
-import { useState } from 'react'
+//Card
+import Card from '../../components/Card/Card';
+import GreenBanner from '../../components/GreenBanner/GreenBanner';
+import Button from '../../components/Ui/Button/Button';
+//Data
+import { fridgeIngredients } from '../../data/fridgetIngredients';
+//Pages
+import Login from '../Login/Login';
+//Utils
+import { useState } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
+import { Link } from 'react-router-dom';
 
 function Home() {
-  const { isAuthenticated, isLoading } = useAuth0()
-  const [buttonChecked, setButtonChecked] = useState([])
+  //Initial value for buttonChecked
+  const createCheckList = fridgeIngredients.map((ingredient) => ({
+    id: ingredient.id,
+    isChecked: false,
+  }));
+  const { isAuthenticated, isLoading } = useAuth0();
+  const [buttonChecked, setButtonChecked] = useState(createCheckList);
 
   //Date variables
+
   let date = new Date()
   // let today = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
 
+
   if (isLoading) {
-    return <h1>Loading</h1>
+    return <h1>Loading</h1>;
   }
   return isAuthenticated ? (
     <main className='main-home'>
@@ -24,6 +35,7 @@ function Home() {
         <GreenBanner text='+ ADD NEW ITEM' />
       </Link>
       {fridgeIngredients.map((item) => {
+
         let countDownDate = new Date(item.expiryDate).getTime()
         let now = date.getTime()
         let timeleft = countDownDate - now
@@ -53,12 +65,15 @@ function Home() {
             </Card>
           )
       })}
-      <div className={`buttons-container-home ${buttonChecked.length ? `button-vh-ten` : `disable`}`}>
+      <div
+        className={`buttons-container-home ${
+          buttonChecked.length ? `button-vh-ten` : `disable`
+        }`}
+      >
         <Button
           text={`Cook ${
             buttonChecked.length === 0 ? '' : `(${buttonChecked.length})`
           }`}
-          
           backgroundColor='yellow-button'
           textColor='white'
           width='percent-button-40'
@@ -75,7 +90,7 @@ function Home() {
     <div className='app'>
       <Login />
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;
