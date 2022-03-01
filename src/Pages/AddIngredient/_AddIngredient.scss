@@ -41,7 +41,10 @@
   background-color: variables.$fourth-grey;
   width: 100%;
   color: variables.$first-grey;
-  margin: 0 0 2.8rem 0;
+
   appearance: none;
 }
 
+.input-wrapper {
+  padding: 0 0 1.6rem 0;
+}
