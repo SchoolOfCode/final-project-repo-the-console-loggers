@@ -7,9 +7,10 @@ import { fridgeIngredients } from '../../data/fridgetIngredients';
 //Pages
 import Login from '../Login/Login';
 //Utils
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Link } from 'react-router-dom';
+import { fetchUsers } from '../../Utils/Fetch';
 
 function Home() {
   //Initial value for checkboxStatus
@@ -21,6 +22,7 @@ function Home() {
   //State that storage if the checkboxes are check or not
   const [checkboxStatus, setCheckboxStatus] = useState(createCheckList);
   const { isAuthenticated, isLoading, user } = useAuth0();
+  const [ingredientsList, setIngredientsList] = useState([]);
 
   //Find out checked items number
   const checkedItemsNumber = () => {
@@ -28,55 +30,14 @@ function Home() {
     return checkedItems.length;
   };
 
-  console.log(isAuthenticated && user.sub);
+  useEffect(() => {
+    const fetchResponse = async () => {
+      const test = await fetchUsers(user);
+      setIngredientsList(test);
+    };
 
-  async function fetchUsers() {
-    const fetchResponse = await fetch(
-      `https://four-week-project-soc.herokuapp.com/api/v1/user/${user.sub}`,
-      {
-        method: 'GET',
-      }
-    );
-    //Store the response.
-    const response = await fetchResponse.json();
-    return response.payload.length === 0 ? putNewUser() : fetchIngredients();
-  }
-
-  ///Get ingredients
-  async function fetchIngredients() {
-    const fetchResponse = await fetch(
-      `https://four-week-project-soc.herokuapp.com/api/v1/user/${user.sub}/ingredients`,
-      {
-        method: 'GET',
-      }
-    );
-    //Store the response.
-    const response = await fetchResponse.json();
-    console.log(response);
-  }
-
-  //Post new user
-  async function putNewUser() {
-    const fetchResponse = await fetch(
-      'https://four-week-project-soc.herokuapp.com/api/v1/user',
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          auth0_user_id: user.sub,
-          email: user.email,
-          name: user.name,
-          nickname: user.nickname,
-          picture: user.picture,
-        }),
-      }
-    );
-    //Store the response.
-    const response = await fetchResponse.json();
-    return response;
-  }
-
-  isAuthenticated && fetchUsers();
+    isAuthenticated && fetchResponse();
+  }, [isAuthenticated, user]);
 
   //Loading screen to be done
   if (isLoading) {
@@ -87,27 +48,28 @@ function Home() {
       <Link className='add-ingredient' to='AddIngredient'>
         <GreenBanner text='+ ADD NEW ITEM' />
       </Link>
-      {fridgeIngredients.map((item) => {
+      {ingredientsList.map((item) => {
         let date = new Date();
-        let countDownDate = new Date(item.expiryDate).getTime();
+        let countDownDate = new Date(item.ingredient_exp_date).getTime();
         let now = date.getTime();
         let timeleft = countDownDate - now;
         let days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
+        console.log(days);
         let expDisplay;
         if (timeleft < 0) {
-          expDisplay = `${item.expiryDate} | Expired`;
+          expDisplay = `${item.ingredient_exp_date} | Expired`;
         } else {
-          expDisplay = `${item.expiryDate} | ${days} days left`;
+          expDisplay = `${item.ingredient_exp_date} | ${days} days left`;
         }
 
         return (
           <Card
             id={item.id}
             key={item.id}
-            name={item.name}
+            name={item.ingredient_name}
             expdate={expDisplay}
-            quantity={item.quantity}
-            checkboxStatus={checkboxStatus}
+            quantity={item.ingredient_quantity}
+            checkboxStatus={item.isChecked}
             setCheckboxStatus={setCheckboxStatus}
           >
             <span
