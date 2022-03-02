@@ -7,7 +7,7 @@ import { fridgeIngredients } from '../../data/fridgetIngredients';
 //Pages
 import Login from '../Login/Login';
 //Utils
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Link } from 'react-router-dom';
 
@@ -20,13 +20,63 @@ function Home() {
 
   //State that storage if the checkboxes are check or not
   const [checkboxStatus, setCheckboxStatus] = useState(createCheckList);
-  const { isAuthenticated, isLoading } = useAuth0();
+  const { isAuthenticated, isLoading, user } = useAuth0();
 
   //Find out checked items number
   const checkedItemsNumber = () => {
     const checkedItems = checkboxStatus.filter((item) => item.isChecked);
     return checkedItems.length;
   };
+
+  console.log(isAuthenticated && user.sub);
+
+  async function fetchUsers() {
+    const fetchResponse = await fetch(
+      `https://four-week-project-soc.herokuapp.com/api/v1/user/${user.sub}`,
+      {
+        method: 'GET',
+      }
+    );
+    //Store the response.
+    const response = await fetchResponse.json();
+    return response.payload.length === 0 ? putNewUser() : fetchIngredients();
+  }
+
+  ///Get ingredients
+  async function fetchIngredients() {
+    const fetchResponse = await fetch(
+      `https://four-week-project-soc.herokuapp.com/api/v1/user/${user.sub}/ingredients`,
+      {
+        method: 'GET',
+      }
+    );
+    //Store the response.
+    const response = await fetchResponse.json();
+    console.log(response);
+  }
+
+  //Post new user
+  async function putNewUser() {
+    const fetchResponse = await fetch(
+      'https://four-week-project-soc.herokuapp.com/api/v1/user',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          auth0_user_id: user.sub,
+          email: user.email,
+          name: user.name,
+          nickname: user.nickname,
+          picture: user.picture,
+        }),
+      }
+    );
+    //Store the response.
+    const response = await fetchResponse.json();
+    return response;
+  }
+
+  isAuthenticated && fetchUsers();
 
   //Loading screen to be done
   if (isLoading) {
