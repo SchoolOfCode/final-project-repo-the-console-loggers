@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import InputBox from '../../components/Ui/InputBox/InputBox';
 import Button from '../../components/Ui/Button/Button';
-import { addFoodType } from '../../data/navigation';
+
 import { useAuth0 } from '@auth0/auth0-react';
 
 function AddIngredient() {

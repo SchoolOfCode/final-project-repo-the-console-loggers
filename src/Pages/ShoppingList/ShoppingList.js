@@ -2,6 +2,7 @@
 import Card from '../../components/Card/Card';
 import GreenBanner from '../../components/GreenBanner/GreenBanner';
 import Button from '../../components/Ui/Button/Button';
+import Modal from '../../components/Modal/Modal';
 
 //Pages
 import Login from '../Login/Login';
@@ -48,34 +49,38 @@ function ShoppingList() {
     return <h1>Loading</h1>;
   }
   return isAuthenticated ? (
-    <main className='main-home'>
-      <Link className='add-item' to='AddItem'>
-        <GreenBanner text='+ ADD NEW ITEM' />
-      </Link>
+    <>
+      {' '}
+      <main className='main-home'>
+        <Link className='add-item' to='AddItem'>
+          <GreenBanner text='+ ADD NEW ITEM' />
+        </Link>
 
-      {shopping.map((item) => {
-        return (
-          <Card
-            id={item.item_id}
-            key={item.item_id}
-            name={item.item_name}
-            quantity={item.item_quantity}
-            checkboxStatus={checkboxStatus}
-            setCheckboxStatus={setCheckboxStatus}
+        {shopping.map((item) => {
+          return (
+            <Card
+              id={item.item_id}
+              key={item.item_id}
+              name={item.item_name}
+              quantity={item.item_quantity}
+              checkboxStatus={checkboxStatus}
+              setCheckboxStatus={setCheckboxStatus}
+            />
+          );
+        })}
+        <div className='buttons-container-shoppinglist'>
+          <Button
+            handleClick={handleChange}
+            text='Clear shopping list'
+            backgroundColor='red-button'
+            textColor='white'
+            width='fullLength'
+            icon='bin'
           />
-        );
-      })}
-      <div className='buttons-container-shoppinglist'>
-        <Button
-          handleClick={handleChange}
-          text='Clear shopping list'
-          backgroundColor='red-button'
-          textColor='white'
-          width='fullLength'
-          icon='bin'
-        />
-      </div>
-    </main>
+        </div>
+        <Modal />
+      </main>
+    </>
   ) : (
     <div className='app'>
       <Login />

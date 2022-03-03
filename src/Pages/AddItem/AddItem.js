@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import InputBox from '../../components/Ui/InputBox/InputBox';
 import Button from '../../components/Ui/Button/Button';
-import { addFoodType } from '../../data/navigation';
 import { useAuth0 } from '@auth0/auth0-react';
 
 function AddItem() {
@@ -15,11 +14,6 @@ function AddItem() {
   function handleQuantity(e) {
     setQuantity(e.target.value);
   }
-
-  // async function deleteItem(e) {
-  //   e.preventDefault()
-  //   console.log(name, quantity)
-  // }
 
   async function addNewShopping(e) {
     e.preventDefault();
