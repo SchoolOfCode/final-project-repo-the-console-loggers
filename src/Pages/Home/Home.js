@@ -1,4 +1,3 @@
-//Components
 import Card from '../../components/Card/Card';
 import GreenBanner from '../../components/GreenBanner/GreenBanner';
 import Button from '../../components/Ui/Button/Button';
@@ -9,7 +8,7 @@ import Login from '../Login/Login';
 import { useState, useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Link } from 'react-router-dom';
-import { fetchUsers } from '../../Utils/Fetch';
+import { fetchUsers, deleteIngredient } from '../../Utils/Fetch';
 
 function Home() {
   //State that storage if the checkboxes are check or not
@@ -17,11 +16,27 @@ function Home() {
   const { isAuthenticated, isLoading, user } = useAuth0();
   const [ingredientsList, setIngredientsList] = useState([]);
 
+
+  let checkedItems 
+
   //Find out checked items number
   const checkedItemsNumber = () => {
-    const checkedItems = checkboxStatus.filter((item) => item.isChecked);
-    return checkedItems.length;
+    checkedItems = checkboxStatus.filter((item) => item.isChecked) ;
+    console.log(checkedItems)
+    return checkedItems;
   };
+
+
+  function handleChange() {
+    checkedItems.map((item)=>{
+    return deleteIngredient(user, item.id)
+    })
+  //  setIngredientsList(!checkedItems)
+  console.log("ingredients",ingredientsList)
+  const deleted = ingredientsList.filter((item) => !item.ingredient_id)
+   setIngredientsList(deleted)
+  }
+  
 
   useEffect(() => {
     const fetchResponse = async () => {
@@ -83,12 +98,13 @@ function Home() {
         }`}
       >
         <Button
-          text={`Cook (${checkedItemsNumber()})`}
+          text={`Cook (${checkedItemsNumber().length})`}
           backgroundColor='yellow-button'
           textColor='white'
           width='percent-button-40'
         />
         <Button
+          handleClick={handleChange}
           text='Delete'
           backgroundColor='red-button'
           textColor='white'
