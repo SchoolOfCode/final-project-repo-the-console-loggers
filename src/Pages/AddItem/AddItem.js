@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import InputBox from '../../components/Ui/InputBox/InputBox'
 import Button from '../../components/Ui/Button/Button'
 import { addFoodType } from '../../data/navigation'
+import { useAuth0 } from '@auth0/auth0-react';
 
 function AddItem() {
   const [name, setName] = useState('')
   const [quantity, setQuantity] = useState([])
+    const { user } = useAuth0();
 
   function handleName(e) {
     setName(e.target.value)
@@ -14,16 +16,37 @@ function AddItem() {
     setQuantity(e.target.value)
   }
 
-  async function deleteItem(e) {
-    e.preventDefault()
-    console.log(name, quantity)
+  // async function deleteItem(e) {
+  //   e.preventDefault()
+  //   console.log(name, quantity)
+  // }
+
+  
+  async function addNewShopping(e) {
+    e.preventDefault();
+    const response = await fetch(
+      `https://four-week-project-soc.herokuapp.com/api/v1/user/${user.sub}/shopping`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          item_name: name,
+          item_quantity: quantity,
+          is_checked: false,
+          user_id: user.sub,
+        }),
+      }
+    );
+
+    const data = await response.json();
+    console.log('shopping item : ', data);
   }
 
   return (
     <div className='main-add-item'>
       <h1 className='new-item'>ADD NEW ITEM</h1>
       <div className='add-item-card'>
-        <form className='form' onSubmit={deleteItem}>
+        <form className='form' onSubmit={addNewShopping}>
           <InputBox
             handleName={handleName}
             text='Name'
@@ -45,7 +68,7 @@ function AddItem() {
                 <option key={item.food} food={item.food}>
                   {item.food}
                 </option>
-              )
+              );
             })}
           </select>
 
@@ -60,7 +83,7 @@ function AddItem() {
         </form>
       </div>
     </div>
-  )
+  );
 }
 
 export default AddItem

@@ -26,12 +26,13 @@ function ShoppingList() {
 
   async function handleChange() {
     // fetch request to clear shopping list
-    // const res = await fetch ("URL" ,{method: "DELETE"}) ;
-    // const data = await res.json();
-
-    console.log('Clear shopping list');
+    const res = await fetch (`https://four-week-project-soc.herokuapp.com/api/v1/user/${user.sub}/shopping` ,
+    {method: "DELETE"}) ;
+    const data = await res.json();
+    console.log(data)
+    setShopping([])
   }
-  console.log(shopping);
+
   useEffect(() => {
     const fetchResponse = async () => {
       const test = await fetchUsersShopping(user);
