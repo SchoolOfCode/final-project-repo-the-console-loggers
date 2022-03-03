@@ -42,9 +42,11 @@ function AddIngredient() {
 
     const data = await response.json();
     console.log('ingredient data', data);
+    setName('');
+    setExpDate('');
+    setQuantity('');
   }
 
-  console.log(typeof quantity);
   return (
     <div className='main-add-ingredient'>
       <h1 className='new-item'>ADD NEW ITEM</h1>
@@ -56,6 +58,7 @@ function AddIngredient() {
               text='Name'
               placeholder='E.g. Honey Roasted Ham...'
               type='text'
+              value={name}
             />
           </div>
 
@@ -66,6 +69,7 @@ function AddIngredient() {
               text='Expiration Date'
               placeholder='E.g. 23/04/2022'
               type='date'
+              value={expDate}
             />
           </div>
 
@@ -75,6 +79,7 @@ function AddIngredient() {
               text='Quantity'
               placeholder='E.g. Kg, Portion...'
               type='text'
+              value={quantity}
             />
           </div>
 
