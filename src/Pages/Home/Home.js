@@ -1,14 +1,13 @@
+import { useAuth0 } from '@auth0/auth0-react';
+//Utils
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Card from '../../components/Card/Card';
 import GreenBanner from '../../components/GreenBanner/GreenBanner';
 import Button from '../../components/Ui/Button/Button';
-
+import { deleteIngredient, fetchUsers } from '../../Utils/Fetch';
 //Pages
 import Login from '../Login/Login';
-//Utils
-import { useState, useEffect } from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
-import { Link } from 'react-router-dom';
-import { fetchUsers, deleteIngredient } from '../../Utils/Fetch';
 
 function Home() {
   //State that storage if the checkboxes are check or not
@@ -16,27 +15,36 @@ function Home() {
   const { isAuthenticated, isLoading, user } = useAuth0();
   const [ingredientsList, setIngredientsList] = useState([]);
 
-
-  let checkedItems 
+  let checkedItems;
 
   //Find out checked items number
   const checkedItemsNumber = () => {
-    checkedItems = checkboxStatus.filter((item) => item.isChecked) ;
-    console.log(checkedItems)
+    checkedItems = checkboxStatus.filter((item) => item.isChecked);
+    console.log('checkedItems inside checkedItemsNumber: ', checkedItems);
     return checkedItems;
   };
-
+  console.log('ingredientsList before handlechange', ingredientsList);
 
   function handleChange() {
-    checkedItems.map((item)=>{
-    return deleteIngredient(user, item.id)
-    })
-  //  setIngredientsList(!checkedItems)
-  console.log("ingredients",ingredientsList)
-  const deleted = ingredientsList.filter((item) => !item.ingredient_id)
-   setIngredientsList(deleted)
+    const handleCheckedItems = checkedItems.map((item) => {
+      return deleteIngredient(user, item.id);
+      // console.log('checkedItems.map', item);
+      // return item;
+    });
+    console.log('checkedItems inside handleChange: ', checkedItems);
+    console.log('handleCheckedItems inside handleChange: ', handleCheckedItems);
+
+    //  setIngredientsList(!checkedItems)
+    console.log('ingredientsList inside handlechange', ingredientsList);
+    const updatedList = ingredientsList.filter(
+      (item) => item.ingredient_id !== checkedItems[0].id
+    );
+    console.log('checkedItems[0] inside handlechange', checkedItems[0]);
+    console.log('deleted inside handlechange', updatedList);
+
+    setIngredientsList(updatedList);
   }
-  
+  console.log('ingredientsList outside handlechange', ingredientsList);
 
   useEffect(() => {
     const fetchResponse = async () => {
