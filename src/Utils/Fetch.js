@@ -7,6 +7,7 @@ export async function fetchUsers(user) {
   );
   //Store the response.
   const response = await fetchResponse.json();
+  console.log(user);
   return response.payload.length === 0
     ? putNewUser(user)
     : fetchIngredients(user);
@@ -44,4 +45,32 @@ async function putNewUser(user) {
   //Store the response.
   const response = await fetchResponse.json();
   return response;
+}
+
+//Fetch Shopping Ingredients
+
+async function fetchShoppingIngredients(user) {
+  const fetchResponse = await fetch(
+    `https://four-week-project-soc.herokuapp.com/api/v1/user/${user.sub}/shopping`,
+    {
+      method: 'GET',
+    }
+  );
+  //Store the response.
+  const response = await fetchResponse.json();
+  return response.payload;
+}
+
+export async function fetchUsersShopping(user) {
+  const fetchResponse = await fetch(
+    `https://four-week-project-soc.herokuapp.com/api/v1/user/${user.sub}`,
+    {
+      method: 'GET',
+    }
+  );
+  //Store the response.
+  const response = await fetchResponse.json();
+  return response.payload.length === 0
+    ? putNewUser(user)
+    : fetchShoppingIngredients(user);
 }

@@ -7,9 +7,10 @@ import { shoppinglistData } from '../../data/shoppinglist';
 //Pages
 import Login from '../Login/Login';
 //Utils
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Link } from 'react-router-dom';
+import { fetchUsersShopping } from '../../Utils/Fetch';
 
 function ShoppingList() {
   //Initial value for checkboxStatus
@@ -20,7 +21,8 @@ function ShoppingList() {
 
   //State that storage if the checkboxes are check or not
   const [checkboxStatus, setCheckboxStatus] = useState(createCheckList);
-  const { isAuthenticated, isLoading } = useAuth0();
+  const { isAuthenticated, isLoading, user } = useAuth0();
+  const [shopping, setShopping] = useState([]);
 
   async function handleChange() {
     // fetch request to clear shopping list
@@ -29,6 +31,21 @@ function ShoppingList() {
 
     console.log('Clear shopping list');
   }
+  console.log(shopping);
+  useEffect(() => {
+    const fetchResponse = async () => {
+      const test = await fetchUsersShopping(user);
+      setShopping(test);
+      setCheckboxStatus(
+        test.map((item) => ({
+          id: item.ingredient_id,
+          isChecked: false,
+        }))
+      );
+    };
+
+    isAuthenticated && fetchResponse();
+  }, [isAuthenticated, user]);
 
   if (isLoading) {
     return <h1>Loading</h1>;
@@ -39,13 +56,13 @@ function ShoppingList() {
         <GreenBanner text='+ ADD NEW ITEM' />
       </Link>
 
-      {shoppinglistData.map((item) => {
+      {shopping.map((item) => {
         return (
           <Card
-            id={item.id}
-            key={item.id}
-            name={item.name}
-            quantity={item.quantity}
+            id={item.item_id}
+            key={item.item_id}
+            name={item.item_name}
+            quantity={item.item_quantity}
             checkboxStatus={checkboxStatus}
             setCheckboxStatus={setCheckboxStatus}
           />
