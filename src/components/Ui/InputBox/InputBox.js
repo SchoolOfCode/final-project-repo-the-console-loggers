@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export default function InputBox({
   text,
@@ -6,6 +6,7 @@ export default function InputBox({
   handleName,
   type,
   className,
+  value,
 }) {
   return (
     <label className='label'>
@@ -15,7 +16,8 @@ export default function InputBox({
         placeholder={placeholder}
         onChange={handleName}
         className={className}
+        value={value}
       />
     </label>
-  )
+  );
 }

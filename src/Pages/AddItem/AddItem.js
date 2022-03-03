@@ -1,19 +1,19 @@
-import React, { useState } from 'react'
-import InputBox from '../../components/Ui/InputBox/InputBox'
-import Button from '../../components/Ui/Button/Button'
-import { addFoodType } from '../../data/navigation'
+import React, { useState } from 'react';
+import InputBox from '../../components/Ui/InputBox/InputBox';
+import Button from '../../components/Ui/Button/Button';
+import { addFoodType } from '../../data/navigation';
 import { useAuth0 } from '@auth0/auth0-react';
 
 function AddItem() {
-  const [name, setName] = useState('')
-  const [quantity, setQuantity] = useState([])
-    const { user } = useAuth0();
+  const [name, setName] = useState('');
+  const [quantity, setQuantity] = useState([]);
+  const { user } = useAuth0();
 
   function handleName(e) {
-    setName(e.target.value)
+    setName(e.target.value);
   }
   function handleQuantity(e) {
-    setQuantity(e.target.value)
+    setQuantity(e.target.value);
   }
 
   // async function deleteItem(e) {
@@ -21,7 +21,6 @@ function AddItem() {
   //   console.log(name, quantity)
   // }
 
-  
   async function addNewShopping(e) {
     e.preventDefault();
     const response = await fetch(
@@ -40,6 +39,8 @@ function AddItem() {
 
     const data = await response.json();
     console.log('shopping item : ', data);
+    setName('');
+    setQuantity('');
   }
 
   return (
@@ -52,6 +53,7 @@ function AddItem() {
             text='Name'
             placeholder='E.g. Honey Roasted Ham...'
             type='text'
+            value={name}
           />
 
           <InputBox
@@ -59,6 +61,7 @@ function AddItem() {
             text='Quantity'
             placeholder='E.g. Kg, Portion...'
             type='text'
+            value={quantity}
           />
 
           <label className='food-type'>Food Type</label>
@@ -86,4 +89,4 @@ function AddItem() {
   );
 }
 
-export default AddItem
+export default AddItem;
