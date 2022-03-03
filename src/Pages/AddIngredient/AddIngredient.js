@@ -8,7 +8,7 @@ function AddIngredient() {
   const [name, setName] = useState('');
   const [expDate, setExpDate] = useState([]);
   const [quantity, setQuantity] = useState('');
-  const [foodType, setFoodType] = useState('');
+
   const { user } = useAuth0();
 
   function handleName(e) {
@@ -20,9 +20,7 @@ function AddIngredient() {
   function handleQuantity(e) {
     setQuantity(e.target.value);
   }
-  function handleFoodType(e) {
-    setFoodType(e.target.value);
-  }
+
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -81,7 +79,7 @@ function AddIngredient() {
           </div>
 
           <label className='food-type'>Food Type</label>
-          <select className='drop-down' onChange={handleFoodType}>
+          <select className='drop-down'>
             {addFoodType.map((item) => {
               return (
                 <option key={item.food} food={item.food}>
