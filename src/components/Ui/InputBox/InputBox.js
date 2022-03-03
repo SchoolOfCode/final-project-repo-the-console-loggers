@@ -7,6 +7,7 @@ export default function InputBox({
   type,
   className,
   value,
+  required,
 }) {
   return (
     <label className='label'>
@@ -17,6 +18,7 @@ export default function InputBox({
         onChange={handleName}
         className={className}
         value={value}
+        required={required}
       />
     </label>
   );
