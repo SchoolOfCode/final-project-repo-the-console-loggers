@@ -2,8 +2,7 @@
 import Card from '../../components/Card/Card';
 import GreenBanner from '../../components/GreenBanner/GreenBanner';
 import Button from '../../components/Ui/Button/Button';
-//Data
-import { fridgeIngredients } from '../../data/fridgetIngredients';
+
 //Pages
 import Login from '../Login/Login';
 //Utils
@@ -13,14 +12,8 @@ import { Link } from 'react-router-dom';
 import { fetchUsers } from '../../Utils/Fetch';
 
 function Home() {
-  //Initial value for checkboxStatus
-  const createCheckList = fridgeIngredients.map((ingredient) => ({
-    id: ingredient.id,
-    isChecked: false,
-  }));
-
   //State that storage if the checkboxes are check or not
-  const [checkboxStatus, setCheckboxStatus] = useState(createCheckList);
+  const [checkboxStatus, setCheckboxStatus] = useState([]);
   const { isAuthenticated, isLoading, user } = useAuth0();
   const [ingredientsList, setIngredientsList] = useState([]);
 
@@ -34,6 +27,12 @@ function Home() {
     const fetchResponse = async () => {
       const test = await fetchUsers(user);
       setIngredientsList(test);
+      setCheckboxStatus(
+        test.map((item) => ({
+          id: item.ingredient_id,
+          isChecked: false,
+        }))
+      );
     };
 
     isAuthenticated && fetchResponse();
@@ -64,12 +63,12 @@ function Home() {
 
         return (
           <Card
-            id={item.id}
+            id={item.ingredient_id}
             key={item.id}
             name={item.ingredient_name}
             expdate={expDisplay}
             quantity={item.ingredient_quantity}
-            checkboxStatus={item.isChecked}
+            checkboxStatus={checkboxStatus}
             setCheckboxStatus={setCheckboxStatus}
           >
             <span

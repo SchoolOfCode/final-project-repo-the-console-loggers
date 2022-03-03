@@ -9,6 +9,8 @@ const Checkbox = ({
 }) => {
   const [isChecked, setIsChecked] = useState(false);
 
+  console.log(id);
+
   const updateObject = (status) => {
     return checkboxStatus.map((item) =>
       item.id === id ? { id: id, isChecked: status } : item
