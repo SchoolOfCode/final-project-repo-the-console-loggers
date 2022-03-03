@@ -43,8 +43,8 @@ async function putNewUser(user) {
     }
   );
   //Store the response.
-  const response = await fetchResponse.json();
-  return response;
+  await fetchResponse.json();
+  return fetchIngredients(user);
 }
 
 //Fetch Shopping Ingredients
