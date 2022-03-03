@@ -54,6 +54,7 @@ function AddItem() {
             placeholder='E.g. Honey Roasted Ham...'
             type='text'
             value={name}
+            required={true}
           />
 
           <InputBox
@@ -62,18 +63,8 @@ function AddItem() {
             placeholder='E.g. Kg, Portion...'
             type='text'
             value={quantity}
+            required={true}
           />
-
-          <label className='food-type'>Food Type</label>
-          <select className='drop-down'>
-            {addFoodType.map((item) => {
-              return (
-                <option key={item.food} food={item.food}>
-                  {item.food}
-                </option>
-              );
-            })}
-          </select>
 
           <Button
             className='add-button'

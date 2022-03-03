@@ -59,6 +59,7 @@ function AddIngredient() {
               placeholder='E.g. Honey Roasted Ham...'
               type='text'
               value={name}
+              required={true}
             />
           </div>
 
@@ -70,6 +71,7 @@ function AddIngredient() {
               placeholder='E.g. 23/04/2022'
               type='date'
               value={expDate}
+              required={true}
             />
           </div>
 
@@ -80,19 +82,9 @@ function AddIngredient() {
               placeholder='E.g. Kg, Portion...'
               type='text'
               value={quantity}
+              required={true}
             />
           </div>
-
-          <label className='food-type'>Food Type</label>
-          <select className='drop-down'>
-            {addFoodType.map((item) => {
-              return (
-                <option key={item.food} food={item.food}>
-                  {item.food}
-                </option>
-              );
-            })}
-          </select>
 
           <Button
             className='add-button'
