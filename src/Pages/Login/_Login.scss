@@ -46,5 +46,8 @@
 
   span {
     color: variables.$green;
+    cursor: pointer;
+    text-decoration: underline dotted 2px;
+    font-weight: 700;
   }
 }
