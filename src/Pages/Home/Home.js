@@ -10,39 +10,35 @@ import { deleteIngredient, fetchUsers } from '../../Utils/Fetch';
 import Login from '../Login/Login';
 
 function Home() {
-  //State that storage if the checkboxes are check or not
+  //State that stores if the checkboxes are checked or not
   const [checkboxStatus, setCheckboxStatus] = useState([]);
   const { isAuthenticated, isLoading, user } = useAuth0();
   const [ingredientsList, setIngredientsList] = useState([]);
 
-  let checkedItems;
+  const checkedItems = checkboxStatus.filter((item) => item.isChecked); //replace checkedItemsNumber() so it can be used in map on line 23
 
-  //Find out checked items number
-  const checkedItemsNumber = () => {
-    checkedItems = checkboxStatus.filter((item) => item.isChecked);
-    console.log('checkedItems inside checkedItemsNumber: ', checkedItems);
-    return checkedItems;
-  };
   console.log('ingredientsList before handlechange', ingredientsList);
 
-  function handleChange() {
-    const handleCheckedItems = checkedItems.map((item) => {
-      return deleteIngredient(user, item.id);
-      // console.log('checkedItems.map', item);
-      // return item;
-    });
-    console.log('checkedItems inside handleChange: ', checkedItems);
-    console.log('handleCheckedItems inside handleChange: ', handleCheckedItems);
-
+  async function handleChange() {
+   checkedItems.map(async (item) => {
+      return await deleteIngredient(user, item.id);
+    })
+    const checkedItemsIds = checkedItems.map(item => item.id)
     //  setIngredientsList(!checkedItems)
     console.log('ingredientsList inside handlechange', ingredientsList);
     const updatedList = ingredientsList.filter(
-      (item) => item.ingredient_id !== checkedItems[0].id
+      (item) => !checkedItemsIds.includes(item.ingredient_id) // as long as an id isn't equal to our checked ingredient id, display it
     );
-    console.log('checkedItems[0] inside handlechange', checkedItems[0]);
-    console.log('deleted inside handlechange', updatedList);
+    // console.log('checkedItems[0] inside handlechange', checkedItems[0]);
+    // console.log('deleted inside handlechange', updatedList);
 
-    setIngredientsList(updatedList);
+    setIngredientsList(updatedList); 
+    setCheckboxStatus(
+      updatedList.map((item) => ({
+        id: item.ingredient_id,
+        isChecked: false,
+      })) //
+    );
   }
   console.log('ingredientsList outside handlechange', ingredientsList);
 
@@ -102,11 +98,11 @@ function Home() {
       })}
       <div
         className={`buttons-container-home ${
-          checkedItemsNumber() ? `button-vh-ten` : `disable`
+          checkedItems.length > 0 ? `button-vh-ten` : `disable`
         }`}
       >
         <Button
-          text={`Cook (${checkedItemsNumber().length})`}
+          text={`Cook (${checkedItems.length})`}
           backgroundColor='yellow-button'
           textColor='white'
           width='percent-button-40'
