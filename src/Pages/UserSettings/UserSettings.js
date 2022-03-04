@@ -5,10 +5,12 @@ import Card from '../../components/Card/Card'
 import Button from '../../components/Ui/Button/Button'
 import InputBox from '../../components/Ui/InputBox/InputBox'
 import UserSettingsCard from '../../components/UserSettingsCard/UserSettingsCard'
+//Pages
+import Login from '../Login/Login';
 
 function UserSettings() {
-  const { logout } = useAuth0()
-  return (
+  const { isAuthenticated, logout } = useAuth0();
+  return isAuthenticated ? (
     <main className='main-settings'>
       <h1 className='settings-title'>Settings</h1>
 
@@ -62,7 +64,11 @@ function UserSettings() {
         </div>
       </UserSettingsCard>
     </main>
-  )
+  ) : (
+    <div className='app'>
+      <Login />
+    </div>
+  );
 }
 
 export default UserSettings

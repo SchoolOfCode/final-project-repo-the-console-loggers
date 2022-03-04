@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import InputBox from '../../components/Ui/InputBox/InputBox';
 import Button from '../../components/Ui/Button/Button';
-
+import Login from '../Login/Login';
 import { useAuth0 } from '@auth0/auth0-react';
 
 function AddIngredient() {
@@ -9,7 +9,7 @@ function AddIngredient() {
   const [expDate, setExpDate] = useState([]);
   const [quantity, setQuantity] = useState('');
 
-  const { user } = useAuth0();
+const { isAuthenticated, user } = useAuth0();
 
   function handleName(e) {
     setName(e.target.value);
@@ -47,7 +47,7 @@ function AddIngredient() {
     setQuantity('');
   }
 
-  return (
+  return isAuthenticated ? (
     <div className='main-add-ingredient'>
       <h1 className='new-item'>ADD NEW ITEM</h1>
       <div className='add-item-card'>
@@ -96,6 +96,10 @@ function AddIngredient() {
           />
         </form>
       </div>
+    </div>
+  ) : (
+    <div className='app'>
+      <Login />
     </div>
   );
 }
