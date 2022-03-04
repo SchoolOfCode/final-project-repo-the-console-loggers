@@ -12,38 +12,36 @@ function RecipeList() {
   const { state } = useLocation();
 
   const [recipesSearch, setRecipesSearch] = useState(recipes);
-  console.log(state);
 
-  const mapState = state.checkboxStatus.map((item) => item);
-  const stateLength = mapState.length - 1;
-  console.log(stateLength);
+  const chosenIngredients =
+    state && state.checkboxStatus.filter((item) => item.isChecked === true);
+  const stateLength = state && chosenIngredients.length - 1;
 
   return isAuthenticated ? (
     <div className='main-recipelist'>
-      <GreenBanner
-        text={`Looking recipes with: ${state.checkboxStatus[0].name} & another ${stateLength} ingredients `}
-      />
-
-      {recipesSearch.map((recipe) => (
-        <RecipeCard
-          key={recipe.id}
-          name={recipe.title}
-          image={recipe.image}
-          missingIngredientsCount={recipe.missedIngredientCount}
-          usedIngredientCount={recipe.usedIngredientCount}
+      {!state ? (
+        <GreenBanner text='You havent chosen any ingredient' />
+      ) : (
+        <GreenBanner
+          text={`Looking recipes with: ${
+            stateLength > 0
+              ? `${chosenIngredients[0].name} & another ${stateLength} ingredients`
+              : chosenIngredients[0].name
+          }`}
         />
-      ))}
+      )}
 
-      {/* {recipes.map((item) => {
-        return (
-          <RecipeCard
-            key={item.id}
-            name={item.name}
-            cookingTime={item.cookingTime}
-            fridgeIngredients={item.fridgeIngredients}
-          />
-        );
-      })} */}
+      {!state
+        ? 'You havent chosen any ingredient'
+        : recipesSearch.map((recipe) => (
+            <RecipeCard
+              key={recipe.id}
+              name={recipe.title}
+              image={recipe.image}
+              missingIngredientsCount={recipe.missedIngredientCount}
+              usedIngredientCount={recipe.usedIngredientCount}
+            />
+          ))}
     </div>
   ) : (
     <div className='app'>
