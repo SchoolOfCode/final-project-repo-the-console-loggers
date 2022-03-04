@@ -31,15 +31,15 @@ export const pathWay = [
 
 export const welcomeMessages = [
   { id: 1, path: '/', message: 'welcome' },
-  { id: 2, path: '/Home', message: 'What ingredient shall we use today?' },
+  { id: 2, path: '/Home', message: '🥕 What ingredient shall we use today?' },
   {
     id: 3,
     path: '/Home/AddIngredient',
-    message: 'Add what you have in your fridge!',
+    message: '🥗 Add what you have in your fridge!',
   },
-  { id: 4, path: '/RecipeList', message: "Let's cook" },
-  { id: 5, path: '/FullRecipe', message: 'Yummyyy' },
-  { id: 6, path: '/ShoppingList', message: 'Buy wisely, do not waste it' },
+  { id: 4, path: '/RecipeList', message: "👩‍🍳 Let's cook" },
+  { id: 5, path: '/FullRecipe', message: '🍔 Yummyyy' },
+  { id: 6, path: '/ShoppingList', message: '🛒 Buy wisely, do not waste it' },
   {
     id: 7,
     path: '/ShoppingList/AddItem',

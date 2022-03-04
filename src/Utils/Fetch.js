@@ -7,7 +7,6 @@ export async function fetchUsers(user) {
   );
   //Store the response.
   const response = await fetchResponse.json();
-  console.log(user);
   return response.payload.length === 0
     ? putNewUser(user)
     : fetchIngredients(user);
@@ -30,11 +29,13 @@ async function fetchIngredients(user) {
 
 export async function deleteIngredient(user, item) {
   // fetch request to clear shopping list
-  const res = await fetch (`https://four-week-project-soc.herokuapp.com/api/v1/user/${user.sub}/ingredients/${item}` ,
-  {method: "DELETE"}) ;
+  const res = await fetch(
+    `https://four-week-project-soc.herokuapp.com/api/v1/user/${user.sub}/ingredients/${item}`,
+    { method: 'DELETE' }
+  );
   const data = await res.json();
-  console.log(data)
-  return data.allIngredients
+  console.log(data);
+  return data.allIngredients;
 }
 
 //Post new user

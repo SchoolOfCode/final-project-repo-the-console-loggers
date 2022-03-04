@@ -109,9 +109,10 @@ li {
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
   background-color: #2ecc71;
   color: white;
-  font-size: 23px;
+  font-size: 1rem;
   font-weight: 700;
   min-height: 59px;
   position: sticky;
@@ -262,6 +263,29 @@ li {
   background: linear-gradient(transparent 2.7rem, white);
 }
 
+.card-wrapper-recipe {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0 0.5rem 0;
+}
+.card-wrapper-recipe:nth-last-child(1) {
+  margin-bottom: 2rem;
+}
+
+.main-card-recipe {
+  display: flex;
+}
+.main-card-recipe img {
+  width: 25%;
+  border-radius: 10px;
+  padding-right: 0.5rem;
+}
+
+.recipe-title {
+  font-size: 1.04rem;
+}
+
 .showCard {
   display: flex;
 }
@@ -272,6 +296,26 @@ li {
 
 .buttons-container a {
   text-decoration: none;
+}
+
+.card-recipe {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  background-color: white;
+  height: 100%;
+  border-radius: 10px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
+  padding: 0.4rem;
+}
+
+.bold-green {
+  font-weight: 700;
+  color: #2ecc71;
+}
+
+.cookingTime {
+  margin-top: 0.5rem;
 }
 
 .settings-card-title {
@@ -368,6 +412,11 @@ li {
 .hiddensi {
   visibility: hidden;
   opacity: 0;
+}
+
+.emptyScreenContainer {
+  background-color: gray;
+  height: 100%;
 }
 
 .label-input-checkbox {
@@ -538,6 +587,7 @@ li {
   display: flex;
   flex-direction: column;
   align-items: left;
+  margin-bottom: 1rem;
 }
 
 input {
@@ -566,12 +616,16 @@ input {
   background-color: #ffffff;
 }
 
+.divforcard {
+  height: 80%;
+}
+
 .buttons-container-home {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
-  margin: auto;
+  margin: auto auto 0 auto;
   padding: 1rem 0 1.4rem 0;
   position: sticky;
   background-color: #f4fff4;
@@ -657,8 +711,10 @@ input {
   display: flex;
   flex-direction: column;
   background-color: #f2f2f2;
-  margin: auto;
-  padding: 1rem 0 1.4rem 0;
+}
+
+.divforcardforshopping {
+  height: 80%;
 }
 
 .buttons-container-shoppinglist {
@@ -666,11 +722,12 @@ input {
   justify-content: space-evenly;
   align-items: center;
   width: 89%;
-  margin: auto;
+  margin: auto auto 0 auto;
   padding: 1rem 0 1.4rem 0;
   position: sticky;
   border-top: 1px solid #f0f0f0;
   z-index: 20;
+  background-color: inherit;
 }
 
 .add-item {
@@ -767,6 +824,10 @@ input {
   width: 90%;
   margin: 1.8rem 0 1.8rem 0;
   height: 90%;
+}
+
+.form label:last-of-type {
+  margin-bottom: 2rem;
 }
 
 .add-item-card {
