@@ -6,11 +6,14 @@ import Button from '../Ui/Button/Button';
 
 const RecipeCard = ({
   name,
+  image,
   cookingTime,
-  fridgeIngredients,
-  ingredients,
-  serves,
-  directions,
+  missingIngredientsCount,
+  usedIngredientCount,
+  // fridgeIngredients,
+  // ingredients,
+  // serves,
+  // directions,
 }) => {
   const [expandedCard, setExpandedCard] = useState(false);
 
@@ -19,47 +22,52 @@ const RecipeCard = ({
     setExpandedCard(!expandedCard);
   };
 
-	return (
-		<div className='card-wrapper'>
-			<div className='card'>
-				<div className='main-card'>
-					<img
-						src={`${process.env.PUBLIC_URL}/assets/icons/food/${name}.svg`}
-						alt={name}
-					/>
-					<div className='texts' onClick={expandCard}>
-						<h1 className='title'>{name}</h1>
-						<p className='cookingTime'>{cookingTime}</p>
-						<p className='fridgeIngredients'>{fridgeIngredients}</p>
-					</div>
-				</div>
-				<div
-					className={`expanded-card-recipe ${
-						expandedCard ? 'showCard' : 'hideCard'
-					}`}>
-					<div className='ingredients'>
-						{recipes[0].ingredients.slice(0, 3).map(item => {
-							return (
-								<div key={item} className='ingredients-preview'>
-									{item}
-								</div>
-							)
-						})}
-					</div>
+  return (
+    <div className='card-wrapper-recipe'>
+      <div className='card-recipe'>
+        <div className='main-card-recipe'>
+          <img src={image} alt={name} />
+          <div className='texts' onClick={expandCard}>
+            <h1 className='recipe-title'>{name}</h1>
+            <p className='cookingTime'>
+              You have <span className='bold-green'>{usedIngredientCount}</span>{' '}
+              out of
+              <span className='bold-green'>
+                {' '}
+                {missingIngredientsCount + usedIngredientCount}{' '}
+              </span>{' '}
+              ingredients
+            </p>
+            {/* <p className='fridgeIngredients'>{fridgeIngredients}</p> */}
+          </div>
+        </div>
+        <div
+          className={`expanded-card-recipe ${
+            expandedCard ? 'showCard' : 'hideCard'
+          }`}
+        >
+          <div className='ingredients'>
+            {/* {recipes[0].ingredients.slice(0, 3).map((item) => {
+              return (
+                <div key={item} className='ingredients-preview'>
+                  {item}
+                </div>
+              );
+            })} */}
+          </div>
 
-
-          <div className="buttons-container">
-            <Link className="link" to="/FullRecipe">
+          <div className='buttons-container'>
+            <Link className='link' to='/FullRecipe'>
               <Button
-                text="Keep reading"
-                backgroundColor="yellow-button"
-                textColor="white"
+                text='Keep reading'
+                backgroundColor='yellow-button'
+                textColor='white'
               />
             </Link>
             <Button
-              text="Close"
-              backgroundColor="transparent"
-              textColor="green"
+              text='Close'
+              backgroundColor='transparent'
+              textColor='green'
               handleClick={() => setExpandedCard()}
             />
           </div>

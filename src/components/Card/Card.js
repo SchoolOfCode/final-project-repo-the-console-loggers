@@ -46,6 +46,7 @@ const Card = ({
           <div className='checkbox-container'>
             <Checkbox
               id={id}
+              name={name}
               selected={selected}
               setSelected={setSelected}
               checkboxStatus={checkboxStatus}
@@ -54,12 +55,13 @@ const Card = ({
           </div>
         </div>
         <div
-          className={`${
-            selected && location.pathname === '/Home'
-              ? 'selected'
-              : selected && location.pathname === '/ShoppingList' && 'cross'
-          } expanded-card ${expandedCard ? 'hideCard' : 'hideCard'}`
-          // if you want to expand card, change first 'hideCard' to 'showCard'
+          className={
+            `${
+              selected && location.pathname === '/Home'
+                ? 'selected'
+                : selected && location.pathname === '/ShoppingList' && 'cross'
+            } expanded-card ${expandedCard ? 'hideCard' : 'hideCard'}`
+            // if you want to expand card, change first 'hideCard' to 'showCard'
           }
         ></div>
       </div>

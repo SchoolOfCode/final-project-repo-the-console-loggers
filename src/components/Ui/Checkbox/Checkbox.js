@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 const Checkbox = ({
   id,
+  name,
   selected,
   setSelected,
   checkboxStatus,
@@ -11,7 +12,7 @@ const Checkbox = ({
 
   const updateObject = (status) => {
     return checkboxStatus.map((item) =>
-      item.id === id ? { id: id, isChecked: status } : item
+      item.id === id ? { id: id, name: name, isChecked: status } : item
     );
   };
 

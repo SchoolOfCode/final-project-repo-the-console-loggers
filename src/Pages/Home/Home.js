@@ -36,6 +36,7 @@ function Home() {
     setCheckboxStatus(
       updatedList.map((item) => ({
         id: item.ingredient_id,
+        name: item.ingredient_name,
         isChecked: false,
       })) //
     );
@@ -49,6 +50,7 @@ function Home() {
       setCheckboxStatus(
         test.map((item) => ({
           id: item.ingredient_id,
+          name: item.ingredient_name,
           isChecked: false,
         }))
       );
@@ -105,12 +107,15 @@ function Home() {
           checkedItems.length > 0 ? `button-vh-ten` : `disable`
         }`}
       >
-        <Button
-          text={`Cook (${checkedItems.length})`}
-          backgroundColor='yellow-button'
-          textColor='white'
-          width='percent-button-40'
-        />
+        <Link to='/RecipeList' state={{ checkboxStatus }}>
+          <Button
+            text={`Cook (${checkedItems.length})`}
+            backgroundColor='yellow-button'
+            textColor='white'
+            width='percent-button-40'
+          />
+        </Link>
+
         <Button
           handleClick={handleChange}
           text='Delete'
