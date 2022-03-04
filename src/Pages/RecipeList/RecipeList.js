@@ -3,6 +3,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import GreenBanner from '../../components/GreenBanner/GreenBanner';
 import RecipeCard from '../../components/RecipeCard/RecipeCard';
 import { recipes } from '../../data/recipes';
+import EmptyScreen from '../../components/EmptyScreen/EmptyScreen';
 import { useLocation } from 'react-router-dom';
 //Pages
 import Login from '../Login/Login';
@@ -19,9 +20,7 @@ function RecipeList() {
 
   return isAuthenticated ? (
     <div className='main-recipelist'>
-      {!state ? (
-        <GreenBanner text='You havent chosen any ingredient' />
-      ) : (
+      {!state ? null : (
         <GreenBanner
           text={`Looking recipes with: ${
             stateLength > 0
@@ -31,17 +30,25 @@ function RecipeList() {
         />
       )}
 
-      {!state
-        ? 'You havent chosen any ingredient'
-        : recipesSearch.map((recipe) => (
-            <RecipeCard
-              key={recipe.id}
-              name={recipe.title}
-              image={recipe.image}
-              missingIngredientsCount={recipe.missedIngredientCount}
-              usedIngredientCount={recipe.usedIngredientCount}
-            />
-          ))}
+      {!state ? (
+        <EmptyScreen
+          title='No ingredients selected'
+          icon='empty-pot'
+          subText='Add some ingredients to your frige to start searching'
+          highlight='recipes'
+          linkTo='../Home/AddIngredient'
+        />
+      ) : (
+        recipesSearch.map((recipe) => (
+          <RecipeCard
+            key={recipe.id}
+            name={recipe.title}
+            image={recipe.image}
+            missingIngredientsCount={recipe.missedIngredientCount}
+            usedIngredientCount={recipe.usedIngredientCount}
+          />
+        ))
+      )}
     </div>
   ) : (
     <div className='app'>

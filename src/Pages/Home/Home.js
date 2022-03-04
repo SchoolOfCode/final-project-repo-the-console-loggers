@@ -68,7 +68,13 @@ function Home() {
       </Link>
       <div className='divforcard'>
         {!ingredientsList.length ? (
-          <EmptyScreen />
+          <EmptyScreen
+            title='Nothing in the fridge!'
+            icon='empty-fridge'
+            subText='What about adding some'
+            highlight='ingredients?'
+            linkTo='AddIngredient'
+          />
         ) : (
           ingredientsList.map((item) => {
             let date = new Date();
