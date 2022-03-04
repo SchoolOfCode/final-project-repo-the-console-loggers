@@ -2,6 +2,7 @@
 import Card from '../../components/Card/Card';
 import GreenBanner from '../../components/GreenBanner/GreenBanner';
 import Button from '../../components/Ui/Button/Button';
+import Modal from '../../components/Modal/Modal';
 
 //Pages
 import Login from '../Login/Login';
@@ -16,6 +17,7 @@ function ShoppingList() {
   const [checkboxStatus, setCheckboxStatus] = useState([]);
   const { isAuthenticated, isLoading, user } = useAuth0();
   const [shopping, setShopping] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   async function handleChange() {
     // fetch request to clear shopping list
@@ -26,6 +28,7 @@ function ShoppingList() {
     const data = await res.json();
     console.log(data);
     setShopping([]);
+    setIsModalOpen(false);
   }
 
   useEffect(() => {
@@ -48,34 +51,57 @@ function ShoppingList() {
     return <h1>Loading</h1>;
   }
   return isAuthenticated ? (
-    <main className='main-home'>
-      <Link className='add-item' to='AddItem'>
-        <GreenBanner text='+ ADD NEW ITEM' />
-      </Link>
+    <>
+      <main className='main-home'>
+        <Link className='add-item' to='AddItem'>
+          <GreenBanner text='+ ADD NEW ITEM' />
+        </Link>
 
-      {shopping.map((item) => {
-        return (
-          <Card
-            id={item.item_id}
-            key={item.item_id}
-            name={item.item_name}
-            quantity={item.item_quantity}
-            checkboxStatus={checkboxStatus}
-            setCheckboxStatus={setCheckboxStatus}
+        {shopping.map((item) => {
+          return (
+            <Card
+              id={item.item_id}
+              key={item.item_id}
+              name={item.item_name}
+              quantity={item.item_quantity}
+              checkboxStatus={checkboxStatus}
+              setCheckboxStatus={setCheckboxStatus}
+            />
+          );
+        })}
+        <div className='buttons-container-shoppinglist'>
+          <Button
+            handleClick={() => setIsModalOpen(true)}
+            text='Clear shopping list'
+            backgroundColor='red-button'
+            textColor='white'
+            width='fullLength'
+            icon='bin'
           />
-        );
-      })}
-      <div className='buttons-container-shoppinglist'>
-        <Button
-          handleClick={handleChange}
-          text='Clear shopping list'
-          backgroundColor='red-button'
-          textColor='white'
-          width='fullLength'
-          icon='bin'
-        />
-      </div>
-    </main>
+        </div>
+        {isModalOpen && (
+          <Modal isModalOpen={isModalOpen}>
+            <h1>
+              Are you sure you want to remove all the items from the list?
+            </h1>
+            <div className='button-container'>
+              <Button
+                text='Yes, I&#39;m sure'
+                backgroundColor='red-button'
+                textColor='white'
+                handleClick={handleChange}
+              />
+              <Button
+                text='Cancel'
+                backgroundColor='transparent'
+                textColor='green'
+                handleClick={() => setIsModalOpen(false)}
+              />
+            </div>
+          </Modal>
+        )}
+      </main>
+    </>
   ) : (
     <div className='app'>
       <Login />

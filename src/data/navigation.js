@@ -1,46 +1,32 @@
 export const pathWay = [
   {
     id: 1,
-    path: ["/Home", "/Home/AddIngredient"],
-    name: "Home",
-    activeImg: "/assets/icons/fridge-color.svg",
-    noActiveImg: "/assets/icons/fridge.svg",
+    path: ['/Home', '/Home/AddIngredient'],
+    name: 'Home',
+    activeImg: '/assets/icons/fridge-color.svg',
+    noActiveImg: '/assets/icons/fridge.svg',
   },
   {
     id: 2,
-    path: ["/RecipeList"],
-    name: "RecipeList",
-    activeImg: "/assets/icons/recipes-color.svg",
-    noActiveImg: "/assets/icons/recipes.svg",
+    path: ['/RecipeList'],
+    name: 'RecipeList',
+    activeImg: '/assets/icons/recipes-color.svg',
+    noActiveImg: '/assets/icons/recipes.svg',
   },
   {
     id: 3,
-    path: ["/ShoppingList", "/ShoppingList/AddItem"],
-    name: "ShoppingList",
-    activeImg: "/assets/icons/shopping-list-color.svg",
-    noActiveImg: "/assets/icons/shopping-list.svg",
+    path: ['/ShoppingList', '/ShoppingList/AddItem'],
+    name: 'ShoppingList',
+    activeImg: '/assets/icons/shopping-list-color.svg',
+    noActiveImg: '/assets/icons/shopping-list.svg',
   },
   {
     id: 4,
-    path: ["/UserSettings"],
-    name: "UserSettings",
-    activeImg: "/assets/icons/settings-color.svg",
-    noActiveImg: "/assets/icons/settings.svg",
+    path: ['/UserSettings'],
+    name: 'UserSettings',
+    activeImg: '/assets/icons/settings-color.svg',
+    noActiveImg: '/assets/icons/settings.svg',
   },
-];
-
-
-export const addFoodType = [
-  { food: "Please select a food item..." },
-  { food: "Apples" },
-  { food: "Avacado" },
-  { food: "Bacon" },
-  { food: "Black beans" },
-  { food: "Cheese" },
-  { food: "Catfish" },
-  { food: "Fish" },
-  { food: "Hummus" },
-  { food: "Tofu" },
 ];
 
 export const welcomeMessages = [
@@ -60,4 +46,4 @@ export const welcomeMessages = [
     message: 'Add what you need to buy',
   },
   { id: 8, path: '/UserSettings', message: 'Change me how you like!' },
-]
+];
