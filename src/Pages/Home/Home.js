@@ -65,37 +65,39 @@ function Home() {
     <main className='main-home'>
       <Link className='add-ingredient' to='AddIngredient'>
         <GreenBanner text='+ ADD NEW ITEM' />
-      </Link>
-      {ingredientsList.map((item) => {
-        let date = new Date();
-        let countDownDate = new Date(item.ingredient_exp_date).getTime();
-        let now = date.getTime();
-        let timeleft = countDownDate - now;
-        let days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
+      </Link>{' '}
+      <div className='divforcard'>
+        {ingredientsList.map((item) => {
+          let date = new Date();
+          let countDownDate = new Date(item.ingredient_exp_date).getTime();
+          let now = date.getTime();
+          let timeleft = countDownDate - now;
+          let days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
 
-        let expDisplay;
-        if (timeleft < 0) {
-          expDisplay = `${item.ingredient_exp_date} | Expired`;
-        } else {
-          expDisplay = `${item.ingredient_exp_date} | ${days} days left`;
-        }
+          let expDisplay;
+          if (timeleft < 0) {
+            expDisplay = `${item.ingredient_exp_date} | Expired`;
+          } else {
+            expDisplay = `${item.ingredient_exp_date} | ${days} days left`;
+          }
 
-        return (
-          <Card
-            id={item.ingredient_id}
-            key={item.ingredient_id}
-            name={item.ingredient_name}
-            expdate={expDisplay}
-            quantity={item.ingredient_quantity}
-            checkboxStatus={checkboxStatus}
-            setCheckboxStatus={setCheckboxStatus}
-          >
-            <span
-              className={`expiry-dot ${timeleft > 0 ? 'green' : 'red'}`}
-            ></span>
-          </Card>
-        );
-      })}
+          return (
+            <Card
+              id={item.ingredient_id}
+              key={item.ingredient_id}
+              name={item.ingredient_name}
+              expdate={expDisplay}
+              quantity={item.ingredient_quantity}
+              checkboxStatus={checkboxStatus}
+              setCheckboxStatus={setCheckboxStatus}
+            >
+              <span
+                className={`expiry-dot ${timeleft > 0 ? 'green' : 'red'}`}
+              ></span>
+            </Card>
+          );
+        })}
+      </div>
       <div
         className={`buttons-container-home ${
           checkedItems.length > 0 ? `button-vh-ten` : `disable`
