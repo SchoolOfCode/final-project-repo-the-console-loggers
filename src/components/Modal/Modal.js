@@ -1,24 +1,17 @@
-import React from 'react';
-import Button from '../Ui/Button/Button';
+import { useState, useEffect } from 'react';
 
-const Modal = () => {
+const Modal = ({ isModalOpen, children }) => {
+  const [animation, setAnimation] = useState('hiddensi');
+
+  useEffect(() => {
+    setAnimation('modal-animation-in');
+  }, []);
+
   return (
-    <div className='modal-container'>
-      <div className='modal'>
-        <h1>Are you sure you want to delete the list?</h1>
-        <div className='button-container'>
-          <Button
-            text='Confirm'
-            backgroundColor='red-button'
-            textColor='white'
-          />
-          <Button
-            text='Cancel'
-            backgroundColor='transparent'
-            textColor='green'
-          />
-        </div>
-      </div>
+    <div
+      className={`modal-container ${isModalOpen ? 'showModal' : 'hideModal'}`}
+    >
+      <div className={`modal ${animation}`}>{children}</div>
     </div>
   );
 };
