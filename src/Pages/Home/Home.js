@@ -3,6 +3,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Card from '../../components/Card/Card';
+import EmptyScreen from '../../components/EmptyScreen/EmptyScreen';
 import GreenBanner from '../../components/GreenBanner/GreenBanner';
 import Button from '../../components/Ui/Button/Button';
 import { deleteIngredient, fetchUsers } from '../../Utils/Fetch';
@@ -16,8 +17,6 @@ function Home() {
   const [ingredientsList, setIngredientsList] = useState([]);
 
   const checkedItems = checkboxStatus.filter((item) => item.isChecked); //replace checkedItemsNumber() so it can be used in map on line 23
-
-  console.log('ingredientsList before handlechange', ingredientsList);
 
   async function handleChange() {
     checkedItems.map(async (item) => {
@@ -41,7 +40,6 @@ function Home() {
       })) //
     );
   }
-  console.log('ingredientsList outside handlechange', ingredientsList);
 
   useEffect(() => {
     const fetchResponse = async () => {
@@ -66,41 +64,43 @@ function Home() {
   return isAuthenticated ? (
     <main className='main-home'>
       <Link className='add-ingredient' to='AddIngredient'>
-        <GreenBanner text='+ ADD NEW ITEM' />
-      </Link>{' '}
+        {ingredientsList.length ? <GreenBanner text='+ ADD NEW ITEM' /> : null}
+      </Link>
       <div className='divforcard'>
-        {!ingredientsList.length
-          ? 'Nothing in the fridge (New component to be done)'
-          : ingredientsList.map((item) => {
-              let date = new Date();
-              let countDownDate = new Date(item.ingredient_exp_date).getTime();
-              let now = date.getTime();
-              let timeleft = countDownDate - now;
-              let days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
+        {!ingredientsList.length ? (
+          <EmptyScreen />
+        ) : (
+          ingredientsList.map((item) => {
+            let date = new Date();
+            let countDownDate = new Date(item.ingredient_exp_date).getTime();
+            let now = date.getTime();
+            let timeleft = countDownDate - now;
+            let days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
 
-              let expDisplay;
-              if (timeleft < 0) {
-                expDisplay = `${item.ingredient_exp_date} | Expired`;
-              } else {
-                expDisplay = `${item.ingredient_exp_date} | ${days} days left`;
-              }
+            let expDisplay;
+            if (timeleft < 0) {
+              expDisplay = `${item.ingredient_exp_date} | Expired`;
+            } else {
+              expDisplay = `${item.ingredient_exp_date} | ${days} days left`;
+            }
 
-              return (
-                <Card
-                  id={item.ingredient_id}
-                  key={item.ingredient_id}
-                  name={item.ingredient_name}
-                  expdate={expDisplay}
-                  quantity={item.ingredient_quantity}
-                  checkboxStatus={checkboxStatus}
-                  setCheckboxStatus={setCheckboxStatus}
-                >
-                  <span
-                    className={`expiry-dot ${timeleft > 0 ? 'green' : 'red'}`}
-                  ></span>
-                </Card>
-              );
-            })}
+            return (
+              <Card
+                id={item.ingredient_id}
+                key={item.ingredient_id}
+                name={item.ingredient_name}
+                expdate={expDisplay}
+                quantity={item.ingredient_quantity}
+                checkboxStatus={checkboxStatus}
+                setCheckboxStatus={setCheckboxStatus}
+              >
+                <span
+                  className={`expiry-dot ${timeleft > 0 ? 'green' : 'red'}`}
+                ></span>
+              </Card>
+            );
+          })
+        )}
       </div>
       <div
         className={`buttons-container-home ${
