@@ -13,30 +13,35 @@ function RecipeList() {
 
   const [recipesSearch, setRecipesSearch] = useState(recipes);
 
-  const chosenIngredients = state.checkboxStatus.filter(
-    (item) => item.isChecked === true
-  );
-  const stateLength = chosenIngredients.length - 1;
+  const chosenIngredients =
+    state && state.checkboxStatus.filter((item) => item.isChecked === true);
+  const stateLength = state && chosenIngredients.length - 1;
 
   return isAuthenticated ? (
     <div className='main-recipelist'>
-      <GreenBanner
-        text={`Looking recipes with: ${
-          stateLength > 0
-            ? `${chosenIngredients[0].name} & another ${stateLength} ingredients`
-            : chosenIngredients[0].name
-        }`}
-      />
-
-      {recipesSearch.map((recipe) => (
-        <RecipeCard
-          key={recipe.id}
-          name={recipe.title}
-          image={recipe.image}
-          missingIngredientsCount={recipe.missedIngredientCount}
-          usedIngredientCount={recipe.usedIngredientCount}
+      {!state ? (
+        <GreenBanner text='You havent chosen any ingredient' />
+      ) : (
+        <GreenBanner
+          text={`Looking recipes with: ${
+            stateLength > 0
+              ? `${chosenIngredients[0].name} & another ${stateLength} ingredients`
+              : chosenIngredients[0].name
+          }`}
         />
-      ))}
+      )}
+
+      {!state
+        ? 'You havent chosen any ingredient'
+        : recipesSearch.map((recipe) => (
+            <RecipeCard
+              key={recipe.id}
+              name={recipe.title}
+              image={recipe.image}
+              missingIngredientsCount={recipe.missedIngredientCount}
+              usedIngredientCount={recipe.usedIngredientCount}
+            />
+          ))}
     </div>
   ) : (
     <div className='app'>
