@@ -1,27 +1,46 @@
-//Components
+import { useAuth0 } from '@auth0/auth0-react';
+//Utils
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Card from '../../components/Card/Card';
 import GreenBanner from '../../components/GreenBanner/GreenBanner';
 import Button from '../../components/Ui/Button/Button';
-
+import { deleteIngredient, fetchUsers } from '../../Utils/Fetch';
 //Pages
 import Login from '../Login/Login';
-//Utils
-import { useState, useEffect } from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
-import { Link } from 'react-router-dom';
-import { fetchUsers } from '../../Utils/Fetch';
 
 function Home() {
-  //State that storage if the checkboxes are check or not
+  //State that stores if the checkboxes are checked or not
   const [checkboxStatus, setCheckboxStatus] = useState([]);
   const { isAuthenticated, isLoading, user } = useAuth0();
   const [ingredientsList, setIngredientsList] = useState([]);
 
-  //Find out checked items number
-  const checkedItemsNumber = () => {
-    const checkedItems = checkboxStatus.filter((item) => item.isChecked);
-    return checkedItems.length;
-  };
+  const checkedItems = checkboxStatus.filter((item) => item.isChecked); //replace checkedItemsNumber() so it can be used in map on line 23
+
+  console.log('ingredientsList before handlechange', ingredientsList);
+
+  async function handleChange() {
+   checkedItems.map(async (item) => {
+      return await deleteIngredient(user, item.id);
+    })
+    const checkedItemsIds = checkedItems.map(item => item.id)
+    //  setIngredientsList(!checkedItems)
+    console.log('ingredientsList inside handlechange', ingredientsList);
+    const updatedList = ingredientsList.filter(
+      (item) => !checkedItemsIds.includes(item.ingredient_id) // as long as an id isn't equal to our checked ingredient id, display it
+    );
+    // console.log('checkedItems[0] inside handlechange', checkedItems[0]);
+    // console.log('deleted inside handlechange', updatedList);
+
+    setIngredientsList(updatedList); 
+    setCheckboxStatus(
+      updatedList.map((item) => ({
+        id: item.ingredient_id,
+        isChecked: false,
+      })) //
+    );
+  }
+  console.log('ingredientsList outside handlechange', ingredientsList);
 
   useEffect(() => {
     const fetchResponse = async () => {
@@ -79,16 +98,17 @@ function Home() {
       })}
       <div
         className={`buttons-container-home ${
-          checkedItemsNumber() ? `button-vh-ten` : `disable`
+          checkedItems.length > 0 ? `button-vh-ten` : `disable`
         }`}
       >
         <Button
-          text={`Cook (${checkedItemsNumber()})`}
+          text={`Cook (${checkedItems.length})`}
           backgroundColor='yellow-button'
           textColor='white'
           width='percent-button-40'
         />
         <Button
+          handleClick={handleChange}
           text='Delete'
           backgroundColor='red-button'
           textColor='white'

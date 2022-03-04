@@ -26,6 +26,17 @@ async function fetchIngredients(user) {
   return response.payload;
 }
 
+//Delete ingredient by id
+
+export async function deleteIngredient(user, item) {
+  // fetch request to clear shopping list
+  const res = await fetch (`https://four-week-project-soc.herokuapp.com/api/v1/user/${user.sub}/ingredients/${item}` ,
+  {method: "DELETE"}) ;
+  const data = await res.json();
+  console.log(data)
+  return data.allIngredients
+}
+
 //Post new user
 async function putNewUser(user) {
   const fetchResponse = await fetch(
