@@ -20,10 +20,10 @@ function Home() {
   console.log('ingredientsList before handlechange', ingredientsList);
 
   async function handleChange() {
-   checkedItems.map(async (item) => {
+    checkedItems.map(async (item) => {
       return await deleteIngredient(user, item.id);
-    })
-    const checkedItemsIds = checkedItems.map(item => item.id)
+    });
+    const checkedItemsIds = checkedItems.map((item) => item.id);
     //  setIngredientsList(!checkedItems)
     console.log('ingredientsList inside handlechange', ingredientsList);
     const updatedList = ingredientsList.filter(
@@ -32,7 +32,7 @@ function Home() {
     // console.log('checkedItems[0] inside handlechange', checkedItems[0]);
     // console.log('deleted inside handlechange', updatedList);
 
-    setIngredientsList(updatedList); 
+    setIngredientsList(updatedList);
     setCheckboxStatus(
       updatedList.map((item) => ({
         id: item.ingredient_id,
@@ -67,36 +67,38 @@ function Home() {
         <GreenBanner text='+ ADD NEW ITEM' />
       </Link>{' '}
       <div className='divforcard'>
-        {ingredientsList.map((item) => {
-          let date = new Date();
-          let countDownDate = new Date(item.ingredient_exp_date).getTime();
-          let now = date.getTime();
-          let timeleft = countDownDate - now;
-          let days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
+        {!ingredientsList.length
+          ? 'Nothing in the fridge (New component to be done)'
+          : ingredientsList.map((item) => {
+              let date = new Date();
+              let countDownDate = new Date(item.ingredient_exp_date).getTime();
+              let now = date.getTime();
+              let timeleft = countDownDate - now;
+              let days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
 
-          let expDisplay;
-          if (timeleft < 0) {
-            expDisplay = `${item.ingredient_exp_date} | Expired`;
-          } else {
-            expDisplay = `${item.ingredient_exp_date} | ${days} days left`;
-          }
+              let expDisplay;
+              if (timeleft < 0) {
+                expDisplay = `${item.ingredient_exp_date} | Expired`;
+              } else {
+                expDisplay = `${item.ingredient_exp_date} | ${days} days left`;
+              }
 
-          return (
-            <Card
-              id={item.ingredient_id}
-              key={item.ingredient_id}
-              name={item.ingredient_name}
-              expdate={expDisplay}
-              quantity={item.ingredient_quantity}
-              checkboxStatus={checkboxStatus}
-              setCheckboxStatus={setCheckboxStatus}
-            >
-              <span
-                className={`expiry-dot ${timeleft > 0 ? 'green' : 'red'}`}
-              ></span>
-            </Card>
-          );
-        })}
+              return (
+                <Card
+                  id={item.ingredient_id}
+                  key={item.ingredient_id}
+                  name={item.ingredient_name}
+                  expdate={expDisplay}
+                  quantity={item.ingredient_quantity}
+                  checkboxStatus={checkboxStatus}
+                  setCheckboxStatus={setCheckboxStatus}
+                >
+                  <span
+                    className={`expiry-dot ${timeleft > 0 ? 'green' : 'red'}`}
+                  ></span>
+                </Card>
+              );
+            })}
       </div>
       <div
         className={`buttons-container-home ${
