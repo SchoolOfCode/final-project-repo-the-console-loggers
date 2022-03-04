@@ -12,16 +12,20 @@ function RecipeList() {
   const { state } = useLocation();
 
   const [recipesSearch, setRecipesSearch] = useState(recipes);
-  console.log(state);
 
-  const mapState = state.checkboxStatus.map((item) => item);
-  const stateLength = mapState.length - 1;
-  console.log(stateLength);
+  const chosenIngredients = state.checkboxStatus.filter(
+    (item) => item.isChecked === true
+  );
+  const stateLength = chosenIngredients.length - 1;
 
   return isAuthenticated ? (
     <div className='main-recipelist'>
       <GreenBanner
-        text={`Looking recipes with: ${state.checkboxStatus[0].name} & another ${stateLength} ingredients `}
+        text={`Looking recipes with: ${
+          stateLength > 0
+            ? `${chosenIngredients[0].name} & another ${stateLength} ingredients`
+            : chosenIngredients[0].name
+        }`}
       />
 
       {recipesSearch.map((recipe) => (
@@ -33,17 +37,6 @@ function RecipeList() {
           usedIngredientCount={recipe.usedIngredientCount}
         />
       ))}
-
-      {/* {recipes.map((item) => {
-        return (
-          <RecipeCard
-            key={item.id}
-            name={item.name}
-            cookingTime={item.cookingTime}
-            fridgeIngredients={item.fridgeIngredients}
-          />
-        );
-      })} */}
     </div>
   ) : (
     <div className='app'>
