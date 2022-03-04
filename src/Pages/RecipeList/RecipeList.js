@@ -11,7 +11,7 @@ function RecipeList() {
   const { isAuthenticated } = useAuth0();
   const { state } = useLocation();
 
-  const [recipesSearch, setRecipesSearch] = useState(recipes);
+  const [recipesSearch] = useState(recipes);
 
   const chosenIngredients =
     state && state.checkboxStatus.filter((item) => item.isChecked === true);

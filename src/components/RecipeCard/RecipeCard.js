@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom'; //useLocation
-import { recipes } from '../../data/recipes';
-// import FullRecipe from '../../Pages/FullRecipe/FullRecipe'
 import Button from '../Ui/Button/Button';
 
 const RecipeCard = ({
