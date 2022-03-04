@@ -58,7 +58,9 @@ const Card = ({
             selected && location.pathname === '/Home'
               ? 'selected'
               : selected && location.pathname === '/ShoppingList' && 'cross'
-          } expanded-card ${expandedCard ? 'showCard' : 'hideCard'}`}
+          } expanded-card ${expandedCard ? 'hideCard' : 'hideCard'}`
+          // if you want to expand card, change first 'hideCard' to 'showCard'
+          }
         ></div>
       </div>
     </div>
