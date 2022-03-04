@@ -61,6 +61,7 @@ function AddItem() {
           />
 
           <Button
+          style={{marginTop: "2rem"}}
             className='add-button'
             text='Add New Item'
             backgroundColor='green'

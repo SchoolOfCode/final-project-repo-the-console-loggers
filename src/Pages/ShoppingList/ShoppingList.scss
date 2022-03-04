@@ -3,8 +3,12 @@
 
 .main-shoppinglist {
   @include main-container;
-  margin: auto;
-  padding: 1rem 0 1.4rem 0;
+  // margin: 80vh;
+  // padding: 1rem 0 1.4rem 0;
+}
+
+.divforcardforshopping {
+  height: 80%
 }
 
 .buttons-container-shoppinglist {
@@ -12,11 +16,12 @@
   justify-content: space-evenly;
   align-items: center;
   width: 89%;
-  margin: auto;
+  margin: auto auto 0 auto;
   padding: 1rem 0 1.4rem 0;
   position: sticky;
   border-top: 1px solid #f0f0f0;
   z-index: 20;
+  background-color: inherit;
 }
 
 .add-item {

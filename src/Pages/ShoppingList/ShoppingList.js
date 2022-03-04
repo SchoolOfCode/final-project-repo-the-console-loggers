@@ -56,19 +56,20 @@ function ShoppingList() {
         <Link className='add-item' to='AddItem'>
           <GreenBanner text='+ ADD NEW ITEM' />
         </Link>
-
-        {shopping.map((item) => {
-          return (
-            <Card
-              id={item.item_id}
-              key={item.item_id}
-              name={item.item_name}
-              quantity={item.item_quantity}
-              checkboxStatus={checkboxStatus}
-              setCheckboxStatus={setCheckboxStatus}
-            />
-          );
-        })}
+        <div className='divforcardforshopping'>
+          {shopping.map((item) => {
+            return (
+              <Card
+                id={item.item_id}
+                key={item.item_id}
+                name={item.item_name}
+                quantity={item.item_quantity}
+                checkboxStatus={checkboxStatus}
+                setCheckboxStatus={setCheckboxStatus}
+              />
+            );
+          })}
+        </div>
         <div className='buttons-container-shoppinglist'>
           <Button
             handleClick={() => setIsModalOpen(true)}
