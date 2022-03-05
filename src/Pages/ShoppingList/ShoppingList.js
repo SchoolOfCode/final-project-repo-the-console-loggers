@@ -34,11 +34,11 @@ function ShoppingList() {
 
   useEffect(() => {
     const fetchResponse = async () => {
-      const test = await fetchUsersShopping(user);
-      console.log(test);
-      setShopping(test);
+      const response = await fetchUsersShopping(user);
+      console.log(response);
+      setShopping(response);
       setCheckboxStatus(
-        test.map((item) => ({
+        response.map((item) => ({
           id: item.item_id,
           isChecked: false,
         }))

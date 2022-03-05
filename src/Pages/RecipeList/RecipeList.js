@@ -1,22 +1,31 @@
+//Utils
 import { useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
+import { useLocation } from 'react-router-dom';
+import { createApiURL } from '../../Utils/createApiUrl';
+//Components
 import GreenBanner from '../../components/GreenBanner/GreenBanner';
 import RecipeCard from '../../components/RecipeCard/RecipeCard';
-import { recipes } from '../../data/recipes';
 import EmptyScreen from '../../components/EmptyScreen/EmptyScreen';
-import { useLocation } from 'react-router-dom';
+//Data
+import { recipes } from '../../data/recipes';
 //Pages
 import Login from '../Login/Login';
 
 function RecipeList() {
   const { isAuthenticated } = useAuth0();
   const { state } = useLocation();
-
   const [recipesSearch] = useState(recipes);
 
+  //Filter selected items on home
   const chosenIngredients =
     state && state.checkboxStatus.filter((item) => item.isChecked === true);
   const stateLength = state && chosenIngredients.length - 1;
+
+  //API FINAL URL TO BE USE IN THE FETCH
+  const ApiURL = chosenIngredients && createApiURL(chosenIngredients);
+  //TEST
+  chosenIngredients && console.log(ApiURL);
 
   return isAuthenticated ? (
     <div className='main-recipelist'>
