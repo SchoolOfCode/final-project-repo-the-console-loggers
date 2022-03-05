@@ -88,12 +88,11 @@ export async function fetchUsersShopping(user) {
 }
 
 //Fetch spooncular API
-export async function fetchRecipesApi(ApiURL) {
-  const fetchResponse = await fetch(ApiURL, {
+export async function fetchRecipesApi(ApiURLString) {
+  const fetchResponse = await fetch(ApiURLString, {
     method: 'GET',
   });
   //Store the response.
   const response = await fetchResponse.json();
-  console.log(response);
-  return response.payload;
+  return response;
 }

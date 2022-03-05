@@ -4,20 +4,19 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { useLocation } from 'react-router-dom';
 import { createApiURL } from '../../Utils/createApiUrl';
 import { fetchRecipesApi } from '../../Utils/Fetch';
+
 //Components
 import GreenBanner from '../../components/GreenBanner/GreenBanner';
 import RecipeCard from '../../components/RecipeCard/RecipeCard';
 import EmptyScreen from '../../components/EmptyScreen/EmptyScreen';
-//Data
-import { recipes } from '../../data/recipes';
+
 //Pages
 import Login from '../Login/Login';
 
 function RecipeList() {
   const { isAuthenticated } = useAuth0();
   const { state } = useLocation();
-  const [recipesSearch] = useState(recipes);
-  const [apiURL, setApiURL] = useState('');
+
   const [apiSearch, setApiSearch] = useState([]);
 
   //Filter selected items on home
@@ -26,28 +25,15 @@ function RecipeList() {
   const stateLength = state && chosenIngredients.length - 1;
 
   //Set the URL for the API
+  const ApiURLString = chosenIngredients && createApiURL(chosenIngredients);
+
   useEffect(() => {
-    //API FINAL URL TO BE USE IN THE FETCH
-    const ApiURLString = chosenIngredients && createApiURL(chosenIngredients);
-    setApiURL(ApiURLString);
-  }, [chosenIngredients]);
-
-  // //TEST
-  // chosenIngredients && console.log(apiURL);
-
-  // useEffect(() => {
-  //   const fetchResponse2 = async (apiURL) => {
-  //     const response = await fetchRecipesApi(
-  //       `https://api.spoonacular.com/recipes/findByIngredients?ingredients=Aubergine&number=10&apiKey=cdcba90663c34246a87128d9ce80330c`
-  //     );
-  //     console.log(response);
-  //     setApiSearch(response);
-  //   };
-
-  //   fetchResponse2(apiURL);
-  // }, [apiURL]);
-
-  // console.log(apiSearch);
+    const fetchResponse = async () => {
+      const response = await fetchRecipesApi(ApiURLString);
+      setApiSearch(response);
+    };
+    fetchResponse();
+  }, [ApiURLString]);
 
   return isAuthenticated ? (
     <div className='main-recipelist'>
@@ -70,7 +56,7 @@ function RecipeList() {
           linkTo='../Home/AddIngredient'
         />
       ) : (
-        recipesSearch.map((recipe) => (
+        apiSearch.map((recipe) => (
           <RecipeCard
             key={recipe.id}
             name={recipe.title}
