@@ -43,10 +43,10 @@ function Home() {
 
   useEffect(() => {
     const fetchResponse = async () => {
-      const test = await fetchUsers(user);
-      setIngredientsList(test);
+      const response = await fetchUsers(user);
+      setIngredientsList(response);
       setCheckboxStatus(
-        test.map((item) => ({
+        response.map((item) => ({
           id: item.ingredient_id,
           name: item.ingredient_name,
           isChecked: false,
