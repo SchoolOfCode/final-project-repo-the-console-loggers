@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useLocation } from 'react-router-dom';
-import { createApiURL } from '../../Utils/createApiUrl';
+
 //Components
 import GreenBanner from '../../components/GreenBanner/GreenBanner';
 import RecipeCard from '../../components/RecipeCard/RecipeCard';
@@ -21,11 +21,6 @@ function RecipeList() {
   const chosenIngredients =
     state && state.checkboxStatus.filter((item) => item.isChecked === true);
   const stateLength = state && chosenIngredients.length - 1;
-
-  //API FINAL URL TO BE USE IN THE FETCH
-  const ApiURL = chosenIngredients && createApiURL(chosenIngredients);
-  //TEST
-  chosenIngredients && console.log(ApiURL);
 
   return isAuthenticated ? (
     <div className='main-recipelist'>
