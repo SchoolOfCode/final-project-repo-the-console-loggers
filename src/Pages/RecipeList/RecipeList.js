@@ -1,8 +1,9 @@
 //Utils
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useLocation } from 'react-router-dom';
 import { createApiURL } from '../../Utils/createApiUrl';
+import { fetchRecipesApi } from '../../Utils/Fetch';
 //Components
 import GreenBanner from '../../components/GreenBanner/GreenBanner';
 import RecipeCard from '../../components/RecipeCard/RecipeCard';
@@ -16,16 +17,37 @@ function RecipeList() {
   const { isAuthenticated } = useAuth0();
   const { state } = useLocation();
   const [recipesSearch] = useState(recipes);
+  const [apiURL, setApiURL] = useState('');
+  const [apiSearch, setApiSearch] = useState([]);
 
   //Filter selected items on home
   const chosenIngredients =
     state && state.checkboxStatus.filter((item) => item.isChecked === true);
   const stateLength = state && chosenIngredients.length - 1;
 
-  //API FINAL URL TO BE USE IN THE FETCH
-  const ApiURL = chosenIngredients && createApiURL(chosenIngredients);
-  //TEST
-  chosenIngredients && console.log(ApiURL);
+  //Set the URL for the API
+  useEffect(() => {
+    //API FINAL URL TO BE USE IN THE FETCH
+    const ApiURLString = chosenIngredients && createApiURL(chosenIngredients);
+    setApiURL(ApiURLString);
+  }, [chosenIngredients]);
+
+  // //TEST
+  // chosenIngredients && console.log(apiURL);
+
+  // useEffect(() => {
+  //   const fetchResponse2 = async (apiURL) => {
+  //     const response = await fetchRecipesApi(
+  //       `https://api.spoonacular.com/recipes/findByIngredients?ingredients=Aubergine&number=10&apiKey=cdcba90663c34246a87128d9ce80330c`
+  //     );
+  //     console.log(response);
+  //     setApiSearch(response);
+  //   };
+
+  //   fetchResponse2(apiURL);
+  // }, [apiURL]);
+
+  // console.log(apiSearch);
 
   return isAuthenticated ? (
     <div className='main-recipelist'>
