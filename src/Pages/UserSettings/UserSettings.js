@@ -1,10 +1,9 @@
-//Auth user
-import { useAuth0 } from '@auth0/auth0-react'
-
-import Card from '../../components/Card/Card'
-import Button from '../../components/Ui/Button/Button'
-import InputBox from '../../components/Ui/InputBox/InputBox'
-import UserSettingsCard from '../../components/UserSettingsCard/UserSettingsCard'
+//Utils
+import { useAuth0 } from '@auth0/auth0-react';
+//Components
+import Card from '../../components/Card/Card';
+import Button from '../../components/Ui/Button/Button';
+import UserSettingsCard from '../../components/UserSettingsCard/UserSettingsCard';
 //Pages
 import Login from '../Login/Login';
 
@@ -15,27 +14,6 @@ function UserSettings() {
       <h1 className='settings-title'>Settings</h1>
 
       <Card name='darkmode-lightmode' />
-
-      <UserSettingsCard
-        // prompt='update your username'
-        backgroundColor='green-button'
-        textColor='white'
-        width='fullLength'
-      >
-        <h1 className='settings-card-title'>Username</h1>
-        <p className='settings-text'>Save Username</p>
-        <div className='username-input-container'>
-          <InputBox />
-        </div>
-        <div className='buttons-container-settings'>
-          <Button
-            text='Save user name'
-            backgroundColor='green-button'
-            textColor='white'
-            width='fullLength'
-          />
-        </div>
-      </UserSettingsCard>
 
       <UserSettingsCard width='fullLength' logout={logout}>
         <h1 className='settings-card-title'>Log out</h1>
@@ -71,4 +49,4 @@ function UserSettings() {
   );
 }
 
-export default UserSettings
+export default UserSettings;

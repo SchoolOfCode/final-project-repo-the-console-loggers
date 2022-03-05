@@ -45,5 +45,5 @@ export const welcomeMessages = [
     path: '/ShoppingList/AddItem',
     message: 'Add what you need to buy',
   },
-  { id: 8, path: '/UserSettings', message: 'Change me how you like!' },
+  { id: 8, path: '/UserSettings', message: '⚙️ Change me how you like!' },
 ];
