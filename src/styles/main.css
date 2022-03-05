@@ -415,8 +415,32 @@ li {
 }
 
 .emptyScreenContainer {
-  background-color: gray;
-  height: 100%;
+  min-height: 75vh;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.emptyScreenContainer img {
+  width: 120px;
+}
+.emptyScreenContainer h1 {
+  font-size: 1.5rem;
+  margin: 0 0 1.5rem;
+  color: #8c8c8c;
+}
+.emptyScreenContainer .empty-paragraph {
+  margin: 1rem 0 0 0;
+  width: 90%;
+}
+.emptyScreenContainer .text-ingredients {
+  color: #2ecc71;
+  font-weight: 600;
+}
+.emptyScreenContainer .button-container-empty-screen {
+  margin: 1rem 0 0 0;
+  width: 70%;
 }
 
 .label-input-checkbox {

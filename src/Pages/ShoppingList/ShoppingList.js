@@ -3,6 +3,7 @@ import Card from '../../components/Card/Card';
 import GreenBanner from '../../components/GreenBanner/GreenBanner';
 import Button from '../../components/Ui/Button/Button';
 import Modal from '../../components/Modal/Modal';
+import EmptyScreen from '../../components/EmptyScreen/EmptyScreen';
 
 //Pages
 import Login from '../Login/Login';
@@ -53,33 +54,47 @@ function ShoppingList() {
   return isAuthenticated ? (
     <>
       <main className='main-home'>
-        <Link className='add-item' to='AddItem'>
-          <GreenBanner text='+ ADD NEW ITEM' />
-        </Link>
+        {!shopping.length ? null : (
+          <Link className='add-item' to='AddItem'>
+            <GreenBanner text='+ ADD NEW ITEM' />
+          </Link>
+        )}
         <div className='divforcardforshopping'>
-          {shopping.map((item) => {
-            return (
-              <Card
-                id={item.item_id}
-                key={item.item_id}
-                name={item.item_name}
-                quantity={item.item_quantity}
-                checkboxStatus={checkboxStatus}
-                setCheckboxStatus={setCheckboxStatus}
-              />
-            );
-          })}
+          {!shopping.length ? (
+            <EmptyScreen
+              title='No items in the shopping list'
+              icon='empty-list'
+              subText='Add some items to your shopping '
+              highlight='list'
+              linkTo='./AddItem'
+            />
+          ) : (
+            shopping.map((item) => {
+              return (
+                <Card
+                  id={item.item_id}
+                  key={item.item_id}
+                  name={item.item_name}
+                  quantity={item.item_quantity}
+                  checkboxStatus={checkboxStatus}
+                  setCheckboxStatus={setCheckboxStatus}
+                />
+              );
+            })
+          )}
         </div>
-        <div className='buttons-container-shoppinglist'>
-          <Button
-            handleClick={() => setIsModalOpen(true)}
-            text='Clear shopping list'
-            backgroundColor='red-button'
-            textColor='white'
-            width='fullLength'
-            icon='bin'
-          />
-        </div>
+        {!shopping.length ? null : (
+          <div className='buttons-container-shoppinglist'>
+            <Button
+              handleClick={() => setIsModalOpen(true)}
+              text='Clear shopping list'
+              backgroundColor='red-button'
+              textColor='white'
+              width='fullLength'
+              icon='bin'
+            />
+          </div>
+        )}
         {isModalOpen && (
           <Modal isModalOpen={isModalOpen}>
             <h1>

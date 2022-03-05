@@ -12,7 +12,7 @@ const EmptyScreen = ({ title, icon, subText, highlight, linkTo }) => {
       <div className='button-container-empty-screen'>
         <Link className='add-ingredient' to={linkTo}>
           <Button
-            text='+ Add ingredients'
+            text='+ Add items'
             backgroundColor='green-button'
             textColor='white'
             width='fullLength'
