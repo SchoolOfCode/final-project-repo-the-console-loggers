@@ -9,7 +9,7 @@ function AddIngredient() {
   const [expDate, setExpDate] = useState([]);
   const [quantity, setQuantity] = useState('');
 
-const { isAuthenticated, user } = useAuth0();
+  const { isAuthenticated, user } = useAuth0();
 
   function handleName(e) {
     setName(e.target.value);

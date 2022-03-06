@@ -8,6 +8,7 @@
   align-items: center;
   justify-content: center;
   background-color: variables.$ivory;
+  max-height: 50%;
 
   .logo {
     width: 80%;
@@ -50,4 +51,8 @@
     text-decoration: underline dotted 2px;
     font-weight: 700;
   }
+}
+
+.logo-wrapper {
+  padding-top: 3rem;
 }

@@ -1,0 +1,29 @@
+.logo-background {
+  max-width: 20rem;
+  position: absolute;
+}
+.logo-fridge {
+  max-width: 20rem;
+  position: relative;
+}
+
+.logo {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .logo-background {
+    animation: App-logo-spin infinite 5s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
