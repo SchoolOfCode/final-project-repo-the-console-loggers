@@ -5,6 +5,7 @@ import Button from '../Ui/Button/Button';
 const RecipeCard = ({
   name,
   image,
+  id,
   cookingTime,
   missingIngredientsCount,
   usedIngredientCount,
@@ -19,6 +20,8 @@ const RecipeCard = ({
   const expandCard = () => {
     setExpandedCard(!expandedCard);
   };
+
+  console.log(image);
 
   return (
     <div className='card-wrapper-recipe'>
@@ -55,7 +58,11 @@ const RecipeCard = ({
           </div>
 
           <div className='buttons-container'>
-            <Link className='link' to='/FullRecipe'>
+            <Link
+              className='link'
+              to='/FullRecipe'
+              state={{ id: id, image: image, name: name }}
+            >
               <Button
                 text='Keep reading'
                 backgroundColor='yellow-button'

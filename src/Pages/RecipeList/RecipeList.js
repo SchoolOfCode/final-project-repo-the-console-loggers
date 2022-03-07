@@ -58,6 +58,7 @@ function RecipeList() {
       ) : (
         apiSearch.map((recipe) => (
           <RecipeCard
+            id={recipe.id}
             key={recipe.id}
             name={recipe.title}
             image={recipe.image}
