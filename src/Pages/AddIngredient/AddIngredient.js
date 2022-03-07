@@ -67,9 +67,7 @@ useEffect(() => {
             <Modal isModalOpen={isModalOpen}  >
               <h1>Ingredient added to fridge!</h1>
             </Modal>
-           
-          )
-          }
+        )}  
       <h1 className='new-item'>ADD NEW ITEM</h1>
       <div className='add-item-card'>
         <form className='form' onSubmit={handleSubmit}>
