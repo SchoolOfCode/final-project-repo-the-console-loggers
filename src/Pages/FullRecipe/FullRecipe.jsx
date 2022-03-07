@@ -178,14 +178,13 @@ function FullRecipe() {
               className='like-img'
               src={`${process.env.PUBLIC_URL}/assets/icons/heart.svg`}
               alt='heart'
-              srcset=''
             />{' '}
             {state.likes} Likes
           </div>
           <p className='ingredients-title'>Ingredients</p>
           <div className='ingredients-container'>
             {ingredients.map((ingredient) => (
-              <div className='ingredient-Layer'>
+              <div key={ingredient} className='ingredient-Layer'>
                 <Checkbox size='small' />
                 <p className='ingredient-text'>{ingredient}</p>
               </div>
@@ -193,13 +192,11 @@ function FullRecipe() {
           </div>
           <p className='steps-title'>Steps</p>
           {recipe &&
-            recipe[0].steps.map((item) => (
-              <>
-                <div className='recipe-step'>
-                  <span className='step-number'>{item.number}</span>
-                  {item.step}
-                </div>
-              </>
+            recipe[0].steps.map((item, index) => (
+              <div key={index} className='recipe-step'>
+                <span className='step-number'>{item.number}</span>
+                {item.step}
+              </div>
             ))}
         </div>
       </div>
