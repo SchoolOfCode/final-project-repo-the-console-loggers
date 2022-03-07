@@ -62,6 +62,7 @@ function RecipeList() {
             key={recipe.id}
             name={recipe.title}
             image={recipe.image}
+            likes={recipe.likes}
             missingIngredientsCount={recipe.missedIngredientCount}
             usedIngredientCount={recipe.usedIngredientCount}
           />

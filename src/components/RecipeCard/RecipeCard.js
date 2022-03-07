@@ -5,6 +5,7 @@ import Button from '../Ui/Button/Button';
 const RecipeCard = ({
   name,
   image,
+  likes,
   id,
   cookingTime,
   missingIngredientsCount,
@@ -61,7 +62,7 @@ const RecipeCard = ({
             <Link
               className='link'
               to='/FullRecipe'
-              state={{ id: id, image: image, name: name }}
+              state={{ id: id, image: image, name: name, likes: likes }}
             >
               <Button
                 text='Keep reading'

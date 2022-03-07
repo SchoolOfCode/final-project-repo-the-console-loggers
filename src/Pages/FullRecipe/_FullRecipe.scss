@@ -28,7 +28,22 @@
 }
 
 .recipe-name {
-  margin: 1rem;
+  margin: 1rem 1rem 0 1rem;
+}
+
+.likes-container {
+  margin: 0.5rem 0 0.5rem 1rem;
+  padding: 0.2rem;
+  display: flex;
+  background-color: #e4faee;
+  border: 1px solid #5adb90;
+  width: 100px;
+  border-radius: 8px;
+
+  .like-img {
+    width: 20px;
+    margin: 0 0.2rem 0 0;
+  }
 }
 
 .steps-title {

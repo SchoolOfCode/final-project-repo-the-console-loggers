@@ -139,9 +139,10 @@ function FullRecipe() {
   const { state } = useLocation();
   const apiURL = `https://api.spoonacular.com/recipes/${state.id}/analyzedInstructions?apiKey=${process.env.REACT_APP_API_KEY}`;
   const [recipe, setRecipe] = useState(data);
+  const [ingredients, setIngredients] = useState([]);
   const image = state.image;
-  console.table(recipe[0].steps.map((item) => item));
 
+  //Uncomment the useEffect & leave the state recipe empty to use real data from the API.
   // useEffect(() => {
   //   const fetchResponse = async () => {
   //     const response = await fetchRecipesApi(apiURL);
@@ -150,22 +151,46 @@ function FullRecipe() {
   //   fetchResponse();
   // }, [apiURL]);
 
-  console.log(image);
+  useEffect(() => {
+    const getIngredients = () => {
+      const mapIngredients =
+        recipe &&
+        recipe[0].steps.map((item) =>
+          item.ingredients.map((ingredient) => ingredient.name)
+        );
+
+      const flatArray = mapIngredients.flat();
+      const result = [...new Set(flatArray)];
+      return result;
+    };
+    setIngredients(getIngredients());
+  }, [recipe]);
+
   return isAuthenticated ? (
     <main className='main-full-recipe '>
       <div className='recipe-container'>
         <img className='recipe-img' src={image} alt='Recipe' />
         <div className='recipe-instructions'>
           <h2 className='recipe-name'>{state.name}</h2>
+          <div className='likes-container'>
+            <img
+              className='like-img'
+              src={`${process.env.PUBLIC_URL}/assets/icons/heart.svg`}
+              alt='heart'
+              srcset=''
+            />{' '}
+            {state.likes} Likes
+          </div>
           <p className='steps-title'>Steps</p>
-          {recipe[0].steps.map((item) => (
-            <>
-              <div className='recipe-step'>
-                <span className='step-number'>{item.number}</span>
-                {item.step}
-              </div>
-            </>
-          ))}
+          {recipe &&
+            recipe[0].steps.map((item) => (
+              <>
+                <div className='recipe-step'>
+                  <span className='step-number'>{item.number}</span>
+                  {item.step}
+                </div>
+              </>
+            ))}
         </div>
       </div>
     </main>
