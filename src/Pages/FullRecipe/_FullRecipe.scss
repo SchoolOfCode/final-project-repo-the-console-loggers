@@ -47,18 +47,49 @@
 }
 
 .steps-title {
-  margin: 0 0 0 1rem;
-  font-size: 1.2rem;
+  margin: 1rem 0 0 1rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: variables.$green;
+  text-decoration: underline;
 }
 
 .recipe-step {
   margin: 1rem;
+  &:nth-child(6) {
+    margin: 0.7rem 1rem 0 1rem;
+  }
 }
 
 .step-number {
   margin: 0 0.3rem 0 0;
   font-weight: 700;
   color: variables.$green;
+}
+
+.ingredients-container {
+  display: flex;
+  flex-direction: column;
+
+  margin: auto;
+  width: 90%;
+
+  .ingredient-text {
+    margin: 0 0 0 0.5rem;
+    text-transform: capitalize;
+  }
+}
+
+.ingredients-title {
+  margin: 1rem 0 0.7rem 1rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: variables.$green;
+  text-decoration: underline;
+}
+
+.ingredient-Layer {
+  display: flex;
+  align-items: center;
+  margin: 0 0 0.5rem 0;
 }

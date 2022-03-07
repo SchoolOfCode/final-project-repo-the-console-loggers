@@ -47,6 +47,7 @@ const Card = ({
             <Checkbox
               id={id}
               name={name}
+              size='regular'
               selected={selected}
               setSelected={setSelected}
               checkboxStatus={checkboxStatus}

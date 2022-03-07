@@ -25,14 +25,22 @@
 //Checkbox
 .label-input-checkbox span:first-child {
   position: relative;
-  width: 28px;
-  height: 28px;
   border-radius: 4px;
   transform: scale(1);
   border: 3px solid variables.$green;
   transition: all 0.2s ease;
   box-shadow: 0 1px 1px rgba(0, 16, 75, 0.05);
   -webkit-tap-highlight-color: transparent;
+}
+
+.checkbox-regular-size {
+  width: 28px;
+  height: 28px;
+}
+
+.checkbox-small-size {
+  width: 20px;
+  height: 20px;
 }
 
 .label-input-checkbox span:first-child svg {

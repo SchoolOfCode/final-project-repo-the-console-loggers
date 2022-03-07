@@ -3,6 +3,7 @@ import { useState } from 'react';
 const Checkbox = ({
   id,
   name,
+  size,
   selected,
   setSelected,
   checkboxStatus,
@@ -40,7 +41,7 @@ const Checkbox = ({
       />
 
       <label className='label-input-checkbox' htmlFor={id}>
-        <span className='check-box'>
+        <span className={`check-box checkbox-${size}-size`}>
           <svg width='12px' height='10px'>
             <use href='#check'></use>
           </svg>

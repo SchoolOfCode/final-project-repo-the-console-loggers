@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom';
 import Login from '../Login/Login';
 //Utils
 import { fetchRecipesApi } from '../../Utils/Fetch';
+import Checkbox from '../../components/Ui/Checkbox/Checkbox';
 
 //Temp data
 const data = [
@@ -180,6 +181,15 @@ function FullRecipe() {
               srcset=''
             />{' '}
             {state.likes} Likes
+          </div>
+          <p className='ingredients-title'>Ingredients</p>
+          <div className='ingredients-container'>
+            {ingredients.map((ingredient) => (
+              <div className='ingredient-Layer'>
+                <Checkbox size='small' />
+                <p className='ingredient-text'>{ingredient}</p>
+              </div>
+            ))}
           </div>
           <p className='steps-title'>Steps</p>
           {recipe &&
