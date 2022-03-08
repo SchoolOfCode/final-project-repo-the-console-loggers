@@ -8,6 +8,7 @@ const RecipeCard = ({
   likes,
   id,
   cookingTime,
+  ingredientSelected,
   missingIngredientsCount,
   usedIngredientCount,
   // fridgeIngredients,
@@ -60,7 +61,13 @@ const RecipeCard = ({
             <Link
               className='link'
               to='/FullRecipe'
-              state={{ id: id, image: image, name: name, likes: likes }}
+              state={{
+                id: id,
+                image: image,
+                name: name,
+                likes: likes,
+                ingredientSelected: ingredientSelected,
+              }}
             >
               <Button
                 text='Keep reading'

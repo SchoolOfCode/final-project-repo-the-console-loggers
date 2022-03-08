@@ -64,6 +64,7 @@ function RecipeList() {
             name={recipe.title}
             image={recipe.image}
             likes={recipe.likes}
+            ingredientSelected={chosenIngredients}
             missingIngredientsCount={recipe.missedIngredientCount}
             usedIngredientCount={recipe.usedIngredientCount}
           />
