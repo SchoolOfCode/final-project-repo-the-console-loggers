@@ -8,6 +8,7 @@ const Checkbox = ({
   setSelected,
   checkboxStatus,
   setCheckboxStatus,
+  allIngredients,
 }) => {
   const [isChecked, setIsChecked] = useState(false);
 
@@ -17,13 +18,14 @@ const Checkbox = ({
     );
   };
 
+  //Check if the checkbox is ticked
   const status = checkboxStatus.filter(
     (item) => item.name === id && item.isChecked
   );
 
   useEffect(() => {
     return !status.length ? setIsChecked(false) : setIsChecked(true);
-  }, [status]);
+  }, [status.length]);
 
   const handleOnChange = () => {
     setIsChecked(!isChecked);

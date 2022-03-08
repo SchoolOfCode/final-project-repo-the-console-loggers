@@ -13,7 +13,7 @@ function UserSettings() {
     <main className='main-settings'>
       <h1 className='settings-title'>Settings</h1>
 
-      <Card name='darkmode-lightmode' />
+      {/* <Card name='darkmode-lightmode' /> */}
 
       <UserSettingsCard width='fullLength' logout={logout}>
         <h1 className='settings-card-title'>Log out</h1>
