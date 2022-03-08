@@ -1,15 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import InputBox from '../../components/Ui/InputBox/InputBox';
 import Button from '../../components/Ui/Button/Button';
 import Login from '../Login/Login';
+import Modal from '../../components/Modal/Modal'
 import { useAuth0 } from '@auth0/auth0-react';
+
 
 function AddIngredient() {
   const [name, setName] = useState('');
   const [expDate, setExpDate] = useState([]);
   const [quantity, setQuantity] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
 const { isAuthenticated, user } = useAuth0();
+
+
+useEffect(() => {
+  const timer = 
+    setTimeout(function ingredientTimeOut(){
+    setIsModalOpen(false)
+  }
+  , 2000)
+ return () => clearTimeout(timer)
+}, [isModalOpen]);
 
   function handleName(e) {
     setName(e.target.value);
@@ -48,7 +61,13 @@ const { isAuthenticated, user } = useAuth0();
   }
 
   return isAuthenticated ? (
+    
     <div className='main-add-ingredient'>
+       {isModalOpen && (
+            <Modal isModalOpen={isModalOpen}  >
+              <h1>Ingredient added to fridge!</h1>
+            </Modal>
+        )}  
       <h1 className='new-item'>ADD NEW ITEM</h1>
       <div className='add-item-card'>
         <form className='form' onSubmit={handleSubmit}>
@@ -74,7 +93,6 @@ const { isAuthenticated, user } = useAuth0();
               required={true}
             />
           </div>
-
           <div className='input-wrapper'>
             <InputBox
               handleName={handleQuantity}
@@ -93,7 +111,9 @@ const { isAuthenticated, user } = useAuth0();
             textColor='white'
             width='fullLength'
             icon='plus-icon'
+            handleClick={() => setIsModalOpen(true)}
           />
+        
         </form>
       </div>
     </div>

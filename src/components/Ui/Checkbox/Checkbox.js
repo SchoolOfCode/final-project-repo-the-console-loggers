@@ -1,9 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const Checkbox = ({
   id,
   name,
-  size,
   selected,
   setSelected,
   checkboxStatus,
@@ -18,6 +17,7 @@ const Checkbox = ({
     );
   };
 
+
   //Check if the checkbox is ticked
   const status = checkboxStatus.filter(
     (item) => item.name === id && item.isChecked
@@ -26,6 +26,7 @@ const Checkbox = ({
   useEffect(() => {
     return !status.length ? setIsChecked(false) : setIsChecked(true);
   }, [status.length]);
+
 
   const handleOnChange = () => {
     setIsChecked(!isChecked);
@@ -51,7 +52,7 @@ const Checkbox = ({
       />
 
       <label className='label-input-checkbox' htmlFor={id}>
-        <span className={`check-box checkbox-${size}-size`}>
+        <span className='check-box'>
           <svg width='12px' height='10px'>
             <use href='#check'></use>
           </svg>

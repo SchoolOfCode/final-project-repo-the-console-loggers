@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import React from 'react'
 import { useAuth0 } from '@auth0/auth0-react';
-import { useLocation } from 'react-router-dom';
 //Pages
 import Login from '../Login/Login';
+
 //Utils
 import { fetchRecipesApi } from '../../Utils/Fetch';
 import Checkbox from '../../components/Ui/Checkbox/Checkbox';
@@ -217,6 +217,9 @@ function FullRecipe() {
         </div>
       </div>
     </main>
+
+
+
   ) : (
     <div className='app'>
       <Login />
@@ -224,4 +227,4 @@ function FullRecipe() {
   );
 }
 
-export default FullRecipe;
+export default FullRecipe
