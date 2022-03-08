@@ -16,7 +16,6 @@ import Login from '../Login/Login';
 function RecipeList() {
   const { isAuthenticated } = useAuth0();
   const { state } = useLocation();
-  console.log(state);
 
   const [apiSearch, setApiSearch] = useState([]);
 
@@ -64,9 +63,9 @@ function RecipeList() {
             name={recipe.title}
             image={recipe.image}
             likes={recipe.likes}
-            ingredientSelected={chosenIngredients}
             missingIngredientsCount={recipe.missedIngredientCount}
             usedIngredientCount={recipe.usedIngredientCount}
+            checkboxStatus={state.checkboxStatus}
           />
         ))
       )}

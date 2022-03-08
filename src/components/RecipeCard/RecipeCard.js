@@ -8,9 +8,9 @@ const RecipeCard = ({
   likes,
   id,
   cookingTime,
-  ingredientSelected,
   missingIngredientsCount,
   usedIngredientCount,
+  checkboxStatus,
   // fridgeIngredients,
   // ingredients,
   // serves,
@@ -19,6 +19,7 @@ const RecipeCard = ({
   const [expandedCard, setExpandedCard] = useState(false);
 
   //Open or close the expanded card
+  console.log(checkboxStatus);
   const expandCard = () => {
     setExpandedCard(!expandedCard);
   };
@@ -66,7 +67,7 @@ const RecipeCard = ({
                 image: image,
                 name: name,
                 likes: likes,
-                ingredientSelected: ingredientSelected,
+                checkboxStatus: checkboxStatus,
               }}
             >
               <Button

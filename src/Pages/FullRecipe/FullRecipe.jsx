@@ -142,8 +142,8 @@ function FullRecipe() {
   const [recipe, setRecipe] = useState(data);
   const [ingredients, setIngredients] = useState([]);
   const image = state.image;
-
-  console.log(state);
+  const [selected, setSelected] = useState(false);
+  const [checkboxStatus, setCheckboxStatus] = useState(state.checkboxStatus);
 
   //Uncomment the useEffect & leave the state recipe empty to use real data from the API.
   // useEffect(() => {
@@ -153,6 +153,9 @@ function FullRecipe() {
   //   };
   //   fetchResponse();
   // }, [apiURL]);
+
+  // console.log(state.checkboxStatus.some((item) => item.name === 'Ham'));
+  console.log(checkboxStatus);
 
   useEffect(() => {
     const getIngredients = () => {
@@ -185,9 +188,16 @@ function FullRecipe() {
           </div>
           <p className='ingredients-title'>Ingredients</p>
           <div className='ingredients-container'>
-            {ingredients.map((ingredient) => (
+            {ingredients.map((ingredient, index) => (
               <div key={ingredient} className='ingredient-Layer'>
-                <Checkbox size='small' />
+                <Checkbox
+                  size='small'
+                  id={ingredient}
+                  selected={selected}
+                  setSelected={setSelected}
+                  checkboxStatus={checkboxStatus}
+                  setCheckboxStatus={setCheckboxStatus}
+                />
                 <p className='ingredient-text'>{ingredient}</p>
               </div>
             ))}
