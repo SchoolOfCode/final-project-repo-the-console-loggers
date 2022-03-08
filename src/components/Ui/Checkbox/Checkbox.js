@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Checkbox = ({
   id,
@@ -16,6 +16,14 @@ const Checkbox = ({
       item.id === id ? { id: id, name: name, isChecked: status } : item
     );
   };
+
+  const status = checkboxStatus.filter(
+    (item) => item.name === id && item.isChecked
+  );
+
+  useEffect(() => {
+    return !status.length ? setIsChecked(false) : setIsChecked(true);
+  }, []);
 
   const handleOnChange = () => {
     setIsChecked(!isChecked);

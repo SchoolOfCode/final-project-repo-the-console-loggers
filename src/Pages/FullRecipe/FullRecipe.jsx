@@ -124,8 +124,8 @@ const data = [
           },
           {
             id: 10151,
-            name: 'ham',
-            localizedName: 'ham',
+            name: 'Ham',
+            localizedName: 'Ham',
             image: 'ham-whole.jpg',
           },
         ],
@@ -139,20 +139,20 @@ function FullRecipe() {
   const { isAuthenticated } = useAuth0();
   const { state } = useLocation();
   const apiURL = `https://api.spoonacular.com/recipes/${state.id}/analyzedInstructions?apiKey=${process.env.REACT_APP_API_KEY}`;
-  const [recipe, setRecipe] = useState(data);
+  const [recipe, setRecipe] = useState();
   const [ingredients, setIngredients] = useState([]);
   const image = state.image;
   const [selected, setSelected] = useState(false);
   const [checkboxStatus, setCheckboxStatus] = useState(state.checkboxStatus);
 
   //Uncomment the useEffect & leave the state recipe empty to use real data from the API.
-  // useEffect(() => {
-  //   const fetchResponse = async () => {
-  //     const response = await fetchRecipesApi(apiURL);
-  //     setRecipe(response);
-  //   };
-  //   fetchResponse();
-  // }, [apiURL]);
+  useEffect(() => {
+    const fetchResponse = async () => {
+      const response = await fetchRecipesApi(apiURL);
+      setRecipe(response);
+    };
+    fetchResponse();
+  }, [apiURL]);
 
   // console.log(state.checkboxStatus.some((item) => item.name === 'Ham'));
   console.log(checkboxStatus);
@@ -162,11 +162,15 @@ function FullRecipe() {
       const mapIngredients =
         recipe &&
         recipe[0].steps.map((item) =>
-          item.ingredients.map((ingredient) => ingredient.name)
+          item.ingredients.map(
+            (ingredient) =>
+              ingredient.name.charAt(0).toUpperCase() + ingredient.name.slice(1)
+          )
         );
 
-      const flatArray = mapIngredients.flat();
+      const flatArray = recipe && mapIngredients.flat();
       const result = [...new Set(flatArray)];
+      console.log(result);
       return result;
     };
     setIngredients(getIngredients());
