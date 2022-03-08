@@ -13,6 +13,7 @@ const Card = ({
 }) => {
   const location = useLocation();
   const [expandedCard, setExpandedCard] = useState(false);
+  //Check the page and apply styles.
   const [selected, setSelected] = useState(false);
 
   //Open or close the expanded card

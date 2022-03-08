@@ -16,6 +16,7 @@ import Login from '../Login/Login';
 function RecipeList() {
   const { isAuthenticated } = useAuth0();
   const { state } = useLocation();
+  console.log(state);
 
   const [apiSearch, setApiSearch] = useState([]);
 

@@ -143,6 +143,8 @@ function FullRecipe() {
   const [ingredients, setIngredients] = useState([]);
   const image = state.image;
 
+  console.log(state);
+
   //Uncomment the useEffect & leave the state recipe empty to use real data from the API.
   // useEffect(() => {
   //   const fetchResponse = async () => {

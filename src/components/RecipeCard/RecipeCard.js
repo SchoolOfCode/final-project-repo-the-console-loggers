@@ -22,8 +22,6 @@ const RecipeCard = ({
     setExpandedCard(!expandedCard);
   };
 
-  console.log(image);
-
   return (
     <div className='card-wrapper-recipe'>
       <div className='card-recipe'>
