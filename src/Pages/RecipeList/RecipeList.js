@@ -13,11 +13,14 @@ import EmptyScreen from '../../components/EmptyScreen/EmptyScreen';
 //Pages
 import Login from '../Login/Login';
 
+//Data
+import { recipes } from '../../data/recipes';
+
 function RecipeList() {
   const { isAuthenticated } = useAuth0();
   const { state } = useLocation();
 
-  const [apiSearch, setApiSearch] = useState([]);
+  const [apiSearch, setApiSearch] = useState(recipes);
 
   //Filter selected items on home
   const chosenIngredients =
@@ -27,13 +30,13 @@ function RecipeList() {
   //Set the URL for the API
   const ApiURLString = chosenIngredients && createApiURL(chosenIngredients);
 
-  useEffect(() => {
-    const fetchResponse = async () => {
-      const response = await fetchRecipesApi(ApiURLString);
-      setApiSearch(response);
-    };
-    fetchResponse();
-  }, [ApiURLString]);
+  // useEffect(() => {
+  //   const fetchResponse = async () => {
+  //     const response = await fetchRecipesApi(ApiURLString);
+  //     setApiSearch(response);
+  //   };
+  //   fetchResponse();
+  // }, [ApiURLString]);
 
   return isAuthenticated ? (
     <div className='main-recipelist'>
