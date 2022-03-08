@@ -86,3 +86,13 @@ export async function fetchUsersShopping(user) {
     ? putNewUser(user)
     : fetchShoppingIngredients(user);
 }
+
+//Fetch spooncular API & Recipe by id
+export async function fetchRecipesApi(ApiURLString) {
+  const fetchResponse = await fetch(ApiURLString, {
+    method: 'GET',
+  });
+  //Store the response.
+  const response = await fetchResponse.json();
+  return response;
+}
