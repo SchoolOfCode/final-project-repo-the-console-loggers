@@ -5,9 +5,12 @@ import Button from '../Ui/Button/Button';
 const RecipeCard = ({
   name,
   image,
+  likes,
+  id,
   cookingTime,
   missingIngredientsCount,
   usedIngredientCount,
+  checkboxStatus,
   // fridgeIngredients,
   // ingredients,
   // serves,
@@ -16,6 +19,7 @@ const RecipeCard = ({
   const [expandedCard, setExpandedCard] = useState(false);
 
   //Open or close the expanded card
+  console.log(checkboxStatus);
   const expandCard = () => {
     setExpandedCard(!expandedCard);
   };
@@ -55,7 +59,17 @@ const RecipeCard = ({
           </div>
 
           <div className='buttons-container'>
-            <Link className='link' to='/FullRecipe'>
+            <Link
+              className='link'
+              to='/FullRecipe'
+              state={{
+                id: id,
+                image: image,
+                name: name,
+                likes: likes,
+                checkboxStatus: checkboxStatus,
+              }}
+            >
               <Button
                 text='Keep reading'
                 backgroundColor='yellow-button'
