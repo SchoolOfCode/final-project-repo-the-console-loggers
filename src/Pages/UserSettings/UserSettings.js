@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 //Utils
 import { useAuth0 } from '@auth0/auth0-react';
 //Components
-import Card from '../../components/Card/Card';
+
 import Button from '../../components/Ui/Button/Button';
 import UserSettingsCard from '../../components/UserSettingsCard/UserSettingsCard';
 import Modal from '../../components/Modal/Modal';
@@ -39,7 +39,7 @@ function UserSettings() {
       )}
       <h1 className='settings-title'>Settings</h1>
 
-      <Card name='darkmode-lightmode' />
+      {/* <Card name='darkmode-lightmode' /> */}
 
       <UserSettingsCard width='fullLength' logout={logout}>
         <h1 className='settings-card-title'>Log out</h1>
