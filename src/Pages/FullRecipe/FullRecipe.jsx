@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 //Pages
 import Login from '../Login/Login';
 //Utils
-import { fetchRecipesApi } from '../../Utils/Fetch';
+// import { fetchRecipesApi } from '../../Utils/Fetch';
 import Checkbox from '../../components/Ui/Checkbox/Checkbox';
 
 //Temp data
@@ -138,24 +138,24 @@ const data = [
 function FullRecipe() {
   const { isAuthenticated } = useAuth0();
   const { state } = useLocation();
-  const apiURL = `https://api.spoonacular.com/recipes/${state.id}/analyzedInstructions?apiKey=${process.env.REACT_APP_API_KEY}`;
-  const [recipe, setRecipe] = useState();
+  //Uncomment these 2 lines in productions
+  // const apiURL = `https://api.spoonacular.com/recipes/${state.id}/analyzedInstructions?apiKey=${process.env.REACT_APP_API_KEY}`;
+  // const [recipe, setRecipe] = useState();
+  //Comment this line to use the api
+  const [recipe] = useState(data);
   const [ingredients, setIngredients] = useState([]);
   const image = state.image;
   const [selected, setSelected] = useState(false);
   const [checkboxStatus, setCheckboxStatus] = useState(state.checkboxStatus);
 
   //Uncomment the useEffect & leave the state recipe empty to use real data from the API.
-  useEffect(() => {
-    const fetchResponse = async () => {
-      const response = await fetchRecipesApi(apiURL);
-      setRecipe(response);
-    };
-    fetchResponse();
-  }, [apiURL]);
-
-  // console.log(state.checkboxStatus.some((item) => item.name === 'Ham'));
-  console.log(checkboxStatus);
+  // useEffect(() => {
+  //   const fetchResponse = async () => {
+  //     const response = await fetchRecipesApi(apiURL);
+  //     setRecipe(response);
+  //   };
+  //   fetchResponse();
+  // }, [apiURL]);
 
   useEffect(() => {
     const getIngredients = () => {
@@ -170,7 +170,6 @@ function FullRecipe() {
 
       const flatArray = recipe && mapIngredients.flat();
       const result = [...new Set(flatArray)];
-      console.log(result);
       return result;
     };
     setIngredients(getIngredients());

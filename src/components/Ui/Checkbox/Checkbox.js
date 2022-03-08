@@ -23,7 +23,7 @@ const Checkbox = ({
 
   useEffect(() => {
     return !status.length ? setIsChecked(false) : setIsChecked(true);
-  }, []);
+  }, [status]);
 
   const handleOnChange = () => {
     setIsChecked(!isChecked);
