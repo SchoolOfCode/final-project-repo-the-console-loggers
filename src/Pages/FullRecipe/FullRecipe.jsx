@@ -1,4 +1,5 @@
-import React from 'react'
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 //Pages
 import Login from '../Login/Login';
@@ -217,9 +218,6 @@ function FullRecipe() {
         </div>
       </div>
     </main>
-
-
-
   ) : (
     <div className='app'>
       <Login />
@@ -227,4 +225,4 @@ function FullRecipe() {
   );
 }
 
-export default FullRecipe
+export default FullRecipe;
