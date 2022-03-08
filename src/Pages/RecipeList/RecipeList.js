@@ -2,13 +2,15 @@
 import { useState, useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useLocation } from 'react-router-dom';
-import { createApiURL } from '../../Utils/createApiUrl';
-import { fetchRecipesApi } from '../../Utils/Fetch';
 
 //Components
 import GreenBanner from '../../components/GreenBanner/GreenBanner';
 import RecipeCard from '../../components/RecipeCard/RecipeCard';
 import EmptyScreen from '../../components/EmptyScreen/EmptyScreen';
+
+//Utils
+import { createApiURL } from '../../Utils/createApiUrl';
+import { fetchRecipesApi } from '../../Utils/Fetch';
 
 //Pages
 import Login from '../Login/Login';
@@ -24,6 +26,7 @@ function RecipeList() {
     state && state.checkboxStatus.filter((item) => item.isChecked === true);
   const stateLength = state && chosenIngredients.length - 1;
 
+
   //Set the URL for the API
   const ApiURLString = chosenIngredients && createApiURL(chosenIngredients);
 
@@ -34,6 +37,7 @@ function RecipeList() {
     };
     fetchResponse();
   }, [ApiURLString]);
+
 
   return isAuthenticated ? (
     <div className='main-recipelist'>
