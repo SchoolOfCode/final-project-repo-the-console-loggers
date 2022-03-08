@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import InputBox from '../../components/Ui/InputBox/InputBox';
 import Button from '../../components/Ui/Button/Button';
 import Login from '../Login/Login';
-import Modal from '../../components/Modal/Modal'
+import Modal from '../../components/Modal/Modal';
 import { useAuth0 } from '@auth0/auth0-react';
-
+import { addNewIngredient } from '../../Utils/Fetch';
 
 function AddIngredient() {
   const [name, setName] = useState('');
@@ -12,17 +12,14 @@ function AddIngredient() {
   const [quantity, setQuantity] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-const { isAuthenticated, user } = useAuth0();
+  const { isAuthenticated, user } = useAuth0();
 
-
-useEffect(() => {
-  const timer = 
-    setTimeout(function ingredientTimeOut(){
-    setIsModalOpen(false)
-  }
-  , 2000)
- return () => clearTimeout(timer)
-}, [isModalOpen]);
+  useEffect(() => {
+    const timer = setTimeout(function ingredientTimeOut() {
+      setIsModalOpen(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, [isModalOpen]);
 
   function handleName(e) {
     setName(e.target.value);
@@ -37,37 +34,32 @@ useEffect(() => {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    const response = await fetch(
-      `https://four-week-project-soc.herokuapp.com/api/v1/user/${user.sub}/ingredients`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ingredient_name: name,
-          ingredient_exp_date: expDate,
-          ingredient_quantity: quantity,
-          ingredient_img: 'Something',
-          is_checked: false,
-          user_id: user.sub,
-        }),
-      }
-    );
+    //Create the body
+    const fetchBody = {
+      ingredient_name: name,
+      ingredient_exp_date: expDate,
+      ingredient_quantity: quantity,
+      ingredient_img: 'Something',
+      is_checked: false,
+      user_id: user.sub,
+    };
 
-    const data = await response.json();
-    console.log('ingredient data', data);
+    //Api url
+    const apiUrl = `${process.env.REACT_APP_BACKEND_URL}/${user.sub}/ingredients`;
+    await addNewIngredient(fetchBody, apiUrl);
+    //Empty the form
     setName('');
     setExpDate('');
     setQuantity('');
   }
 
   return isAuthenticated ? (
-    
     <div className='main-add-ingredient'>
-       {isModalOpen && (
-            <Modal isModalOpen={isModalOpen}  >
-              <h1>Ingredient added to fridge!</h1>
-            </Modal>
-        )}  
+      {isModalOpen && (
+        <Modal isModalOpen={isModalOpen}>
+          <h1>Ingredient added to fridge!</h1>
+        </Modal>
+      )}
       <h1 className='new-item'>ADD NEW ITEM</h1>
       <div className='add-item-card'>
         <form className='form' onSubmit={handleSubmit}>
@@ -113,7 +105,6 @@ useEffect(() => {
             icon='plus-icon'
             handleClick={() => setIsModalOpen(true)}
           />
-        
         </form>
       </div>
     </div>

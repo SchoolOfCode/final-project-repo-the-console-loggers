@@ -34,7 +34,6 @@ export async function deleteIngredient(user, item) {
     { method: 'DELETE' }
   );
   const data = await res.json();
-  console.log(data);
   return data.allIngredients;
 }
 
@@ -95,4 +94,15 @@ export async function fetchRecipesApi(ApiURLString) {
   //Store the response.
   const response = await fetchResponse.json();
   return response;
+}
+
+//POST NEW INGREDIENT
+export async function addNewIngredient(fetchBody, apiUrl) {
+  const response = await fetch(apiUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(fetchBody),
+  });
+
+  await response.json();
 }
