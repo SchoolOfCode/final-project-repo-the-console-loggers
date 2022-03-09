@@ -34,12 +34,16 @@ function AddIngredient() {
     return form.quantity > 1 ? `${form.unit}s` : form.unit;
   }
 
+  function upperCaseName() {
+    return form.name.charAt(0).toUpperCase() + form.name.slice(1);
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
 
     //Create the body
     const fetchBody = {
-      ingredient_name: form.name,
+      ingredient_name: upperCaseName(),
       ingredient_exp_date: form.expDate,
       ingredient_quantity: `${form.quantity} ${checkMoreThanOneUnit()}`,
       ingredient_img: 'Something',
