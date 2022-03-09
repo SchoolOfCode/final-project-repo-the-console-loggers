@@ -7,7 +7,6 @@ const Checkbox = ({
   setSelected,
   checkboxStatus,
   setCheckboxStatus,
-  allIngredients,
 }) => {
   const [isChecked, setIsChecked] = useState(false);
 

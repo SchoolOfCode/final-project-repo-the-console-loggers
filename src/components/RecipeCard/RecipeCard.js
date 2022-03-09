@@ -19,7 +19,6 @@ const RecipeCard = ({
   const [expandedCard, setExpandedCard] = useState(false);
 
   //Open or close the expanded card
-  console.log(checkboxStatus);
   const expandCard = () => {
     setExpandedCard(!expandedCard);
   };

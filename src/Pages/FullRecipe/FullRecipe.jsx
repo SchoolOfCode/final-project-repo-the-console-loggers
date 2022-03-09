@@ -6,6 +6,7 @@ import Login from '../Login/Login';
 //Utils
 import { fetchRecipesApi } from '../../Utils/Fetch';
 import Checkbox from '../../components/Ui/Checkbox/Checkbox';
+import Button from '../../components/Ui/Button/Button';
 
 //Temp data
 const data = [
@@ -143,7 +144,7 @@ function FullRecipe() {
   // const [recipe, setRecipe] = useState();
   //Comment this line to use the api
   const [recipe, setRecipe] = useState(data);
-  const [ingredients, setIngredients] = useState([]);
+  const [ingredientsOfRecipe, setIngredientsOfRecipe] = useState([]);
   const image = state.image;
   const [selected, setSelected] = useState(false);
   const [checkboxStatus, setCheckboxStatus] = useState(state.checkboxStatus);
@@ -170,9 +171,10 @@ function FullRecipe() {
 
       const flatArray = recipe && mapIngredients.flat();
       const result = [...new Set(flatArray)];
+      console.log("i am result", result)
       return result;
     };
-    setIngredients(getIngredients());
+    setIngredientsOfRecipe(getIngredients());
   }, [recipe]);
 
   return isAuthenticated ? (
@@ -191,7 +193,7 @@ function FullRecipe() {
           </div>
           <p className='ingredients-title'>Ingredients</p>
           <div className='ingredients-container'>
-            {ingredients.map((ingredient, index) => (
+            {ingredientsOfRecipe.map((ingredient, index) => (
               <div key={ingredient} className='ingredient-Layer'>
                 <Checkbox
                   size='small'
@@ -200,11 +202,25 @@ function FullRecipe() {
                   setSelected={setSelected}
                   checkboxStatus={checkboxStatus}
                   setCheckboxStatus={setCheckboxStatus}
-                  allIngredients={ingredients}
                 />
+                {console.log(
+                  '***i am ingredient',
+                  ingredient,
+                  '***i am selected',
+                  selected,
+                  '***I am checkboxStatus',
+                  checkboxStatus,
+                  '*** I am ingredients',
+                  ingredientsOfRecipe
+                )}
                 <p className='ingredient-text'>{ingredient}</p>
               </div>
             ))}
+              <Button 
+                text='Add to shopping List'
+                backgroundColor='yellow-button'
+                textColor='white'
+              />
           </div>
           <p className='steps-title'>Steps</p>
           {recipe &&
