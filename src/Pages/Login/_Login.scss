@@ -14,11 +14,16 @@
   }
 
   .tag-line {
-    font-size: 1.875rem;
+    font-size: 1.775rem;
     font-weight: 700;
-    color: variables.$black;
+    color: #444444;
     margin: 1rem 0 2rem 0;
     text-align: center;
+  }
+
+  .logo-letters {
+    width: 80%;
+    margin-top: 1.5rem;
   }
 }
 
