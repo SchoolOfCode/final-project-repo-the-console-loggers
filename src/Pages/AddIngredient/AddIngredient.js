@@ -1,11 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import InputBox from '../../components/Ui/InputBox/InputBox';
-import Button from '../../components/Ui/Button/Button';
-import Login from '../Login/Login';
-import Modal from '../../components/Modal/Modal';
+//Utils
+import { useState, useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { addNewIngredient } from '../../Utils/Fetch';
+
+//Components
+import InputBox from '../../components/Ui/InputBox/InputBox';
+import Button from '../../components/Ui/Button/Button';
+import Modal from '../../components/Modal/Modal';
 import Select from '../../components/Ui/Select/Select';
+
+//Pages
+import Login from '../Login/Login';
 
 function AddIngredient() {
   const formInitialValue = {
@@ -14,9 +19,10 @@ function AddIngredient() {
     quantity: '',
     unit: 'unit',
   };
-  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const [form, setForm] = useState(formInitialValue);
   const { isAuthenticated, user } = useAuth0();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   //Success screen
   useEffect(() => {
