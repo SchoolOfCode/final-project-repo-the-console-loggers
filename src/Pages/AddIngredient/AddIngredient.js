@@ -88,7 +88,7 @@ function AddIngredient() {
               required={true}
             />
           </div>
-          <div className='input-wrapper'>
+          <div className='quantity-input-wrapper'>
             <InputBox
               id='quantity'
               handleName={handleForm}

@@ -45,9 +45,14 @@
   appearance: none;
 }
 
-.input-wrapper {
+.input-wrapper,
+.quantity-input-wrapper {
   padding: 0 0 1.6rem 0;
   display: flex;
   justify-content: space-between;
   width: 100%;
+}
+
+.quantity-input-wrapper {
+  width: 98%;
 }
