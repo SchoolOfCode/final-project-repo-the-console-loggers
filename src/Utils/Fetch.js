@@ -26,7 +26,9 @@ async function fetchIngredients(user) {
 }
 
 //Delete ingredient by id
-
+// export function updateList(a, b) {
+//   a(b);
+// }
 export async function deleteIngredient(user, item) {
   // fetch request to clear shopping list
   const res = await fetch(

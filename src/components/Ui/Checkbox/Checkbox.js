@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const Checkbox = ({
   id,
@@ -7,6 +7,7 @@ const Checkbox = ({
   setSelected,
   checkboxStatus,
   setCheckboxStatus,
+  sortItems,
   allIngredients,
 }) => {
   const [isChecked, setIsChecked] = useState(false);

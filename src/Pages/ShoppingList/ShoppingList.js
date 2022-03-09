@@ -1,17 +1,16 @@
 //Components
+import { useAuth0 } from '@auth0/auth0-react';
+//Utils
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Card from '../../components/Card/Card';
-import GreenBanner from '../../components/GreenBanner/GreenBanner';
-import Button from '../../components/Ui/Button/Button';
-import Modal from '../../components/Modal/Modal';
 import EmptyScreen from '../../components/EmptyScreen/EmptyScreen';
-
+import GreenBanner from '../../components/GreenBanner/GreenBanner';
+import Modal from '../../components/Modal/Modal';
+import Button from '../../components/Ui/Button/Button';
+import { fetchUsersShopping } from '../../Utils/Fetch';
 //Pages
 import Login from '../Login/Login';
-//Utils
-import { useState, useEffect } from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
-import { Link } from 'react-router-dom';
-import { fetchUsersShopping } from '../../Utils/Fetch';
 
 function ShoppingList() {
   //State that storage if the checkboxes are check or not
@@ -32,11 +31,19 @@ function ShoppingList() {
     setIsModalOpen(false);
   }
 
+  const updated = [...shopping]
+    .map((item, i) => {
+      item.is_checked = checkboxStatus.length && checkboxStatus[i].isChecked;
+      return item;
+    })
+    .sort((a, b) => (a.is_checked > b.is_checked ? 1 : -1));
+
   useEffect(() => {
     const fetchResponse = async () => {
       const response = await fetchUsersShopping(user);
       console.log(response);
       setShopping(response);
+
       setCheckboxStatus(
         response.map((item) => ({
           id: item.item_id,
@@ -69,7 +76,7 @@ function ShoppingList() {
               linkTo='./AddItem'
             />
           ) : (
-            shopping.map((item) => {
+            updated.map((item) => {
               return (
                 <Card
                   id={item.item_id}
@@ -78,6 +85,7 @@ function ShoppingList() {
                   quantity={item.item_quantity}
                   checkboxStatus={checkboxStatus}
                   setCheckboxStatus={setCheckboxStatus}
+                  // onClick={updateList}
                 />
               );
             })
