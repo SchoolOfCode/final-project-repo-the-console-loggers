@@ -85,9 +85,9 @@ function Home() {
 
             let expDisplay;
             if (timeleft < 0) {
-              expDisplay = `${item.ingredient_exp_date} | Expired`;
+              expDisplay = `Expired`;
             } else {
-              expDisplay = `${item.ingredient_exp_date} | ${days} days left`;
+              expDisplay = `${days} days left`;
             }
 
             return (
