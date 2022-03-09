@@ -52,6 +52,7 @@ function AddIngredient() {
     await addNewIngredient(fetchBody, apiUrl);
     //Empty the form
     setForm(formInitialValue);
+    setIsModalOpen(true);
   }
 
   return isAuthenticated ? (
@@ -115,7 +116,6 @@ function AddIngredient() {
             textColor='white'
             width='fullLength'
             icon='plus-icon'
-            handleClick={() => setIsModalOpen(true)}
           />
         </form>
       </div>
