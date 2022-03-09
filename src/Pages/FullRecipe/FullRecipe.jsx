@@ -1,12 +1,10 @@
-import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import Button from '../../components/Ui/Button/Button';
+import Checkbox from '../../components/Ui/Checkbox/Checkbox';
 //Pages
 import Login from '../Login/Login';
-//Utils
-import { fetchRecipesApi } from '../../Utils/Fetch';
-import Checkbox from '../../components/Ui/Checkbox/Checkbox';
-import Button from '../../components/Ui/Button/Button';
 
 //Temp data
 const data = [
@@ -147,6 +145,8 @@ function FullRecipe() {
   const [ingredientsOfRecipe, setIngredientsOfRecipe] = useState([]);
   const image = state.image;
   const [checkboxStatus, setCheckboxStatus] = useState(state.checkboxStatus);
+  console.log('state: ', state.chosenIngredients);
+  console.log('ingredientsOfRecipe: ', ingredientsOfRecipe);
 
   //Uncomment the useEffect & leave the state recipe empty to use real data from the API.
   // useEffect(() => {
@@ -170,12 +170,12 @@ function FullRecipe() {
 
       const flatArray = recipe && mapIngredients.flat();
       const result = [...new Set(flatArray)];
-      console.log("i am result", result)
+      console.log('i am result', result);
       return result;
     };
     setIngredientsOfRecipe(getIngredients());
   }, [recipe]);
- 
+
   return isAuthenticated ? (
     <main className='main-full-recipe '>
       <div className='recipe-container'>
@@ -200,19 +200,16 @@ function FullRecipe() {
                   checkboxStatus={checkboxStatus}
                   setCheckboxStatus={setCheckboxStatus}
                 />
-                {/* {state.chosenIngredients.map((whatIHave) => {
-                  return  <p className={whatIHave.name.toUpperCase() === ingredient.toUpperCase() ? 'grey-out': 'ingredient-text'}>{ingredient}</p>})} */}
-                {/* {state.chosenIngredients.filter((whatIHave) => {
-                  return whatIHave.name.toUpperCase() === ingredient.toUpperCase() ? <p className='grey-out'>{ingredient}</p> : <p className='ingredient-text'>{ingredient}</p>})} */}
+
                 <p
-                  className={state.chosenIngredients.filter(
-                    (whatIHave) => {
-                      return whatIHave.name.toUpperCase() ===
-                        ingredient.toUpperCase()
-                        ? 'grey-out'
-                        : 'ingredient-text';
-                    }
-                  )}
+                  className={
+                    state.chosenIngredients.some(
+                      (chosen) =>
+                        chosen.name.toUpperCase() === ingredient.toUpperCase()
+                    )
+                      ? 'grey-out'
+                      : 'ingredient-text'
+                  }
                 >
                   {ingredient}
                 </p>
