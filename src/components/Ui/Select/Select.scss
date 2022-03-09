@@ -1,25 +1,23 @@
 @use '../../../styles/variables.scss';
 
-.label {
+.label-select {
   display: flex;
   flex-direction: column;
   align-items: left;
   margin-bottom: 1rem;
-  width: 100%;
+  justify-content: flex-end;
+  margin-left: 1rem;
 }
 
-input {
-  font-size: 1rem;
-  padding: 0.8rem;
+select {
+  // font-size: 1rem;
+  padding: 0.4rem;
   border-radius: 0.4rem;
   border-style: none;
-  width: 90%;
+  height: 43px;
   background-color: variables.$fourth-grey;
   color: variables.$first-grey;
 }
 ::placeholder {
   color: variables.$third-grey;
-}
-.label-span {
-  margin: 0 0 0.5rem 0;
 }

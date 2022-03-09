@@ -5,30 +5,33 @@ import Login from '../Login/Login';
 import Modal from '../../components/Modal/Modal';
 import { useAuth0 } from '@auth0/auth0-react';
 import { addNewIngredient } from '../../Utils/Fetch';
+import Select from '../../components/Ui/Select/Select';
 
 function AddIngredient() {
-  const [name, setName] = useState('');
-  const [expDate, setExpDate] = useState([]);
-  const [quantity, setQuantity] = useState('');
+  const formInitialValue = {
+    name: '',
+    expDate: '',
+    quantity: '',
+    unit: 'unit',
+  };
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const [form, setForm] = useState(formInitialValue);
   const { isAuthenticated, user } = useAuth0();
 
+  //Success screen
   useEffect(() => {
     const timer = setTimeout(function ingredientTimeOut() {
       setIsModalOpen(false);
-    }, 2000);
+    }, 1000);
     return () => clearTimeout(timer);
   }, [isModalOpen]);
 
-  function handleName(e) {
-    setName(e.target.value);
+  function handleForm(e) {
+    setForm({ ...form, [e.target.id]: e.target.value });
   }
-  function handleExpDate(e) {
-    setExpDate(e.target.value);
-  }
-  function handleQuantity(e) {
-    setQuantity(e.target.value);
+
+  function checkMoreThanOneUnit() {
+    return form.quantity > 1 ? `${form.unit}s` : form.unit;
   }
 
   async function handleSubmit(e) {
@@ -36,9 +39,9 @@ function AddIngredient() {
 
     //Create the body
     const fetchBody = {
-      ingredient_name: name,
-      ingredient_exp_date: expDate,
-      ingredient_quantity: quantity,
+      ingredient_name: form.name,
+      ingredient_exp_date: form.expDate,
+      ingredient_quantity: `${form.quantity} ${checkMoreThanOneUnit()}`,
       ingredient_img: 'Something',
       is_checked: false,
       user_id: user.sub,
@@ -48,9 +51,7 @@ function AddIngredient() {
     const apiUrl = `${process.env.REACT_APP_BACKEND_URL}/${user.sub}/ingredients`;
     await addNewIngredient(fetchBody, apiUrl);
     //Empty the form
-    setName('');
-    setExpDate('');
-    setQuantity('');
+    setForm(formInitialValue);
   }
 
   return isAuthenticated ? (
@@ -65,35 +66,46 @@ function AddIngredient() {
         <form className='form' onSubmit={handleSubmit}>
           <div className='input-wrapper'>
             <InputBox
-              handleName={handleName}
+              id='name'
+              handleName={handleForm}
               text='Name'
               placeholder='E.g. Honey Roasted Ham...'
               type='text'
-              value={name}
+              value={form.name}
               required={true}
             />
           </div>
 
           <div className='input-wrapper'>
             <InputBox
+              id='expDate'
               className='datepicker-input, datepicker-toggle, datepicker-toggle-button'
-              handleName={handleExpDate}
+              handleName={handleForm}
               text='Expiration Date'
               placeholder='E.g. 23/04/2022'
               type='date'
-              value={expDate}
+              value={form.expDate}
               required={true}
             />
           </div>
           <div className='input-wrapper'>
             <InputBox
-              handleName={handleQuantity}
+              id='quantity'
+              handleName={handleForm}
               text='Quantity'
-              placeholder='E.g. Kg, Portion...'
+              placeholder='Select the amount...'
               type='text'
-              value={quantity}
+              value={form.quantity}
               required={true}
             />
+            <Select value={form.unit} handleUnits={handleForm} id='unit'>
+              <option value='unit'>Unit</option>
+              <option value='portion'>Portion</option>
+              <option value='kg'>Kg</option>
+              <option value='g'>g</option>
+              <option value='piece'>Pieces</option>
+              <option value='ltr'>Litre</option>
+            </Select>
           </div>
 
           <Button

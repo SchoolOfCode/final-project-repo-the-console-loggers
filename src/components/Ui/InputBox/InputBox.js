@@ -8,11 +8,13 @@ export default function InputBox({
   className,
   value,
   required,
+  id,
 }) {
   return (
     <label className='label'>
-      {text}
+      <span className='label-span'>{text}</span>
       <input
+        id={id}
         type={type}
         placeholder={placeholder}
         onChange={handleName}
