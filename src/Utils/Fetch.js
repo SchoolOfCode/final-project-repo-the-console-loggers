@@ -98,8 +98,9 @@ export async function fetchRecipesApi(ApiURLString) {
   return response;
 }
 
-//POST NEW INGREDIENT
+//POST NEW INGREDIENT & NEW ITEM
 export async function addNewIngredient(fetchBody, apiUrl) {
+  console.log(fetchBody);
   const response = await fetch(apiUrl, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

@@ -5,12 +5,10 @@ export default function InputBox({
   placeholder,
   handleName,
   type,
-  className,
   value,
   required,
   id,
 }) {
-  console.log(className);
   return (
     <label className='label'>
       <span className='label-span'>{text}</span>
