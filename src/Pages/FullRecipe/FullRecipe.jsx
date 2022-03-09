@@ -146,7 +146,6 @@ function FullRecipe() {
   const [recipe, setRecipe] = useState(data);
   const [ingredientsOfRecipe, setIngredientsOfRecipe] = useState([]);
   const image = state.image;
-  const [selected, setSelected] = useState(false);
   const [checkboxStatus, setCheckboxStatus] = useState(state.checkboxStatus);
 
   //Uncomment the useEffect & leave the state recipe empty to use real data from the API.
@@ -176,7 +175,7 @@ function FullRecipe() {
     };
     setIngredientsOfRecipe(getIngredients());
   }, [recipe]);
-
+ 
   return isAuthenticated ? (
     <main className='main-full-recipe '>
       <div className='recipe-container'>
@@ -198,29 +197,32 @@ function FullRecipe() {
                 <Checkbox
                   size='small'
                   id={ingredient}
-                  selected={selected}
-                  setSelected={setSelected}
                   checkboxStatus={checkboxStatus}
                   setCheckboxStatus={setCheckboxStatus}
                 />
-                {console.log(
-                  '***i am ingredient',
-                  ingredient,
-                  '***i am selected',
-                  selected,
-                  '***I am checkboxStatus',
-                  checkboxStatus,
-                  '*** I am ingredients',
-                  ingredientsOfRecipe
-                )}
-                <p className='ingredient-text'>{ingredient}</p>
+                {/* {state.chosenIngredients.map((whatIHave) => {
+                  return  <p className={whatIHave.name.toUpperCase() === ingredient.toUpperCase() ? 'grey-out': 'ingredient-text'}>{ingredient}</p>})} */}
+                {/* {state.chosenIngredients.filter((whatIHave) => {
+                  return whatIHave.name.toUpperCase() === ingredient.toUpperCase() ? <p className='grey-out'>{ingredient}</p> : <p className='ingredient-text'>{ingredient}</p>})} */}
+                <p
+                  className={state.chosenIngredients.filter(
+                    (whatIHave) => {
+                      return whatIHave.name.toUpperCase() ===
+                        ingredient.toUpperCase()
+                        ? 'grey-out'
+                        : 'ingredient-text';
+                    }
+                  )}
+                >
+                  {ingredient}
+                </p>
               </div>
             ))}
-              <Button 
-                text='Add to shopping List'
-                backgroundColor='yellow-button'
-                textColor='white'
-              />
+            <Button
+              text='Add to shopping List'
+              backgroundColor='yellow-button'
+              textColor='white'
+            />
           </div>
           <p className='steps-title'>Steps</p>
           {recipe &&

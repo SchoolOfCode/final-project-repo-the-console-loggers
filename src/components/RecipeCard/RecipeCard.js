@@ -11,6 +11,7 @@ const RecipeCard = ({
   missingIngredientsCount,
   usedIngredientCount,
   checkboxStatus,
+  chosenIngredients,
   // fridgeIngredients,
   // ingredients,
   // serves,
@@ -67,6 +68,7 @@ const RecipeCard = ({
                 name: name,
                 likes: likes,
                 checkboxStatus: checkboxStatus,
+                chosenIngredients: chosenIngredients,
               }}
             >
               <Button
