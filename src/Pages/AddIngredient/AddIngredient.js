@@ -26,19 +26,19 @@ function AddIngredient() {
     return () => clearTimeout(timer);
   }, [isModalOpen]);
 
-  function handleForm(e) {
+  const handleForm = (e) => {
     setForm({ ...form, [e.target.id]: e.target.value });
-  }
+  };
 
-  function checkMoreThanOneUnit() {
+  const checkMoreThanOneUnit = () => {
     return form.quantity > 1 ? `${form.unit}s` : form.unit;
-  }
+  };
 
-  function upperCaseName() {
+  const upperCaseName = () => {
     return form.name.charAt(0).toUpperCase() + form.name.slice(1);
-  }
+  };
 
-  async function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     //Create the body
@@ -57,7 +57,7 @@ function AddIngredient() {
     //Empty the form
     setForm(formInitialValue);
     setIsModalOpen(true);
-  }
+  };
 
   return isAuthenticated ? (
     <div className='main-add-ingredient'>
