@@ -15,7 +15,11 @@ function Login() {
         className='logo'
         alt='Logo'
       ></img>
-      <h1 className='name'>Fridgeful</h1>
+      <img
+        className='logo-letters'
+        src={process.env.PUBLIC_URL + '/assets/logo-name.svg'}
+        alt='Logo'
+      ></img>
       <h2 className='tag-line'>Buy wisely, cook Fridgefully, eat it all</h2>
       <button className='login-button' onClick={() => loginWithRedirect()}>
         Log In

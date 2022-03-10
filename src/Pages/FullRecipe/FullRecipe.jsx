@@ -2,6 +2,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Button from '../../components/Ui/Button/Button';
+
 import Checkbox from '../../components/Ui/Checkbox/Checkbox';
 //Pages
 import Login from '../Login/Login';
@@ -188,7 +189,7 @@ function FullRecipe() {
               src={`${process.env.PUBLIC_URL}/assets/icons/heart.svg`}
               alt='heart'
             />{' '}
-            {state.likes} Likes
+            {`${state.likes} ${state.likes === 1 ? 'Like' : 'Likes'}`}
           </div>
           <p className='ingredients-title'>Ingredients</p>
           <div className='ingredients-container'>

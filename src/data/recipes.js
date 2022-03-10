@@ -84,7 +84,7 @@ export const recipes = [
       },
     ],
     unusedIngredients: [],
-    likes: 7,
+    likes: 1,
   },
   {
     id: 665348,

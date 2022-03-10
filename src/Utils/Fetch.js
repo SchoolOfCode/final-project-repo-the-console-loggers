@@ -26,7 +26,9 @@ async function fetchIngredients(user) {
 }
 
 //Delete ingredient by id
-
+// export function updateList(a, b) {
+//   a(b);
+// }
 export async function deleteIngredient(user, item) {
   // fetch request to clear shopping list
   const res = await fetch(
@@ -96,8 +98,9 @@ export async function fetchRecipesApi(ApiURLString) {
   return response;
 }
 
-//POST NEW INGREDIENT
+//POST NEW INGREDIENT & NEW ITEM
 export async function addNewIngredient(fetchBody, apiUrl) {
+  console.log(fetchBody);
   const response = await fetch(apiUrl, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

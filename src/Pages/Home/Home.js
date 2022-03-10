@@ -114,7 +114,11 @@ function Home() {
           checkedItems.length > 0 ? `button-vh-ten` : `disable`
         }`}
       >
-        <Link to='/RecipeList' state={{ checkboxStatus }}>
+        <Link
+          className='button-home-yellow'
+          to='/RecipeList'
+          state={{ checkboxStatus }}
+        >
           <Button
             text={`Cook (${checkedItems.length})`}
             backgroundColor='yellow-button'

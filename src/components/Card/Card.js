@@ -1,6 +1,7 @@
-import Checkbox from '../Ui/Checkbox/Checkbox';
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { icons } from '../../data/icons';
+import Checkbox from '../Ui/Checkbox/Checkbox';
 
 const Card = ({
   id,
@@ -10,6 +11,7 @@ const Card = ({
   children,
   checkboxStatus,
   setCheckboxStatus,
+  sortItems,
 }) => {
   const location = useLocation();
   const [expandedCard, setExpandedCard] = useState(false);
@@ -30,11 +32,19 @@ const Card = ({
         } `}
       >
         <div className='main-card'>
-          <img
-            onClick={expandCard}
-            src={`${process.env.PUBLIC_URL}/assets/icons/food/${name}.svg`}
-            alt={name}
-          />
+          {icons.includes(name) ? (
+            <img
+              onClick={expandCard}
+              src={`${process.env.PUBLIC_URL}/assets/icons/food/${name}.svg`}
+              alt={name}
+            />
+          ) : (
+            <img
+              onClick={expandCard}
+              src={`${process.env.PUBLIC_URL}/assets/icons/food/notFound.svg`}
+              alt={name}
+            />
+          )}
           <div className='texts' onClick={expandCard}>
             <h1 className='title'>{name}</h1>
             <p className='quantity'>{quantity}</p>
@@ -51,6 +61,7 @@ const Card = ({
               setSelected={setSelected}
               checkboxStatus={checkboxStatus}
               setCheckboxStatus={setCheckboxStatus}
+              sortItems={sortItems}
             />
           </div>
         </div>
