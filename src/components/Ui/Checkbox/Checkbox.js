@@ -3,36 +3,30 @@ import { useEffect, useState } from 'react';
 const Checkbox = ({
   id,
   name,
-  selected,
-  setSelected,
   checkboxStatus,
   setCheckboxStatus,
-  sortItems,
-  allIngredients,
 }) => {
+  // being used everywhere for ticked or not ticked
   const [isChecked, setIsChecked] = useState(false);
 
-  const updateObject = (status) => {
+  const updateObject = (trueOrFalse) => {
     return checkboxStatus.map((item) =>
-      item.id === id ? { id: id, name: name, isChecked: status } : item
+      item.id === id ? { id: id, name: name, isChecked: trueOrFalse } : item
     );
   };
-
-  //Check if the checkbox is ticked
-  const status = checkboxStatus.filter(
+  // Check if checkboxStatus.isChecked is ticked > working when we are in Full Recipe page
+  const MatchingWithMine = checkboxStatus.filter(
     (item) => item.name === id && item.isChecked
   );
-
   useEffect(() => {
-    return !status.length ? setIsChecked(false) : setIsChecked(true);
-  }, [status.length]);
-
+    // for full Recipe page
+    return !MatchingWithMine.length ? setIsChecked(false) : setIsChecked(true);
+  }, [MatchingWithMine.length]);
   const handleOnChange = () => {
     setIsChecked(!isChecked);
-    setSelected(!selected);
+
     setCheckboxStatus(isChecked ? updateObject(false) : updateObject(true));
   };
-
   return (
     <>
       {/* Checkbox tick svg */}

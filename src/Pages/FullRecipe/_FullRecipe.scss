@@ -47,7 +47,7 @@
 }
 
 .steps-title {
-  margin: 1rem 0 0 1rem;
+  margin: 1.5rem 0 0 1rem;
   font-size: 1.3rem;
   font-weight: 700;
   color: variables.$green;
@@ -78,8 +78,15 @@
     margin: 0 0 0 0.5rem;
     text-transform: capitalize;
   }
-}
 
+  .grey-out {
+  margin: 0 0 0 0.5rem;
+  text-transform: capitalize;
+  background-color: grey;
+  text-decoration: line-through !important;
+  }
+  
+}
 .ingredients-title {
   margin: 1rem 0 0.7rem 1rem;
   font-size: 1.3rem;
@@ -88,8 +95,10 @@
   text-decoration: underline;
 }
 
+
 .ingredient-Layer {
   display: flex;
   align-items: center;
   margin: 0 0 0.5rem 0;
 }
+

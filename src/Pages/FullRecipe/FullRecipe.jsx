@@ -1,6 +1,8 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import Button from '../../components/Ui/Button/Button';
+
 import Checkbox from '../../components/Ui/Checkbox/Checkbox';
 //Pages
 import Login from '../Login/Login';
@@ -141,10 +143,11 @@ function FullRecipe() {
   // const [recipe, setRecipe] = useState();
   //Comment this line to use the api
   const [recipe, setRecipe] = useState(data);
-  const [ingredients, setIngredients] = useState([]);
+  const [ingredientsOfRecipe, setIngredientsOfRecipe] = useState([]);
   const image = state.image;
-  const [selected, setSelected] = useState(false);
   const [checkboxStatus, setCheckboxStatus] = useState(state.checkboxStatus);
+  console.log('state: ', state.chosenIngredients);
+  console.log('ingredientsOfRecipe: ', ingredientsOfRecipe);
 
   //Uncomment the useEffect & leave the state recipe empty to use real data from the API.
   // useEffect(() => {
@@ -168,9 +171,10 @@ function FullRecipe() {
 
       const flatArray = recipe && mapIngredients.flat();
       const result = [...new Set(flatArray)];
+      console.log('i am result', result);
       return result;
     };
-    setIngredients(getIngredients());
+    setIngredientsOfRecipe(getIngredients());
   }, [recipe]);
 
   return isAuthenticated ? (
@@ -189,20 +193,34 @@ function FullRecipe() {
           </div>
           <p className='ingredients-title'>Ingredients</p>
           <div className='ingredients-container'>
-            {ingredients.map((ingredient, index) => (
+            {ingredientsOfRecipe.map((ingredient, index) => (
               <div key={ingredient} className='ingredient-Layer'>
                 <Checkbox
                   size='small'
                   id={ingredient}
-                  selected={selected}
-                  setSelected={setSelected}
                   checkboxStatus={checkboxStatus}
                   setCheckboxStatus={setCheckboxStatus}
-                  allIngredients={ingredients}
                 />
-                <p className='ingredient-text'>{ingredient}</p>
+
+                <p
+                  className={
+                    state.chosenIngredients.some(
+                      (chosen) =>
+                        chosen.name.toUpperCase() === ingredient.toUpperCase()
+                    )
+                      ? 'grey-out'
+                      : 'ingredient-text'
+                  }
+                >
+                  {ingredient}
+                </p>
               </div>
             ))}
+            <Button
+              text='Add to shopping List'
+              backgroundColor='yellow-button'
+              textColor='white'
+            />
           </div>
           <p className='steps-title'>Steps</p>
           {recipe &&

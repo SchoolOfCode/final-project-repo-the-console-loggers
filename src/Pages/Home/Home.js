@@ -11,25 +11,25 @@ import { deleteIngredient, fetchUsers } from '../../Utils/Fetch';
 import Login from '../Login/Login';
 
 function Home() {
-  //State that stores if the checkboxes are checked or not
-  const [checkboxStatus, setCheckboxStatus] = useState([]);
   const { isAuthenticated, isLoading, user } = useAuth0();
+  // State that stores if the checkboxes are checked or not
+  const [checkboxStatus, setCheckboxStatus] = useState([]);
+  // State that stores ingredients in my fridge
   const [ingredientsList, setIngredientsList] = useState([]);
 
-  const checkedItems = checkboxStatus.filter((item) => item.isChecked); //replace checkedItemsNumber() so it can be used in map on line 23
+  // replace checkedItemsNumber() so it can be used in map on line 23
+  const checkedItems = checkboxStatus.filter((item) => item.isChecked);
 
+  // when you clicked 'delete button'
   async function handleChange() {
     checkedItems.map(async (item) => {
       return await deleteIngredient(user, item.id);
     });
     const checkedItemsIds = checkedItems.map((item) => item.id);
-    //  setIngredientsList(!checkedItems)
     console.log('ingredientsList inside handlechange', ingredientsList);
     const updatedList = ingredientsList.filter(
       (item) => !checkedItemsIds.includes(item.ingredient_id) // as long as an id isn't equal to our checked ingredient id, display it
     );
-    // console.log('checkedItems[0] inside handlechange', checkedItems[0]);
-    // console.log('deleted inside handlechange', updatedList);
 
     setIngredientsList(updatedList);
     setCheckboxStatus(
@@ -41,6 +41,7 @@ function Home() {
     );
   }
 
+  // fetching Users & ingredients & setting CheckboxStatus
   useEffect(() => {
     const fetchResponse = async () => {
       const response = await fetchUsers(user);
@@ -56,7 +57,7 @@ function Home() {
 
     isAuthenticated && fetchResponse();
   }, [isAuthenticated, user]);
-
+  console.log(ingredientsList)
   //Loading screen to be done
   if (isLoading) {
     return <h1>Loading</h1>;
@@ -125,7 +126,6 @@ function Home() {
             width='percent-button-40'
           />
         </Link>
-
         <Button
           handleClick={handleChange}
           text='Delete'

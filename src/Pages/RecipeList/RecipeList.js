@@ -69,6 +69,7 @@ function RecipeList() {
             missingIngredientsCount={recipe.missedIngredientCount}
             usedIngredientCount={recipe.usedIngredientCount}
             checkboxStatus={state.checkboxStatus}
+            chosenIngredients={chosenIngredients}
           />
         ))
       )}
