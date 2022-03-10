@@ -54,9 +54,9 @@ function RecipeList() {
         <EmptyScreen
           title='No ingredients selected'
           icon='empty-pot'
-          subText='Add some ingredients to your frige to start searching'
+          subText='Select ingredients from your fridge to get started'
           highlight='recipes'
-          linkTo='../Home/AddIngredient'
+          linkTo='../Home'
         />
       ) : (
         apiSearch.map((recipe) => (

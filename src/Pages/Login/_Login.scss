@@ -3,22 +3,23 @@
 .login-wrapper {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  padding: 2rem 2rem;
+  padding: 0 2rem 0 2rem;
   align-items: center;
   justify-content: center;
   background-color: variables.$ivory;
+  height: 100vh;
 
   .logo {
     width: 80%;
   }
 
   .tag-line {
-    font-size: 1.775rem;
-    font-weight: 700;
+    font-size: 1.3rem;
+    font-weight: 600;
     color: #444444;
     margin: 1rem 0 2rem 0;
     text-align: center;
+    width: 286px;
   }
 
   .logo-letters {
