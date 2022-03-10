@@ -7,28 +7,50 @@ const Checkbox = ({
   setSelected,
   checkboxStatus,
   setCheckboxStatus,
+  ingredientsToAdd,
+  setIngredientsToAdd,
 }) => {
-  // being used everywhere for ticked or not ticked
+  // affecting All page
   const [isChecked, setIsChecked] = useState(false);
-
-  const updateObject = (trueOrFalse) => {
-    return checkboxStatus.map((item) =>
-      item.id === id ? { id: id, name: name, isChecked: trueOrFalse } : item
-    );
-  };
-  // Check if checkboxStatus.isChecked is ticked > working when we are in Full Recipe page
-  const MatchingWithMine = checkboxStatus.filter(
-    (item) => item.name === id && item.isChecked
-  );
-  useEffect(() => {
-    // for full Recipe page
-    return !MatchingWithMine.length ? setIsChecked(false) : setIsChecked(true);
-  }, [MatchingWithMine.length]);
   const handleOnChange = () => {
     setIsChecked(!isChecked);
     setSelected(!selected);
     setCheckboxStatus(isChecked ? updateObject(false) : updateObject(true));
   };
+
+  // -------------------------------------------
+  // if isChecked (state) is true,
+  // we want to change our isChecked status of each item(object) in ingredientsToAdd array.
+  // -------------------------------------------
+  // const updateRecipeObject = (trueOrFalse) => {
+  //   return ingredientsToAdd.map((item) =>
+  //     // item.id === id ? { id: id, name: name, isChecked: trueOrFalse } : item
+  //   );
+  // }
+  // -------------------------------------------
+
+  // affecting the ingredients I already have
+  // for Home page
+  const updateObject = (trueOrFalse) => {
+    return checkboxStatus.map((item) =>
+      item.id === id ? { id: id, name: name, isChecked: trueOrFalse } : item
+    );
+  };
+
+  // affecting the ingredients I already have
+  // for checking if isChecked of checkboxStatus is ticked
+  const checkedInCheckboxStatus = checkboxStatus.filter(
+    (item) => item.name === id && item.isChecked
+  );
+
+  // affecting the ingredients I already have
+  // to grey out the ingredient I have
+  useEffect(() => {
+    return !checkedInCheckboxStatus.length
+      ? setIsChecked(false)
+      : setIsChecked(true);
+  }, [checkedInCheckboxStatus.length]);
+
   return (
     <>
       {/* Checkbox tick svg */}
