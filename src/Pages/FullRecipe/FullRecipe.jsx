@@ -145,10 +145,8 @@ function FullRecipe() {
   const [ingredientsOfRecipe, setIngredientsOfRecipe] = useState([]);
   const image = state.image;
   const [checkboxStatus, setCheckboxStatus] = useState(state.checkboxStatus);
-  const [selected, setSelected] = useState([])
-  const [ingredientsToAdd, setIngredientsToAdd] = useState([])
-  console.log('state.chosenIngredients : ', state.chosenIngredients);
-  console.log('ingredientsOfRecipe : ', ingredientsOfRecipe);
+  const [selected, setSelected] = useState([]);
+  const [ingredientsToAdd, setIngredientsToAdd] = useState([]);
 
   //Uncomment the useEffect & leave the state recipe empty to use real data from the API.
   // useEffect(() => {
@@ -164,28 +162,42 @@ function FullRecipe() {
       const mapIngredients =
         recipe &&
         recipe[0].steps.map((item) =>
-          item.ingredients.map((ingredient) =>
-           ingredient.name.charAt(0).toUpperCase() + ingredient.name.slice(1))
+          item.ingredients.map(
+            (ingredient) =>
+              ingredient.name.charAt(0).toUpperCase() + ingredient.name.slice(1)
+          )
         );
 
       const flatArray = recipe && mapIngredients.flat();
       const result = [...new Set(flatArray)];
-      const checkIngredient = result.map((item, i)=>{
+      const checkIngredient = result.map((item, i) => {
         const newObj = {
-          name: item, id: i, isChecked: false
-        }
-        return newObj
-      })
-      setIngredientsToAdd(checkIngredient)
+          name: item,
+          id: i,
+          isChecked: false,
+        };
+        return newObj;
+      });
+      setIngredientsToAdd(checkIngredient);
       return result;
     };
     setIngredientsOfRecipe(getIngredients());
   }, [recipe]);
 
-  console.log('i am ingredientsToAdd from FullRecipe page :', ingredientsToAdd)
-  console.log('i am ingredientOfRecipe from FullRecipe page : ', ingredientsOfRecipe);
+  // array of object
+  // what we clicked from Home
+  // i.e.[{id: 1, name: 'potato', isChecked: true}, {id: 2, name: 'salmon', isChecked: true}]
+  console.log('state.chosenIngredients : ', state.chosenIngredients);
 
-  const addToShoppingList = () => console.log('add it')
+  // array of string
+  // ingredients from full recipe
+  // i.e.['potato', 'pineapple', 'salmon']
+  console.log('ingredientsOfRecipe : ', ingredientsOfRecipe);
+
+  // array of object
+  // ingredients from full recipe
+  // i.e.[{id: 1, name: 'potato', isChecked: false}, id: 2, name: 'pineapple', isChecked: false}, {id: 2, name: 'salmon', isChecked: false}]
+  console.log('i am ingredientsToAdd from FullRecipe page :', ingredientsToAdd);
 
   return isAuthenticated ? (
     <main className='main-full-recipe '>
@@ -204,10 +216,7 @@ function FullRecipe() {
           <p className='ingredients-title'>Ingredients</p>
           <div className='ingredients-container'>
             {ingredientsToAdd.map((ingredient) => (
-              <div
-                key={ingredient.id}
-                className='ingredient-Layer'
-              >
+              <div key={ingredient.id} className='ingredient-Layer'>
                 <Checkbox
                   size='small'
                   id={ingredient.name}
@@ -224,9 +233,11 @@ function FullRecipe() {
                   className={
                     state.chosenIngredients.some(
                       (chosen) =>
-                        chosen.name.toUpperCase() === ingredient.name.toUpperCase()
+                        chosen.name.toUpperCase() ===
+                        ingredient.name.toUpperCase()
                     )
-                      ? 'grey-out' : 'ingredient-text'
+                      ? 'grey-out'
+                      : 'ingredient-text'
                   }
                 >
                   {ingredient.name}
@@ -237,7 +248,7 @@ function FullRecipe() {
               text='Add to shopping List'
               backgroundColor='yellow-button'
               textColor='white'
-              handleClick={addToShoppingList}
+              handleClick={()=>console.log('add it')}
             />
           </div>
           <p className='steps-title'>Steps</p>
