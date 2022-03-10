@@ -146,6 +146,7 @@ function FullRecipe() {
   const [ingredientsOfRecipe, setIngredientsOfRecipe] = useState([]);
   const image = state.image;
   const [checkboxStatus, setCheckboxStatus] = useState(state.checkboxStatus);
+  const [selected, setSelected] = useState(false);
   console.log('state: ', state.chosenIngredients);
   console.log('ingredientsOfRecipe: ', ingredientsOfRecipe);
 
@@ -200,6 +201,8 @@ function FullRecipe() {
                   id={ingredient}
                   checkboxStatus={checkboxStatus}
                   setCheckboxStatus={setCheckboxStatus}
+                  selected={selected}
+                  setSelected={setSelected}
                 />
 
                 <p
