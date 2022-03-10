@@ -627,6 +627,28 @@ input {
   color: #b8b8b8;
 }
 
+.label-select {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin-bottom: 1rem;
+  justify-content: flex-end;
+  margin-left: 1rem;
+}
+
+select {
+  padding: 0.4rem;
+  border-radius: 0.4rem;
+  border-style: none;
+  height: 43px;
+  background-color: #eeecec;
+  color: #5e5f5e;
+}
+
+::placeholder {
+  color: #b8b8b8;
+}
+
 .main-home {
   min-height: 80vh;
   position: relative;
@@ -932,7 +954,7 @@ input {
 }
 
 .steps-title {
-  margin: 1rem 0 0 1rem;
+  margin: 1.5rem 0 0 1rem;
   font-size: 1.3rem;
   font-weight: 700;
   color: #2ecc71;
@@ -961,6 +983,12 @@ input {
 .ingredients-container .ingredient-text {
   margin: 0 0 0 0.5rem;
   text-transform: capitalize;
+}
+.ingredients-container .grey-out {
+  margin: 0 0 0 0.5rem;
+  text-transform: capitalize;
+  background-color: grey;
+  text-decoration: line-through !important;
 }
 
 .ingredients-title {

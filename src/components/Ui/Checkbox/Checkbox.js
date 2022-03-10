@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 const Checkbox = ({
   id,
   name,
+  selected,
+  setSelected,
   checkboxStatus,
   setCheckboxStatus,
 }) => {
@@ -24,7 +26,7 @@ const Checkbox = ({
   }, [MatchingWithMine.length]);
   const handleOnChange = () => {
     setIsChecked(!isChecked);
-
+    setSelected(!selected);
     setCheckboxStatus(isChecked ? updateObject(false) : updateObject(true));
   };
   return (
