@@ -2,6 +2,7 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { createNewElement } from '../../Utils/Fetch';
 
 //Components
 import Button from '../../components/Ui/Button/Button';
@@ -14,7 +15,7 @@ import Login from '../Login/Login';
 import { mockRecipe } from '../../data/mockRecipe';
 
 function FullRecipe() {
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated, user } = useAuth0();
   const { state } = useLocation();
   //Uncomment these 2 lines in productions
   // const apiURL = `https://api.spoonacular.com/recipes/${state.id}/analyzedInstructions?apiKey=${process.env.REACT_APP_API_KEY}`;
@@ -25,6 +26,7 @@ function FullRecipe() {
   const image = state.image;
   const [checkboxStatus, setCheckboxStatus] = useState(state.checkboxStatus);
   const [selected, setSelected] = useState(false);
+  const [ingredientsToAdd, setIngredientsToAdd] = useState([]);
 
   //Uncomment the useEffect & leave the state recipe empty to use real data from the API.
   // useEffect(() => {
@@ -48,10 +50,68 @@ function FullRecipe() {
 
       const flatArray = recipe && mapIngredients.flat();
       const result = [...new Set(flatArray)];
+      const checkIngredient = result.map((item, i) => {
+        const newObj = {
+          name: item,
+          id: i,
+          isChecked: false,
+        };
+        return newObj;
+      });
+      setIngredientsToAdd(checkIngredient);
       return result;
     };
     setIngredientsOfRecipe(getIngredients());
   }, [recipe]);
+
+  // array of object
+  // what we clicked from Home
+  // i.e.[{id: 1, name: 'potato', isChecked: true}, {id: 2, name: 'salmon', isChecked: true}]
+  // console.log('state.chosenIngredients : ', state.chosenIngredients);
+
+  // array of string
+  // ingredients from full recipe
+  // i.e.['potato', 'pineapple', 'salmon']
+  console.log('ingredientsOfRecipe : ', ingredientsOfRecipe);
+
+  // array of object
+  // ingredients from full recipe
+  // i.e.[{id: 1, name: 'potato', isChecked: false}, id: 2, name: 'pineapple', isChecked: false}, {id: 2, name: 'salmon', isChecked: false}]
+  // console.log('i am ingredientsToAdd from FullRecipe page :', ingredientsToAdd);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(function ingredientTimeOut() {
+      setIsModalOpen(false);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [isModalOpen]);
+
+  async function addToShoppingList(e) {
+    e.preventDefault();
+
+    ingredientsToAdd.map((ingredient) => {
+
+      //Create the body
+      const fetchBody = {
+        item_name:
+          ingredient.name.charAt(0).toUpperCase() + ingredient.name.slice(1),
+        item_quantity: '1 unit',
+        is_checked: false,
+        user_id: user.sub,
+      };
+
+      //Api url
+      const apiUrl = `${process.env.REACT_APP_BACKEND_URL}/${user.sub}/shopping`;
+            ingredient.isChecked ? 
+      createNewElement(fetchBody, apiUrl)  : console.log('you did not choose ',ingredient)
+      return console.log(ingredientsToAdd)
+    });
+
+    //Open the form
+    setIsModalOpen(true);
+  }
 
   return isAuthenticated ? (
     <main className='main-full-recipe '>
@@ -69,28 +129,32 @@ function FullRecipe() {
           </div>
           <p className='ingredients-title'>Ingredients</p>
           <div className='ingredients-container'>
-            {ingredientsOfRecipe.map((ingredient, index) => (
-              <div key={ingredient} className='ingredient-Layer'>
+            {ingredientsToAdd.map((ingredient) => (
+              <div key={ingredient.id} className='ingredient-Layer'>
                 <Checkbox
                   size='small'
-                  id={ingredient}
+                  id={ingredient.name}
+                  name={ingredient.name}
                   checkboxStatus={checkboxStatus}
                   setCheckboxStatus={setCheckboxStatus}
                   selected={selected}
                   setSelected={setSelected}
+                  ingredientsToAdd={ingredientsToAdd}
+                  setIngredientsToAdd={setIngredientsToAdd}
                 />
 
                 <p
                   className={
                     state.chosenIngredients.some(
                       (chosen) =>
-                        chosen.name.toUpperCase() === ingredient.toUpperCase()
+                        chosen.name.toUpperCase() ===
+                        ingredient.name.toUpperCase()
                     )
                       ? 'grey-out'
                       : 'ingredient-text'
                   }
                 >
-                  {ingredient}
+                  {ingredient.name}
                 </p>
               </div>
             ))}
@@ -98,6 +162,7 @@ function FullRecipe() {
               text='Add to shopping List'
               backgroundColor='yellow-button'
               textColor='white'
+              handleClick={addToShoppingList}
             />
           </div>
           <p className='steps-title'>Steps</p>

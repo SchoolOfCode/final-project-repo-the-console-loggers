@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const Checkbox = ({
   id,
@@ -7,28 +8,54 @@ const Checkbox = ({
   setSelected,
   checkboxStatus,
   setCheckboxStatus,
+  ingredientsToAdd,
+  setIngredientsToAdd,
 }) => {
-  // being used everywhere for ticked or not ticked
-  const [isChecked, setIsChecked] = useState(false);
-
-  const updateObject = (trueOrFalse) => {
-    return checkboxStatus.map((item) =>
-      item.id === id ? { id: id, name: name, isChecked: trueOrFalse } : item
-    );
-  };
-  // Check if checkboxStatus.isChecked is ticked > working when we are in Full Recipe page
-  const MatchingWithMine = checkboxStatus.filter(
-    (item) => item.name === id && item.isChecked
-  );
-  useEffect(() => {
-    // for full Recipe page
-    return !MatchingWithMine.length ? setIsChecked(false) : setIsChecked(true);
-  }, [MatchingWithMine.length]);
+  const location = useLocation();
+  // affecting All page
+  const [isChecked, setIsChecked] = useState(true);
   const handleOnChange = () => {
     setIsChecked(!isChecked);
     setSelected(!selected);
-    setCheckboxStatus(isChecked ? updateObject(false) : updateObject(true));
+    
+    location.pathname === '/FullRecipe'
+      ? setIngredientsToAdd(isChecked ? updateRecipeObject(false) : updateRecipeObject(true))
+      : setCheckboxStatus(isChecked ? updateObject(false) : updateObject(true));
   };
+
+ const updateRecipeObject = (trueOrFalse) => {
+     return (
+       ingredientsToAdd.map((item) =>
+         item.name === id ? { id: id, name: name, isChecked: trueOrFalse } : item
+       )
+     );
+  }
+
+  // affecting the ingredients I already have
+  // for Home page
+  const updateObject = (trueOrFalse) => {
+    return checkboxStatus.map((item) =>{
+    return   item.id === id ? { id: id, name: name, isChecked: trueOrFalse } : item
+    });
+  };
+
+  // affecting the ingredients I already have
+  // for checking if isChecked of checkboxStatus is ticked
+  const checkedInCheckboxStatus =
+    location.pathname === '/FullRecipe'
+      ? ingredientsToAdd.filter((item) => item.name === id && item.isChecked)
+      : checkboxStatus.filter(
+    (item) => item.id === id && item.isChecked
+  );
+  
+  // affecting the ingredients I already have
+  // to grey out the ingredient I have
+  useEffect(() => {
+    return !checkedInCheckboxStatus.length
+      ? setIsChecked(false)
+      : setIsChecked(true);
+  }, [checkedInCheckboxStatus.length]);
+
   return (
     <>
       {/* Checkbox tick svg */}

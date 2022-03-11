@@ -26,7 +26,8 @@ function Home() {
 
   // replace checkedItemsNumber() so it can be used in map on line 23
   const checkedItems = checkboxStatus.filter((item) => item.isChecked);
-
+  console.log(checkedItems);
+  
   useEffect(() => {
     // CHECK IF USER EXIST
     const fetchResponse = async () => {
@@ -83,6 +84,7 @@ function Home() {
       })) //
     );
   }
+
 
   return isAuthenticated ? (
     <main className='main-home'>
