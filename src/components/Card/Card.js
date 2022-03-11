@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
 import { icons } from '../../data/icons';
 import Checkbox from '../Ui/Checkbox/Checkbox';
 
@@ -13,7 +13,7 @@ const Card = ({
   setCheckboxStatus,
   sortItems,
 }) => {
-  const location = useLocation();
+  // const location = useLocation();
   const [expandedCard, setExpandedCard] = useState(false);
   const [selected, setSelected] = useState(false);
 
@@ -23,13 +23,15 @@ const Card = ({
   };
 
   return (
-    <div className='card-wrapper'>
+    <div className='card-wrapper' data-testid='cardC'>
       <div
-        className={`card ${
-          selected && location.pathname === '/Home'
-            ? 'selected'
-            : selected && location.pathname === '/ShoppingList' && 'cross'
-        } `}
+        className={`card  `}
+
+        // ${
+        //   selected && location.pathname === '/Home'
+        //     ? 'selected'
+        //     : selected && location.pathname === '/ShoppingList' && 'cross'
+        // }
       >
         <div className='main-card'>
           {icons.includes(name) ? (
@@ -46,7 +48,9 @@ const Card = ({
             />
           )}
           <div className='texts' onClick={expandCard}>
-            <h1 className='title'>{name}</h1>
+            <h1 data-testid='headerC' className='title'>
+              {name}
+            </h1>
             <p className='quantity'>{quantity}</p>
             <div className='expiration'>
               {children}
@@ -67,10 +71,11 @@ const Card = ({
         </div>
         <div
           className={
-            `${
-              selected && location.pathname === '/Home'
-                ? 'selected'
-                : selected && location.pathname === '/ShoppingList' && 'cross'
+            // ${
+            //   selected && location.pathname === '/Home'
+            //     ? 'selected'
+            //     : selected && location.pathname === '/ShoppingList' &&
+            ` 'cross'
             } expanded-card ${expandedCard ? 'hideCard' : 'hideCard'}`
             // if you want to expand card, change first 'hideCard' to 'showCard'
           }
