@@ -11,7 +11,7 @@ const Checkbox = ({
   ingredientsToAdd,
   setIngredientsToAdd,
 }) => {
-    const location = useLocation();
+  const location = useLocation();
   // affecting All page
   const [isChecked, setIsChecked] = useState(true);
   const handleOnChange = () => {
@@ -19,28 +19,17 @@ const Checkbox = ({
     setSelected(!selected);
     
     location.pathname === '/FullRecipe'
-      ? setIngredientsToAdd(
-          isChecked ? updateRecipeObject(false) : updateRecipeObject(true)
-        )
+      ? setIngredientsToAdd(isChecked ? updateRecipeObject(false) : updateRecipeObject(true))
       : setCheckboxStatus(isChecked ? updateObject(false) : updateObject(true));
   };
 
-  // -------------------------------------------
-  // if isChecked (state) is true,
-  // we want to change our isChecked status of each item(object) in ingredientsToAdd array.
-  // -------------------------------------------
  const updateRecipeObject = (trueOrFalse) => {
      return (
        ingredientsToAdd.map((item) =>
-         item.name === id
-           ? { id: id, name: name, isChecked: trueOrFalse }
-           : item
+         item.name === id ? { id: id, name: name, isChecked: trueOrFalse } : item
        )
      );
   }
-
-
-  // -------------------------------------------
 
   // affecting the ingredients I already have
   // for Home page
@@ -59,11 +48,6 @@ const Checkbox = ({
     (item) => item.id === id && item.isChecked
   );
   
-  // const checkedInIngredientsToAdd =
-  //   location.pathname === '/FullRecipe'
-  //     ? ingredientsToAdd.filter((item) => item.name === id && item.isChecked)
-  //     : [];
-
   // affecting the ingredients I already have
   // to grey out the ingredient I have
   useEffect(() => {
