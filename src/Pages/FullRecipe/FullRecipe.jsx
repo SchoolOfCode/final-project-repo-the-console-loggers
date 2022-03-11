@@ -147,8 +147,6 @@ function FullRecipe() {
   const image = state.image;
   const [checkboxStatus, setCheckboxStatus] = useState(state.checkboxStatus);
   const [selected, setSelected] = useState(false);
-  console.log('state: ', state.chosenIngredients);
-  console.log('ingredientsOfRecipe: ', ingredientsOfRecipe);
 
   //Uncomment the useEffect & leave the state recipe empty to use real data from the API.
   // useEffect(() => {
@@ -172,7 +170,6 @@ function FullRecipe() {
 
       const flatArray = recipe && mapIngredients.flat();
       const result = [...new Set(flatArray)];
-      console.log('i am result', result);
       return result;
     };
     setIngredientsOfRecipe(getIngredients());

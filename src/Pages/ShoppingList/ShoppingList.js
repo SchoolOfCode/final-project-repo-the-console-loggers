@@ -2,13 +2,14 @@
 import { useAuth0 } from '@auth0/auth0-react';
 //Utils
 import { useEffect, useState } from 'react';
+
 import { Link } from 'react-router-dom';
 import Card from '../../components/Card/Card';
 import EmptyScreen from '../../components/EmptyScreen/EmptyScreen';
 import GreenBanner from '../../components/GreenBanner/GreenBanner';
 import Modal from '../../components/Modal/Modal';
 import Button from '../../components/Ui/Button/Button';
-import { fetchUsersShopping } from '../../Utils/Fetch';
+import { deleteShoppingList, fetchShoppingList } from '../../Utils/Fetch';
 //Pages
 import Login from '../Login/Login';
 
@@ -19,17 +20,12 @@ function ShoppingList() {
   const [shopping, setShopping] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  async function handleChange() {
-    // fetch request to clear shopping list
-    const res = await fetch(
-      `https://four-week-project-soc.herokuapp.com/api/v1/user/${user.sub}/shopping`,
-      { method: 'DELETE' }
-    );
-    const data = await res.json();
-    console.log(data);
+  const handleChange = async () => {
+    const apiUrl = `${process.env.REACT_APP_BACKEND_URL}/${user.sub}/shopping`;
+    await deleteShoppingList(apiUrl, user);
     setShopping([]);
     setIsModalOpen(false);
-  }
+  };
 
   const updated = [...shopping]
     .map((item, i) => {
@@ -40,8 +36,7 @@ function ShoppingList() {
 
   useEffect(() => {
     const fetchResponse = async () => {
-      const response = await fetchUsersShopping(user);
-      console.log(response);
+      const response = await fetchShoppingList(user);
       setShopping(response);
 
       setCheckboxStatus(

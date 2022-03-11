@@ -6,7 +6,7 @@ import Card from '../../components/Card/Card';
 import EmptyScreen from '../../components/EmptyScreen/EmptyScreen';
 import GreenBanner from '../../components/GreenBanner/GreenBanner';
 import Button from '../../components/Ui/Button/Button';
-import { deleteIngredient, fetchUsers } from '../../Utils/Fetch';
+import { deleteIngredient, checkIfUserExist } from '../../Utils/Fetch';
 //Pages
 import Login from '../Login/Login';
 
@@ -26,7 +26,6 @@ function Home() {
       return await deleteIngredient(user, item.id);
     });
     const checkedItemsIds = checkedItems.map((item) => item.id);
-    console.log('ingredientsList inside handlechange', ingredientsList);
     const updatedList = ingredientsList.filter(
       (item) => !checkedItemsIds.includes(item.ingredient_id) // as long as an id isn't equal to our checked ingredient id, display it
     );
@@ -44,7 +43,7 @@ function Home() {
   // fetching Users & ingredients & setting CheckboxStatus
   useEffect(() => {
     const fetchResponse = async () => {
-      const response = await fetchUsers(user);
+      const response = await checkIfUserExist(user);
       setIngredientsList(response);
       setCheckboxStatus(
         response.map((item) => ({
@@ -57,7 +56,6 @@ function Home() {
 
     isAuthenticated && fetchResponse();
   }, [isAuthenticated, user]);
-  console.log(ingredientsList)
   //Loading screen to be done
   if (isLoading) {
     return <h1>Loading</h1>;
