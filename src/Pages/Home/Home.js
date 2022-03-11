@@ -2,7 +2,11 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { deteleFridgeIngredient, checkIfUserExist } from '../../Utils/Fetch';
+import {
+  deteleFridgeIngredient,
+  fetchGet,
+  createNewElement,
+} from '../../Utils/Fetch';
 
 //Components
 import Card from '../../components/Card/Card';
@@ -22,6 +26,7 @@ function Home() {
 
   // replace checkedItemsNumber() so it can be used in map on line 23
   const checkedItems = checkboxStatus.filter((item) => item.isChecked);
+  console.log(checkedItems);
 
   // when you clicked 'delete button'
   async function handleChange() {
@@ -43,13 +48,33 @@ function Home() {
     );
   }
 
-  // CHECK IF USER EXIST & FETCH INGREDIENTS
   useEffect(() => {
+    // CHECK IF USER EXIST
     const fetchResponse = async () => {
-      const response = await checkIfUserExist(user);
-      setIngredientsList(response.payload);
+      const response = await fetchGet(
+        `${process.env.REACT_APP_BACKEND_URL}/${user.sub}`
+      );
+      const result =
+        response.payload.length === 0
+          ? //IF NOT: CREATE THE NEW USER IN THE DATABASE
+            createNewElement(
+              {
+                auth0_user_id: user.sub,
+                email: user.email,
+                name: user.name,
+                nickname: user.nickname,
+                picture: user.picture,
+              },
+              process.env.REACT_APP_BACKEND_URL
+            )
+          : //ELSE, FETCH INGREDIENTS
+            await fetchGet(
+              `${process.env.REACT_APP_BACKEND_URL}/${user.sub}/ingredients`
+            );
+
+      setIngredientsList(result.payload);
       setCheckboxStatus(
-        response.payload.map((item) => ({
+        result.payload.map((item) => ({
           id: item.ingredient_id,
           name: item.ingredient_name,
           isChecked: false,
@@ -59,6 +84,7 @@ function Home() {
 
     isAuthenticated && fetchResponse();
   }, [isAuthenticated, user]);
+
   //Loading screen to be done
   if (isLoading) {
     return <h1>Loading</h1>;

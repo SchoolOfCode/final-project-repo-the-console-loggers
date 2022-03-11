@@ -1,7 +1,7 @@
 //Utils
 import { useState, useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
-import { addNewIngredient } from '../../Utils/Fetch';
+import { createNewElement } from '../../Utils/Fetch';
 
 //Components
 import InputBox from '../../components/Ui/InputBox/InputBox';
@@ -55,7 +55,7 @@ function AddItem() {
 
     //Api url
     const apiUrl = `${process.env.REACT_APP_BACKEND_URL}/${user.sub}/shopping`;
-    await addNewIngredient(fetchBody, apiUrl);
+    await createNewElement(fetchBody, apiUrl);
 
     //Open the form
     setForm(formInitialValue);
