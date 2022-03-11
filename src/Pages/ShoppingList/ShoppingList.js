@@ -1,14 +1,16 @@
-//Components
-import { useAuth0 } from '@auth0/auth0-react';
 //Utils
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { deleteShoppingList, fetchGet } from '../../Utils/Fetch';
+
+//Components
+import { useAuth0 } from '@auth0/auth0-react';
 import Card from '../../components/Card/Card';
 import EmptyScreen from '../../components/EmptyScreen/EmptyScreen';
 import GreenBanner from '../../components/GreenBanner/GreenBanner';
 import Modal from '../../components/Modal/Modal';
 import Button from '../../components/Ui/Button/Button';
-import { fetchUsersShopping } from '../../Utils/Fetch';
+
 //Pages
 import Login from '../Login/Login';
 
@@ -19,17 +21,12 @@ function ShoppingList() {
   const [shopping, setShopping] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  async function handleChange() {
-    // fetch request to clear shopping list
-    const res = await fetch(
-      `https://four-week-project-soc.herokuapp.com/api/v1/user/${user.sub}/shopping`,
-      { method: 'DELETE' }
-    );
-    const data = await res.json();
-    console.log(data);
+  const handleChange = async () => {
+    const apiUrl = `${process.env.REACT_APP_BACKEND_URL}/${user.sub}/shopping`;
+    await deleteShoppingList(apiUrl, user);
     setShopping([]);
     setIsModalOpen(false);
-  }
+  };
 
   const updated = [...shopping]
     .map((item, i) => {
@@ -39,13 +36,15 @@ function ShoppingList() {
     .sort((a, b) => (a.is_checked > b.is_checked ? 1 : -1));
 
   useEffect(() => {
+    const apiUrl = `${process.env.REACT_APP_BACKEND_URL}/${
+      user && user.sub
+    }/shopping`;
     const fetchResponse = async () => {
-      const response = await fetchUsersShopping(user);
-      console.log(response);
-      setShopping(response);
+      const response = await fetchGet(apiUrl);
+      setShopping(response.payload);
 
       setCheckboxStatus(
-        response.map((item) => ({
+        response.payload.map((item) => ({
           id: item.item_id,
           isChecked: false,
         }))

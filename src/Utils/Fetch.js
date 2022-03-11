@@ -1,95 +1,5 @@
-export async function fetchUsers(user) {
-  const fetchResponse = await fetch(
-    `https://four-week-project-soc.herokuapp.com/api/v1/user/${user.sub}`,
-    {
-      method: 'GET',
-    }
-  );
-  //Store the response.
-  const response = await fetchResponse.json();
-  return response.payload.length === 0
-    ? putNewUser(user)
-    : fetchIngredients(user);
-}
-
-///Get ingredients
-async function fetchIngredients(user) {
-  const fetchResponse = await fetch(
-    `https://four-week-project-soc.herokuapp.com/api/v1/user/${user.sub}/ingredients`,
-    {
-      method: 'GET',
-    }
-  );
-  //Store the response.
-  const response = await fetchResponse.json();
-  return response.payload;
-}
-
-//Delete ingredient by id
-// export function updateList(a, b) {
-//   a(b);
-// }
-export async function deleteIngredient(user, item) {
-  // fetch request to clear shopping list
-  const res = await fetch(
-    `https://four-week-project-soc.herokuapp.com/api/v1/user/${user.sub}/ingredients/${item}`,
-    { method: 'DELETE' }
-  );
-  const data = await res.json();
-  return data.allIngredients;
-}
-
-//Post new user
-async function putNewUser(user) {
-  const fetchResponse = await fetch(
-    'https://four-week-project-soc.herokuapp.com/api/v1/user',
-    {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        auth0_user_id: user.sub,
-        email: user.email,
-        name: user.name,
-        nickname: user.nickname,
-        picture: user.picture,
-      }),
-    }
-  );
-  //Store the response.
-  await fetchResponse.json();
-  return fetchIngredients(user);
-}
-
-//Fetch Shopping Ingredients
-
-async function fetchShoppingIngredients(user) {
-  const fetchResponse = await fetch(
-    `https://four-week-project-soc.herokuapp.com/api/v1/user/${user.sub}/shopping`,
-    {
-      method: 'GET',
-    }
-  );
-  //Store the response.
-  const response = await fetchResponse.json();
-  return response.payload;
-}
-
-export async function fetchUsersShopping(user) {
-  const fetchResponse = await fetch(
-    `https://four-week-project-soc.herokuapp.com/api/v1/user/${user.sub}`,
-    {
-      method: 'GET',
-    }
-  );
-  //Store the response.
-  const response = await fetchResponse.json();
-  return response.payload.length === 0
-    ? putNewUser(user)
-    : fetchShoppingIngredients(user);
-}
-
-//Fetch spooncular API & Recipe by id
-export async function fetchRecipesApi(ApiURLString) {
+//GENERIC FETCH FUNCTION
+export async function fetchGet(ApiURLString) {
   const fetchResponse = await fetch(ApiURLString, {
     method: 'GET',
   });
@@ -98,9 +8,23 @@ export async function fetchRecipesApi(ApiURLString) {
   return response;
 }
 
-//POST NEW INGREDIENT & NEW ITEM
+//WHEN APP LOAD CHECK IF USER EXIST IN THE DB
+export async function checkIfUserExist(user) {
+  const fetchResponse = await fetch(
+    `${process.env.REACT_APP_BACKEND_URL}/${user.sub}`,
+    {
+      method: 'GET',
+    }
+  );
+  //Store the response.
+  const response = await fetchResponse.json();
+  return response.payload.length === 0
+    ? createNewUserInDB(user)
+    : fetchGet(`${process.env.REACT_APP_BACKEND_URL}/${user.sub}/ingredients`);
+}
+
+//CREATE NEW INGREDIENT & NEW ITEM SCREENS
 export async function addNewIngredient(fetchBody, apiUrl) {
-  console.log(fetchBody);
   const response = await fetch(apiUrl, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -108,4 +32,40 @@ export async function addNewIngredient(fetchBody, apiUrl) {
   });
 
   await response.json();
+}
+
+//CREATE NEW USER IN THE DB
+async function createNewUserInDB(user) {
+  const fetchResponse = await fetch(process.env.REACT_APP_BACKEND_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      auth0_user_id: user.sub,
+      email: user.email,
+      name: user.name,
+      nickname: user.nickname,
+      picture: user.picture,
+    }),
+  });
+  await fetchResponse.json();
+  //RETURN THE INGREDIENTS IN THE FRIDGE AFTER CREATE THE USER
+  return fetchGet(`${process.env.REACT_APP_BACKEND_URL}/${user.sub}`);
+}
+
+//DELETE FRIDGE INGREDIENTS BY ID
+export async function deteleFridgeIngredient(user, item) {
+  // fetch request to clear shopping list
+  const res = await fetch(
+    `${process.env.REACT_APP_BACKEND_URL}/${user.sub}/ingredients/${item}`,
+    { method: 'DELETE' }
+  );
+  const data = await res.json();
+  return data.allIngredients;
+}
+
+//DELETE ALL ITEMS IN THE SHOPPING LIST
+export async function deleteShoppingList(apiUrl) {
+  // fetch request to clear shopping list
+  const res = await fetch(apiUrl, { method: 'DELETE' });
+  return await res.json();
 }

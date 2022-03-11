@@ -1,12 +1,15 @@
-import { useAuth0 } from '@auth0/auth0-react';
 //Utils
+import { useAuth0 } from '@auth0/auth0-react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { deteleFridgeIngredient, checkIfUserExist } from '../../Utils/Fetch';
+
+//Components
 import Card from '../../components/Card/Card';
 import EmptyScreen from '../../components/EmptyScreen/EmptyScreen';
 import GreenBanner from '../../components/GreenBanner/GreenBanner';
 import Button from '../../components/Ui/Button/Button';
-import { deleteIngredient, fetchUsers } from '../../Utils/Fetch';
+
 //Pages
 import Login from '../Login/Login';
 
@@ -23,10 +26,9 @@ function Home() {
   // when you clicked 'delete button'
   async function handleChange() {
     checkedItems.map(async (item) => {
-      return await deleteIngredient(user, item.id);
+      return await deteleFridgeIngredient(user, item.id);
     });
     const checkedItemsIds = checkedItems.map((item) => item.id);
-    console.log('ingredientsList inside handlechange', ingredientsList);
     const updatedList = ingredientsList.filter(
       (item) => !checkedItemsIds.includes(item.ingredient_id) // as long as an id isn't equal to our checked ingredient id, display it
     );
@@ -41,13 +43,13 @@ function Home() {
     );
   }
 
-  // fetching Users & ingredients & setting CheckboxStatus
+  // CHECK IF USER EXIST & FETCH INGREDIENTS
   useEffect(() => {
     const fetchResponse = async () => {
-      const response = await fetchUsers(user);
-      setIngredientsList(response);
+      const response = await checkIfUserExist(user);
+      setIngredientsList(response.payload);
       setCheckboxStatus(
-        response.map((item) => ({
+        response.payload.map((item) => ({
           id: item.ingredient_id,
           name: item.ingredient_name,
           isChecked: false,
@@ -57,7 +59,6 @@ function Home() {
 
     isAuthenticated && fetchResponse();
   }, [isAuthenticated, user]);
-  console.log(ingredientsList)
   //Loading screen to be done
   if (isLoading) {
     return <h1>Loading</h1>;
