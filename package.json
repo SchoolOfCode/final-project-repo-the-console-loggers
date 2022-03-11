@@ -1,6 +1,6 @@
 {
   "name": "final-project-repo-the-console-loggers",
-  "version": "0.8",
+  "version": "0.8.3",
   "private": true,
   "dependencies": {
     "@auth0/auth0-react": "^1.9.0",
