@@ -1,12 +1,19 @@
-import { useAuth0 } from '@auth0/auth0-react';
 //Utils
+import { useAuth0 } from '@auth0/auth0-react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import {
+  deteleFridgeIngredient,
+  fetchGet,
+  createNewElement,
+} from '../../Utils/Fetch';
+
+//Components
 import Card from '../../components/Card/Card';
 import EmptyScreen from '../../components/EmptyScreen/EmptyScreen';
 import GreenBanner from '../../components/GreenBanner/GreenBanner';
 import Button from '../../components/Ui/Button/Button';
-import { deleteIngredient, fetchUsers } from '../../Utils/Fetch';
+
 //Pages
 import Login from '../Login/Login';
 
@@ -19,14 +26,14 @@ function Home() {
 
   // replace checkedItemsNumber() so it can be used in map on line 23
   const checkedItems = checkboxStatus.filter((item) => item.isChecked);
+  console.log(checkedItems);
 
   // when you clicked 'delete button'
   async function handleChange() {
     checkedItems.map(async (item) => {
-      return await deleteIngredient(user, item.id);
+      return await deteleFridgeIngredient(user, item.id);
     });
     const checkedItemsIds = checkedItems.map((item) => item.id);
-    console.log('ingredientsList inside handlechange', ingredientsList);
     const updatedList = ingredientsList.filter(
       (item) => !checkedItemsIds.includes(item.ingredient_id) // as long as an id isn't equal to our checked ingredient id, display it
     );
@@ -41,13 +48,33 @@ function Home() {
     );
   }
 
-  // fetching Users & ingredients & setting CheckboxStatus
   useEffect(() => {
+    // CHECK IF USER EXIST
     const fetchResponse = async () => {
-      const response = await fetchUsers(user);
-      setIngredientsList(response);
+      const response = await fetchGet(
+        `${process.env.REACT_APP_BACKEND_URL}/${user.sub}`
+      );
+      const result =
+        response.payload.length === 0
+          ? //IF NOT: CREATE THE NEW USER IN THE DATABASE
+            createNewElement(
+              {
+                auth0_user_id: user.sub,
+                email: user.email,
+                name: user.name,
+                nickname: user.nickname,
+                picture: user.picture,
+              },
+              process.env.REACT_APP_BACKEND_URL
+            )
+          : //ELSE, FETCH INGREDIENTS
+            await fetchGet(
+              `${process.env.REACT_APP_BACKEND_URL}/${user.sub}/ingredients`
+            );
+
+      setIngredientsList(result.payload);
       setCheckboxStatus(
-        response.map((item) => ({
+        result.payload.map((item) => ({
           id: item.ingredient_id,
           name: item.ingredient_name,
           isChecked: false,
@@ -57,7 +84,7 @@ function Home() {
 
     isAuthenticated && fetchResponse();
   }, [isAuthenticated, user]);
-  console.log(ingredientsList)
+
   //Loading screen to be done
   if (isLoading) {
     return <h1>Loading</h1>;

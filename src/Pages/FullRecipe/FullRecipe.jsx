@@ -1,157 +1,37 @@
+//Utils
 import { useAuth0 } from '@auth0/auth0-react';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { createNewElement } from '../../Utils/Fetch';
+
+//Components
 import Button from '../../components/Ui/Button/Button';
 import Checkbox from '../../components/Ui/Checkbox/Checkbox';
+
 //Pages
 import Login from '../Login/Login';
 
 //Temp data
-const data = [
-  {
-    name: '',
-    steps: [
-      {
-        number: 1,
-        step: "To make square hard boiled eggs, you'll need an Egg cuber or Square Egg Press. (See note in About section on where to purchase)",
-        ingredients: [
-          {
-            id: 1129,
-            name: 'hard boiled egg',
-            localizedName: 'hard boiled egg',
-            image: 'hard-boiled-egg.png',
-          },
-          {
-            id: 1123,
-            name: 'egg',
-            localizedName: 'egg',
-            image: 'egg.png',
-          },
-        ],
-        equipment: [],
-      },
-      {
-        number: 2,
-        step: 'First boil your eggs, then slide the egg inside the press and screw the top down so it pushes the egg into the corners.',
-        ingredients: [
-          {
-            id: 1123,
-            name: 'egg',
-            localizedName: 'egg',
-            image: 'egg.png',
-          },
-        ],
-        equipment: [],
-      },
-      {
-        number: 3,
-        step: 'Let the egg cool and remove it from the mold. For better results use medium size eggs.',
-        ingredients: [
-          {
-            id: 1123,
-            name: 'egg',
-            localizedName: 'egg',
-            image: 'egg.png',
-          },
-        ],
-        equipment: [],
-      },
-      {
-        number: 4,
-        step: 'If you intend to prepare this for a party, I suggest you buy several cubers, this way you can boil and chill several eggs at a time, or it will take you a lot of time.',
-        ingredients: [
-          {
-            id: 1123,
-            name: 'egg',
-            localizedName: 'egg',
-            image: 'egg.png',
-          },
-        ],
-        equipment: [],
-      },
-      {
-        number: 5,
-        step: 'To prepare hard boiled eggs, place eggs in a saucepan, cover with cold water and bring to a boil over medium heat. As soon as the water comes to a full boil, let the eggs boil for 5 minutes, and then remove from heat and let stand covered in hot water 10 minutes .',
-        ingredients: [
-          {
-            id: 1129,
-            name: 'hard boiled egg',
-            localizedName: 'hard boiled egg',
-            image: 'hard-boiled-egg.png',
-          },
-          {
-            id: 14412,
-            name: 'water',
-            localizedName: 'water',
-            image: 'water.png',
-          },
-          {
-            id: 1123,
-            name: 'egg',
-            localizedName: 'egg',
-            image: 'egg.png',
-          },
-        ],
-        equipment: [
-          {
-            id: 404669,
-            name: 'sauce pan',
-            localizedName: 'sauce pan',
-            image: 'sauce-pan.jpg',
-          },
-        ],
-        length: {
-          number: 15,
-          unit: 'minutes',
-        },
-      },
-      {
-        number: 6,
-        step: 'Filling is made with cream cheese, ham and egg yolk, it tastes very soft, it is ideal for kids.',
-        ingredients: [
-          {
-            id: 1017,
-            name: 'cream cheese',
-            localizedName: 'cream cheese',
-            image: 'cream-cheese.jpg',
-          },
-          {
-            id: 1125,
-            name: 'egg yolk',
-            localizedName: 'egg yolk',
-            image: 'egg-yolk.jpg',
-          },
-          {
-            id: 10151,
-            name: 'Ham',
-            localizedName: 'Ham',
-            image: 'ham-whole.jpg',
-          },
-        ],
-        equipment: [],
-      },
-    ],
-  },
-];
+import { mockRecipe } from '../../data/mockRecipe';
 
 function FullRecipe() {
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated, user } = useAuth0();
   const { state } = useLocation();
   //Uncomment these 2 lines in productions
   // const apiURL = `https://api.spoonacular.com/recipes/${state.id}/analyzedInstructions?apiKey=${process.env.REACT_APP_API_KEY}`;
   // const [recipe, setRecipe] = useState();
   //Comment this line to use the api
-  const [recipe, setRecipe] = useState(data);
+  const [recipe, setRecipe] = useState(mockRecipe);
   const [ingredientsOfRecipe, setIngredientsOfRecipe] = useState([]);
   const image = state.image;
   const [checkboxStatus, setCheckboxStatus] = useState(state.checkboxStatus);
-  const [selected, setSelected] = useState([]);
+  const [selected, setSelected] = useState(false);
   const [ingredientsToAdd, setIngredientsToAdd] = useState([]);
 
   //Uncomment the useEffect & leave the state recipe empty to use real data from the API.
   // useEffect(() => {
   //   const fetchResponse = async () => {
-  //     const response = await fetchRecipesApi(apiURL);
+  //     const response = await fetchGet(apiURL);
   //     setRecipe(response);
   //   };
   //   fetchResponse();
@@ -192,15 +72,45 @@ function FullRecipe() {
   // array of string
   // ingredients from full recipe
   // i.e.['potato', 'pineapple', 'salmon']
-  // console.log('ingredientsOfRecipe : ', ingredientsOfRecipe);
+  console.log('ingredientsOfRecipe : ', ingredientsOfRecipe);
 
   // array of object
   // ingredients from full recipe
   // i.e.[{id: 1, name: 'potato', isChecked: false}, id: 2, name: 'pineapple', isChecked: false}, {id: 2, name: 'salmon', isChecked: false}]
   // console.log('i am ingredientsToAdd from FullRecipe page :', ingredientsToAdd);
 
-  function addToShoppingList(){
-    console.log('add checked items to shopping list : ', ingredientsToAdd)
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(function ingredientTimeOut() {
+      setIsModalOpen(false);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [isModalOpen]);
+
+  async function addToShoppingList(e) {
+    e.preventDefault();
+
+    ingredientsToAdd.map((ingredient) => {
+
+      //Create the body
+      const fetchBody = {
+        item_name:
+          ingredient.name.charAt(0).toUpperCase() + ingredient.name.slice(1),
+        item_quantity: '1 unit',
+        is_checked: false,
+        user_id: user.sub,
+      };
+
+      //Api url
+      const apiUrl = `${process.env.REACT_APP_BACKEND_URL}/${user.sub}/shopping`;
+            ingredient.isChecked ? 
+      createNewElement(fetchBody, apiUrl)  : console.log('you did not choose ',ingredient)
+      return console.log(ingredientsToAdd)
+    });
+
+    //Open the form
+    setIsModalOpen(true);
   }
 
   return isAuthenticated ? (
