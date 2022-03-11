@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-labelledby="title"
+aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Grape</title>
+  <desc>A color styled icon from Orion Icon Library.</desc>
+  <path data-name="layer2"
+  d="M8 2c11.8 0 18 3.7 18 14C15.5 16 8 14 8 2zm48 0C44.2 2 38 5.7 38 16c10.5 0 18-2 18-14z"
+  fill="#68963f"></path>
+  <circle data-name="layer1" cx="16" cy="30" r="6" fill="#ac87bd"></circle>
+  <circle data-name="layer1" cx="32" cy="28" r="6" fill="#ac87bd"></circle>
+  <circle data-name="layer1" cx="48" cy="30" r="6" fill="#ac87bd"></circle>
+  <circle data-name="layer1" cx="24" cy="42" r="6" fill="#ac87bd"></circle>
+  <circle data-name="layer1" cx="40" cy="42" r="6" fill="#ac87bd"></circle>
+  <circle data-name="layer1" cx="32" cy="56" r="6" fill="#ac87bd"></circle>
+  <path data-name="opacity" d="M21.1 33.1a6 6 0 0 1-8.2-8.2 6 6 0 1 0 8.2 8.2zM32 34a6 6 0 0 0 5.1-2.9 6 6 0 0 1-8.2-8.2A6 6 0 0 0 32 34zm18 0a6 6 0 0 1-5.1-9.1 6 6 0 0 0 1.3 10.8l1.8.3a6 6 0 0 0 5.1-2.9 6 6 0 0 1-3.1.9zM29.1 45.1a6 6 0 0 1-8.2-8.2 6 6 0 1 0 8.2 8.2zM36 40a6 6 0 0 1 .9-3.1 6 6 0 1 0 8.2 8.2A6 6 0 0 1 36 40zm-8 14a6 6 0 0 1 .9-3.1 6 6 0 1 0 8.2 8.2A6 6 0 0 1 28 54z"
+  fill="#101129" opacity=".18"></path>
+  <path data-name="stroke" d="M8 2c11.8 0 18 3.7 18 14C15.5 16 8 14 8 2zm48 0C44.2 2 38 5.7 38 16c10.5 0 18-2 18-14zM32 2v20"
+  fill="none" stroke="#2f446a" stroke-linecap="round" stroke-linejoin="round"
+  stroke-width="2"></path>
+  <circle data-name="stroke" cx="16" cy="30" r="6" fill="none" stroke="#2f446a"
+  stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle>
+  <circle data-name="stroke" cx="32" cy="28" r="6" fill="none"
+  stroke="#2f446a" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle>
+  <circle data-name="stroke" cx="48" cy="30" r="6" fill="none"
+  stroke="#2f446a" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle>
+  <circle data-name="stroke" cx="24" cy="42" r="6" fill="none"
+  stroke="#2f446a" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle>
+  <circle data-name="stroke" cx="40" cy="42" r="6" fill="none"
+  stroke="#2f446a" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle>
+  <circle data-name="stroke" cx="32" cy="56" r="6" fill="none"
+  stroke="#2f446a" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle>
+</svg>

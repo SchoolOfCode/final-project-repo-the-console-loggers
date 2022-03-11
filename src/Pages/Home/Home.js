@@ -18,7 +18,7 @@ import Button from '../../components/Ui/Button/Button';
 import Login from '../Login/Login';
 
 function Home() {
-  const { isAuthenticated, isLoading, user } = useAuth0();
+  const { isAuthenticated, user } = useAuth0();
   // State that stores if the checkboxes are checked or not
   const [checkboxStatus, setCheckboxStatus] = useState([]);
   // State that stores ingredients in my fridge
@@ -27,27 +27,7 @@ function Home() {
   // replace checkedItemsNumber() so it can be used in map on line 23
   const checkedItems = checkboxStatus.filter((item) => item.isChecked);
   console.log(checkedItems);
-
-  // when you clicked 'delete button'
-  async function handleChange() {
-    checkedItems.map(async (item) => {
-      return await deteleFridgeIngredient(user, item.id);
-    });
-    const checkedItemsIds = checkedItems.map((item) => item.id);
-    const updatedList = ingredientsList.filter(
-      (item) => !checkedItemsIds.includes(item.ingredient_id) // as long as an id isn't equal to our checked ingredient id, display it
-    );
-
-    setIngredientsList(updatedList);
-    setCheckboxStatus(
-      updatedList.map((item) => ({
-        id: item.ingredient_id,
-        name: item.ingredient_name,
-        isChecked: false,
-      })) //
-    );
-  }
-
+  
   useEffect(() => {
     // CHECK IF USER EXIST
     const fetchResponse = async () => {
@@ -85,10 +65,27 @@ function Home() {
     isAuthenticated && fetchResponse();
   }, [isAuthenticated, user]);
 
-  //Loading screen to be done
-  if (isLoading) {
-    return <h1>Loading</h1>;
+  // when you clicked 'delete button'
+  async function handleChange() {
+    checkedItems.map(async (item) => {
+      return await deteleFridgeIngredient(user, item.id);
+    });
+    const checkedItemsIds = checkedItems.map((item) => item.id);
+    const updatedList = ingredientsList.filter(
+      (item) => !checkedItemsIds.includes(item.ingredient_id) // as long as an id isn't equal to our checked ingredient id, display it
+    );
+
+    setIngredientsList(updatedList);
+    setCheckboxStatus(
+      updatedList.map((item) => ({
+        id: item.ingredient_id,
+        name: item.ingredient_name,
+        isChecked: false,
+      })) //
+    );
   }
+
+
   return isAuthenticated ? (
     <main className='main-home'>
       <Link className='add-ingredient' to='AddIngredient'>

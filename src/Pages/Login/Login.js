@@ -33,7 +33,10 @@ function Login() {
       </div>
     </div>
   ) : (
-    'Loading'
+    <div className='auth-loading'>
+      <div className='lds-dual-ring'></div>
+      <p className='auth-text'>Authenticating into the app...</p>
+    </div>
   );
 }
 
