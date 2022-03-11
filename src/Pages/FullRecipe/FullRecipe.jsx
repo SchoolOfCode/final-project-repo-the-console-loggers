@@ -187,17 +187,21 @@ function FullRecipe() {
   // array of object
   // what we clicked from Home
   // i.e.[{id: 1, name: 'potato', isChecked: true}, {id: 2, name: 'salmon', isChecked: true}]
-  console.log('state.chosenIngredients : ', state.chosenIngredients);
+  // console.log('state.chosenIngredients : ', state.chosenIngredients);
 
   // array of string
   // ingredients from full recipe
   // i.e.['potato', 'pineapple', 'salmon']
-  console.log('ingredientsOfRecipe : ', ingredientsOfRecipe);
+  // console.log('ingredientsOfRecipe : ', ingredientsOfRecipe);
 
   // array of object
   // ingredients from full recipe
   // i.e.[{id: 1, name: 'potato', isChecked: false}, id: 2, name: 'pineapple', isChecked: false}, {id: 2, name: 'salmon', isChecked: false}]
-  console.log('i am ingredientsToAdd from FullRecipe page :', ingredientsToAdd);
+  // console.log('i am ingredientsToAdd from FullRecipe page :', ingredientsToAdd);
+
+  function addToShoppingList(){
+    console.log('add checked items to shopping list : ', ingredientsToAdd)
+  }
 
   return isAuthenticated ? (
     <main className='main-full-recipe '>
@@ -248,7 +252,7 @@ function FullRecipe() {
               text='Add to shopping List'
               backgroundColor='yellow-button'
               textColor='white'
-              handleClick={()=>console.log('add it')}
+              handleClick={addToShoppingList}
             />
           </div>
           <p className='steps-title'>Steps</p>
