@@ -2,7 +2,7 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { createNewElement } from '../../Utils/Fetch';
+import { createNewElement, fetchGet } from '../../Utils/Fetch';
 
 //Components
 import Button from '../../components/Ui/Button/Button';
@@ -12,16 +12,16 @@ import Checkbox from '../../components/Ui/Checkbox/Checkbox';
 import Login from '../Login/Login';
 
 //Temp data
-import { mockRecipe } from '../../data/mockRecipe';
+// import { mockRecipe } from '../../data/mockRecipe';
 
 function FullRecipe() {
   const { isAuthenticated, user } = useAuth0();
   const { state } = useLocation();
   //Uncomment these 2 lines in productions
-  // const apiURL = `https://api.spoonacular.com/recipes/${state.id}/analyzedInstructions?apiKey=${process.env.REACT_APP_API_KEY}`;
-  // const [recipe, setRecipe] = useState();
+  const apiURL = `https://api.spoonacular.com/recipes/${state.id}/analyzedInstructions?apiKey=${process.env.REACT_APP_API_KEY}`;
+  const [recipe, setRecipe] = useState();
   //Comment this line to use the api
-  const [recipe, setRecipe] = useState(mockRecipe);
+  // const [recipe, setRecipe] = useState(mockRecipe);
   const [ingredientsOfRecipe, setIngredientsOfRecipe] = useState([]);
   const image = state.image;
   const [checkboxStatus, setCheckboxStatus] = useState(state.checkboxStatus);
@@ -29,13 +29,13 @@ function FullRecipe() {
   const [ingredientsToAdd, setIngredientsToAdd] = useState([]);
 
   //Uncomment the useEffect & leave the state recipe empty to use real data from the API.
-  // useEffect(() => {
-  //   const fetchResponse = async () => {
-  //     const response = await fetchGet(apiURL);
-  //     setRecipe(response);
-  //   };
-  //   fetchResponse();
-  // }, [apiURL]);
+  useEffect(() => {
+    const fetchResponse = async () => {
+      const response = await fetchGet(apiURL);
+      setRecipe(response);
+    };
+    fetchResponse();
+  }, [apiURL]);
 
   useEffect(() => {
     const getIngredients = () => {
@@ -92,7 +92,6 @@ function FullRecipe() {
     e.preventDefault();
 
     ingredientsToAdd.map((ingredient) => {
-
       //Create the body
       const fetchBody = {
         item_name:
@@ -104,9 +103,10 @@ function FullRecipe() {
 
       //Api url
       const apiUrl = `${process.env.REACT_APP_BACKEND_URL}/${user.sub}/shopping`;
-            ingredient.isChecked ? 
-      createNewElement(fetchBody, apiUrl)  : console.log('you did not choose ',ingredient)
-      return console.log(ingredientsToAdd)
+      ingredient.isChecked
+        ? createNewElement(fetchBody, apiUrl)
+        : console.log('you did not choose ', ingredient);
+      return console.log(ingredientsToAdd);
     });
 
     //Open the form
