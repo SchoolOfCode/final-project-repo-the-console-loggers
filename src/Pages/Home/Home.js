@@ -6,7 +6,7 @@ import Card from '../../components/Card/Card';
 import EmptyScreen from '../../components/EmptyScreen/EmptyScreen';
 import GreenBanner from '../../components/GreenBanner/GreenBanner';
 import Button from '../../components/Ui/Button/Button';
-import { deleteIngredient, checkIfUserExist } from '../../Utils/Fetch';
+import { deteleFridgeIngredient, checkIfUserExist } from '../../Utils/Fetch';
 //Pages
 import Login from '../Login/Login';
 
@@ -23,7 +23,7 @@ function Home() {
   // when you clicked 'delete button'
   async function handleChange() {
     checkedItems.map(async (item) => {
-      return await deleteIngredient(user, item.id);
+      return await deteleFridgeIngredient(user, item.id);
     });
     const checkedItemsIds = checkedItems.map((item) => item.id);
     const updatedList = ingredientsList.filter(
@@ -40,13 +40,13 @@ function Home() {
     );
   }
 
-  // fetching Users & ingredients & setting CheckboxStatus
+  // CHECK IF USER EXIST & FETCH INGREDIENTS
   useEffect(() => {
     const fetchResponse = async () => {
       const response = await checkIfUserExist(user);
-      setIngredientsList(response);
+      setIngredientsList(response.payload);
       setCheckboxStatus(
-        response.map((item) => ({
+        response.payload.map((item) => ({
           id: item.ingredient_id,
           name: item.ingredient_name,
           isChecked: false,

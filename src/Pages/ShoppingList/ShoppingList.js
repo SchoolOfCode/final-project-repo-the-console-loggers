@@ -9,7 +9,7 @@ import EmptyScreen from '../../components/EmptyScreen/EmptyScreen';
 import GreenBanner from '../../components/GreenBanner/GreenBanner';
 import Modal from '../../components/Modal/Modal';
 import Button from '../../components/Ui/Button/Button';
-import { deleteShoppingList, fetchShoppingList } from '../../Utils/Fetch';
+import { deleteShoppingList, fetchGet } from '../../Utils/Fetch';
 //Pages
 import Login from '../Login/Login';
 
@@ -35,12 +35,15 @@ function ShoppingList() {
     .sort((a, b) => (a.is_checked > b.is_checked ? 1 : -1));
 
   useEffect(() => {
+    const apiUrl = `${process.env.REACT_APP_BACKEND_URL}/${
+      user && user.sub
+    }/shopping`;
     const fetchResponse = async () => {
-      const response = await fetchShoppingList(user);
-      setShopping(response);
+      const response = await fetchGet(apiUrl);
+      setShopping(response.payload);
 
       setCheckboxStatus(
-        response.map((item) => ({
+        response.payload.map((item) => ({
           id: item.item_id,
           isChecked: false,
         }))

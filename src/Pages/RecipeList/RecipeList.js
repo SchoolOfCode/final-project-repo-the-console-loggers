@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useLocation } from 'react-router-dom';
 import { createApiURL } from '../../Utils/createApiUrl';
-import { fetchRecipesApi } from '../../Utils/Fetch';
+import { fetchGet } from '../../Utils/Fetch';
 
 //Components
 import GreenBanner from '../../components/GreenBanner/GreenBanner';
@@ -32,7 +32,7 @@ function RecipeList() {
 
   // useEffect(() => {
   //   const fetchResponse = async () => {
-  //     const response = await fetchRecipesApi(ApiURLString);
+  //     const response = await fetchGet(ApiURLString);
   //     setApiSearch(response);
   //   };
   //   fetchResponse();
