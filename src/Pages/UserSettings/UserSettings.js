@@ -1,9 +1,10 @@
 //Utils
 import { useAuth0 } from '@auth0/auth0-react';
-//Components
 
+//Components
 import Button from '../../components/Ui/Button/Button';
 import UserSettingsCard from '../../components/UserSettingsCard/UserSettingsCard';
+
 //Pages
 import Login from '../Login/Login';
 

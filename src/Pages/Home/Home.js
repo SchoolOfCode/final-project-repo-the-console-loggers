@@ -1,12 +1,15 @@
-import { useAuth0 } from '@auth0/auth0-react';
 //Utils
+import { useAuth0 } from '@auth0/auth0-react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { deteleFridgeIngredient, checkIfUserExist } from '../../Utils/Fetch';
+
+//Components
 import Card from '../../components/Card/Card';
 import EmptyScreen from '../../components/EmptyScreen/EmptyScreen';
 import GreenBanner from '../../components/GreenBanner/GreenBanner';
 import Button from '../../components/Ui/Button/Button';
-import { deteleFridgeIngredient, checkIfUserExist } from '../../Utils/Fetch';
+
 //Pages
 import Login from '../Login/Login';
 

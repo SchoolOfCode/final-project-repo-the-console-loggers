@@ -1,15 +1,16 @@
-//Components
-import { useAuth0 } from '@auth0/auth0-react';
 //Utils
 import { useEffect, useState } from 'react';
-
 import { Link } from 'react-router-dom';
+import { deleteShoppingList, fetchGet } from '../../Utils/Fetch';
+
+//Components
+import { useAuth0 } from '@auth0/auth0-react';
 import Card from '../../components/Card/Card';
 import EmptyScreen from '../../components/EmptyScreen/EmptyScreen';
 import GreenBanner from '../../components/GreenBanner/GreenBanner';
 import Modal from '../../components/Modal/Modal';
 import Button from '../../components/Ui/Button/Button';
-import { deleteShoppingList, fetchGet } from '../../Utils/Fetch';
+
 //Pages
 import Login from '../Login/Login';
 
