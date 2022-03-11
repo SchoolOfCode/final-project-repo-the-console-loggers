@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-labelledby="title"
+aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Chicken Breast</title>
+  <desc>A color styled icon from Orion Icon Library.</desc>
+  <path data-name="layer3"
+  d="M13 44.5l-4.3 4.3a4.1 4.1 0 0 0-5.5 6.1c2.1 2.1 2.9 1.5 3.7 2.2s.4 1.9 2.2 3.7a4.1 4.1 0 0 0 5.9-5.9l-.3-.2 4.3-4.3"
+  fill="#fff4e8"></path>
+  <path data-name="layer2" d="M55.9 8.2a21 21 0 0 0-29.7 0l-1.6 1.7-.3.4-1 1.3c-6.2 9.3-6.7 23.1-9.2 25.6l-.7.7a5 5 0 0 0 0 7.1l5.7 5.7a5 5 0 0 0 7.1 0l.7-.7c2.7-2.7 17.5-2.4 27.3-10.5l1.6-1.5a21 21 0 0 0 .1-29.8z"
+  fill="#faa85e"></path>
+  <path data-name="opacity" d="M55.8 8.2c6.2 6.2 4.7 18-3.5 26.2l-1.6 1.5c-9.6 8.3-22.7 9.8-25.4 12.5l-.7.7c-2 2-4.7 2.3-6.2.8l-2.2-2.2 2.8 2.8a5 5 0 0 0 7.1 0l.7-.7c2.7-2.7 17.5-2.4 27.3-10.5l1.6-1.5a21 21 0 0 0 .1-29.6z"
+  fill="#101129" opacity=".18"></path>
+  <ellipse data-name="opacity" cx="43" cy="10" rx="5" ry="4" fill="#fff"
+  opacity=".25"></ellipse>
+  <circle data-name="layer1" cx="44" cy="10" r="1" fill="#f78e2e"></circle>
+  <circle data-name="layer1" cx="36" cy="12" r="1" fill="#f78e2e"></circle>
+  <circle data-name="layer1" cx="46" cy="18" r="1" fill="#f78e2e"></circle>
+  <path data-name="stroke" d="M13 44.5l-4.3 4.3a4.1 4.1 0 0 0-5.5 6.1c2.1 2.1 2.9 1.5 3.7 2.2s.4 1.9 2.2 3.7a4.1 4.1 0 0 0 5.9-5.9l-.3-.2 4.3-4.3"
+  fill="none" stroke="#2f446a" stroke-linecap="round" stroke-linejoin="round"
+  stroke-width="2"></path>
+  <path data-name="stroke" d="M55.9 8.2a21 21 0 0 0-29.7 0l-1.6 1.7-.3.4-1 1.3c-6.2 9.3-6.7 23.1-9.2 25.6l-.7.7a5 5 0 0 0 0 7.1l5.7 5.7a5 5 0 0 0 7.1 0l.7-.7c2.7-2.7 17.5-2.4 27.3-10.5l1.6-1.5a21 21 0 0 0 .1-29.8z"
+  fill="none" stroke="#2f446a" stroke-linecap="round" stroke-linejoin="round"
+  stroke-width="2"></path>
+  <circle data-name="stroke" cx="44" cy="10" r="1" fill="none" stroke="#2f446a"
+  stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle>
+  <circle data-name="stroke" cx="36" cy="12" r="1" fill="none"
+  stroke="#2f446a" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle>
+  <circle data-name="stroke" cx="46" cy="18" r="1" fill="none"
+  stroke="#2f446a" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle>
+</svg>
