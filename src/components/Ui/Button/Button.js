@@ -8,17 +8,17 @@ export default function Button({
   icon,
   handleClick,
 }) {
- 
   return (
     <button
+      data-testid='buttonx'
       onClick={handleClick}
       className={`button ${backgroundColor} ${textColor}-text ${width}-button`}
     >
       {icon === undefined ? null : (
         <img
-          className="button-icon"
+          className='button-icon'
           src={`${process.env.PUBLIC_URL}/assets/icons/${icon}.svg`}
-          alt="bin"
+          alt='bin'
         />
       )}
 
