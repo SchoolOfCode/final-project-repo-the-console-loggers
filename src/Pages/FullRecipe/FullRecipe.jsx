@@ -109,7 +109,9 @@ function FullRecipe() {
   return isAuthenticated ? (
     <>
       {isAlertOpen && (
-        <Alert isAlertOpen={isAlertOpen} setIsAlertOpen={setIsAlertOpen} />
+        <Alert isAlertOpen={isAlertOpen} setIsAlertOpen={setIsAlertOpen}>
+          <p>Ingredients added to your shopping list</p>
+        </Alert>
       )}
       <main className='main-full-recipe '>
         <div className='recipe-container'>

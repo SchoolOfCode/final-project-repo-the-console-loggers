@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const Alert = ({ isAlertOpen, setIsAlertOpen }) => {
+const Alert = ({ isAlertOpen, setIsAlertOpen, children }) => {
   const [animation, setAnimation] = useState('default-hidden');
 
   useEffect(() => {
@@ -24,9 +24,7 @@ const Alert = ({ isAlertOpen, setIsAlertOpen }) => {
 
   return (
     <div className='alert-container'>
-      <div className={`alert ${animation}`}>
-        Item added to the shopping list
-      </div>
+      <div className={`alert ${animation}`}>{children}</div>
     </div>
   );
 };

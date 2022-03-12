@@ -13,6 +13,7 @@ import Button from '../../components/Ui/Button/Button';
 
 //Pages
 import Login from '../Login/Login';
+import Alert from '../../components/Alert/Alert';
 
 function ShoppingList() {
   //State that storage if the checkboxes are check or not
@@ -21,11 +22,14 @@ function ShoppingList() {
   const [shopping, setShopping] = useState([]);
   const [isBottonSheetOpen, setIsBottonSheetOpen] = useState(false);
   const [bottonSheetAnimation, setbottonSheetAnimation] = useState(false);
+  const [isAlertOpen, setIsAlertOpen] = useState(false);
 
   const handleChange = async () => {
     const apiUrl = `${process.env.REACT_APP_BACKEND_URL}/${user.sub}/shopping`;
     await deleteShoppingList(apiUrl, user);
     setShopping([]);
+    setbottonSheetAnimation(true);
+    setIsAlertOpen(true);
   };
 
   const updated = [...shopping]
@@ -104,7 +108,6 @@ function ShoppingList() {
         )}
         {isBottonSheetOpen && (
           <BottonSheet
-            isBottonSheetOpen={isBottonSheetOpen}
             setIsBottonSheetOpen={setIsBottonSheetOpen}
             bottonSheetAnimation={bottonSheetAnimation}
             setbottonSheetAnimation={setbottonSheetAnimation}
@@ -129,6 +132,11 @@ function ShoppingList() {
               </div>
             </div>
           </BottonSheet>
+        )}
+        {isAlertOpen && (
+          <Alert isAlertOpen={isAlertOpen} setIsAlertOpen={setIsAlertOpen}>
+            <p>The shopping list has been cleared</p>
+          </Alert>
         )}
       </main>
     </>

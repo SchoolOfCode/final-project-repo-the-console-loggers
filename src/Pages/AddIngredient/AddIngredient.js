@@ -60,7 +60,9 @@ function AddIngredient() {
   return isAuthenticated ? (
     <>
       {isAlertOpen && (
-        <Alert isAlertOpen={isAlertOpen} setIsAlertOpen={setIsAlertOpen} />
+        <Alert isAlertOpen={isAlertOpen} setIsAlertOpen={setIsAlertOpen}>
+          <p>Ingredient added to your fridge</p>
+        </Alert>
       )}
       <div className='main-add-ingredient'>
         <h1 className='new-item'>ADD NEW ITEM</h1>
