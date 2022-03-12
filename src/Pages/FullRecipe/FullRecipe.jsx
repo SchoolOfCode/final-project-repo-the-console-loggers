@@ -7,6 +7,7 @@ import { createNewElement, fetchGet } from '../../Utils/Fetch';
 //Components
 import Button from '../../components/Ui/Button/Button';
 import Checkbox from '../../components/Ui/Checkbox/Checkbox';
+import Alert from '../../components/Alert/Alert';
 
 //Pages
 import Login from '../Login/Login';
@@ -27,6 +28,7 @@ function FullRecipe() {
   const [checkboxStatus, setCheckboxStatus] = useState(state.checkboxStatus);
   const [selected, setSelected] = useState(false);
   const [ingredientsToAdd, setIngredientsToAdd] = useState([]);
+  const [isAlertOpen, setIsAlertOpen] = useState(false);
 
   //Uncomment the useEffect & leave the state recipe empty to use real data from the API.
   useEffect(() => {
@@ -72,21 +74,12 @@ function FullRecipe() {
   // array of string
   // ingredients from full recipe
   // i.e.['potato', 'pineapple', 'salmon']
-  console.log('ingredientsOfRecipe : ', ingredientsOfRecipe);
+  // console.log('ingredientsOfRecipe : ', ingredientsOfRecipe);
 
   // array of object
   // ingredients from full recipe
   // i.e.[{id: 1, name: 'potato', isChecked: false}, id: 2, name: 'pineapple', isChecked: false}, {id: 2, name: 'salmon', isChecked: false}]
   // console.log('i am ingredientsToAdd from FullRecipe page :', ingredientsToAdd);
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(function ingredientTimeOut() {
-      setIsModalOpen(false);
-    }, 1000);
-    return () => clearTimeout(timer);
-  }, [isModalOpen]);
 
   async function addToShoppingList(e) {
     e.preventDefault();
@@ -103,79 +96,84 @@ function FullRecipe() {
 
       //Api url
       const apiUrl = `${process.env.REACT_APP_BACKEND_URL}/${user.sub}/shopping`;
-      ingredient.isChecked
-        ? createNewElement(fetchBody, apiUrl)
-        : console.log('you did not choose ', ingredient);
-      return console.log(ingredientsToAdd);
+
+      return ingredient.isChecked && createNewElement(fetchBody, apiUrl);
     });
 
     //Open the form
-    setIsModalOpen(true);
+    setIsAlertOpen(true);
   }
 
   return isAuthenticated ? (
-    <main className='main-full-recipe '>
-      <div className='recipe-container'>
-        <img className='recipe-img' src={image} alt='Recipe' />
-        <div className='recipe-instructions'>
-          <h2 className='recipe-name'>{state.name}</h2>
-          <div className='likes-container'>
-            <img
-              className='like-img'
-              src={`${process.env.PUBLIC_URL}/assets/icons/heart.svg`}
-              alt='heart'
-            />{' '}
-            {`${state.likes} ${state.likes === 1 ? 'Like' : 'Likes'}`}
-          </div>
-          <p className='ingredients-title'>Ingredients</p>
-          <div className='ingredients-container'>
-            {ingredientsToAdd.map((ingredient) => (
-              <div key={ingredient.id} className='ingredient-Layer'>
-                <Checkbox
-                  size='small'
-                  id={ingredient.name}
-                  name={ingredient.name}
-                  checkboxStatus={checkboxStatus}
-                  setCheckboxStatus={setCheckboxStatus}
-                  selected={selected}
-                  setSelected={setSelected}
-                  ingredientsToAdd={ingredientsToAdd}
-                  setIngredientsToAdd={setIngredientsToAdd}
-                />
+    <>
+      <main className='main-full-recipe '>
+        <div className='recipe-container'>
+          <img className='recipe-img' src={image} alt='Recipe' />
+          <div className='recipe-instructions'>
+            <h2 className='recipe-name'>{state.name}</h2>
+            <div className='likes-container'>
+              <img
+                className='like-img'
+                src={`${process.env.PUBLIC_URL}/assets/icons/heart.svg`}
+                alt='heart'
+              />{' '}
+              {`${state.likes} ${state.likes === 1 ? 'Like' : 'Likes'}`}
+            </div>
+            <p className='ingredients-title'>Ingredients</p>
+            <div className='ingredients-container'>
+              {ingredientsToAdd.map((ingredient) => (
+                <div key={ingredient.id} className='ingredient-Layer'>
+                  <Checkbox
+                    size='small'
+                    id={ingredient.name}
+                    name={ingredient.name}
+                    checkboxStatus={checkboxStatus}
+                    setCheckboxStatus={setCheckboxStatus}
+                    selected={selected}
+                    setSelected={setSelected}
+                    ingredientsToAdd={ingredientsToAdd}
+                    setIngredientsToAdd={setIngredientsToAdd}
+                  />
 
-                <p
-                  className={
-                    state.chosenIngredients.some(
-                      (chosen) =>
-                        chosen.name.toUpperCase() ===
-                        ingredient.name.toUpperCase()
-                    )
-                      ? 'grey-out'
-                      : 'ingredient-text'
-                  }
-                >
-                  {ingredient.name}
-                </p>
-              </div>
-            ))}
-            <Button
-              text='Add to shopping List'
-              backgroundColor='yellow-button'
-              textColor='white'
-              handleClick={addToShoppingList}
-            />
+                  <p
+                    className={
+                      state.chosenIngredients.some(
+                        (chosen) =>
+                          chosen.name.toUpperCase() ===
+                          ingredient.name.toUpperCase()
+                      )
+                        ? 'grey-out'
+                        : 'ingredient-text'
+                    }
+                  >
+                    {ingredient.name}
+                  </p>
+                </div>
+              ))}
+              <Button
+                text='Add to shopping List'
+                backgroundColor='yellow-button'
+                textColor='white'
+                handleClick={addToShoppingList}
+              />
+            </div>
+            <p className='steps-title'>Steps</p>
+            {recipe &&
+              recipe[0].steps.map((item, index) => (
+                <div key={index} className='recipe-step'>
+                  <span className='step-number'>{item.number}</span>
+                  {item.step}
+                </div>
+              ))}
           </div>
-          <p className='steps-title'>Steps</p>
-          {recipe &&
-            recipe[0].steps.map((item, index) => (
-              <div key={index} className='recipe-step'>
-                <span className='step-number'>{item.number}</span>
-                {item.step}
-              </div>
-            ))}
         </div>
-      </div>
-    </main>
+      </main>
+      {isAlertOpen && (
+        <Alert isAlertOpen={isAlertOpen} setIsAlertOpen={setIsAlertOpen}>
+          <p>Ingredients added to your shopping list</p>
+        </Alert>
+      )}
+    </>
   ) : (
     <div className='app'>
       <Login />

@@ -6,8 +6,9 @@
 @use '../components/Card/Card';
 @use '../components/RecipeCard/RecipeCard';
 @use '../components/UserSettingsCard/UserSettingsCard';
-@use '../components/Modal/Modal';
 @use '../components/EmptyScreen/EmptyScreen';
+@use '../components/Alert/Alert';
+@use '../components/BottonSheet/BottonSheet';
 
 //UI-Components
 @use '../components/Ui/Checkbox/Checkbox';
