@@ -66,6 +66,8 @@ function FullRecipe() {
     setIngredientsOfRecipe(getIngredients());
   }, [recipe]);
 
+  console.log(ingredientsOfRecipe);
+
   // array of object
   // what we clicked from Home
   // i.e.[{id: 1, name: 'potato', isChecked: true}, {id: 2, name: 'salmon', isChecked: true}]
