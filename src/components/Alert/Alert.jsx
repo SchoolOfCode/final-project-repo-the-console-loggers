@@ -7,7 +7,7 @@ const Alert = ({ isAlertOpen, setIsAlertOpen, children }) => {
     const closeAlert = () => {
       const timer = setTimeout(function ingredientTimeOut() {
         setIsAlertOpen(false);
-        return () => clearTimeout(timer);
+        return timer;
       }, 2700);
     };
     setAnimation('alert-animation-in');
@@ -18,7 +18,7 @@ const Alert = ({ isAlertOpen, setIsAlertOpen, children }) => {
   const hideAlertAnimation = () => {
     const timer = setTimeout(function ingredientTimeOut() {
       setAnimation('alert-animation-out');
-      return () => clearTimeout(timer);
+      return timer;
     }, 2500);
   };
 

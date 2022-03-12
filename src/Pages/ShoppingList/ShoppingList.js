@@ -106,39 +106,37 @@ function ShoppingList() {
             />
           </div>
         )}
-        {isBottonSheetOpen && (
-          <BottonSheet
-            setIsBottonSheetOpen={setIsBottonSheetOpen}
-            bottonSheetAnimation={bottonSheetAnimation}
-            setbottonSheetAnimation={setbottonSheetAnimation}
-          >
-            <div className='bottonsheet-children-container'>
-              <p>
-                Are you sure you want to remove all the items from the list?
-              </p>
-              <div className='bottonsheet-button-container'>
-                <Button
-                  text='Yes, I&#39;m sure'
-                  backgroundColor='red-button'
-                  textColor='white'
-                  handleClick={handleChange}
-                />
-                <Button
-                  text='Cancel'
-                  backgroundColor='transparent'
-                  textColor='green'
-                  handleClick={() => setbottonSheetAnimation(true)}
-                />
-              </div>
-            </div>
-          </BottonSheet>
-        )}
-        {isAlertOpen && (
-          <Alert isAlertOpen={isAlertOpen} setIsAlertOpen={setIsAlertOpen}>
-            <p>The shopping list has been cleared</p>
-          </Alert>
-        )}
       </main>
+      {isBottonSheetOpen && (
+        <BottonSheet
+          setIsBottonSheetOpen={setIsBottonSheetOpen}
+          bottonSheetAnimation={bottonSheetAnimation}
+          setbottonSheetAnimation={setbottonSheetAnimation}
+        >
+          <div className='bottonsheet-children-container'>
+            <p>Are you sure you want to remove all the items from the list?</p>
+            <div className='bottonsheet-button-container'>
+              <Button
+                text='Yes, I&#39;m sure'
+                backgroundColor='red-button'
+                textColor='white'
+                handleClick={handleChange}
+              />
+              <Button
+                text='Cancel'
+                backgroundColor='transparent'
+                textColor='green'
+                handleClick={() => setbottonSheetAnimation(true)}
+              />
+            </div>
+          </div>
+        </BottonSheet>
+      )}
+      {isAlertOpen && (
+        <Alert isAlertOpen={isAlertOpen} setIsAlertOpen={setIsAlertOpen}>
+          <p>The shopping list has been cleared</p>
+        </Alert>
+      )}
     </>
   ) : (
     <div className='app'>

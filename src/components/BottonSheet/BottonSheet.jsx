@@ -19,8 +19,6 @@ const BottonSheet = ({
     });
   }, []);
 
-  console.log(animation);
-
   useEffect(() => {
     const closeAlert = () => {
       const timer = setTimeout(() => {
