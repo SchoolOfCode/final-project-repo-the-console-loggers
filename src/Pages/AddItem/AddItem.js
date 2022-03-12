@@ -1,12 +1,11 @@
 //Utils
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { createNewElement } from '../../Utils/Fetch';
 
 //Components
 import InputBox from '../../components/Ui/InputBox/InputBox';
 import Button from '../../components/Ui/Button/Button';
-import Modal from '../../components/Modal/Modal';
 import Select from '../../components/Ui/Select/Select';
 import Alert from '../../components/Alert/Alert';
 
@@ -24,13 +23,6 @@ function AddItem() {
   const { isAuthenticated, user } = useAuth0();
   const [isAlertOpen, setIsAlertOpen] = useState(false);
 
-  // useEffect(() => {
-  //   const timer = setTimeout(function ingredientTimeOut() {
-  //     setIsModalOpen(false);
-  //   }, 1000);
-  //   return () => clearTimeout(timer);
-  // }, [isModalOpen]);
-
   const checkMoreThanOneUnit = () => {
     return form.quantity > 1 ? `${form.unit}s` : form.unit;
   };
@@ -43,7 +35,7 @@ function AddItem() {
     setForm({ ...form, [e.target.id]: e.target.value });
   };
 
-  async function addNewShopping(e) {
+  async function addNewItemToShoppingList(e) {
     e.preventDefault();
 
     //Create the body
@@ -68,7 +60,7 @@ function AddItem() {
       <div className='main-add-item'>
         <h1 className='new-item'>ADD NEW ITEM</h1>
         <div className='add-item-card'>
-          <form className='form' onSubmit={addNewShopping}>
+          <form className='form' onSubmit={addNewItemToShoppingList}>
             <InputBox
               id='name'
               handleName={handleForm}

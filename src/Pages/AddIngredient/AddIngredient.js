@@ -6,7 +6,7 @@ import { createNewElement } from '../../Utils/Fetch';
 //Components
 import InputBox from '../../components/Ui/InputBox/InputBox';
 import Button from '../../components/Ui/Button/Button';
-import Modal from '../../components/Modal/Modal';
+import Alert from '../../components/Alert/Alert';
 import Select from '../../components/Ui/Select/Select';
 
 //Pages
@@ -22,15 +22,7 @@ function AddIngredient() {
 
   const [form, setForm] = useState(formInitialValue);
   const { isAuthenticated, user } = useAuth0();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  //Success screen
-  useEffect(() => {
-    const timer = setTimeout(function ingredientTimeOut() {
-      setIsModalOpen(false);
-    }, 1000);
-    return () => clearTimeout(timer);
-  }, [isModalOpen]);
+  const [isAlertOpen, setIsAlertOpen] = useState(false);
 
   const handleForm = (e) => {
     setForm({ ...form, [e.target.id]: e.target.value });
@@ -62,74 +54,74 @@ function AddIngredient() {
     await createNewElement(fetchBody, apiUrl);
     //Empty the form
     setForm(formInitialValue);
-    setIsModalOpen(true);
+    setIsAlertOpen(true);
   };
 
   return isAuthenticated ? (
-    <div className='main-add-ingredient'>
-      {isModalOpen && (
-        <Modal isModalOpen={isModalOpen}>
-          <h1>Ingredient added to fridge!</h1>
-        </Modal>
-      )}
-      <h1 className='new-item'>ADD NEW ITEM</h1>
-      <div className='add-item-card'>
-        <form className='form' onSubmit={handleSubmit}>
-          <div className='input-wrapper'>
-            <InputBox
-              id='name'
-              handleName={handleForm}
-              text='Name'
-              placeholder='E.g. Honey Roasted Ham...'
-              type='text'
-              value={form.name}
-              required={true}
-            />
-          </div>
+    <>
+      <div className='main-add-ingredient'>
+        <h1 className='new-item'>ADD NEW ITEM</h1>
+        <div className='add-item-card'>
+          <form className='form' onSubmit={handleSubmit}>
+            <div className='input-wrapper'>
+              <InputBox
+                id='name'
+                handleName={handleForm}
+                text='Name'
+                placeholder='E.g. Honey Roasted Ham...'
+                type='text'
+                value={form.name}
+                required={true}
+              />
+            </div>
 
-          <div className='input-wrapper'>
-            <InputBox
-              id='expDate'
-              className='datepicker-input, datepicker-toggle, datepicker-toggle-button'
-              handleName={handleForm}
-              text='Expiration Date'
-              placeholder='E.g. 23/04/2022'
-              type='date'
-              value={form.expDate}
-              required={true}
-            />
-          </div>
-          <div className='quantity-input-wrapper'>
-            <InputBox
-              id='quantity'
-              handleName={handleForm}
-              text='Quantity'
-              placeholder='Select the amount...'
-              type='text'
-              value={form.quantity}
-              required={true}
-            />
-            <Select value={form.unit} handleUnits={handleForm} id='unit'>
-              <option value='unit'>Unit</option>
-              <option value='portion'>Portion</option>
-              <option value='kg'>Kg</option>
-              <option value='g'>g</option>
-              <option value='piece'>Pieces</option>
-              <option value='ltr'>Litre</option>
-            </Select>
-          </div>
+            <div className='input-wrapper'>
+              <InputBox
+                id='expDate'
+                className='datepicker-input, datepicker-toggle, datepicker-toggle-button'
+                handleName={handleForm}
+                text='Expiration Date'
+                placeholder='E.g. 23/04/2022'
+                type='date'
+                value={form.expDate}
+                required={true}
+              />
+            </div>
+            <div className='quantity-input-wrapper'>
+              <InputBox
+                id='quantity'
+                handleName={handleForm}
+                text='Quantity'
+                placeholder='Select the amount...'
+                type='text'
+                value={form.quantity}
+                required={true}
+              />
+              <Select value={form.unit} handleUnits={handleForm} id='unit'>
+                <option value='unit'>Unit</option>
+                <option value='portion'>Portion</option>
+                <option value='kg'>Kg</option>
+                <option value='g'>g</option>
+                <option value='piece'>Pieces</option>
+                <option value='ltr'>Litre</option>
+              </Select>
+            </div>
 
-          <Button
-            className='add-button'
-            text='Add new ingredient'
-            backgroundColor='green'
-            textColor='white'
-            width='fullLength'
-            icon='plus-icon'
-          />
-        </form>
+            <Button
+              className='add-button'
+              text='Add new ingredient'
+              backgroundColor='green'
+              textColor='white'
+              width='fullLength'
+              icon='plus-icon'
+            />
+          </form>
+        </div>
       </div>
-    </div>
+      {isAlertOpen && (
+        <Alert isAlertOpen={isAlertOpen} setIsAlertOpen={setIsAlertOpen} />
+      )}
+    </>
   ) : (
     <div className='app'>
       <Login />
