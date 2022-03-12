@@ -8,24 +8,28 @@ import { useAuth0 } from '@auth0/auth0-react';
 import Card from '../../components/Card/Card';
 import EmptyScreen from '../../components/EmptyScreen/EmptyScreen';
 import GreenBanner from '../../components/GreenBanner/GreenBanner';
-import Modal from '../../components/Modal/Modal';
+import BottonSheet from '../../components/BottonSheet/BottonSheet';
 import Button from '../../components/Ui/Button/Button';
 
 //Pages
 import Login from '../Login/Login';
+import Alert from '../../components/Alert/Alert';
 
 function ShoppingList() {
   //State that storage if the checkboxes are check or not
   const [checkboxStatus, setCheckboxStatus] = useState([]);
   const { isAuthenticated, isLoading, user } = useAuth0();
   const [shopping, setShopping] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isBottonSheetOpen, setIsBottonSheetOpen] = useState(false);
+  const [bottonSheetAnimation, setbottonSheetAnimation] = useState(false);
+  const [isAlertOpen, setIsAlertOpen] = useState(false);
 
   const handleChange = async () => {
     const apiUrl = `${process.env.REACT_APP_BACKEND_URL}/${user.sub}/shopping`;
     await deleteShoppingList(apiUrl, user);
     setShopping([]);
-    setIsModalOpen(false);
+    setbottonSheetAnimation(true);
+    setIsAlertOpen(true);
   };
 
   const updated = [...shopping]
@@ -93,7 +97,7 @@ function ShoppingList() {
         {!shopping.length ? null : (
           <div className='buttons-container-shoppinglist'>
             <Button
-              handleClick={() => setIsModalOpen(true)}
+              handleClick={() => setIsBottonSheetOpen(true)}
               text='Clear shopping list'
               backgroundColor='red-button'
               textColor='white'
@@ -102,12 +106,16 @@ function ShoppingList() {
             />
           </div>
         )}
-        {isModalOpen && (
-          <Modal isModalOpen={isModalOpen}>
-            <h1>
-              Are you sure you want to remove all the items from the list?
-            </h1>
-            <div className='button-container'>
+      </main>
+      {isBottonSheetOpen && (
+        <BottonSheet
+          setIsBottonSheetOpen={setIsBottonSheetOpen}
+          bottonSheetAnimation={bottonSheetAnimation}
+          setbottonSheetAnimation={setbottonSheetAnimation}
+        >
+          <div className='bottonsheet-children-container'>
+            <p>Are you sure you want to remove all the items from the list?</p>
+            <div className='bottonsheet-button-container'>
               <Button
                 text='Yes, I&#39;m sure'
                 backgroundColor='red-button'
@@ -118,12 +126,17 @@ function ShoppingList() {
                 text='Cancel'
                 backgroundColor='transparent'
                 textColor='green'
-                handleClick={() => setIsModalOpen(false)}
+                handleClick={() => setbottonSheetAnimation(true)}
               />
             </div>
-          </Modal>
-        )}
-      </main>
+          </div>
+        </BottonSheet>
+      )}
+      {isAlertOpen && (
+        <Alert isAlertOpen={isAlertOpen} setIsAlertOpen={setIsAlertOpen}>
+          <p>The shopping list has been cleared</p>
+        </Alert>
+      )}
     </>
   ) : (
     <div className='app'>

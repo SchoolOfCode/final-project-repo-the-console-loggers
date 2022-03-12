@@ -57,10 +57,12 @@ function AddItem() {
 
   return isAuthenticated ? (
     <>
-      {isAlertOpen && (
-        <Alert isAlertOpen={isAlertOpen} setIsAlertOpen={setIsAlertOpen} />
-      )}
       <div className='main-add-item'>
+        {isAlertOpen && (
+          <Alert isAlertOpen={isAlertOpen} setIsAlertOpen={setIsAlertOpen}>
+            <p>Item added to the shopping list</p>
+          </Alert>
+        )}
         <h1 className='new-item'>ADD NEW ITEM</h1>
         <div className='add-item-card'>
           <form className='form' onSubmit={addNewItemToShoppingList}>

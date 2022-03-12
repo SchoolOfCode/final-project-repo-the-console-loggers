@@ -108,9 +108,6 @@ function FullRecipe() {
 
   return isAuthenticated ? (
     <>
-      {isAlertOpen && (
-        <Alert isAlertOpen={isAlertOpen} setIsAlertOpen={setIsAlertOpen} />
-      )}
       <main className='main-full-recipe '>
         <div className='recipe-container'>
           <img className='recipe-img' src={image} alt='Recipe' />
@@ -173,6 +170,11 @@ function FullRecipe() {
           </div>
         </div>
       </main>
+      {isAlertOpen && (
+        <Alert isAlertOpen={isAlertOpen} setIsAlertOpen={setIsAlertOpen}>
+          <p>Ingredients added to your shopping list</p>
+        </Alert>
+      )}
     </>
   ) : (
     <div className='app'>
