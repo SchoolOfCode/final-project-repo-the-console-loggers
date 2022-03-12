@@ -96,7 +96,6 @@ function FullRecipe() {
 
       //Api url
       const apiUrl = `${process.env.REACT_APP_BACKEND_URL}/${user.sub}/shopping`;
-
       return ingredient.isChecked && createNewElement(fetchBody, apiUrl);
     });
 
