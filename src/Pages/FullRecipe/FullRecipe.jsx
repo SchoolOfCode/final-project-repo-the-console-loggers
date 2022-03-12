@@ -74,7 +74,7 @@ function FullRecipe() {
   // array of string
   // ingredients from full recipe
   // i.e.['potato', 'pineapple', 'salmon']
-  console.log('ingredientsOfRecipe : ', ingredientsOfRecipe);
+  // console.log('ingredientsOfRecipe : ', ingredientsOfRecipe);
 
   // array of object
   // ingredients from full recipe
@@ -96,10 +96,7 @@ function FullRecipe() {
 
       //Api url
       const apiUrl = `${process.env.REACT_APP_BACKEND_URL}/${user.sub}/shopping`;
-      ingredient.isChecked
-        ? createNewElement(fetchBody, apiUrl)
-        : console.log('you did not choose ', ingredient);
-      return console.log(ingredientsToAdd);
+      return ingredient.isChecked && createNewElement(fetchBody, apiUrl);
     });
 
     //Open the form
