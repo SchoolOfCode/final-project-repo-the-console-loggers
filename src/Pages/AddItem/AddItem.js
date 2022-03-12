@@ -57,6 +57,9 @@ function AddItem() {
 
   return isAuthenticated ? (
     <>
+      {isAlertOpen && (
+        <Alert isAlertOpen={isAlertOpen} setIsAlertOpen={setIsAlertOpen} />
+      )}
       <div className='main-add-item'>
         <h1 className='new-item'>ADD NEW ITEM</h1>
         <div className='add-item-card'>
@@ -101,9 +104,6 @@ function AddItem() {
           </form>
         </div>
       </div>
-      {isAlertOpen && (
-        <Alert isAlertOpen={isAlertOpen} setIsAlertOpen={setIsAlertOpen} />
-      )}
     </>
   ) : (
     <div className='app'>
