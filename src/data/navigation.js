@@ -9,7 +9,7 @@ export const pathWay = [
   },
   {
     id: 2,
-    path: ['/RecipeList'],
+    path: ['/RecipeList', '/FullRecipe'],
     name: 'RecipeList',
     slug: 'Recipe List',
     activeImg: '/assets/icons/recipes-color.svg',

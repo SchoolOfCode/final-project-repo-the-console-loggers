@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import Button from '../Ui/Button/Button';
+import { useLocation } from 'react-router-dom';
 
 const EmptyScreen = ({ title, icon, subText, highlight, linkTo }) => {
+  const location = useLocation();
   return (
     <div className='emptyScreenContainer'>
       <h1>{title}</h1>
@@ -12,7 +14,7 @@ const EmptyScreen = ({ title, icon, subText, highlight, linkTo }) => {
       <div className='button-container-empty-screen'>
         <Link className='add-ingredient' to={linkTo}>
           <Button
-            text='+ Select items'
+            text= {location.pathname === '/RecipeList' ? '+ Select items' : '+ Add new item'}
             backgroundColor='green-button'
             textColor='white'
             width='fullLength'
