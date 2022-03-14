@@ -4,12 +4,12 @@ export const mockRecipe = [
     steps: [
       {
         number: 1,
-        step: "To make square hard boiled eggs, you'll need an Egg cuber or Square Egg Press. (See note in About section on where to purchase)",
+        step: "To make square Hard boiled eggs, you'll need an Egg cuber or Square Egg Press. (See note in About section on where to purchase)",
         ingredients: [
           {
             id: 1129,
-            name: 'hard boiled egg',
-            localizedName: 'hard boiled egg',
+            name: 'Hard boiled egg',
+            localizedName: 'Hard boiled egg',
             image: 'hard-boiled-egg.png',
           },
           {
@@ -66,9 +66,9 @@ export const mockRecipe = [
         ingredients: [
           {
             id: 1129,
-            name: 'hard boiled egg',
-            localizedName: 'hard boiled egg',
-            image: 'hard-boiled-egg.png',
+            name: 'Hard boiled egg',
+            localizedName: 'Hard boiled egg',
+            image: 'Hard-boiled-egg.png',
           },
           {
             id: 14412,
