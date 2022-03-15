@@ -80,10 +80,11 @@
   }
 
   .grey-out {
-  margin: 0 0 0 0.5rem;
-  text-transform: capitalize;
-  background-color: grey;
-  text-decoration: line-through !important;
+    margin: 0 0 0 0.5rem;
+    text-transform: capitalize;
+    color: rgb(212, 212, 212);
+    text-decoration: line-through;
+    font-weight: 700;
   }
   
 }

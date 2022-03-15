@@ -32,16 +32,22 @@ const Card = ({
         } `}
       >
         <div className='main-card'>
-          {icons.includes(name) ? (
+          {icons.includes(name) || icons.includes(name.slice(0, -1)) ? (
             <img
               onClick={expandCard}
-              src={`${process.env.PUBLIC_URL}/assets/icons/food/${name}.svg`}
+              src={`${process.env.PUBLIC_URL}/assets/icons/food/${
+                icons.includes(name) ? name : name.slice(0, -1)
+              }.svg`}
               alt={name}
             />
           ) : (
             <img
               onClick={expandCard}
-              src={`${process.env.PUBLIC_URL}/assets/icons/food/notFound.svg`}
+              src={`${process.env.PUBLIC_URL}/assets/icons/food/${
+                icons.includes(name.split(' ')[0])
+                  ? name.split(' ')[0]
+                  : 'notFound'
+              }.svg`}
               alt={name}
             />
           )}

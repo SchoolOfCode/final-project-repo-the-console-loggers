@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-labelledby="title"
+aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Takeout Box</title>
+  <desc>A color styled icon from Orion Icon Library.</desc>
+  <path data-name="layer1"
+  fill="#fdefe5" d="M2 28l12-14h36l12 14v34H2V28z"></path>
+  <path data-name="opacity" fill="#101129" opacity=".18" d="M28 62V28L14 14v48"></path>
+  <path data-name="opacity" fill="#fff" opacity=".25" d="M62 28H28L14 14h36l12 14z"></path>
+  <path data-name="layer1" d="M14 14v-4a8 8 0 0 1 8-8h20a8 8 0 0 1 8 8v4"
+  fill="#fdefe5"></path>
+  <path data-name="stroke" fill="none" stroke="#2f446a" stroke-linecap="round"
+  stroke-linejoin="round" stroke-width="2" d="M2 28l12-14h36l12 14v34H2V28z"></path>
+  <path data-name="stroke" fill="none" stroke="#2f446a" stroke-linecap="round"
+  stroke-linejoin="round" stroke-width="2" d="M28 62V28L14 14v48m48-34H28m8 14h18M14 14v-4a8 8 0 0 1 8-8h20a8 8 0 0 1 8 8v4"></path>
+</svg>
