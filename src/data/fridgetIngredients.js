@@ -63,21 +63,3 @@ export const fridgeIngredients = [
     isChecked: false,
   },
 ]
-
-
-
-/*
-- check the 'year'
-- check the 'month'
-- check the 'day'
-
-  - exp year is more than / equal to current year
-    - exp year is more than to current year (O)
-    - exp year is equal to current year
-      - exp month is more than current month (O)
-      - exp month is equal to current month
-        - exp day is more than current day(O)
-        - else (X)
-    
-
-*/

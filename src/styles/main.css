@@ -455,7 +455,7 @@ li {
   color: #5e5f5e;
   width: 100%;
   position: absolute;
-  bottom: -5px;
+  bottom: 0px;
   border-radius: 20px 20px 0 0;
   display: flex;
   flex-direction: column;
@@ -465,7 +465,7 @@ li {
 }
 .bottonSheet-container .bottonsheet-animation-in {
   transition: 0.3s;
-  transform: translateY(-85px);
+  transform: translateY(-9.9vh);
 }
 
 .default-hidden {
