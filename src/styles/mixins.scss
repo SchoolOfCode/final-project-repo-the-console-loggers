@@ -1,0 +1,8 @@
+//Mixins
+@mixin main-container {
+  min-height: 80vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: variables.$grey-background;
+}

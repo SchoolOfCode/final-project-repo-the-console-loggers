@@ -1,0 +1,109 @@
+@use '../../../styles/variables.scss';
+
+.label-input-checkbox {
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.1s ease;
+  -webkit-tap-highlight-color: transparent;
+  z-index: 10;
+}
+
+.label-input-checkbox .check-box {
+  float: left;
+  vertical-align: middle;
+  transform: translate3d(0, 0, 0);
+}
+
+//Hidden default checkbox
+.input-checkbox {
+  position: absolute;
+  visibility: hidden;
+}
+
+//Checkbox
+.label-input-checkbox span:first-child {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  transform: scale(1);
+  border: 3px solid variables.$green;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 1px rgba(0, 16, 75, 0.05);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.label-input-checkbox span:first-child svg {
+  position: absolute;
+  top: 3px;
+  left: 2px;
+  width: 22px;
+  height: 20px;
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 16px;
+  stroke-dashoffset: 16px;
+  transition: all 0.3s ease;
+  transform: translate3d(0, 0, 0);
+}
+
+.label-input-checkbox:hover span:first-child {
+  border-color: variables.$green;
+}
+
+.input-checkbox:checked + .label-input-checkbox span:first-child {
+  background: variables.$green;
+  border-color: variables.$green;
+  animation: wave 0.1s ease;
+}
+
+.input-checkbox:checked + .label-input-checkbox span:first-child svg {
+  stroke-dashoffset: 0;
+}
+
+.inline-svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.label-input-checkbox .check-box-label {
+  padding-left: 8px;
+  line-height: 18px;
+}
+
+.label-mobile {
+  display: none;
+}
+
+//Animations
+@-moz-keyframes wave {
+  50% {
+    transform: scale(0.9);
+  }
+}
+
+@-webkit-keyframes wave {
+  50% {
+    transform: scale(0.9);
+  }
+}
+
+@-o-keyframes wave {
+  50% {
+    transform: scale(0.9);
+  }
+}
+
+@keyframes wave {
+  50% {
+    transform: scale(0.9);
+  }
+}

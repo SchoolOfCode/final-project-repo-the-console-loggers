@@ -1,0 +1,105 @@
+@use '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.main-full-recipe {
+  @include main-container;
+}
+
+.recipe-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1.5rem 0 2rem 0;
+}
+
+.recipe-img {
+  width: 90%;
+  border-radius: 10px 10px 0 0px;
+}
+
+.recipe-instructions {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  background-color: white;
+  height: 100%;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0px 1px 2px rgb(0 0 0 / 25%);
+}
+
+.recipe-name {
+  margin: 1rem 1rem 0 1rem;
+}
+
+.likes-container {
+  margin: 0.5rem 0 0.5rem 1rem;
+  padding: 0.2rem;
+  display: flex;
+  background-color: #e4faee;
+  border: 1px solid #5adb90;
+  width: 100px;
+  border-radius: 8px;
+
+  .like-img {
+    width: 20px;
+    margin: 0 0.2rem 0 0;
+  }
+}
+
+.steps-title {
+  margin: 1.5rem 0 0 1rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: variables.$green;
+  text-decoration: underline;
+}
+
+.recipe-step {
+  margin: 1rem;
+  &:nth-child(6) {
+    margin: 0.7rem 1rem 1rem 1rem;
+  }
+}
+
+.step-number {
+  margin: 0 0.3rem 0 0;
+  font-weight: 700;
+  color: variables.$green;
+}
+
+.ingredients-container {
+  display: flex;
+  flex-direction: column;
+
+  margin: auto;
+  width: 90%;
+
+  .ingredient-text {
+    margin: 0 0 0 0.5rem;
+    text-transform: capitalize;
+  }
+
+  .grey-out {
+    margin: 0 0 0 0.5rem;
+    text-transform: capitalize;
+    color: rgb(212, 212, 212);
+    text-decoration: line-through;
+    font-weight: 700;
+  }
+  
+}
+.ingredients-title {
+  margin: 1rem 0 0.7rem 1rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: variables.$green;
+  text-decoration: underline;
+}
+
+
+.ingredient-Layer {
+  display: flex;
+  align-items: center;
+  margin: 0 0 0.5rem 0;
+}
+

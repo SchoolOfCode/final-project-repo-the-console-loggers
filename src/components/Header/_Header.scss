@@ -1,0 +1,39 @@
+@use '../../styles/variables.scss';
+
+.header {
+  height: 10vh;
+  background-color: variables.$white;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 60;
+
+  .avatar {
+    padding: 1rem;
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+  }
+
+  .welcome-msg {
+    text-align: left;
+
+    .welcome-name {
+      font-weight: 600;
+      color: #2f446a;
+    }
+
+    .catch-phrase {
+      font-size: 0.9rem;
+      color: variables.$third-grey;
+    }
+
+    span {
+      font-weight: 700;
+      color: variables.$green;
+    }
+  }
+}

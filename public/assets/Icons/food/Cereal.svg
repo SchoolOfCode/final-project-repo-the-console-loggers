@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-labelledby="title"
+aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Cereal Box</title>
+  <desc>A color styled icon from Orion Icon Library.</desc>
+  <path data-name="layer3"
+  d="M33 58H9V8h34v29.1" fill="#d5e2f4"></path>
+  <path data-name="layer1" d="M27 46a17 17 0 0 0 33.9 0z" fill="#f26950"></path>
+  <path data-name="opacity" d="M33 46h-6a17 17 0 0 0 17 16h.6A18.5 18.5 0 0 1 33 46z"
+  fill="#101129" opacity=".25"></path>
+  <path data-name="opacity" d="M33 58a17 17 0 0 1-5.8-10H24a16.9 16.9 0 0 0 4 10h5z"
+  fill="#101129" opacity=".25"></path>
+  <path data-name="layer2" d="M31 46a6 6 0 0 1 6-6 5.9 5.9 0 0 1 2.7.7 8 8 0 0 1 15 1.1l-.9 4.2z"
+  fill="#fdefe5"></path>
+  <path data-name="layer1" fill="#f26950" d="M43 14L9 22.1V40l34-8V14z"></path>
+  <path data-name="stroke" d="M33 58H9V8h34v29.1M3 2l6 6m40-6l-6 6m0 6L9 22.1M43 32L9 40m52-14l-8 20"
+  fill="none" stroke="#2f446a" stroke-linecap="round" stroke-linejoin="round"
+  stroke-width="2"></path>
+  <path data-name="stroke" d="M27 46a17 17 0 0 0 33.9 0zm27.7-4.2a8 8 0 0 0-15-1.1A5.9 5.9 0 0 0 37 40a6 6 0 0 0-6 6"
+  fill="none" stroke="#2f446a" stroke-linecap="round" stroke-linejoin="round"
+  stroke-width="2"></path>
+</svg>

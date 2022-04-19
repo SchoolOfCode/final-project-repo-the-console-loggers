@@ -1,0 +1,121 @@
+@use '../../styles/variables.scss';
+
+.card-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0 0.5rem 0;
+
+  &:nth-child(2) {
+    margin-top: 1.5rem;
+  }
+
+  &:nth-last-child(2) {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  background-color: white;
+  height: 100%;
+  border-radius: 10px;
+  box-shadow: 0px 1px 2px rgb(0 0 0 / 25%);
+}
+
+.main-card {
+  display: flex;
+
+  img {
+    width: 55px;
+    margin: 1rem;
+  }
+}
+
+.expanded-card {
+  background-color: white;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  height: 6rem;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.selected {
+  transform: scale(0.97);
+  background-color: #f4fff4;
+}
+
+.cross {
+  transform: scale(0.97);
+  background-color: #d2d2d2;
+
+  h1 {
+    color: #8a8a8a;
+    text-decoration: line-through;
+  }
+}
+
+.showCard {
+  display: flex;
+}
+
+.hideCard {
+  display: none;
+}
+
+.expiry-dot {
+  height: 17px;
+  width: 17px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
+.texts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+
+  .title {
+    font-size: 20px;
+  }
+  .quantity {
+    font-size: 16px;
+    color: variables.$second-grey;
+    font-weight: 600;
+  }
+  .expiration-date {
+    font-size: 16px;
+    font-weight: 500;
+    color: variables.$third-grey;
+  }
+}
+
+.expiration {
+  display: flex;
+  align-items: center;
+}
+
+.red {
+  background-color: variables.$red;
+}
+
+.green {
+  background-color: variables.$green;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  padding: 0 1.5rem;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}

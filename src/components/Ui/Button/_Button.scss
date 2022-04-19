@@ -1,0 +1,64 @@
+@use '../../../styles/variables.scss';
+
+.button {
+  border-radius: 0.625rem;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  border-width: 0;
+  padding: 0.8rem 0;
+  min-width: 10rem;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.button-icon {
+  max-width: 26px;
+  padding-right: 0.5rem;
+}
+
+.transparent {
+  background-color: transparent;
+  border: 1px solid variables.$green;
+}
+
+.red-button {
+  background-color: variables.$red;
+}
+
+.yellow-button {
+  background-color: variables.$yellow;
+}
+
+.green-button {
+  background-color: variables.$green;
+}
+
+.white-button {
+  background-color: variables.$white;
+}
+
+.green-text {
+  color: variables.$green;
+}
+
+.white-text {
+  color: variables.$white;
+}
+
+.fullLength-button {
+  width: 100%;
+}
+
+.mediumLength-button {
+  width: 90%;
+}
+
+.halfLength-button {
+  width: 47%;
+}
+
+.percent-button-40 {
+  width: 40%;
+}

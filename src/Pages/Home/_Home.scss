@@ -1,0 +1,47 @@
+@use '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.main-home {
+  @include main-container;
+}
+
+.nav-menu {
+  min-height: 10vh;
+  background-color: variables.$white;
+}
+
+.divforcard {
+  height: 80%;
+}
+
+.buttons-container-home {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  margin: auto auto 0 auto;
+  padding: 1rem 0 1.4rem 0;
+  position: sticky;
+  background-color: #f4fff4;
+  border-top: 1px solid rgb(240, 240, 240);
+  z-index: 20;
+}
+
+.button-vh-ten {
+  bottom: 10vh;
+}
+
+.add-ingredient {
+  text-decoration: none;
+  position: sticky;
+  top: 10vh;
+  z-index: 20;
+}
+
+.disable {
+  display: none;
+}
+
+.button-home-yellow {
+  text-decoration: none;
+}

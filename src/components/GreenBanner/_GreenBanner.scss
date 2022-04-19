@@ -1,0 +1,17 @@
+@use '../../styles/variables.scss';
+
+.addNewIngredient {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: variables.$green;
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  min-height: 59px;
+  position: sticky;
+  top: 10vh;
+  //To be removed when shopping list is done
+  z-index: 20;
+}

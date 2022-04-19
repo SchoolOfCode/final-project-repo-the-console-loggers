@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-labelledby="title"
+aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Hamburger</title>
+  <desc>A color styled icon from Orion Icon Library.</desc>
+  <rect data-name="layer3"
+  x="2" y="31" width="60" height="12" rx="5" ry="5" fill="#964f48"></rect>
+  <path data-name="opacity" d="M58 40H8a5 5 0 0 1-5-5v-2a5 5 0 0 0-1 3v2a5 5 0 0 0 5 5h50a5 5 0 0 0 5-5 5 5 0 0 1-4 2z"
+  fill="#101129" opacity=".18"></path>
+  <path data-name="layer2" d="M58 43v5a5 5 0 0 1-5 5H11a5 5 0 0 1-5-5v-5m0-12v-6a14 14 0 0 1 14-14h24a14 14 0 0 1 14 14v6"
+  fill="#f6b36d"></path>
+  <circle data-name="layer1" cx="18" cy="19" r="1" fill="#fad8b6"></circle>
+  <circle data-name="layer1" cx="26" cy="21" r="1" fill="#fad8b6"></circle>
+  <circle data-name="layer1" cx="32" cy="17" r="1" fill="#fad8b6"></circle>
+  <circle data-name="layer1" cx="40" cy="21" r="1" fill="#fad8b6"></circle>
+  <circle data-name="layer1" cx="48" cy="19" r="1" fill="#fad8b6"></circle>
+  <path data-name="opacity" fill="#101129" opacity=".18" d="M6 43h52v4H6z"></path>
+  <rect data-name="stroke" x="2" y="31" width="60" height="12" rx="5"
+  ry="5" fill="none" stroke="#2f446a" stroke-linecap="round" stroke-linejoin="round"
+  stroke-width="2"></rect>
+  <path data-name="stroke" d="M58 43v5a5 5 0 0 1-5 5H11a5 5 0 0 1-5-5v-5m0-12v-6a14 14 0 0 1 14-14h24a14 14 0 0 1 14 14v6"
+  fill="none" stroke="#2f446a" stroke-linecap="round" stroke-linejoin="round"
+  stroke-width="2"></path>
+  <circle data-name="stroke" cx="18" cy="19" r="1" fill="none" stroke="#2f446a"
+  stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle>
+  <circle data-name="stroke" cx="26" cy="21" r="1" fill="none"
+  stroke="#2f446a" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle>
+  <circle data-name="stroke" cx="32" cy="17" r="1" fill="none"
+  stroke="#2f446a" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle>
+  <circle data-name="stroke" cx="40" cy="21" r="1" fill="none"
+  stroke="#2f446a" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle>
+  <circle data-name="stroke" cx="48" cy="19" r="1" fill="none"
+  stroke="#2f446a" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle>
+</svg>

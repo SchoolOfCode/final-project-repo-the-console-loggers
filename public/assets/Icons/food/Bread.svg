@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-labelledby="title"
+aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Bread Loaf</title>
+  <desc>A color styled icon from Orion Icon Library.</desc>
+  <path data-name="layer2"
+  d="M28 53V25.3a4.8 4.8 0 0 1-2-4.3c0-8 8.1-16 18-16H20C10.1 5 2 13 2 21a4.8 4.8 0 0 0 2 4.3V53a6 6 0 0 0 6 6h24a6 6 0 0 1-6-6z"
+  fill="#f6b36d"></path>
+  <path data-name="layer1" d="M44 5c-9.9 0-18 8-18 16a4.8 4.8 0 0 0 2 4.3V53a6 6 0 0 0 6 6h20a6 6 0 0 0 6-6V25.3a4.9 4.9 0 0 0 2-4.3c0-8-8.1-16-18-16z"
+  fill="#ffe6c5"></path>
+  <path data-name="opacity" d="M4 53a6 6 0 0 0 6 6h24a6 6 0 0 1-6-6V25.5l-.3-.5h-24l.3.3z"
+  fill="#101129" opacity=".25"></path>
+  <path data-name="stroke" d="M62 21c0-8-8.1-16-18-16s-18 8-18 16a4.8 4.8 0 0 0 2 4.3V53a6 6 0 0 0 6 6h20a6 6 0 0 0 6-6V25.3a4.9 4.9 0 0 0 2-4.3z"
+  fill="none" stroke="#2f446a" stroke-linecap="round" stroke-linejoin="round"
+  stroke-width="2"></path>
+  <path data-name="stroke" d="M34 59H10a6 6 0 0 1-6-6V25.3A4.8 4.8 0 0 1 2 21c0-8 8.1-16 18-16h24M3.7 25h24"
+  fill="none" stroke="#2f446a" stroke-linecap="round" stroke-linejoin="round"
+  stroke-width="2"></path>
+</svg>

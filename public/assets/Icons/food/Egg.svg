@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-labelledby="title"
+aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Boiled Egg</title>
+  <desc>A color styled icon from Orion Icon Library.</desc>
+  <path data-name="layer2"
+  d="M54 38c0 16.6-9.8 24-22 24s-22-7.4-22-24S19.9 2 32 2s22 19.4 22 36z"
+  fill="#fff"></path>
+  <path data-name="opacity" d="M35 59c-12.2 0-22-7.4-22-24 0-10.5 4-22.3 10-29.4C15.4 12 10 25.8 10 38c0 16.6 9.8 24 22 24 6.9 0 13-2.4 17.1-7.5A22.3 22.3 0 0 1 35 59z"
+  fill="#101129" opacity=".18"></path>
+  <circle data-name="layer1" cx="32" cy="40" r="12" fill="#fdc20f"></circle>
+  <path data-name="stroke" d="M54 38c0 16.6-9.8 24-22 24s-22-7.4-22-24S19.8 2 32 2s22 19.4 22 36z"
+  fill="none" stroke="#2f446a" stroke-linecap="round" stroke-linejoin="round"
+  stroke-width="2"></path>
+  <circle data-name="stroke" cx="32" cy="40" r="12" fill="none" stroke="#2f446a"
+  stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle>
+</svg>
